@@ -37,8 +37,11 @@ class Cv extends Model
         'family',
         'like_to_work',
         'should_choose',
+
         'shirt_size',
         'pant_size',
+        'shoes_size',
+        
         'vacant_id',
         'state_id'
     ];

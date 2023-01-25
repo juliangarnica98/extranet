@@ -44,22 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function retirement()
-    {
-        return $this->belongsTo('App\Retirement');
-    }
-    // public function collaborator()
-    // {
-    //     return $this->belongsTo('App\Collaborator');
-    // }
+   
 
 
   
-
-    // public function isJefe() {
-    //     if ($this->hasRole('Jefe')) {
-    //         return true;
-    //     }
-    //     return false; 
-    // }
 }

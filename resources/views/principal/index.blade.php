@@ -194,7 +194,7 @@
         </div>
         <div class="d-flex justify-content-center">
             <a class="btn btn-light btn-block mt-5 col-4"
-                style="border-radius: 30px; border-color: #e85199; color: #e85199" href="/vacantes">Información</a>
+                style="border-radius: 30px; border-color: #e85199; color: #e85199" href="{{route('vacantes.index')}}">Información</a>
         </div>
     </div>
     <div class="porque" id="porque">

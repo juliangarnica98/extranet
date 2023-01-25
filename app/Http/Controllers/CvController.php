@@ -61,6 +61,7 @@ class CvController extends Controller
         $cv->like_to_work = $request->like_to_work;
         $cv->should_choose = $request->should_choose;
         $cv->shirt_size = $request->shirt_size;
+        $cv->shirt_size = $request->shoes_size;
         $cv->pant_size = $request->pant_size;
         $cv->vacant_id = $request->vacant_id;
         $state->cv()->save($cv);
@@ -70,7 +71,7 @@ class CvController extends Controller
         $vacante->num_aplic += 1;
         $vacante->save();
 
-        return redirect('/vacantes')->with('message','Se ha registrado exitosamente la hoja de vida');
+        return redirect('extranet/vacantes')->with('message','Se ha registrado exitosamente la hoja de vida');
    
     }
 
@@ -88,15 +89,16 @@ class CvController extends Controller
     {
     
     }
-    public function search($id,Request $request)
+    public function vacante($id)
     {   
-        $documento=$request->documento;
-        $cv = Cv::where('num_id',$documento)->first();
-        if ($cv) {
-            return back()->with('error','Ya has aplicado a la oferta anteriormente');
-        }else{
-            return view('principal.cv',compact('id'));
-        }
+        // $documento=$request->documento;
+        // $cv = Cv::where('num_id',$documento)->first();
+        // if ($cv) {
+        //     return back()->with('error','Ya has aplicado a la oferta anteriormente');
+        // }else{
+            
+        // }
+        return view('principal.cv',compact('id'));
     }
     
     

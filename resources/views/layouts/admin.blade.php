@@ -130,12 +130,6 @@
             @can('admin.index')
                 <div class="pt-50">
                    
-                    
-                    <li class="nav-item">
-                        <a class="nav-link text-center" href="{{ route('admin.index') }}">
-                            <i class="fas fa-external-link-alt"></i>
-                            <span>Retiros</span></a>
-                    </li>
                     <hr class="sidebar-divider">
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ route('admin.postulaciones') }}">
@@ -144,46 +138,15 @@
                     </li>
                     <hr class="sidebar-divider">
                     <li class="nav-item">
-                        <a class="nav-link text-center" href="{{ route('admin.vacantes2') }}">
+                        <a class="nav-link text-center" href="{{ route('admin.index') }}">
                             <i class="fa fa-id-card" aria-hidden="true"></i>
                             <span>Vacantes</span></a>
                     </li>
-                    
-                    <hr class="sidebar-divider">
-                    <li class="nav-item">
-                        <a class="nav-link text-center" href="{{ route('admin.importar') }}">
-                            <i class="fa fa-id-card" aria-hidden="true"></i>
-                            <span>Importar</span></a>
-                    </li>
+            
 
                 </div>
             @endcan
-            @can('boss.index')
-                <div class="pt-50">
-                    <li class="nav-item">
-                        <a class="nav-link text-center" href="{{ route('boss.index') }}">
-
-                            <i class="fas fa-external-link-alt"></i>
-                            <span>Retiros</span></a>
-                    </li>
-                    <!-- Divider -->
-                    <hr class="sidebar-divider">
-                    <li class="nav-item">
-                        <a class="nav-link text-center" href="{{ route('retirement.index') }}">
-                            {{-- <i class="fas fa-fw fa-tachometer-alt"></i> --}}
-                            <i class="fas fa-solid fa-user"></i>
-                            <span>Retiro directo</span></a>
-                    </li>
-                    <hr class="sidebar-divider">
-                    <li class="nav-item">
-                        <a class="nav-link text-center" href="{{ route('boss.show') }}">
-                            {{-- <i class="fas fa-fw fa-tachometer-alt"></i> --}}
-                            <i class="fas fa-layer-group"></i>
-                            <span>Colaboradores</span></a>
-                    </li>
-
-                </div>
-            @endcan
+          
 
 
 
@@ -224,11 +187,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{-- <span class="mr-5 d-none d-lg-inline" >{{ Auth::user()->name[0] }} </span> --}}
                                 <span class="mr-5 pr-5 text-light">{{ Auth::user()->name }}</span>
-                                {{-- {{ Auth::user()->name }} --}}
-                                {{-- <img class="img-profile rounded-circle"
-                                    src="">  --}}
-                                {{-- <div class="topbar-divider d-none d-sm-block"></div>
-                                    <i class="fas fa-ellipsis-h"></i> --}}
+                 
                             </a>
 
                             <div class="dropdown-menu shadow animated--grow-in" aria-labelledby="userDropdown"

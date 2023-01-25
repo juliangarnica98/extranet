@@ -256,18 +256,25 @@
             <form id="signUpForm" action="{{ route('cv.store') }}">
                 <!-- start step indicators -->
                 <div class="form-header d-flex mb-4">
+                    <span class="stepIndicator">Bienvenida</span>
                     <span class="stepIndicator">HÁBEAS DATA</span>
                     <span class="stepIndicator">Información personal</span>
-                    <span class="stepIndicator">Ultima empresa</span>
-                    <span class="stepIndicator">Penultima empresa</span>
-                    <span class="stepIndicator">Información extra</span>
+                    <span class="stepIndicator">Información laboral 1</span>
+                    <span class="stepIndicator">Información laboral 2</span>
+                    <span class="stepIndicator">Cuentanos de ti</span>
+                    <span class="stepIndicator">Información adicional</span>
                 </div>
                 <!-- end step indicators -->
 
-                <!---->
-                <!-- step two -->
+                
 
+                <div class="step">
+                    <div class="d-flex justify-content-center mb-4">
 
+                        <img style="width: 120vh" src="{{ asset('images/pasos.jpg') }}" alt="">
+
+                    </div>
+                </div>
                 <div class="step">
                     <p class="text-center mb-4">HÁBEAS DATA: Dando cumplimiento a lo dispuesto en la Ley 1581 de 2012,
                         "Por el cual se dictan disposiciones generales para la protección de datos personales" y de
@@ -289,12 +296,12 @@
                     </div>
 
                 </div>
-
                 <div class="step">
                     <p class="text-center mb-4">Ingresa tu información personal</p>
                     <div class="mb-3 row">
                         {{-- <small>nombre(*)</small> --}}
-                        <input type="text" placeholder="nombre completo del aspirante" name="name" class="col-6">
+                        <input type="text" placeholder="Nombre completo del aspirante" name="name"
+                            class="col-6">
                         <select class="form-select col-3 ml-2 form_control" name="type_id">
                             <option selected value="">Tipo de documento</option>
                             <option value="CC">C.C</option>
@@ -306,7 +313,8 @@
                     {{-- oninput="this.className = ''" --}}
                     <div class="mb-3 row">
                         <input type="number" placeholder="número de celular" name="num_cell" class="col">
-                        <input type="numer" placeholder="Otro número de celular " name="num_cell2" class="col ml-2">
+                        <input type="numer" placeholder="Otro número de celular " name="num_cell2"
+                            class="col ml-2">
                         <input type="number" placeholder="Edad" name="age" class="col-3 ml-2">
                     </div>
                     <div class="mb-3 row">
@@ -314,7 +322,7 @@
                         <input type="text" placeholder="Dirección" name="address" class="ml-2 col-5">
                     </div>
                     <div class="mb-3 row">
-                        <select class="form-select col ml-2 form_control" name="city_address">
+                        <select class="form-select col form_control" name="city_address">
                             <option selected value="">Ciudad de residencia</option>
                             <option value="CC">Bogotá</option>
                             <option value="CC">Medellín</option>
@@ -370,21 +378,24 @@
                         {{-- <input type="email" placeholder="Perfil academico culminado" name="academic_profile"
                             class="ml-2 col-5"> --}}
                         <select class="form-select col-5 ml-2 form_control" name="academic_profile">
-                            <option selected value="">Perfil academico culminado</option>
-                            <option value="CC">Primaria</option>
-                            <option value="CC">Bachillerato</option>
-                            <option value="CC">Técnico</option>
-                            <option value="CC">Tecnólogo</option>
-                            <option value="CC">Pregrado</option>
-                            <option value="CC">Postgrado</option>
+                            <option selected value="">Perfil academico</option>
+                            <option value="Primaria">Primaria</option>
+                            <option value="Bachillerato">Bachillerato</option>
+                            <option value="Técnico">Técnico</option>
+                            <option value="Tecnólogo">Tecnólogo</option>
+                            <option value="Pregrado">Pregrado</option>
+                            <option value="Postgrado">Postgrado</option>
+                            <option value="Maestria">Maestria</option>
+                            <option value="Esta estudiando">Esta estudiando</option>
                         </select>
                     </div>
                 </div>
-
                 <div class="step">
-                    <p class="text-center mb-4">Ingresa la información de la ultima empresa en la que laboraste</p>
+                    <p class="text-center mb-4"><strong> Ingresa la información de la ultima empresa en la que
+                            laboraste </strong></p>
                     <div class="mb-3 row">
-                        <input type="text" placeholder="Nombre" name="name_last_company" class="col">
+                        <input type="text" placeholder="Nombre de la ultima empresa" name="name_last_company"
+                            class="col">
                         <input type="text" placeholder="Cargo" name="position_last_company" class="col ml-2">
                     </div>
                     <div class="mb-3 row">
@@ -397,20 +408,22 @@
                             <option value="Si">Si</option>
                             <option value="No">No</option>
                         </select>
-                        <span>Fecha inicio de contrato</span>
+                        <span class="ml-5">Fecha inicio de contrato</span>
                         <input type="date" placeholder="Fecha de inicio" name="date_init_company"
                             class="col ml-2">
-                        <span>Fecha fin de contrato</span>
+                        <span class="pl-5">Fecha fin de contrato</span>
                         <input type="date" placeholder="fecha de fin" name="date_finally_company"
                             class="col ml-2">
                     </div>
                 </div>
                 <input type="hidden" name="vacant_id" value="{{ $id }}">
                 <div class="step">
-                    <p class="text-center mb-4">Ingresa la información de la penultima empresa en la que laboraste</p>
+                    <p class="text-center mb-4"><strong> Ingresa la información de la penúltima empresa en la que
+                            laboraste </strong></p>
                     <div class="mb-3 row">
 
-                        <input type="text" placeholder="Nombre" name="name_last_company2" class="col">
+                        <input type="text" placeholder="Nombre de la penultima empresa" name="name_last_company2"
+                            class="col">
 
                         <input type="text" placeholder="Cargo" name="position_last_company2" class="col ml-2">
                     </div>
@@ -438,45 +451,65 @@
                        
                     </div> --}}
                 </div>
-
                 <div class="step">
-                    <p class="text-center mb-4">Información adicional</p>
+                    <p class="text-center mb-4"> <strong> Cuentanos de ti </strong></p>
                     <div class="mb-3 row">
-                        <select class="form-select col-3 ml-2 form_control" name="previously_work">
+                        <select class="form-select col form_control" name="previously_work">
                             <option selected value="">¿Trabajaste anteriormente con nosotros?</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
                         </select>
-                        <select class="form-select col-3 ml-2 form_control" name="family">
+                        <select class="form-select col ml-2 form_control" name="family">
                             <option selected value="">¿Tienes algun familiar trabajando con nosotros?</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
                         </select>
-                      
+                    </div>
 
-                    </div>
-                    {{-- <div class="mb-3">
-                        
-                    </div> --}}
                     <div class="mb-3 row">
-                        <textarea name="like_to_work" id="" cols="30" rows="6"
+                        <textarea name="like_to_work" id="" cols="20" rows="4"
                             placeholder="¿Por que te gustaria trabajar con nosotros?" class="col"></textarea>
-                        {{-- <input type="text"  name=""> --}}
                     </div>
                     <div class="mb-3 row">
-                        <input type="text" placeholder="¿Por que deberiamos escogerte?" name="should_choose"
-                            class="col ">
-                        <input type="text" placeholder="Talla camisa" name="shirt_size" class="col ml-2">
-                        <input type="numer" placeholder="Talla pantalon" name="pant_size" class="col ml-2">
+                        <textarea name="should_choose" id="" cols="20" rows="4"
+                            placeholder="¿Por que te deberiamos escoger?" class="col"></textarea>
                     </div>
-                    {{-- <div class="mb-3">
-                        
-                    </div>
-                    <div class="mb-3">
-                       
-                    </div> --}}
+                  
+                   
                 </div>
 
+                <div class="step">
+                    <p class="text-center mb-4"> <strong> Información adicional </strong></p>
+                    <div class="mb-3 row">
+                        <select class="form-select col form_control" name="shirt_size">
+                            <option selected value="">Talla camisa</option>
+                            <option value="xs">XS</option>
+                            <option value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                            <option value="xl">XL</option>
+                        </select>
+                        <input type="number" placeholder="Talla de pantalon" name="pant_size"
+                        class="col ml-2">
+                        <select class="form-select col form_control ml-2" name="shoes_size">
+                            <option selected value="">Talla zapatos</option>
+                            <option value="34">34</option>
+                            <option value="Si">35</option>
+                            <option value="Si">36</option>
+                            <option value="Si">37</option>
+                            <option value="Si">38</option>
+                            <option value="Si">39</option>
+                            <option value="Si">40</option>
+                            <option value="Si">41</option>
+                            <option value="Si">42</option>
+                            <option value="Si">43</option>
+                            <option value="Si">44</option>
+                            
+                        </select>
+                    </div>
+                   
+                   
+                </div>
 
 
                 <!-- start previous / next buttons -->

@@ -47,6 +47,7 @@ class CreateCvsTable extends Migration
             $table->text('should_choose');
             $table->string('shirt_size');
             $table->string('pant_size');
+            $table->string('shoes_size');
 
             $table->unsignedBigInteger('vacant_id');
             $table->foreign('vacant_id')->references('id')->on('vacants')->onDelete('cascade');;
