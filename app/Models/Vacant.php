@@ -16,6 +16,12 @@ class Vacant extends Model
         'salary',
         'experience',
         'num_vacants',
+
+        'education',
+        'language',
+        'availability_travel',
+        'type_contract',
+
         'num_aplic',
         'type_cv_id'
     ];

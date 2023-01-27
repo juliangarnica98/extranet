@@ -71,7 +71,7 @@ class CvController extends Controller
         $vacante->num_aplic += 1;
         $vacante->save();
 
-        return redirect('extranet/vacantes')->with('message','Se ha registrado exitosamente la hoja de vida');
+        return redirect('extranet/vacantes')->with('message','Estaremos en contacto contigo');
    
     }
 
@@ -91,13 +91,6 @@ class CvController extends Controller
     }
     public function vacante($id)
     {   
-        // $documento=$request->documento;
-        // $cv = Cv::where('num_id',$documento)->first();
-        // if ($cv) {
-        //     return back()->with('error','Ya has aplicado a la oferta anteriormente');
-        // }else{
-            
-        // }
         return view('principal.cv',compact('id'));
     }
     

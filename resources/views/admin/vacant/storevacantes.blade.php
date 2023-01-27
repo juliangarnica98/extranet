@@ -20,191 +20,200 @@
         </script>
     @endif --}}
 
-    <div class="modal fade" id="Modalstore" tabindex="-1"
-        role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-dark"
-                        id="exampleModalLabel">Crear
-                        vacante</h5>
-                    <button type="button" class="close"
-                        data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST"
-                    action="{{ route('admin.crearvacante') }}">
-                    
-                    @csrf
-    
-                    <div class="modal-body">
-    
-                        <div class="form-group">
-                            <div class="row justify-content-center">
-                                <div class="col-5">
-    
-                                    <div class="form-outline">
-    
-                                        <input type="text"
-                                            id="form8Example1"
-                                            class="form-control"
-                                            name="title"
-                                             />
-                                        <label
-                                            class="form-label text-dark"
-                                            for="form8Example1">Titulo</label>
-                                    </div>
-                                </div>
-                                <div class="col-5">
-                                    
-                                    <div class="form-outline">
-                                      
-                                        <select class="form-select form-control" name="city">
-                                            <option selected value=""></option>
-                                            <option value="CC">Bogotá</option>
-                                            <option value="CC">Medellín</option>
-                                            <option value="CC">Cali</option>
-                                            <option value="CC">Barranquilla</option>
-                                            <option value="CC">Cartagena de Indias</option>
-                                            <option value="CC">Soacha</option>
-                                            <option value="CC">Tunja</option>
-                                            <option value="CC">Cúcuta</option>
-                                            <option value="CC">Soledad</option>
-                                            <option value="CC">Bucaramanga</option>
-                                            <option value="CC">Bello</option>
-                                            <option value="CC">Villavicencio</option>
-                                            <option value="CC">Ibagué</option>
-                                            <option value="CC">Santa Marta</option>
-                                            <option value="CC">Valledupar</option>
-                                            <option value="CC">Manizales</option>
-                                            <option value="CC">Pereira</option>
-                                            <option value="CC">Montería</option>
-                                            <option value="CC">Neiva</option>
-                                            <option value="CC">Pasto</option>
-                                            <option value="CC">Armenia</option>
-                                            <option value="CC">Rioacha</option>
-                                            <option value="CC">Sincelejo</option>
-                                            <option value="CC">Barrancabermeja</option>
-                                            <option value="CC">Popayan</option>
-                                            <option value="CC">Dos quebradas</option>
-                                            <option value="CC">Jamundi</option>
-                                            <option value="CC">Palmira</option>
-                                            <option value="CC">Ipiales</option>
-                                            <option value="CC">Yumbo</option>
-                                            <option value="CC">Cartago</option>
-                                            <option value="CC">Tulua</option>
-                                            <option value="CC">Girardot</option>
-                                            <option value="CC">Pitalito</option>
-                                            <option value="CC">Florencia</option>
-                                            <option value="CC">Cajica</option>
-                                            <option value="CC">Yopal</option>
-                                            <option value="CC">Duitama</option>
-                                            <option value="CC">Villeta</option>
-                                            <option value="CC">Sogamoso</option>
-                                            <option value="CC">Fusagasuga</option>
-                                            <option value="CC">Sopo</option>
-                                            <option value="CC">Tocancipa</option>
-                                            <option value="CC">Chia</option>
-                                            <option value="CC">Apartado</option>
-                                            <option value="CC">Zipaquira</option>
-                                            <option value="CC">Mosquera</option>
-                                            <option value="CC">Madrid</option>
-                                            <option value="CC">Funza</option>
-                                        </select>
-                                        <label
-                                            class="form-label text-dark"
-                                            for="form8Example2">Ciudad</label>
-                                    </div>
+<div class="modal fade" id="Modalstore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">Crear
+                    vacante</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="{{ route('admin.crearvacante') }}">
+
+                @csrf
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <div class="col-5">
+
+                                <div class="form-outline">
+
+                                    <input type="text" id="form8Example1" class="form-control" name="title" />
+                                    <label class="form-label text-dark" for="form8Example1">Titulo</label>
                                 </div>
                             </div>
-    
-    
-    
-                            <div class="row justify-content-center">
-    
-                                <div class="col-5">
-    
-                                    <div class="form-outline">
-                                        <input type="number"
-                                            id=""
-                                            class="form-control"
-                                            name="salary"
-                                             />
-                                        <label
-                                            class="form-label text-dark"
-                                            for="form8Example4">Salario</label>
-                                    </div>
-                                </div>
-                                <div class="col-5">
-    
-                                    <div class="form-outline">
-                                        <input type="number"
-                                            id=""
-                                            class="form-control"
-                                            name="num_vacants"
-                                             />
-                                        <label
-                                            class="form-label text-dark"
-                                            for="form8Example4">Número
-                                            de
-                                            vacantes</label>
-                                    </div>
-                                </div>
-    
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-10">
-    
-                                    <div class="form-outline">
-                                        <input type="text"
-                                            id=""
-                                            class="form-control"
-                                            name="description"
-                                           />
-                                        <label
-                                            class="form-label text-dark"
-                                            for="form8Example3">Descripcion</label>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="row justify-content-center">
-                                <div class="col-10">
-    
-                                    <div class="form-outline">
-                                        <input type="text"
-                                            class="form-control"
-                                            name="experience"
-                                            id=""
-                                            cols="30"
-                                            rows="5"
-                                            >
-                                        <label
-                                            class="form-label text-dark"
-                                            for="form8Example3">Experiencia
-                                            requerida</label>
-                                    </div>
+                            <div class="col-5">
+
+                                <div class="form-outline">
+
+                                    <select class="form-select form-control" name="city">7
+                                        <option selected value=""></option>
+                                        <option value="Bogotá">Bogotá</option>
+                                        <option value="Medellín">Medellín</option>
+                                        <option value="Cali">Cali</option>
+                                        <option value="Barranquilla">Barranquilla</option>
+                                        <option value="Cartagena de Indias">Cartagena de Indias</option>
+                                        <option value="Soacha">Soacha</option>
+                                        <option value="Tunja">Tunja</option>
+                                        <option value="Cúcuta">Cúcuta</option>
+                                        <option value="Soledad">Soledad</option>
+                                        <option value="Bucaramanga">Bucaramanga</option>
+                                        <option value="Bello">Bello</option>
+                                        <option value="Villavicencio">Villavicencio</option>
+                                        <option value="Ibagué">Ibagué</option>
+                                        <option value="Santa Marta">Santa Marta</option>
+                                        <option value="Valledupar">Valledupar</option>
+                                        <option value="Manizales">Manizales</option>
+                                        <option value="Pereira">Pereira</option>
+                                        <option value="Montería">Montería</option>
+                                        <option value="Neiva">Neiva</option>
+                                        <option value="Pasto">Pasto</option>
+                                        <option value="Armenia">Armenia</option>
+                                        <option value="Rioacha">Rioacha</option>
+                                        <option value="Sincelejo">Sincelejo</option>
+                                        <option value="Barrancabermeja">Barrancabermeja</option>
+                                        <option value="Popayan">Popayan</option>
+                                        <option value="Dos quebradas">Dos quebradas</option>
+                                        <option value="Jamundi">Jamundi</option>
+                                        <option value="Palmira">Palmira</option>
+                                        <option value="Ipiales">Ipiales</option>
+                                        <option value="Yumbo">Yumbo</option>
+                                        <option value="Cartago">Cartago</option>
+                                        <option value="Tulua">Tulua</option>
+                                        <option value="Girardot">Girardot</option>
+                                        <option value="Pitalito">Pitalito</option>
+                                        <option value="Florencia">Florencia</option>
+                                        <option value="Cajica">Cajica</option>
+                                        <option value="Yopal">Yopal</option>
+                                        <option value="Duitama">Duitama</option>
+                                        <option value="Villeta">Villeta</option>
+                                        <option value="Sogamoso">Sogamoso</option>
+                                        <option value="Fusagasuga">Fusagasuga</option>
+                                        <option value="Sopo">Sopo</option>
+                                        <option value="Tocancipa">Tocancipa</option>
+                                        <option value="Chia">Chia</option>
+                                        <option value="Apartado">Apartado</option>
+                                        <option value="Zipaquira">Zipaquira</option>
+                                        <option value="Mosquera">Mosquera</option>
+                                        <option value="Madrid">Madrid</option>
+                                        <option value="Funza">Funza</option>
+                                    </select>
+                                    <label class="form-label text-dark" for="form8Example2">Ciudad</label>
                                 </div>
                             </div>
                         </div>
-    
-    
+
+
+
+                        <div class="row justify-content-center">
+
+                            <div class="col-5">
+
+                                <div class="form-outline">
+                                    <input type="number" id="" class="form-control" name="salary" />
+                                    <label class="form-label text-dark" for="form8Example4">Salario</label>
+                                </div>
+                            </div>
+                            <div class="col-5">
+
+                                <div class="form-outline">
+                                    <input type="number" id="" class="form-control" name="num_vacants" />
+                                    <label class="form-label text-dark" for="form8Example4">Número
+                                        de
+                                        vacantes</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-5">
+                                <div class="form-outline">
+                                    <select class="form-select form-control" name="education">
+                                        <option value="Primaria">Primaria</option>
+                                        <option value="Bachillerato">Bachillerato</option>
+                                        <option value="Técnico">Técnico</option>
+                                        <option value="Tecnólogo">Tecnólogo</option>
+                                        <option value="Pregrado">Pregrado</option>
+                                        <option value="Postgrado">Postgrado</option>
+                                        <option value="Maestria">Maestria</option>
+                                    </select>
+                                    <label class="form-label text-dark" for="form8Example4">Educación minima</label>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-outline">
+                                    <input type="text" id="" class="form-control" name="language" />
+                                    <label class="form-label text-dark" for="form8Example4">Idiomas requeridos</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-center">
+                            <div class="col-5">
+                                <div class="form-outline">
+                                    
+                                    <select class="form-select form-control" name="availability_travel">7
+                                        <option value="no">No</option>
+                                        <option value="si">Si</option>
+                                       
+                                    </select>
+                                    <label class="form-label text-dark" for="form8Example4">Disponibilidad de viajar</label>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-outline">
+                                    <select class="form-select form-control" name="type_contract">7
+                                        <option value="fijo">Fijo</option>
+                                        <option value="indefinido">Indefinido</option>
+                                        <option value="obra o labor">Obra o labor</option>
+                                    </select>
+                                    <label class="form-label text-dark" for="form8Example4">Tipo de contrato</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-10">
+
+                                <div class="form-outline">
+                                    {{-- <input type="text" id="" class="form-control" name="description" /> --}}
+                                    <textarea id="" class="form-control" name="description"  cols="30" rows="3"></textarea>
+                                    <label class="form-label text-dark" for="form8Example3">Descripcion</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-10">
+
+                                <div class="form-outline">
+
+                                    <textarea class="form-control" name="experience" id="" cols="30" rows="3"></textarea>
+                                    <label class="form-label text-dark" for="form8Example3">Experiencia
+                                        requerida</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal">Close</button>
-                        <button class="btn btn-primary">Guardar
-                            cambios</button>
-                    </div>
-                </form>
-            </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Guardar
+                        cambios</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
-    {{-- <div class="container pt-4 pl-2 pr-2">
+{{-- <div class="container pt-4 pl-2 pr-2">
         <div class="row justify-content-center">
             <div class="col-md-9">
 

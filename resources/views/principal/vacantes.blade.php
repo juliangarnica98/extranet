@@ -21,6 +21,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('libs/sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+
 </head>
 <style>
     .fa-user {
@@ -168,12 +169,7 @@
     @endif
     <div class="div">
         <div class="imagen_portada">
-            {{-- <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Ingresa ciudad o vacante</span>
-                </div>
-                
-              </div> --}}
+
             <div class="container">
                 <div class="row justify-content-center pb-3">
                     <div class="col-md-5">
@@ -185,12 +181,16 @@
                         <div class="card" style="height: 85vh">
                             <div class="card-body pt-2 pb-2 pl-0 pr-0">
                                 <div class="card mt-2 border-0">
-                                    <a href="#" class="card-block stretched-link text-decoration-none">
-                                        <div class="card-body pt-0 pb-0 ">
-                                            <h5 class="card-title text-dark text-center"><strong>
-                                                    {{ $num_vacants }} vacantes disponibles</strong> </h5>
-                                        </div>
-                                    </a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="#" class="card-block stretched-link text-decoration-none">
+                                            <div class="card-body pt-0 pb-0 ">
+                                                <h5 class="card-title text-dark pl-0"><strong>
+                                                        Empleos encontrados <i class="fas fa-user-md"></i>
+                                                        {{ $num_vacants }} </strong> </h5>
+                                            </div>
+                                        </a>
+                                    </div>
+
                                 </div>
                                 @foreach ($vacants as $vacant)
                                     <div class="border-top border-bottom mt-1">
@@ -199,12 +199,14 @@
                                             <a href="{{ route('buscarvacante', ['id' => $vacant->id]) }}"
                                                 class="card-block stretched-link text-decoration-none">
                                                 <div class="card-body pt-1 pb-1 ml-0 mr-0">
-                                                    <h5 class="card-title text-dark">
+                                                    <h5 class="card-title text-dark text-center">
                                                         <strong>{{ $vacant->title }}</strong>
                                                     </h5>
-                                                    <h6 class="card-subtitle mb-1 text-muted">{{ $vacant->city }} -
-                                                        ${{ $vacant->salary }} </h6>
-                                                    <p class="card-text text-dark">{{ $vacant->experience }}</p>
+                                                    <h6 class="card-subtitle mb-1 text-dark">{{ $vacant->city }} -
+                                                        ${{ number_format($vacant_found->salary, 1, ',', '.') }} COP
+                                                    </h6>
+                                                    <p class="card-text text-dark">Educación requerida:
+                                                        {{ $vacant->education }} </p>
                                                 </div>
                                             </a>
                                         </div>
@@ -214,18 +216,71 @@
                         </div>
                     </div>
                     <div class="col-md-6 ">
-                        <div class="card" style="height: 85vh">
+                        <div class="card text-dark" style="height: auto">
                             @if (isset($vacant_found))
                                 <div class="card-body">
-                                    <h5 class="card-title text-center">{{ $vacant_found->title }}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">{{ $vacant_found->created_at }}</h6>
-                                    <p class="card-text">Ciudad: {{ $vacant_found->city }}</p>
-                                    <p class="card-text">Salario: ${{ $vacant_found->salary }}</p>
-                                    <p class="card-text">Experiencia: {{ $vacant_found->experience }}</p>
-                                    <p class="card-text">Vacantes: {{ $vacant_found->num_vacants }}</p>
-                                    <p class="card-text">Description: {{ $vacant_found->description }}</p>
-                                    <a href="{{ route('admin.vacante', $vacant->id) }}" class="btn btn-info">Aplicar</a>
-                                    
+                                    <h2 class="card-title text-center"><strong> {{ $vacant_found->title }} <br>
+                                        </strong>
+                                    </h2>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="text-center">
+                                                {{$vacant_found->city}} <br>
+                                                <small id="ago"
+                                                    class="card-subtitle mb-2 text-dark text-center pl-2 pr-2"
+                                                   >
+                                                    {{ date('d-m-Y', strtotime($vacant_found->created_at)) }}</small> <br>
+                                                    
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-center">
+                                                <a href="{{ route('admin.vacante', $vacant->id) }}"
+                                                    class="btn btn-block"
+                                                    style="border-radius: 20px; background-color: #e85199;color:#fff">Aplicar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <hr>
+                                    <div class="row pb-3 mt-3">
+                                        <div class="col-4">
+                                            <p class="card-text border text-center" style="border-radius: 20px;">
+                                                ${{ number_format($vacant_found->salary, 1, ',', '.') }} COP</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="card-text border text-center" style="border-radius: 20px;">
+                                                {{ $vacant_found->city }}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="card-text border text-center" style="border-radius: 20px;">
+                                                Contrato {{ $vacant_found->type_contract }}</p>
+                                        </div>
+                                    </div>
+
+                                    <p class="card-text text-dark">
+                                    <h4><strong>Descripción:</strong> </h4>
+                                    {{ $vacant_found->description }}
+                                    <br>
+                                    <strong>Vacantes:</strong> {{ $vacant_found->num_vacants }}
+
+                                    </p>
+                                    <h4><strong>Requisitos:</strong> </h4>
+                                    <p class="text-dark">
+                                        &#8226; <strong>Disponibilidad para viajar:</strong>
+                                        {{ $vacant_found->availability_travel }} <br>
+                                        &#8226; <strong>Idioma necesario:</strong> {{ $vacant_found->language }} <br>
+                                        &#8226; <strong>Nivel educativo requerido:</strong>
+                                        {{ $vacant_found->education }} <br>
+                                        &#8226; <strong>Experiencia:</strong> {{ $vacant_found->experience }}
+                                    </p>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('admin.vacante', $vacant->id) }}"
+                                            class="btn btn-info btn-block" style="border-radius: 20px; ">Aplicar</a>
+                                    </div>
+
                                 </div>
                             @endif
                         </div>
@@ -233,7 +288,7 @@
                 </div>
             </div>
 
-          
+
         </div>
     </div>
 
@@ -283,7 +338,16 @@
     <script src="{{ asset('libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('libs/sbadmin/js/sb-admin-2.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/es.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            moment.locale('es');
+            var ago = document.querySelector("#ago");
+            ago.textContent = moment(ago.innerHTML, "DDMMYYYY").fromNow();
+        });
+    </script>
 </body>
 
 </html>

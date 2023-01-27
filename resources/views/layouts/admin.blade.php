@@ -146,6 +146,18 @@
 
                 </div>
             @endcan
+            @can('reclutador.index')
+                <div class="pt-50">
+                   
+                    <hr class="sidebar-divider">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="{{ route('reclutador.index') }}">
+                            <i class="fa fa-id-card" aria-hidden="true"></i>
+                            <span>Aspirantes</span></a>
+                    </li>          
+
+                </div>
+            @endcan
           
 
 

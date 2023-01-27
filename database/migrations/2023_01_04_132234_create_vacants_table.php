@@ -25,7 +25,11 @@ class CreateVacantsTable extends Migration
             $table->text('num_vacants');
             $table->string('num_aplic');
 
-            
+            $table->string('education');
+            $table->string('language');
+            $table->string('availability_travel');
+            $table->string('type_contract');
+                   
             $table->unsignedBigInteger('type_cv_id');
             $table->foreign('type_cv_id')->references('id')->on('type_cvs')->onDelete('cascade');
     

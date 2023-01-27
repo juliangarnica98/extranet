@@ -127,6 +127,13 @@
     .quienes_somos {
         background-color: #0fa3a1
     }
+    #img_btn{
+        transition: all 0.8s ease;
+        transform: scale(1);
+    }
+    #img_btn:hover{
+        transform: scale(1.5,1.5);
+    }
 </style>
 
 <body id="page-top">
@@ -147,7 +154,7 @@
 
                     <li class="nav-item "><a class="navbar-brand  text-light nav-link" href="#quienes_somos">¿Quienes
                             somos?</a></li>
-                    <li class="nav-item "><a class="navbar-brand  text-light nav-link" href="#ofertas">Ofertas</a></li>
+                    <li class="nav-item "><a class="navbar-brand  text-light nav-link" href="{{route('vacantes.index')}}">Ofertas</a></li>
                     <li class="nav-item "><a class="navbar-brand  text-light nav-link" href="#porque">¿Por
                             qué trabajar
                             con nosotros?</a></li>
@@ -183,13 +190,13 @@
         <p class="text-center text-light h3">Tenemos vacantes dispopnibles para ti...</p>
         <div class="row w-100">
             <div class="col">
-                <img src="{{ asset('imgs/admin.png') }}" class="img-fluid" alt="tag">
+                <a href="{{route('vacantes.index')}}"> <img id="img_btn" src="{{ asset('imgs/admin.png') }}" class="img-fluid" alt="tag"></a>
             </div>
             <div class="col">
-                <img src="{{ asset('imgs/cedi.png') }}" class="img-fluid" alt="tag">
+                <a href="{{route('vacantes.index')}}"><img id="img_btn" src="{{ asset('imgs/cedi.png') }}" class="img-fluid" alt="tag"></a>
             </div>
             <div class="col">
-                <img src="{{ asset('imgs/tienda.png') }}" class="img-fluid" alt="tag">
+                <a href="{{route('vacantes.index')}}"><img id="img_btn" src="{{ asset('imgs/tienda.png') }}" class="img-fluid" alt="tag"></a>
             </div>
         </div>
         <div class="d-flex justify-content-center">

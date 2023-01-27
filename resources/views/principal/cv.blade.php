@@ -494,16 +494,16 @@
                         <select class="form-select col form_control ml-2" name="shoes_size">
                             <option selected value="">Talla zapatos</option>
                             <option value="34">34</option>
-                            <option value="Si">35</option>
-                            <option value="Si">36</option>
-                            <option value="Si">37</option>
-                            <option value="Si">38</option>
-                            <option value="Si">39</option>
-                            <option value="Si">40</option>
-                            <option value="Si">41</option>
-                            <option value="Si">42</option>
-                            <option value="Si">43</option>
-                            <option value="Si">44</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
                             
                         </select>
                     </div>

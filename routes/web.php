@@ -12,11 +12,14 @@ Route::get('/', function () {
     
 });
 
-Route::get('/home', function () {  
-    if(Auth::user()->id==1){
-        return redirect()->route('admin.index');
-    }
-});
+// Route::get('/home', function () {  
+//     if(Auth::user()->id==1){
+//         return redirect()->route('admin.index');
+//     }else{
+//         return redirect()->route('reclutador.index');
+//     }
+
+// });
 
 Auth::routes(["register" => false]);
 
@@ -37,6 +40,11 @@ Route::group(['prefix' => 'administrador'], function() {
     Route::put('editvacant/{id}', [App\Http\Controllers\VacantController::class, 'edit'])->name('admin.edit.vacant');
     Route::get('vacante/{id}', [App\Http\Controllers\CvController::class, 'vacante'])->name('admin.vacante');
     Route::post('cerrarvacante/{id}', [App\Http\Controllers\VacantController::class, 'close'])->name('cerrarvacante');
+});
+
+Route::group(['prefix' => 'reclutador'], function() {
+    Route::get('index', [App\Http\Controllers\CandidateController::class, 'index'])->name('reclutador.index');
+
 });
 
   

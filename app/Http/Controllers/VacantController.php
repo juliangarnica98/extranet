@@ -30,10 +30,14 @@ class VacantController extends Controller
         $vacant = new Vacant();
         $vacant->title = $request->title;
         $vacant->city = $request->city;
-        $vacant->description = $request->description;
         $vacant->salary = $request->salary;
-        $vacant->experience = $request->experience;
         $vacant->num_vacants = $request->num_vacants;
+        $vacant->description = $request->description;
+        $vacant->experience = $request->experience;
+        $vacant->education = $request->education;
+        $vacant->language = $request->language;
+        $vacant->availability_travel = $request->availability_travel;
+        $vacant->type_contract = $request->type_contract;
         $vacant->state = 1;   
         $vacant-> num_aplic=0;
         $typecv->vacant()->save($vacant);
@@ -43,10 +47,19 @@ class VacantController extends Controller
         $vacant =  Vacant::where('id',$id)->first();
         $vacant->title = $request->title;
         $vacant->city = $request->city;
-        $vacant->description = $request->description;
         $vacant->salary = $request->salary;
-        $vacant->experience = $request->experience;
         $vacant->num_vacants = $request->num_vacants;
+        if($request->description){
+            $vacant->description = $request->description;
+        }
+        if($request->experience){
+            $vacant->experience = $request->experience;
+        }
+        $vacant->education = $request->education;
+        $vacant->language = $request->language;
+        $vacant->availability_travel = $request->availability_travel;
+        $vacant->type_contract = $request->type_contract;
+
         $vacant->state = 1;   
         $vacant->save();
         return back()->with('message','Se ha editado la vacante correctamente');
