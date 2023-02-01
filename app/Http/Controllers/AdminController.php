@@ -35,7 +35,7 @@ class AdminController extends Controller
     public function postulaciones()
     {
         Paginator::useBootstrap();
-        $cvs = Cv::paginate();
+        $cvs = Cv::where('type',2)->paginate();
         $vacants = Vacant::paginate();
         $states = State::paginate();
         return view('admin.candidate.indexcandidatos',compact('cvs','vacants','states'));

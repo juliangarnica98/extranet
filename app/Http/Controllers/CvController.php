@@ -17,22 +17,23 @@ class CvController extends Controller
     }
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'type_id' => 'required|max:255',
-            'num_id'=>'',
-            'num_cell'=>'',
-            'num_cell2'=>'',
-            'age'=>'',
-            'email'=>'',
-            'address'=>'',
-            'city_address'=>'',
+        
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'required|max:255',
+        //     'type_id' => 'required|max:255',
+        //     'num_id'=>'',
+        //     'num_cell'=>'',
+        //     'num_cell2'=>'',
+        //     'age'=>'',
+        //     'email'=>'',
+        //     'address'=>'',
+        //     'city_address'=>'',
             
 
-        ]);
-        if($validator->fails()){
-            return back()->with('error','¡Hay errores en los campos!');
-        }
+        // ]);
+        // if($validator->fails()){
+        //     return back()->with('error','¡Hay errores en los campos!');
+        // }
         $cv = new  Cv();
         $state = State::find(1);
         $cv->name = $request->name;
@@ -61,15 +62,23 @@ class CvController extends Controller
         $cv->like_to_work = $request->like_to_work;
         $cv->should_choose = $request->should_choose;
         $cv->shirt_size = $request->shirt_size;
-        $cv->shirt_size = $request->shoes_size;
+        $cv->shoes_size = $request->shoes_size;
         $cv->pant_size = $request->pant_size;
         $cv->vacant_id = $request->vacant_id;
-        $state->cv()->save($cv);
-        // $cv->save();     
+        $cv->type = $request->type;
+        $cv->state_job_vacante=1;
+        $state->cv()->save($cv);  
 
-        $vacante = Vacant::where('id',$cv->vacant_id)->first();
-        $vacante->num_aplic += 1;
-        $vacante->save();
+        if ($request->type==2) {
+            $vacante = Vacant::where('id',$cv->vacant_id)->first();
+            $vacante->num_aplic += 1;
+            $vacante->save();
+        } else {
+            # code...
+        }
+        
+
+        
 
         return redirect('extranet/vacantes')->with('message','Estaremos en contacto contigo');
    
@@ -89,9 +98,16 @@ class CvController extends Controller
     {
     
     }
-    public function vacante($id)
+    // public function vacante($id)
+    // {   
+       
+    //     return view('principal.cv',compact('id'));
+    // }
+
+    public function vacante($id,$type)
     {   
-        return view('principal.cv',compact('id'));
+        // dd($type);
+        return view('principal.cv',compact('id','type'));
     }
     
     

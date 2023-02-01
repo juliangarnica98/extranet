@@ -43,7 +43,8 @@ class Cv extends Model
         'shoes_size',
         
         'vacant_id',
-        'state_id'
+        'state_id',
+        'type'
     ];
 
     public function vacant()

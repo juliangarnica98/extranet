@@ -42,7 +42,7 @@
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: #0aa5a2;
+        background-color: #818181;
         border-radius: 20px;
         border: 3px solid transparent;
     }
@@ -417,6 +417,7 @@
                     </div>
                 </div>
                 <input type="hidden" name="vacant_id" value="{{ $id }}">
+                <input type="hidden" name="type" value="{{ $type }}">
                 <div class="step">
                     <p class="text-center mb-4"><strong> Ingresa la información de la penúltima empresa en la que
                             laboraste </strong></p>

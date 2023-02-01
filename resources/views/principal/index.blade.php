@@ -55,7 +55,7 @@
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: #0aa5a2;
+        background-color: #818181;
         border-radius: 20px;
         border: 3px solid transparent;
     }
@@ -190,13 +190,13 @@
         <p class="text-center text-light h3">Tenemos vacantes dispopnibles para ti...</p>
         <div class="row w-100">
             <div class="col">
-                <a href="{{route('vacantes.index')}}"> <img id="img_btn" src="{{ asset('imgs/admin.png') }}" class="img-fluid" alt="tag"></a>
+                <a href="{{ route('buscarvacante2', ['id' => 2]) }}"> <img id="img_btn" src="{{ asset('imgs/admin.png') }}" class="img-fluid" alt="tag"></a>
             </div>
             <div class="col">
-                <a href="{{route('vacantes.index')}}"><img id="img_btn" src="{{ asset('imgs/cedi.png') }}" class="img-fluid" alt="tag"></a>
+                <a href="{{ route('buscarvacante2', ['id' => 1]) }}"><img id="img_btn" src="{{ asset('imgs/cedi.png') }}" class="img-fluid" alt="tag"></a>
             </div>
             <div class="col">
-                <a href="{{route('vacantes.index')}}"><img id="img_btn" src="{{ asset('imgs/tienda.png') }}" class="img-fluid" alt="tag"></a>
+                <a href="{{ route('buscarvacante2', ['id' => 3]) }}"><img id="img_btn" src="{{ asset('imgs/tienda.png') }}" class="img-fluid" alt="tag"></a>
             </div>
         </div>
         <div class="d-flex justify-content-center">

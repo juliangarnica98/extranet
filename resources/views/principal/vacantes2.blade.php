@@ -52,11 +52,11 @@
     }
 
     *::-webkit-scrollbar-track {
-        background: #e85199;
+        background: #aaaaaa;
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: #0aa5a2;
+        background-color: #0fa3a1;
         border-radius: 20px;
         border: 3px solid transparent;
     }
@@ -65,6 +65,10 @@
         background-color: #fff;
     }
 
+    .scroll {
+        max-height: 100px;
+        overflow-y: auto;
+    }
 
     table {
         table-layout: fixed;
@@ -92,6 +96,7 @@
         padding-top: 1rem;
         padding-bottom: calc(10rem - 4.5rem);
         background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("{{ asset('imgs/work.jpg') }}");
+        /* background-color: #acacac; */
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: scroll;
@@ -176,46 +181,64 @@
                         <input type="text" class="form-control" placeholder="Buscar..">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card" style="height: 85vh">
-                            <div class="card-body pt-2 pb-2 pl-0 pr-0">
-                                <div class="card mt-2 border-0">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-7 ">
+                        <div class="card " style="height: 85vh">
+                            <div class="card-body pt-2 pb-2 pl-0 pr-0 mb-2 overflow-auto">
+                                <div class="card mt-2 border-0 mb-5">
                                     <div class="d-flex justify-content-center">
                                         <a href="#" class="card-block stretched-link text-decoration-none">
                                             <div class="card-body pt-0 pb-0 ">
-                                                <h5 class="card-title text-dark pl-0"><strong>
-                                                        Empleos encontrados <i class="fas fa-user-md"></i>
-                                                        {{ $num_vacants }} </strong> </h5>
+                                                <h5 class="card-title pl-0" style="color: #e85099"><strong>
+                                                        Empleos <i class="fas fa-user-md"></i>
+                                                        @if ($type == 1)
+                                                            Centro de distribución
+                                                        @elseif ($type == 2)
+                                                            Administrativo
+                                                        @else
+                                                            Tiendas
+                                                        @endif
+                                                    </strong> </h5>
                                             </div>
                                         </a>
                                     </div>
 
                                 </div>
-                                @foreach ($vacants as $vacant)
+                                @foreach ($jobs as $job)
                                     <div class="border-top border-bottom mt-1">
-                                        <div class="card pl-0 pr-0 ml-0 mr-0 border-0">
-                                            {{-- border-right-0 border-left-0 --}}
-                                            <a href="{{ route('buscarvacante', ['id' => $vacant->id]) }}"
-                                                class="card-block stretched-link text-decoration-none">
-                                                <div class="card-body pt-1 pb-1 ml-0 mr-0">
-                                                    <h5 class="card-title text-dark text-center">
-                                                        <strong>{{ $vacant->title }}</strong>
-                                                    </h5>
-                                                    <h6 class="card-subtitle mb-1 text-dark">{{ $vacant->city }} -
-                                                        ${{ number_format($vacant->salary, 1, ',', '.') }} COP
-                                                    </h6>
-                                                    <p class="card-text text-dark">Educación requerida:
-                                                        {{ $vacant->education }} </p>
-                                                </div>
-                                            </a>
+                                        <div class="card pl-0 pr-0 ml-0 mr-0 border-0 ">
+                                            {{-- <a href="#" class="card-block stretched-link text-decoration-none"> --}}
+                                                {{-- <a href="{{ route('buscarvacante', ['id' => $vacant->id]) }}"
+                                                class="card-block stretched-link text-decoration-none"> --}}
+                                            <a href="{{ route('admin.vacante', ['id' => $job->id, 'type' => '1']) }}"
+                                                    class="card-block stretched-link text-decoration-none">
+                                                    <div class="card-body pt-1 pb-1 ml-0 mr-0 ">
+                                                        <h5 class="card-title text-dark text-center">
+                                                            <strong>{{ $job->description }}</strong>
+                                                        </h5>
+                                                        <p class="card-text text-dark">Ubicación:
+                                                            {{ $job->location }} </p>
+                                                    </div>
+                                                </a>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 ">
+                    {{-- <div class="col-md-6 pt-5 mt-5">
+                        <h1 class="h1 text-center" style="color: #e85099"><strong>
+                        
+                            @if ($type == 1)
+                                EMPLEOS CENTROS DE DISTRIBUCIÓN
+                            @elseif ($type == 2)
+                                EMPLEOS ADMINISTRATIVOS
+                            @else
+                                EMPLEOS TIENDAS
+                            @endif
+                        </strong></h1>
+                    </div> --}}
+                    {{-- <div class="col-md-6 ">
                         <div class="card text-dark" style="height: auto">
                             @if (isset($vacant_found))
                                 <div class="card-body">
@@ -235,8 +258,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="d-flex justify-content-center">
-                                                {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
-                                                    <a href="{{ route('admin.vacante', ['id'=>$vacant->id,'type'=>'2']) }}"
+                                                <a href="{{ route('admin.vacante', $vacant->id) }}"
                                                     class="btn btn-block"
                                                     style="border-radius: 20px; background-color: #e85199;color:#fff">Aplicar</a>
                                             </div>
@@ -278,16 +300,14 @@
                                         &#8226; <strong>Experiencia:</strong> {{ $vacant_found->experience }}
                                     </p>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('admin.vacante', ['id'=>$vacant->id,'type'=>'2']) }}"
-                                            {{-- route('remindHelper',['brand'=>$brandName, 'product'=>productId]) --}}
-                                            {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
+                                        <a href="{{ route('admin.vacante', $vacant->id) }}"
                                             class="btn btn-info btn-block" style="border-radius: 20px; ">Aplicar</a>
                                     </div>
 
                                 </div>
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

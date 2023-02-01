@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CdcsTableSeeder::class);
         $this->call(StateSeeder::class);
         $this->call(TypeCvSeeder::class);
+        $this->call(JobSeeder::class);
         // $this->call(BossSeeder::class);
 
         // $this->call(BossSeeder::class);

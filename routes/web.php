@@ -29,6 +29,7 @@ Route::group(['prefix' => 'extranet'], function() {
     Route::get('/hoja-vida', [App\Http\Controllers\CvController::class, 'index'])->name('cv.index');
     Route::get('/hoja-vida/registrar', [App\Http\Controllers\CvController::class, 'store'])->name('cv.store');
     Route::get('/buscarvacante/{id} ', [App\Http\Controllers\HomeController::class, 'buscar'])->name('buscarvacante');
+    Route::get('/trabajo/{id} ', [App\Http\Controllers\HomeController::class, 'vacantes2'])->name('buscarvacante2');
 });
 
 Route::group(['prefix' => 'administrador'], function() {
@@ -38,7 +39,8 @@ Route::group(['prefix' => 'administrador'], function() {
     Route::get('nuevasvacantes', [App\Http\Controllers\VacantController::class, 'index'])->name('admin.index');
     Route::post('registrarvacantes', [App\Http\Controllers\VacantController::class, 'store'])->name('admin.crearvacante');
     Route::put('editvacant/{id}', [App\Http\Controllers\VacantController::class, 'edit'])->name('admin.edit.vacant');
-    Route::get('vacante/{id}', [App\Http\Controllers\CvController::class, 'vacante'])->name('admin.vacante');
+    // Route::get('vacante/{id}', [App\Http\Controllers\CvController::class, 'vacante'])->name('admin.vacante');
+    Route::get('vacante/{id}/{type}', [App\Http\Controllers\CvController::class, 'vacante'])->name('admin.vacante');
     Route::post('cerrarvacante/{id}', [App\Http\Controllers\VacantController::class, 'close'])->name('cerrarvacante');
 });
 
