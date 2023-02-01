@@ -207,6 +207,9 @@
                                                     </h6>
                                                     <p class="card-text text-dark">Educación requerida:
                                                         {{ $vacant->education }} </p>
+                                                    <small id="ago"
+                                                        class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
+                                                        {{ date('d-m-Y', strtotime($vacant->created_at)) }}</small>
                                                 </div>
                                             </a>
                                         </div>
@@ -225,18 +228,18 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="text-center">
-                                                {{$vacant_found->city}} <br>
+                                                {{ $vacant_found->city }} <br>
                                                 <small id="ago"
-                                                    class="card-subtitle mb-2 text-dark text-center pl-2 pr-2"
-                                                   >
-                                                    {{ date('d-m-Y', strtotime($vacant_found->created_at)) }}</small> <br>
-                                                    
+                                                    class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
+                                                    {{ date('d-m-Y', strtotime($vacant_found->created_at)) }}</small>
+                                                <br>
+
                                             </p>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="d-flex justify-content-center">
                                                 {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
-                                                    <a href="{{ route('admin.vacante', ['id'=>$vacant->id,'type'=>'2']) }}"
+                                                <a href="{{ route('admin.vacante', ['id' => $vacant->id, 'type' => '2']) }}"
                                                     class="btn btn-block"
                                                     style="border-radius: 20px; background-color: #e85199;color:#fff">Aplicar</a>
                                             </div>
@@ -278,10 +281,9 @@
                                         &#8226; <strong>Experiencia:</strong> {{ $vacant_found->experience }}
                                     </p>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('admin.vacante', ['id'=>$vacant->id,'type'=>'2']) }}"
-                                            {{-- route('remindHelper',['brand'=>$brandName, 'product'=>productId]) --}}
-                                            {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
-                                            class="btn btn-info btn-block" style="border-radius: 20px; ">Aplicar</a>
+                                        <a href="{{ route('admin.vacante', ['id' => $vacant->id, 'type' => '2']) }}"
+                                            {{-- route('remindHelper',['brand'=>$brandName, 'product'=>productId]) --}} {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}} class="btn btn-info btn-block"
+                                            style="border-radius: 20px; ">Aplicar</a>
                                     </div>
 
                                 </div>

@@ -266,7 +266,7 @@
                 </div>
                 <!-- end step indicators -->
 
-                
+
 
                 <div class="step">
                     <div class="d-flex justify-content-center mb-4">
@@ -300,8 +300,7 @@
                     <p class="text-center mb-4">Ingresa tu información personal</p>
                     <div class="mb-3 row">
                         {{-- <small>nombre(*)</small> --}}
-                        <input type="text" placeholder="Nombre completo del aspirante" name="name"
-                            class="col-6">
+                        <input type="text" placeholder="Nombre completo del aspirante" name="name" class="col-6">
                         <select class="form-select col-3 ml-2 form_control" name="type_id">
                             <option selected value="">Tipo de documento</option>
                             <option value="CC">C.C</option>
@@ -313,8 +312,7 @@
                     {{-- oninput="this.className = ''" --}}
                     <div class="mb-3 row">
                         <input type="number" placeholder="número de celular" name="num_cell" class="col">
-                        <input type="numer" placeholder="Otro número de celular " name="num_cell2"
-                            class="col ml-2">
+                        <input type="numer" placeholder="Otro número de celular " name="num_cell2" class="col ml-2">
                         <input type="number" placeholder="Edad" name="age" class="col-3 ml-2">
                     </div>
                     <div class="mb-3 row">
@@ -419,32 +417,63 @@
                 <input type="hidden" name="vacant_id" value="{{ $id }}">
                 <input type="hidden" name="type" value="{{ $type }}">
                 <div class="step">
-                    <p class="text-center mb-4"><strong> Ingresa la información de la penúltima empresa en la que
-                            laboraste </strong></p>
-                    <div class="mb-3 row">
 
-                        <input type="text" placeholder="Nombre de la penultima empresa" name="name_last_company2"
-                            class="col">
+                    {{-- <div class="row d-flex justify-content-center">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="full_name_id" class="control-label">¿Has trabajado en otra
+                                    empresa?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="" id="otra_si"
+                                        value="si">
+                                    <label class="form-check-label" for="dinero_si">
+                                        si
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="" id="otra_no"
+                                        value="no" checked>
+                                    <label class="form-check-label" for="dinero_no">
+                                        no
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
 
-                        <input type="text" placeholder="Cargo" name="position_last_company2" class="col ml-2">
-                    </div>
-                    {{-- <div class="mb-3">
+
+                    <div id="otra_empresa">
+
+                        <p class="text-center mb-4"><strong> Información de la penúltima empresa </strong> <br></p>
+
+
+                        <div class="mb-3 row">
+
+                            <input type="text" placeholder="Nombre de la penultima empresa"
+                                name="name_last_company2" class="col">
+
+                            <input type="text" placeholder="Cargo" name="position_last_company2"
+                                class="col ml-2">
+                        </div>
+                        {{-- <div class="mb-3">
                         
                     </div> --}}
-                    <div class="mb-3 row">
+                        <div class="mb-3 row">
 
-                        <textarea name="funtion_last_company2" id="" cols="30" rows="6" placeholder="Funciones"
-                            class="col"></textarea>
-                        {{-- <input type="text"  name=""> --}}
+                            <textarea name="funtion_last_company2" id="" cols="30" rows="6" placeholder="Funciones"
+                                class="col"></textarea>
+                            {{-- <input type="text"  name=""> --}}
+                        </div>
+                        <div class="mb-3 row">
+                            <small>Fecha inicio contrato</small>
+                            <input type="date" placeholder="Fecha de inicio" name="date_init_company2"
+                                class="col ml-2" value="2000-01-01">
+                            <small class="ml-1">Fecha fin contrato</small>
+                            <input type="date" placeholder="fecha de fin" name="date_finally_company2"
+                                class="col ml-2" value="2000-01-01">
+                        </div>
                     </div>
-                    <div class="mb-3 row">
-                        <small>Fecha inicio contrato</small>
-                        <input type="date" placeholder="Fecha de inicio" name="date_init_company2"
-                            class="col ml-2">
-                        <small class="ml-1">Fecha fin contrato</small>
-                        <input type="date" placeholder="fecha de fin" name="date_finally_company2"
-                            class="col ml-2">
-                    </div>
+
                     {{-- <div class="mb-3">
                         
                     </div>
@@ -475,8 +504,8 @@
                         <textarea name="should_choose" id="" cols="20" rows="4"
                             placeholder="¿Por que te deberiamos escoger?" class="col"></textarea>
                     </div>
-                  
-                   
+
+
                 </div>
 
                 <div class="step">
@@ -490,8 +519,7 @@
                             <option value="l">L</option>
                             <option value="xl">XL</option>
                         </select>
-                        <input type="number" placeholder="Talla de pantalon" name="pant_size"
-                        class="col ml-2">
+                        <input type="number" placeholder="Talla de pantalon" name="pant_size" class="col ml-2">
                         <select class="form-select col form_control ml-2" name="shoes_size">
                             <option selected value="">Talla zapatos</option>
                             <option value="34">34</option>
@@ -505,11 +533,11 @@
                             <option value="42">42</option>
                             <option value="43">43</option>
                             <option value="44">44</option>
-                            
+
                         </select>
                     </div>
-                   
-                   
+
+
                 </div>
 
 
