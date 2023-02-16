@@ -44,7 +44,9 @@ class Cv extends Model
         
         'vacant_id',
         'state_id',
-        'type'
+        'type',
+
+        'pruebas'
     ];
 
     public function vacant()
@@ -54,5 +56,9 @@ class Cv extends Model
     public function state()
     {
         return $this->belongsTo('App\Models\State');
+    }
+    public function recruitment()
+    {
+    return $this->hasOne('App\Models\Recruitment');
     }
 }

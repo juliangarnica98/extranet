@@ -123,61 +123,61 @@
 
     <div class="page-content page-container" id="page-content">
         <div class="row pl-3 pr-3 pt-3">
-            
-                <div class="col-xl-4 col-md-6 mb-4">
-                    <div class="card border-left-danger shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total vacantes
-                                    </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$vacants_t}}</div>
+
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-danger shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total vacantes
                                 </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vacants_t }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Vacantes abiertas
-                                    </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$vacants_a}}</div>
+            </div>
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Vacantes abiertas
                                 </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vacants_a }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 mb-4">
-                    <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Vacantes cerradas
-                                    </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$vacants_c}}</div>
+            </div>
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Vacantes cerradas
                                 </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vacants_c }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-        
+            </div>
+
         </div>
 
         <div class="row pl-3 pr-3 pt-0 justify-content-center">
-            {{-- <div class="col-md-4 grid-margin stretch-card">
-                    <div class="card" style="background-color: #ebebeb;">
+
+            {{-- <div class="card" style="background-color: #ebebeb;">
                         <div class="card-body">
                             <h1 class="card-title">Nuevas vacantes</h1>
                             <p class="card-description">
@@ -246,83 +246,104 @@
 
                         </div>
                     </div>
-                </div> --}}
+                </div>  --}}
 
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card" style="background-color: #ebebeb;">
                     <div class="card-body">
                         <h1 class="card-title">Vacantes</h1>
                         <p class="card-description">
-                            <button class="btn btn-success" data-target="#Modalstore"
-                                data-toggle="modal"><i class="fas fa-plus"></i></button>
-                                @include('admin.vacant.storevacantes')
+                            <button class="btn btn-success" data-target="#Modalstore" data-toggle="modal"><i
+                                    class="fas fa-plus"></i></button>
+                            @include('admin.vacant.storevacantes')
                         </p>
-                        
-                        <table class="table table-responsive " style="background-color: #FFF; border-radius: 10px;">
-                            <thead>
-                                <tr>
-                                    <th class="col-1 text-center">Fecha</th>
-                                    <th class="col-1 text-center">Titulo</th>
-                                    <th class="col-1 text-center">Ciudad</th>
-                                    <th class="col-1 text-center">Salario</th>
-                                    <th class="col-1 text-center">Vacantes</th>
-                                    <th class="col-1 text-center">Estado</th>
-                                    <th class="col-1 text-center col-1">Accion</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                @foreach ($vacants as $vacant)
-                                    <tr>
-                                        <td class="text-center">{{ date('d-m-Y', strtotime($vacant->created_at)) }}</td>
-                                        <td class="text-center">{{ $vacant->title }}</td>
-                                        <td class="text-center">{{ $vacant->city }}</td>
-                                        <td class="text-center">${{ $vacant->salary }}</td>
-                                        <td class="text-center">{{ $vacant->num_vacants }}</td>
-                                        @if ($vacant->state == 1)
-                                            <td class="text-center"><label class="badge-success"
-                                                    style="border-radius: 10px;padding:0.3rem">Abierta</label></td>
-                                        @else
-                                            <td class="text-center"><label class="badge-danger"
-                                                    style="border-radius: 10px;padding:0.3rem">Cerrada</label></td>
-                                        @endif
-                                        <td class="text-center">
-                                            <div style="display: flex" class="text-center justify-content-center">
-                                                <div class="pl-1">
-                                                    <button class="btn btn-warning"
-                                                        data-target="#Modalview{{ $vacant->id }}" data-toggle="modal"><i
-                                                            class="fas fa-eye"></i></button>
-                                                    @include('admin.vacant.showvacantes')
-                                                </div>
-                                                <div class="pl-1">
-                                                    <button class="btn btn-info" data-target="#Modaledit{{ $vacant->id }}"
-                                                        data-toggle="modal"><i class="fas fa-edit"></i></i></button>
-                                                    @include('admin.vacant.editvacantes')
-                                                </div>
-                                                <div class="pl-1">
-                                                    <form method="POST" action="{{ route('cerrarvacante', $vacant->id) }}">
-                                                        @csrf
-                                                        <div class="form-group">
-                                                            <button class="btn btn-danger"><i
-                                                                    class="fas fa-window-close"></i></button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <div class="container pt-3">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-12 text-xs-center">
-                                    {{ $vacants->links() }}
+                        <form method="get" action="{{ route('admin.search') }}">
+                            <div class="form-row">
+                                <div class="col-sm-4">
+                                    <input class="form-control" type="text" name="busqueda">
+                                </div>
+                                <div class="col-auto">
+                                    <input type="submit" class="btn btn-primary" value="buscar">
                                 </div>
                             </div>
-                        </div>
+                        </form>
+                        @if (count($vacants) == 0)
+                            No se le han encontrado vacantes
+                        @else
+                            <div class="table-responsive">
+
+                                <table class="table  " style="background-color: #FFF; border-radius: 10px;">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-1 text-center">Fecha</th>
+                                            <th class="col-1 text-center">Titulo</th>
+                                            <th class="col-1 text-center">Ciudad</th>
+                                            <th class="col-1 text-center">Salario</th>
+                                            <th class="col-1 text-center">Vacantes</th>
+                                            <th class="col-1 text-center">Estado</th>
+                                            <th class="col-1 text-center col-1">Accion</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach ($vacants as $vacant)
+                                            <tr>
+                                                <td class="text-center">{{ date('d-m-Y', strtotime($vacant->created_at)) }}
+                                                </td>
+                                                <td class="text-center">{{ $vacant->title }}</td>
+                                                <td class="text-center">{{ $vacant->city }}</td>
+                                                <td class="text-center">${{ $vacant->salary }}</td>
+                                                <td class="text-center">{{ $vacant->num_vacants }}</td>
+                                                @if ($vacant->state == 1)
+                                                    <td class="text-center"><label class="badge-success"
+                                                            style="border-radius: 10px;padding:0.3rem">Abierta</label></td>
+                                                @else
+                                                    <td class="text-center"><label class="badge-danger"
+                                                            style="border-radius: 10px;padding:0.3rem">Cerrada</label></td>
+                                                @endif
+                                                <td class="text-center">
+                                                    <div style="display: flex" class="text-center justify-content-center">
+                                                        <div class="pl-1">
+                                                            <button class="btn btn-warning"
+                                                                data-target="#Modalview{{ $vacant->id }}"
+                                                                data-toggle="modal"><i class="fas fa-eye"></i></button>
+                                                            @include('admin.vacant.showvacantes')
+                                                        </div>
+                                                        <div class="pl-1">
+                                                            <button class="btn btn-info"
+                                                                data-target="#Modaledit{{ $vacant->id }}"
+                                                                data-toggle="modal"><i class="fas fa-edit"></i></i></button>
+                                                            @include('admin.vacant.editvacantes')
+                                                        </div>
+                                                        <div class="pl-1">
+                                                            <form method="POST"
+                                                                action="{{ route('cerrarvacante', $vacant->id) }}">
+                                                                @csrf
+                                                                <div class="form-group">
+                                                                    <button class="btn btn-danger"><i
+                                                                            class="fas fa-window-close"></i></button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="container pt-3">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-12 text-xs-center">
+                                        {{ $vacants->links() }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
 
                     </div>
                 </div>

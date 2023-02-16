@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cv;
 use App\Models\Job;
+use App\Models\State;
 use App\Models\Vacant;
+
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+
 
 class HomeController extends Controller
 {
@@ -17,6 +22,8 @@ class HomeController extends Controller
     {
         return view('principal.index');
     }
+
+   
 
     public function vacantes()
     {

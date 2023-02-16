@@ -41,15 +41,15 @@
                             <div class="col-5">
 
                                 <div class="form-outline">
-
-                                    <input type="text" id="form8Example1" class="form-control" name="title" />
                                     <label class="form-label text-dark" for="form8Example1">Titulo</label>
+                                    <input type="text" id="form8Example1" class="form-control" name="title" />
+                                    
                                 </div>
                             </div>
                             <div class="col-5">
 
                                 <div class="form-outline">
-
+                                    <label class="form-label text-dark" for="form8Example2">Ciudad</label>
                                     <select class="form-select form-control" name="city">7
                                         <option selected value=""></option>
                                         <option value="Bogotá">Bogotá</option>
@@ -102,7 +102,7 @@
                                         <option value="Madrid">Madrid</option>
                                         <option value="Funza">Funza</option>
                                     </select>
-                                    <label class="form-label text-dark" for="form8Example2">Ciudad</label>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -114,17 +114,19 @@
                             <div class="col-5">
 
                                 <div class="form-outline">
-                                    <input type="number" id="" class="form-control" name="salary" />
                                     <label class="form-label text-dark" for="form8Example4">Salario</label>
+                                    <input type="number" id="" class="form-control" name="salary" />
+                                    
                                 </div>
                             </div>
                             <div class="col-5">
 
                                 <div class="form-outline">
-                                    <input type="number" id="" class="form-control" name="num_vacants" />
                                     <label class="form-label text-dark" for="form8Example4">Número
                                         de
                                         vacantes</label>
+                                    <input type="number" id="" class="form-control" name="num_vacants" />
+                                    
                                 </div>
                             </div>
 
@@ -132,6 +134,7 @@
                         <div class="row justify-content-center">
                             <div class="col-5">
                                 <div class="form-outline">
+                                    <label class="form-label text-dark" for="form8Example4">Educación minima</label>
                                     <select class="form-select form-control" name="education">
                                         <option value="Primaria">Primaria</option>
                                         <option value="Bachillerato">Bachillerato</option>
@@ -141,13 +144,13 @@
                                         <option value="Postgrado">Postgrado</option>
                                         <option value="Maestria">Maestria</option>
                                     </select>
-                                    <label class="form-label text-dark" for="form8Example4">Educación minima</label>
+                                    
                                 </div>
                             </div>
                             <div class="col-5">
                                 <div class="form-outline">
-                                    <input type="text" id="" class="form-control" name="language" />
                                     <label class="form-label text-dark" for="form8Example4">Idiomas requeridos</label>
+                                    <input type="text" id="" class="form-control" name="language" />
                                 </div>
                             </div>
                         </div>
@@ -156,23 +159,24 @@
                         <div class="row justify-content-center">
                             <div class="col-5">
                                 <div class="form-outline">
-                                    
+                                    <label class="form-label text-dark" for="form8Example4">Disponibilidad de viajar</label>
                                     <select class="form-select form-control" name="availability_travel">7
                                         <option value="no">No</option>
                                         <option value="si">Si</option>
                                        
                                     </select>
-                                    <label class="form-label text-dark" for="form8Example4">Disponibilidad de viajar</label>
+                                    
                                 </div>
                             </div>
                             <div class="col-5">
                                 <div class="form-outline">
+                                    <label class="form-label text-dark" for="form8Example4">Tipo de contrato</label>
                                     <select class="form-select form-control" name="type_contract">7
                                         <option value="fijo">Fijo</option>
                                         <option value="indefinido">Indefinido</option>
                                         <option value="obra o labor">Obra o labor</option>
                                     </select>
-                                    <label class="form-label text-dark" for="form8Example4">Tipo de contrato</label>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -182,8 +186,9 @@
 
                                 <div class="form-outline">
                                     {{-- <input type="text" id="" class="form-control" name="description" /> --}}
-                                    <textarea id="" class="form-control" name="description"  cols="30" rows="3"></textarea>
                                     <label class="form-label text-dark" for="form8Example3">Descripcion</label>
+                                    <textarea id="" class="form-control" name="description"  cols="30" rows="3"></textarea>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -192,10 +197,10 @@
                             <div class="col-10">
 
                                 <div class="form-outline">
-
-                                    <textarea class="form-control" name="experience" id="" cols="30" rows="3"></textarea>
                                     <label class="form-label text-dark" for="form8Example3">Experiencia
                                         requerida</label>
+                                    <textarea class="form-control" name="experience" id="" cols="30" rows="3"></textarea>
+                                    
                                 </div>
                             </div>
                         </div>

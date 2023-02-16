@@ -17,23 +17,42 @@ class CvController extends Controller
     }
     public function store(Request $request)
     {
-        
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'required|max:255',
-        //     'type_id' => 'required|max:255',
-        //     'num_id'=>'',
-        //     'num_cell'=>'',
-        //     'num_cell2'=>'',
-        //     'age'=>'',
-        //     'email'=>'',
-        //     'address'=>'',
-        //     'city_address'=>'',
-            
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'type_id' => 'required|max:255',
+            'num_id' => 'required|numeric|max:255|unique:cvs',
+            'num_cell' => 'required|numeric|max:255',
+            'num_cell2' => 'required|numeric|max:255',
+            'age' => 'required|max:255',
+            'email' => 'required|max:255',
+            'address' => 'required|max:255',
+            'city_address' => 'required|max:255',
+            'academic_profile' => 'required|max:255',
+            'name_last_company' => 'required|max:255',
+            'position_last_company' => 'required|max:255',
+            'funtion_last_company' => 'required|max:255',
+            'work_last_company' => 'required|max:255',
+            'date_init_company' => 'required|max:255',
+            'date_finally_company' => 'required|max:255',
+            'name_last_company2' => 'required|max:255',
+            'position_last_company2' => 'required|max:255',
+            'funtion_last_company2' => 'required|max:255',
+            'date_init_company2' => 'required|max:255',
+            'date_finally_company2' => 'required|max:255',
+            'previously_work' => 'required|max:255',
+            'family' => 'required|max:255',
+            'like_to_work' => 'required|max:255',
+            'should_choose' => 'required|max:255',
+            'shirt_size' => 'required|max:255',
+            'shoes_size' => 'required|max:255',
+            'pant_size' => 'required|max:255',
+            'vacant_id' => 'required|max:255',
+            'type' => 'required|max:255',
+        ]);
+        if($validator->fails()){
+            return back()->with('error','¡Hay errores en los campos!');
+        }
 
-        // ]);
-        // if($validator->fails()){
-        //     return back()->with('error','¡Hay errores en los campos!');
-        // }
         $cv = new  Cv();
         $state = State::find(1);
         $cv->name = $request->name;
@@ -62,6 +81,7 @@ class CvController extends Controller
         $cv->like_to_work = $request->like_to_work;
         $cv->should_choose = $request->should_choose;
         $cv->shirt_size = $request->shirt_size;
+
         $cv->shoes_size = $request->shoes_size;
         $cv->pant_size = $request->pant_size;
         $cv->vacant_id = $request->vacant_id;
@@ -106,7 +126,7 @@ class CvController extends Controller
 
     public function vacante($id,$type)
     {   
-        // dd($type);
+        // dd($id);
         return view('principal.cv',compact('id','type'));
     }
     

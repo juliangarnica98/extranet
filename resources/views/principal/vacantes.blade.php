@@ -199,6 +199,7 @@
                                             <a href="{{ route('buscarvacante', ['id' => $vacant->id]) }}"
                                                 class="card-block stretched-link text-decoration-none">
                                                 <div class="card-body pt-1 pb-1 ml-0 mr-0">
+                                                    
                                                     <h5 class="card-title text-dark text-center">
                                                         <strong>{{ $vacant->title }}</strong>
                                                     </h5>
@@ -239,7 +240,7 @@
                                         <div class="col-md-6">
                                             <div class="d-flex justify-content-center">
                                                 {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
-                                                <a href="{{ route('admin.vacante', ['id' => $vacant->id, 'type' => '2']) }}"
+                                                <a href="{{ route('admin.vacante', ['id' => $vacant_found->id, 'type' => '2']) }}"
                                                     class="btn btn-block"
                                                     style="border-radius: 20px; background-color: #e85199;color:#fff">Aplicar</a>
                                             </div>
@@ -281,7 +282,8 @@
                                         &#8226; <strong>Experiencia:</strong> {{ $vacant_found->experience }}
                                     </p>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('admin.vacante', ['id' => $vacant->id, 'type' => '2']) }}"
+                                        
+                                        <a href="{{ route('admin.vacante', ['id' => $vacant_found->id, 'type' => '2']) }}"
                                             {{-- route('remindHelper',['brand'=>$brandName, 'product'=>productId]) --}} {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}} class="btn btn-info btn-block"
                                             style="border-radius: 20px; ">Aplicar</a>
                                     </div>

@@ -107,6 +107,9 @@
         
       
     }
+    .box{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
 </style>
 
 <body id="page-top">
@@ -125,37 +128,63 @@
                 <div class="sidebar-brand-text mx-3"><img src="{{ asset('imgs/logo.png') }}" alt="Logo"
                         class="img-fluid"><sup></sup></div>
             </a>
-            
+
+
+
+            {{-- <div class="pt-50">
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="#">
+                        <i class="fas fa-user-tie"></i>
+                        <span>MI PERFIL</span></a>
+                </li>
+            </div> --}}
             <!-- Divider -->
             @can('admin.index')
-                <div class="pt-50">
-                   
+                <div class="">
+                    <div class="pt-50">
+                        <li class="nav-item">
+                            <a class="nav-link text-center" href="{{ route('admin.perfil') }}">
+                                <i class="fas fa-user-tie"></i>
+                                <span>MI PERFIL</span></a>
+                        </li>
+                    </div>
                     <hr class="sidebar-divider">
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ route('admin.postulaciones') }}">
                             <i class="fa fa-id-card" aria-hidden="true"></i>
-                            <span>Aspirantes</span></a>
+                            <span>ASPIRANTES</span></a>
                     </li>
                     <hr class="sidebar-divider">
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ route('admin.index') }}">
                             <i class="fa fa-id-card" aria-hidden="true"></i>
-                            <span>Vacantes</span></a>
+                            <span>VACANTES</span></a>
                     </li>
             
 
                 </div>
             @endcan
             @can('reclutador.index')
-                <div class="pt-50">
-                   
+                <div class="">
+                    <div class="pt-50">
+                        <li class="nav-item">
+                            <a class="nav-link text-center" href="{{ route('reclutador.perfil') }}">
+                                <i class="fas fa-user-tie"></i>
+                                <span>MI PERFIL</span></a>
+                        </li>
+                    </div>
                     <hr class="sidebar-divider">
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ route('reclutador.index') }}">
                             <i class="fa fa-id-card" aria-hidden="true"></i>
-                            <span>Aspirantes</span></a>
+                            <span>ASPIRANTES</span></a>
+                    </li>  
+                    <hr class="sidebar-divider">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="{{ route('reclutador.show') }}">
+                            <i class="fas fa-user-check"></i>
+                            <span>RECLUTAMIENTOS</span></a>
                     </li>          
-
                 </div>
             @endcan
           

@@ -3,32 +3,58 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cv;
+use App\Models\Recruitment;
 use App\Models\State;
 use App\Models\Vacant;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 
 class CandidateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware('can:admin.index');    
+    // }
+    
     public function index()
     {
         Paginator::useBootstrap();
-        $cvs = Cv::paginate();
+        // $cvs = Cv::where('type',2)->paginate(10);
+        $vacants = Vacant::paginate();
+        // $states = State::paginate();
+       
+        // dd($recruitment);
+        return view('reclutador.candidate.indexcandidato',compact('vacants'));
+    }
+    public function vercandidato($id)
+    {
+        Paginator::useBootstrap();
+        $cv = Cv::where('type',2)->where('id',$id)->first();
         $vacants = Vacant::paginate();
         $states = State::paginate();
-        return view('reclutador.candidate.indexcandidato',compact('cvs','vacants','states'));
+       
+        // dd($recruitment);
+        return view('reclutador.candidate.showcandidate',compact('cv','vacants','states'));
+    }
+    public function postulaciones()
+    {
+        Paginator::useBootstrap();
+        $cvs = Cv::where('type',2)->paginate();
+        $vacants = Vacant::paginate();
+        $states = State::paginate();
+        return view('admin.candidate.indexcandidatos',compact('cvs','vacants','states'));
+    }
+    public function buscar($id)
+    {
+        
+        $cvs = Cv::where('vacant_id',$id)->paginate();
+        $vacants = Vacant::paginate();
+        $states = State::paginate();
+        return view('reclutador.candidate.showcandidatos',compact('vacants','cvs','states'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //

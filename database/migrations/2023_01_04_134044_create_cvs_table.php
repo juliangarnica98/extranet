@@ -50,6 +50,8 @@ class CreateCvsTable extends Migration
             $table->string('shoes_size');
             $table->string('state_job_vacante');
 
+            $table->string('pruebas')->nullable();
+
             $table->unsignedBigInteger('vacant_id');
             $table->unsignedBigInteger('type');
             // $table->foreign('vacant_id')->references('id')->on('vacants')->onDelete('cascade');;
