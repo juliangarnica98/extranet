@@ -34,7 +34,7 @@ class LoginController extends Controller
             return '/administrador/nuevasvacantes'; 
             
         }elseif(Auth::user()->hasRole('Reclutador')){
-            return '/reclutador/index';
+            return '/reclutador/perfil';
         }
     }
   

@@ -103,12 +103,16 @@
 </style>
 
 @section('content')
+
+
+
     <div class="page-content page-container" id="page-content">
+        <h2 class="text-center text-dark pt-2 ">CANDIDATOS</h2>
         <div class="">
 
             <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card" style="background-color: #ebebeb;">
+                    <div class="card box" style="background-color: #fff;">
 
                         <div class="card-body">
                             <h1 class="card-title">Nuevos Aspirantes</h1>
@@ -118,7 +122,7 @@
                             @if (count($cvs) == 0)
                                 No se le han registrado candidatos
                             @else
-                                <form method="get" action="{{route('')}}">
+                                <form method="get" action="">
                                     <div class="form-row">
                                         <div class="col-sm-4">
                                             <input class="form-control" type="text" name="busqueda">

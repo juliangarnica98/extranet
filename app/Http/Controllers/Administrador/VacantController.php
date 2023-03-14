@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Administrador;
 
 use App\Models\Cv;
 use App\Models\Type_cv;
@@ -9,6 +9,10 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Validator;
+
+
+use App\Http\Controllers\Controller;
+
 
 class VacantController extends Controller
 {

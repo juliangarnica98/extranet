@@ -52,11 +52,11 @@
     }
 
     *::-webkit-scrollbar-track {
-        background: #aaaaaa;
+        background: #e85199;
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: #0fa3a1;
+        background-color: #818181;
         border-radius: 20px;
         border: 3px solid transparent;
     }
@@ -126,16 +126,16 @@
         }
     }
 
-    .quienes_somos {
-        background-color: #0fa3a1
+    .box{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
 </style>
 
 <body id="page-top">
     <div class="navegacion">
-        <nav class="navbar navbar-expand-lg navbar-light background-barnav2">
+        <nav class="navbar navbar-expand-lg navbar-light box" style="background-color: #ffffff">
             <a class="navbar-brand text-light" href="/">
-                <h1> Talentos Lili&Yoi</h1>
+                <h1 style="color: #f06fb9"> Talentos Lili&Yoi</h1>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -147,7 +147,7 @@
                 <ul class="navbar-nav">
 
 
-                    <li class="nav-item"> <a class="navbar-brand  text-light nav-link" href="/login">Iniciar sesion</a>
+                    <li class="nav-item"> <a class="navbar-brand  nav-link" href="/login" style="color: #f06fb9">Iniciar sesion</a>
                     </li>
 
                 </ul>
@@ -210,7 +210,7 @@
                                             {{-- <a href="#" class="card-block stretched-link text-decoration-none"> --}}
                                                 {{-- <a href="{{ route('buscarvacante', ['id' => $vacant->id]) }}"
                                                 class="card-block stretched-link text-decoration-none"> --}}
-                                            <a href="{{ route('admin.vacante', ['id' => $job->id, 'type' => '1']) }}"
+                                            <a href="{{ route('home.vacante', ['id' => $job->id, 'type' => '1']) }}"
                                                     class="card-block stretched-link text-decoration-none">
                                                     <div class="card-body pt-1 pb-1 ml-0 mr-0 ">
                                                         <h5 class="card-title text-dark text-center">

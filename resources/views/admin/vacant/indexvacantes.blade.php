@@ -122,10 +122,11 @@
     @endif
 
     <div class="page-content page-container" id="page-content">
+        <h2 class="text-center text-dark pt-2 ">VACANTES</h2>
         <div class="row pl-3 pr-3 pt-3">
 
             <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card border-left-danger h-100 py-2 box">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -141,7 +142,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
+                <div class="card border-left-success h-100 py-2 box">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -157,7 +158,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card border-left-warning box h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -249,7 +250,7 @@
                 </div>  --}}
 
             <div class="col-md-12 grid-margin stretch-card">
-                <div class="card" style="background-color: #ebebeb;">
+                <div class="card box" style="background-color: #fff;">
                     <div class="card-body">
                         <h1 class="card-title">Vacantes</h1>
                         <p class="card-description">

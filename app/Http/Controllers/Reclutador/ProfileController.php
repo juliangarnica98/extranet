@@ -1,27 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Reclutador;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Validator;
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
     public function index()
     {
         $usuario = User::find(Auth::User()->id);
         // $rol = $usuario->roles->first()->name;
-        return view('reclutador.user.indexuser',compact('usuario'));
+        return view('reclutador.profile.indexuser',compact('usuario'));
     }
 
-    public function index2()
-    {
-        $usuario = User::find(Auth::User()->id);
-        // $rol = $usuario->roles->first()->name;
-        return view('admin.user.indexuser',compact('usuario'));
-    }
 
   
     public function store(Request $request)

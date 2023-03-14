@@ -17,41 +17,41 @@ class CvController extends Controller
     }
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'type_id' => 'required|max:255',
-            'num_id' => 'required|numeric|max:255|unique:cvs',
-            'num_cell' => 'required|numeric|max:255',
-            'num_cell2' => 'required|numeric|max:255',
-            'age' => 'required|max:255',
-            'email' => 'required|max:255',
-            'address' => 'required|max:255',
-            'city_address' => 'required|max:255',
-            'academic_profile' => 'required|max:255',
-            'name_last_company' => 'required|max:255',
-            'position_last_company' => 'required|max:255',
-            'funtion_last_company' => 'required|max:255',
-            'work_last_company' => 'required|max:255',
-            'date_init_company' => 'required|max:255',
-            'date_finally_company' => 'required|max:255',
-            'name_last_company2' => 'required|max:255',
-            'position_last_company2' => 'required|max:255',
-            'funtion_last_company2' => 'required|max:255',
-            'date_init_company2' => 'required|max:255',
-            'date_finally_company2' => 'required|max:255',
-            'previously_work' => 'required|max:255',
-            'family' => 'required|max:255',
-            'like_to_work' => 'required|max:255',
-            'should_choose' => 'required|max:255',
-            'shirt_size' => 'required|max:255',
-            'shoes_size' => 'required|max:255',
-            'pant_size' => 'required|max:255',
-            'vacant_id' => 'required|max:255',
-            'type' => 'required|max:255',
-        ]);
-        if($validator->fails()){
-            return back()->with('error','¡Hay errores en los campos!');
-        }
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'required|max:255',
+        //     'type_id' => 'required|max:255',
+        //     'num_id' => 'required|numeric|max:255',
+        //     'num_cell' => 'required|numeric|max:255',
+        //     'num_cell2' => 'required|numeric|max:255',
+        //     'age' => 'required|max:255',
+        //     'email' => 'required|max:255',
+        //     'address' => 'required|max:255',
+        //     'city_address' => 'required|max:255',
+        //     'academic_profile' => 'required|max:255',
+        //     'name_last_company' => 'required|max:255',
+        //     'position_last_company' => 'required|max:255',
+        //     'funtion_last_company' => 'required|max:255',
+        //     'work_last_company' => 'required|max:255',
+        //     'date_init_company' => 'required|max:255',
+        //     'date_finally_company' => 'required|max:255',
+        //     'name_last_company2' => 'required|max:255',
+        //     'position_last_company2' => 'required|max:255',
+        //     'funtion_last_company2' => 'required|max:255',
+        //     'date_init_company2' => 'required|max:255',
+        //     'date_finally_company2' => 'required|max:255',
+        //     'previously_work' => 'required|max:255',
+        //     'family' => 'required|max:255',
+        //     'like_to_work' => 'required|max:255',
+        //     'should_choose' => 'required|max:255',
+        //     'shirt_size' => 'required|max:255',
+        //     'shoes_size' => 'required|max:255',
+        //     'pant_size' => 'required|max:255',
+        //     'vacant_id' => 'required|max:255',
+        //     'type' => 'required|max:255',
+        // ]);
+        // if($validator->fails()){
+        //     return back()->with('error','¡Hay errores en los campos!');
+        // }
 
         $cv = new  Cv();
         $state = State::find(1);
@@ -104,29 +104,9 @@ class CvController extends Controller
    
     }
 
-    public function show($id)
-    {
-      
-    }
-
-    public function update(Request $request, $id)
-    {
-     
-    }
-
-    public function destroy($id)
-    {
-    
-    }
-    // public function vacante($id)
-    // {   
-       
-    //     return view('principal.cv',compact('id'));
-    // }
 
     public function vacante($id,$type)
     {   
-        // dd($id);
         return view('principal.cv',compact('id','type'));
     }
     

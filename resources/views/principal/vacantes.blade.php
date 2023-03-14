@@ -56,7 +56,7 @@
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: #0aa5a2;
+        background-color: #818181;
         border-radius: 20px;
         border: 3px solid transparent;
     }
@@ -124,13 +124,16 @@
     .quienes_somos {
         background-color: #0fa3a1
     }
+    .box{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
 </style>
 
 <body id="page-top">
     <div class="navegacion">
-        <nav class="navbar navbar-expand-lg navbar-light background-barnav2">
+        <nav class="navbar navbar-expand-lg navbar-light box" style="background-color: #ffffff">
             <a class="navbar-brand text-light" href="/">
-                <h1> Talentos Lili&Yoi</h1>
+                <h1 style="color: #f06fb9"> Talentos Lili&Yoi</h1>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,7 +145,7 @@
                 <ul class="navbar-nav">
 
 
-                    <li class="nav-item"> <a class="navbar-brand  text-light nav-link" href="/login">Iniciar sesion</a>
+                    <li class="nav-item"> <a class="navbar-brand  nav-link" href="/login" style="color: #f06fb9">Iniciar sesion</a>
                     </li>
 
                 </ul>
@@ -240,7 +243,7 @@
                                         <div class="col-md-6">
                                             <div class="d-flex justify-content-center">
                                                 {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
-                                                <a href="{{ route('admin.vacante', ['id' => $vacant_found->id, 'type' => '2']) }}"
+                                                <a href="{{ route('home.vacante', ['id' => $vacant_found->id, 'type' => '2']) }}"
                                                     class="btn btn-block"
                                                     style="border-radius: 20px; background-color: #e85199;color:#fff">Aplicar</a>
                                             </div>
@@ -283,7 +286,7 @@
                                     </p>
                                     <div class="d-flex justify-content-center">
                                         
-                                        <a href="{{ route('admin.vacante', ['id' => $vacant_found->id, 'type' => '2']) }}"
+                                        <a href="{{ route('home.vacante', ['id' => $vacant_found->id, 'type' => '2']) }}"
                                             {{-- route('remindHelper',['brand'=>$brandName, 'product'=>productId]) --}} {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}} class="btn btn-info btn-block"
                                             style="border-radius: 20px; ">Aplicar</a>
                                     </div>

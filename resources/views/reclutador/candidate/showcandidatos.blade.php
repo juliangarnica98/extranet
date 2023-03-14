@@ -123,7 +123,7 @@
             </div> --}}
             <div class="row pl-3 pr-3 pt-2 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card box" style="background-color: #ebebeb;height: 85vh">
+                    <div class="card box" style="background-color: #ffffff;height: 85vh">
                         <div class="card-body">
                             <h1 class="card-title">Personas que aplicaron</h1>
                             <div class="row">

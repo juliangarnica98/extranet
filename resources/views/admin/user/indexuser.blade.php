@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 <style>
     body {
-        background-color: #f9f9fa
+        background-color: #ebebeb;
     }
 
     .flex {
@@ -121,74 +121,179 @@
         </script>
     @endif
 
-    <div class="page-content page-container " id="page-content" style="">
-        {{-- <div class="row pl-3 pr-3 pt-3 ">
-            <div class="col-md-4 grid-margin stretch-card">
-                <div class="card " style="background-color: #ebebeb;">
-                    <img src="{{asset('imgs/profile-icon-9.png')}}" alt="">
-                </div>
-            </div>
-            <div class="col-md-6 grid-margin stretch-card h-100">
-                <div class="card " style="background-color: #ebebeb;">
-                    <div class="card-body">
-                        <h5 class="h5"> <label for="">Nombre</label></h5>
-                            {{$usuario->name}}
-                        <h5 class="h5"> <label for="">Rol</label></h5>
-                            {{$usuario->roles->first()->name}}
-                        <h5 class="h5"> <label for="">Correo</label></h5>
-                            {{$usuario->email}}
-                    </div>
-                    
-                </div>
-            </div>
-        </div> --}}
-
+    <div class="page-content page-container " id="page-content" style="background-color: ">
+        <h2 class="text-center text-dark pt-2 ">USUARIOS</h2>
+        {{-- <hr class="border border-dark border-1"> --}}
         <div class="row pl-3 pr-3 pt-3 text-dark">
-            <div class="col-xl-4">
-                <!-- Profile picture card-->
-                <div class="card mb-4 " style="background-color: #ebebeb;">
-                    <div class="card-header h4 text-center" style="background-color: #ebebeb;">Imagen de perfil</div>
-                    <div class="card-body text-center">
-                        <img class="img-account-profile rounded-circle mb-2 w-100" src="{{asset('imgs/profile-icon-9.png')}}" alt="">
-                        <div class="small font-italic text-muted mb-4">JPG o PNG de no más de 5 MB</div>
-                        <button class="btn btn-primary" type="button">Subir imagen</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-8">
-                <div class="card mb-4" style="background-color: #ebebeb;">
-                    <div class="card-header h4 text-center" style="background-color: #ebebeb;">Detalles</div>
+            <div class="col-sm-4">
+                <div class="card box" style="background-color: #fff;">
+                    {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                     <div class="card-body">
-                        <form method="POST" action="{{route('reclutador.editarperfil')}}"> 
-                            @method('PUT')
-                            @csrf                    
-                            <div class="row gx-3 mb-3">
-                                <div class="col-md-12">
-                                    <label class="" for="inputFirstName">Nombre</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="" value="{{$usuario->name}}" name="name">
-                                </div>
+                        <h5 class="card-title">Nuevos usuarios</h5>
+                        <form method="POST" action="{{ route('admin.crear.usuarios') }}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nombre</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="" name="name">
                             </div>
-                            <div class="row gx-3 mb-3">
-                                <div class="col-md-12">
-                                    <label class="" for="inputFirstName">Apellido</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="" value="{{$usuario->last_name}}" name="last_name">
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Apellido</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="" name="last_name">
                             </div>
-                            <div class="row gx-3 mb-3">
-                                <div class="col-md-12">
-                                    <label class="" for="inputLocation">Correo</label>
-                                    <input class="form-control" id="inputLocation" type="text" value="{{$usuario->email}}" name="email">
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Correo electronico</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="" name="email">
                             </div>
-                            <div class="mb-3">
-                                <label class="" for="inputEmailAddress">Rol</label>
-                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="" value="{{$usuario->roles->first()->name}}" readonly>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Contraseña</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder=""
+                                    name="password">
                             </div>
-                          
-                            <button class="btn btn-primary" type="submit">Guardar cambios</button>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Rol</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="rol">
+                                    <option>Reclutador</option>
+                                    <option>Analista</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Crear</button>
                         </form>
                     </div>
                 </div>
             </div>
+            <div class="col-sm-8">
+                <div class="card box" style="background-color: #fff;">
+                    <div class="card-body">
+                        <h5 class="card-title">Reclutadores creados</h5>
+
+                        <div class="table-responsive">
+                            <table class="table " style="background-color: #FFF; border-radius: 10px;">
+                                <thead>
+                                    <tr class="d-flex">
+                                        <th class="col text-center">Nombre</th>
+                                        <th class="col text-center">Apellido</th>
+                                        <th class="col text-center">Correo</th>
+                                        <th class="col text-center">Estado</th>
+                                        <th class="col text-center">Cambiar estado</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @if (count($reclutadores) == 0)
+                                        No se le han creado nuevos usuarios
+                                    @else
+                                        @foreach ($reclutadores as $reclutador)
+                                            <tr class="d-flex ">
+                                                <td class="col text-center">{{ $reclutador->name }}</td>
+                                                <td class="col text-center">{{ $reclutador->last_name }}</td>
+                                                <th class="col text-center">{{ $reclutador->email }}</th>
+                                                {{-- <th class="col text-center">{{ $reclutador->rol }}</th> --}}
+                                                <th class="col text-center">
+                                                    @if ($reclutador->status == 1)
+                                                        Activo
+                                                    @else
+                                                        Inactivo
+                                                    @endif
+                                                </th>
+                                                <th class="col text-center">
+                                                    <button class="btn btn-danger"><i class="fas fa-exchange-alt"></i></button>
+                                                </th>
+
+
+                                                {{-- <td class="col text-center">
+                                                <div style="display: flex"
+                                                    class="text-center justify-content-center">
+                                                    <div class="pl-1">
+                                                        <button class="btn btn-warning"
+                                                            data-target="#Modalver{{ $cv->id }}"
+                                                            data-toggle="modal"><i class="fas fa-eye"></i></button>
+                                                        @include('admin.candidate.showcandidatos')
+                                                    </div>
+                                                </div>
+                                            </td> --}}
+
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <div class="container pt-3">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-12 text-xs-center">
+                                    {{ $reclutadores->links() }}
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- {{$users}} --}}
+                    </div>
+                </div>
+
+                <div class="card box mt-5" style="background-color: #fff;">
+                    {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                    <div class="card-body">
+                        <h5 class="card-title">Analistas creados</h5>
+
+                        <div class="table-responsive">
+                            <table class="table " style="background-color: #FFF; border-radius: 10px;">
+                                <thead>
+                                    <tr class="d-flex">
+                                        <th class="col text-center">Nombre</th>
+                                        <th class="col text-center">Apellido</th>
+                                        <th class="col text-center">Correo</th>
+
+                                        <th class="col text-center">Estado</th>
+                                        <th class="col text-center">Cambiar estado</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (count($analistas) == 0)
+                                        No se le han creado nuevos usuarios
+                                    @else
+                                        @foreach ($analistas as $analista)
+                                            <tr class="d-flex">
+                                                <td class="col text-center">{{ $analista->name }}</td>
+                                                <td class="col text-center">{{ $analista->last_name }}</td>
+                                                <th class="col text-center">{{ $analista->email }}</th>
+
+                                                <th class="col text-center">
+                                                    @if ($analista->status == 1)
+                                                        Activo
+                                                    @else
+                                                        Inactivo
+                                                    @endif
+                                                </th>
+                                                <th class="col text-center">
+                                                    <button class="btn btn-danger"><i class="fas fa-exchange-alt"></i>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <div class="container pt-3">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-12 text-xs-center">
+                                    {{ $analistas->links() }}
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- {{$users}} --}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

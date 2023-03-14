@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Reclutador;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Cv;
 use App\Models\Recruitment;

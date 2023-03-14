@@ -125,7 +125,7 @@
     }
 
     .quienes_somos {
-        background-color: #0fa3a1
+        background-color: #ffffff
     }
     #img_btn{
         transition: all 0.8s ease;
@@ -134,13 +134,16 @@
     #img_btn:hover{
         transform: scale(1.5,1.5);
     }
+    .box{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
 </style>
 
 <body id="page-top">
     <div class="navegacion">
 
-        <nav class="navbar navbar-expand-lg navbar-light background-barnav2">
-            <a class="navbar-brand text-light" href="/">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top box" style="background-color: #ffffff">
+            <a class="navbar-brand" href="/" style="color: #f06fb9">
                 <h1> Talentos Lili&Yoi</h1>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -152,14 +155,14 @@
                 id="navbarSupportedContent">
                 <ul class="navbar-nav">
 
-                    <li class="nav-item "><a class="navbar-brand  text-light nav-link" href="#quienes_somos">¿Quienes
+                    <li class="nav-item "><a class="navbar-brand nav-link" style="color: #f06fb9" href="#quienes_somos">¿Quienes
                             somos?</a></li>
-                    <li class="nav-item "><a class="navbar-brand  text-light nav-link" href="{{route('vacantes.index')}}">Ofertas</a></li>
-                    <li class="nav-item "><a class="navbar-brand  text-light nav-link" href="#porque">¿Por
+                    <li class="nav-item "><a class="navbar-brand nav-link" style="color: #f06fb9" href="{{route('vacantes.index')}}">Ofertas</a></li>
+                    <li class="nav-item "><a class="navbar-brand nav-link" style="color: #f06fb9" href="#porque">¿Por
                             qué trabajar
                             con nosotros?</a></li>
-                    <li class="nav-item"> <a class="navbar-brand  text-light nav-link"
-                            href="#contactanos">Contactanos</a></li>
+                    <li class="nav-item"> <a class="navbar-brand  nav-link" style="color: #f06fb9"
+                            href="#contactanos">Contactanos</a></li >
 
                 </ul>
             </div>
@@ -175,8 +178,8 @@
                     <img src="{{ asset('imgs/icono-who.png') }}" alt="tag" style="height: 50vh;">
                 </div>
                 <div class="col-md-7 text-light pt-3">
-                    <h2 class="text-center">¿Quiénes somos?</h2>
-                    <p class="pt-5 h4 text-center">Somos una marca JOVEN, CREATIVA, FRESCA y DIVERTIDA, pensada en
+                    <h2 class="text-center text-dark">¿Quiénes somos?</h2>
+                    <p class="pt-5 h4 text-cente text-dark">Somos una marca JOVEN, CREATIVA, FRESCA y DIVERTIDA, pensada en
                         mujeres con estas mismas características. El color, la comodidad y la tecnología son nuestras
                         principales cualidades por las que nuestras consumidoras nos refieren...</p>
                 </div>
@@ -187,7 +190,8 @@
     </div>
     <div class="ofertas pb-5" id="ofertas" style="background-color: #212529">
         <h1 class="text-center text-light pt-5">¿Quieres ser parte de nuestro equipo?</h1>
-        <p class="text-center text-light h3">Tenemos vacantes dispopnibles para ti...</p>
+        <p class="text-center text-light h3">Registra tu hoja de vida</p>
+        
         <div class="row w-100">
             <div class="col">
                 <a href="{{ route('buscarvacante2', ['id' => 2]) }}"> <img id="img_btn" src="{{ asset('imgs/admin.png') }}" class="img-fluid" alt="tag"></a>
@@ -199,6 +203,7 @@
                 <a href="{{ route('buscarvacante2', ['id' => 3]) }}"><img id="img_btn" src="{{ asset('imgs/tienda.png') }}" class="img-fluid" alt="tag"></a>
             </div>
         </div>
+        <p class="text-center text-light h3">...o revisa las vacantes dispopnibles que tenemos para ti...</p>
         <div class="d-flex justify-content-center">
             <a class="btn btn-light btn-block mt-5 col-4"
                 style="border-radius: 30px; border-color: #e85199; color: #e85199" href="{{route('vacantes.index')}}">Información</a>

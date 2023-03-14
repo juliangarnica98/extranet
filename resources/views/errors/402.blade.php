@@ -122,15 +122,15 @@
 </head>
 
 <body>
-    <h1>403</h1>
+    <h1>402</h1>
     <div class="cloak__wrapper">
         <div class="cloak__container">
             <div class="cloak"></div>
         </div>
     </div>
     <div class="info">
-        <h2>Acceso prohibido</h2>
-        
+        <h2>La pagina no encontrada</h2>
+        <a href="/login" target="_blank" rel="noreferrer noopener">Iniciar sesión</a>
     </div>
 </body>
 

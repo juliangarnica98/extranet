@@ -110,6 +110,7 @@
 
 @section('content')
     <div class="page-content page-container" id="page-content">
+        <h2 class="text-center text-dark pt-2 ">VACANTES</h2>
         <div class="">
             {{-- <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12">
@@ -120,9 +121,10 @@
                     </div>
                 </div>
             </div> --}}
+            {{-- @include('reclutador.candidate.navegacioncandidato') --}}
             <div class="row pl-3 pr-3 pt-2 justify-content-center">
                 <div class="col-md-4 grid-margin stretch-card">
-                    <div class="card box" style="background-color: #ebebeb;height: 85vh">
+                    <div class="card box" style="background-color: #ffffff;height: 85vh">
                         <div class="card-body">
                             <h1 class="card-title">Vacantes creadas</h1>
                             <p class="card-description">
@@ -201,7 +203,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 grid-margin stretch-card">
-                    <div class="card box" style="background-color: #ebebeb;height: 85vh">
+                    <div class="card box" style="background-color: #ffffff;height: 85vh">
                         <div class="card-body">
                             <h1 class="card-title">Vacantes creadas</h1>
                             <div class="row">
@@ -223,7 +225,7 @@
                             
                             @foreach ($vacants as $vacant)
                                 <div class="border-top border-bottom mt-1">
-                                    <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants">
+                                    <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants" style="background-color: #ebebeb">
                                         {{-- border-right-0 border-left-0 --}}
                                         <a href="{{ route('reclutador.aspirantes', ['id' => $vacant->id]) }}"
                                             class="card-block stretched-link text-decoration-none">
@@ -250,9 +252,6 @@
                                                             <small class="card-text text-dark">Educación requerida:
                                                                 {{ $vacant->education }} 
                                                             </small> <br>
-                                                            {{-- <small id=""
-                                                                class="text-dark">{{ date('d-m-Y', strtotime($vacant->created_at)) }}
-                                                            </small> --}}
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -271,11 +270,5 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container pt-3">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 text-xs-center">
-                {{ $cvs->links() }}
-            </div>
-        </div>
-    </div> --}}
+
 @endsection

@@ -122,11 +122,12 @@
         </script>
     @endif
     <div class="page-content page-container" id="page-content">
+        <h2 class="text-center text-dark pt-2 ">RECLUTAMIENTOS</h2>
         <div class="">
 
             <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card" style="background-color: #ebebeb;">
+                    <div class="card" style="background-color: #ffffff;">
                         <div class="card-body">
                             <h1 class="card-title">Nuevos Aspirantes</h1>
                             <p class="card-description">

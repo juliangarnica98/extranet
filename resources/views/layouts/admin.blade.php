@@ -65,7 +65,7 @@
     }
 
     #content {
-        background-color: #fff;
+        background-color: #e7e7e7;
     }
 
     /* .container {
@@ -110,6 +110,23 @@
     .box{
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
+    .btn{
+        border-radius: 20px
+    }
+    .btn-primary{
+        background-color: #18a0a0;
+        border-color: #18a0a0
+    }
+    .btn-primary:hover{
+        background-color: #e85099;
+        border-color: #e85099
+    }
+    .page-container{
+        background-color: #e7e7e7;
+    }
+    .bg-footer{
+        background-color: #e7e7e7;
+    }
 </style>
 
 <body id="page-top">
@@ -150,14 +167,20 @@
                     </div>
                     <hr class="sidebar-divider">
                     <li class="nav-item">
+                        <a class="nav-link text-center" href="{{ route('admin.usuarios') }}">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <span>USUARIOS</span></a>
+                    </li>
+                    <hr class="sidebar-divider">
+                    <li class="nav-item">
                         <a class="nav-link text-center" href="{{ route('admin.postulaciones') }}">
                             <i class="fa fa-id-card" aria-hidden="true"></i>
-                            <span>ASPIRANTES</span></a>
+                            <span>CANDIDATOS</span></a>
                     </li>
                     <hr class="sidebar-divider">
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ route('admin.index') }}">
-                            <i class="fa fa-id-card" aria-hidden="true"></i>
+                            <i class="fa fa-briefcase" aria-hidden="true"></i>
                             <span>VACANTES</span></a>
                     </li>
             
@@ -177,7 +200,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-center" href="{{ route('reclutador.index') }}">
                             <i class="fa fa-id-card" aria-hidden="true"></i>
-                            <span>ASPIRANTES</span></a>
+                            <span>VACANTES</span></a>
                     </li>  
                     <hr class="sidebar-divider">
                     <li class="nav-item">
@@ -266,7 +289,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Fast Moda 2022</span>

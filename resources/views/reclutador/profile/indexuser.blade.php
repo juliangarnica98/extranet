@@ -142,12 +142,13 @@
                 </div>
             </div>
         </div> --}}
-
+        <h2 class="text-center text-dark pt-2 ">MI PERFIL</h2>
         <div class="row pl-3 pr-3 pt-3 text-dark">
+            
             <div class="col-xl-4">
                 <!-- Profile picture card-->
-                <div class="card mb-4 " style="background-color: #ebebeb;">
-                    <div class="card-header h4 text-center" style="background-color: #ebebeb;">Imagen de perfil</div>
+                <div class="card mb-4 box " style="background-color: #ffffff;">
+                    <div class="card-header h4 text-center" style="background-color: #ffffff;">Imagen de perfil</div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2 w-100" src="{{asset('imgs/profile-icon-9.png')}}" alt="">
                         <div class="small font-italic text-muted mb-4">JPG o PNG de no más de 5 MB</div>
@@ -156,8 +157,8 @@
                 </div>
             </div>
             <div class="col-xl-8">
-                <div class="card mb-4" style="background-color: #ebebeb;">
-                    <div class="card-header h4 text-center" style="background-color: #ebebeb;">Detalles</div>
+                <div class="card mb-4 box" style="background-color: #ffffff;">
+                    <div class="card-header h4 text-center" style="background-color: #ffffff;">Detalles</div>
                     <div class="card-body">
                         <form method="POST" action="{{route('reclutador.editarperfil')}}"> 
                             @method('PUT')
