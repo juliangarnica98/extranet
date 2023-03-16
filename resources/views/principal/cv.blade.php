@@ -24,9 +24,9 @@
 </head>
 <style>
     body {
-        font-family: 'Open Sans', sans-serif;
+        /* font-family: 'Open Sans', sans-serif; */
     }
-
+    
     .scroll {
         max-height: 60vh;
         overflow-y: auto;
@@ -123,29 +123,48 @@
         display: none;
     }
 
+
+
+
+
+
     #signUpForm input {
         padding: 15px 20px;
-
-        border: 1px solid #e3e3e3;
-        border-radius: 5px;
-        color: #646464;
+        border: 2px solid  #c2c2c2; 
+        /* border-bottom: 2px solid  #c2c2c2; */
+        
+        /* border-radius: 5px; */
+        color: #b47676;
+        border-radius: 25px;
     }
 
     #signUpForm textarea {
-        border: 1px solid #e3e3e3;
+        border: 2px solid  #c2c2c2; 
+        /* border-bottom: 2px solid  #c2c2c2; */
         border-radius: 5px;
         color: #646464;
+        border-radius: 25px;
     }
 
     #signUpForm select {
         padding: 15px 20px;
-        border: 1px solid #e3e3e3;
-        border-radius: 5px;
+        border: 2px solid  #c2c2c2;   
+        /* border-bottom: 2px solid  #c2c2c2;   */
+        /* border-radius: 5px; */
         color: #646464;
+        border-radius: 25px;
     }
 
     #signUpForm input:focus {
-        border: 1px solid #009688;
+        border: 3px solid #009688;
+        outline: 0;
+    }
+    #signUpForm select:focus {
+        border: 3px solid #009688;
+        outline: 0;
+    }
+    #signUpForm textarea:focus {
+        border: 3px solid #009688;
         outline: 0;
     }
 
@@ -160,6 +179,10 @@
     #signUpForm textarea.invalid {
         border: 1px solid #ffaba5;
     }
+
+
+
+
 
     #signUpForm .step {
         display: none;
@@ -181,6 +204,7 @@
         border-radius: 5px;
         flex: 1;
         margin-top: 5px;
+        border-radius: 25px;
     }
 
     #signUpForm .form-footer button:hover {
@@ -190,7 +214,9 @@
     #signUpForm .form-footer #prevBtn {
         background-color: #fff;
         color: #009688;
+        border-radius: 25px;
     }
+   
 
     .background-barnav2 {
         background: rgb(232, 81, 153);
@@ -206,6 +232,45 @@
         background-repeat: no-repeat;
         background-attachment: scroll;
         background-size: cover;
+    }
+
+    ,
+    /* .form-control {
+        width: 100%;
+        position: relative;
+        z-index: 3;
+        height: 35px;
+        background: none;
+        border: none;
+        padding: 5px 0;
+         transition(.3s);
+        border-bottom: 1px solid #777;
+        color: #555;
+
+        &:invalid {
+            outline: none;
+        }
+
+        &:focus,
+        &:valid {
+            outline: none;
+
+             box-shadow(0 1px $primary);
+            border-color: $primary;
+
+            +.form-label {
+                font-size: 12px;
+                color: $primary;
+                translateY(-15px);
+            }
+        }
+    } */
+
+    .btn{
+        border-radius: 20px;
+    }
+    #nextBtn{
+        border-radius: 25px;
     }
 </style>
 
@@ -256,13 +321,13 @@
             <form id="signUpForm" action="{{ route('cv.store') }}">
                 <!-- start step indicators -->
                 <div class="form-header d-flex mb-4">
-                    <span class="stepIndicator">Bienvenida</span>
+                    <span class="stepIndicator">BIENVENIDA</span>
                     <span class="stepIndicator">HÁBEAS DATA</span>
-                    <span class="stepIndicator">Información personal</span>
-                    <span class="stepIndicator">Información laboral 1</span>
-                    <span class="stepIndicator">Información laboral 2</span>
-                    <span class="stepIndicator">Cuentanos de ti</span>
-                    <span class="stepIndicator">Información adicional</span>
+                    <span class="stepIndicator">INFORMACIÓN PERSONAL</span>
+                    <span class="stepIndicator">INFORMACIÓN LABORAL </span>
+                    <span class="stepIndicator">INFORMACIÓN LABORAL </span>
+                    <span class="stepIndicator">CUENTANOS DE TI</span>
+                    <span class="stepIndicator">INFORMACIÓN ADICIONAL</span>
                 </div>
                 <!-- end step indicators -->
 
@@ -276,6 +341,7 @@
                     </div>
                 </div>
                 <div class="step">
+
                     <p class="text-center mb-4">HÁBEAS DATA: Dando cumplimiento a lo dispuesto en la Ley 1581 de 2012,
                         "Por el cual se dictan disposiciones generales para la protección de datos personales" y de
                         conformidad con lo señalado en el Decreto 1377 de 2013, manifiesto que he sido informado
@@ -543,8 +609,8 @@
 
                 <!-- start previous / next buttons -->
                 <div class="form-footer d-flex">
-                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
-                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+                    <button class="btn" type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
+                    <button class="btn" type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
                 </div>
                 <!-- end previous / next buttons -->
             </form>

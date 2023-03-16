@@ -100,6 +100,9 @@
         font-size: 1rem;
         line-height: 1;
     }
+    .inp{
+        border-radius: 25px;
+    }
 </style>
 @section('content')
     @if (Session::has('error'))
@@ -120,34 +123,18 @@
             )
         </script>
     @endif
-
+    
     <div class="page-content page-container " id="page-content" style="">
-        <h2 class="text-center text-dark pt-2 ">MI PERFIL</h2>
-        {{-- <div class="row pl-3 pr-3 pt-3 ">
-            <div class="col-md-4 grid-margin stretch-card">
-                <div class="card " style="background-color: #ebebeb;">
-                    <img src="{{asset('imgs/profile-icon-9.png')}}" alt="">
-                </div>
-            </div>
-            <div class="col-md-6 grid-margin stretch-card h-100">
-                <div class="card " style="background-color: #ebebeb;">
-                    <div class="card-body">
-                        <h5 class="h5"> <label for="">Nombre</label></h5>
-                            {{$usuario->name}}
-                        <h5 class="h5"> <label for="">Rol</label></h5>
-                            {{$usuario->roles->first()->name}}
-                        <h5 class="h5"> <label for="">Correo</label></h5>
-                            {{$usuario->email}}
-                    </div>
-                    
-                </div>
-            </div>
-        </div> --}}
+        {{-- <div class="navegacion text-center border-white">
+            / <a href="{{route('admin.perfil')}}" class="text-decoration-none text-dark ">MI PERFIL</a>
+       </div> --}}
+        
+        <h2 class="ml-5 text-dark pt-2 ">MI PERFIL</h2>
 
         <div class="row pl-3 pr-3 pt-3 text-dark">
-            <div class="col-xl-4">
-                <!-- Profile picture card-->
-                <div class="card mb-4 box " style="background-color: #fff;">
+            <div class="col-sm-4">
+                
+                <div class="card mb-0 box " style="background-color: #fff;">
                     <div class="card-header h4 text-center" style="background-color: #fff;">Imagen de perfil</div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2 w-100" src="{{asset('imgs/profile-icon-9.png')}}" alt="">
@@ -156,7 +143,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-8">
+            <div class="col-sm-8">
                 <div class="card mb-4 box" style="background-color: #fff;">
                     <div class="card-header h4 text-center" style="background-color: #fff;">Detalles</div>
                     <div class="card-body">
@@ -166,27 +153,27 @@
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-12">
                                     <label class="" for="inputFirstName">Nombre</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="" value="{{$usuario->name}}" name="name">
+                                    <input class="form-control inp" id="inputFirstName" type="text" placeholder="" value="{{$usuario->name}}" name="name" style=" border-radius: 25px;">
                                 </div>
                             </div>
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-12">
                                     <label class="" for="inputFirstName">Apellido</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="" value="{{$usuario->last_name}}" name="last_name">
+                                    <input class="form-control inp" id="inputFirstName" type="text" placeholder="" value="{{$usuario->last_name}}" name="last_name" style=" border-radius: 25px;">
                                 </div>
                             </div>
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-12">
                                     <label class="" for="inputLocation">Correo</label>
-                                    <input class="form-control" id="inputLocation" type="text" value="{{$usuario->email}}" name="email">
+                                    <input class="form-control inp" id="inputLocation" type="text" value="{{$usuario->email}}" name="email" style=" border-radius: 25px;">
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="" for="inputEmailAddress">Rol</label>
-                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="" value="{{$usuario->roles->first()->name}}" readonly>
+                                <input class="form-control inp" id="inputEmailAddress" type="email" placeholder="" value="{{$usuario->roles->first()->name}}" readonly style=" border-radius: 25px;">
                             </div>
                           
-                            <button class="btn btn-primary" type="submit">Guardar cambios</button>
+                            <button class="btn btn-primary btn-block" type="submit">Guardar cambios</button>
                         </form>
                     </div>
                 </div>

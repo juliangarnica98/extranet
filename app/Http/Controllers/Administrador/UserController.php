@@ -65,14 +65,31 @@ class UserController extends Controller
     }
 
   
-    public function update(Request $request)
+    public function update($id)
     {
+        $user=User::where('id',$id)->first();
+       
 
+        if($user->status==1){
+            $user->status=0;
+            $user->save();
+            return back()->with('message','El usuario se desactivo');
+        }
+        if($user->status==0){
+            $user->status=1;
+            $user->save();
+            return back()->with('message','El usuario se activo');
+        }
+        
+
+        
     }
 
 
     public function destroy($id)
     {
-        
+        $user=User::where('id',$id)->first();
+        $user->delete();
+        return back()->with('message','El usuario se ha eliminado correctamente');
     }
 }

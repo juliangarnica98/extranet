@@ -24,10 +24,11 @@ class CandidateController extends Controller
     public function postulaciones()
     {
         Paginator::useBootstrap();
-        $cvs = Cv::where('type',2)->paginate();
-        $vacants = Vacant::paginate();
-        $states = State::paginate();
-        return view('admin.candidate.indexcandidatos',compact('cvs','vacants','states'));
+        $trabaja_con_nosotros = Cv::where('type',1)->paginate(8);
+        $candidatos_vacantes = Cv::where('type',2)->paginate(8);
+        $vacants = Vacant::get();
+        $states = State::get();
+        return view('admin.candidate.indexcandidatos',compact('trabaja_con_nosotros','candidatos_vacantes','vacants','states'));
         // return view('admin.candidate.indexcandidatos',compact('cvs','vacants','states'));
     }
 

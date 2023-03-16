@@ -122,7 +122,8 @@
     @endif
 
     <div class="page-content page-container" id="page-content">
-        <h2 class="text-center text-dark pt-2 ">VACANTES</h2>
+        {{-- <h2 class="text-center text-dark pt-2 ">VACANTES</h2> --}}
+        <h2 class="ml-5 text-dark pt-2 ">VACANTES</h2>
         <div class="row pl-3 pr-3 pt-3">
 
             <div class="col-xl-4 col-md-6 mb-4">
@@ -178,76 +179,6 @@
 
         <div class="row pl-3 pr-3 pt-0 justify-content-center">
 
-            {{-- <div class="card" style="background-color: #ebebeb;">
-                        <div class="card-body">
-                            <h1 class="card-title">Nuevas vacantes</h1>
-                            <p class="card-description">
-                                Especificación de vacantes
-                            </p>
-
-                            <table class="table table-responsive " style="background-color: #FFF; border-radius: 10px;">
-                                <thead>
-                                    <tr>
-                                        <th class="col-1 text-center">Fecha</th>
-                                        <th class="col-1 text-center">Titulo</th>
-                                        <th class="col-1 text-center">Ciudad</th>
-                                        <th class="col-1 text-center">Salario</th>
-                                        <th class="col-1 text-center">Vacantes</th>
-                                        <th class="col-1 text-center">Estado</th>
-                                        <th class="col-1 text-center col-1">Accion</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    @foreach ($vacants as $vacant)
-                                        <tr>
-                                            <td class="text-center">{{ date('d-m-Y', strtotime($vacant->created_at)) }}</td>
-                                            <td class="text-center">{{ $vacant->title }}</td>
-                                            <td class="text-center">{{ $vacant->city }}</td>
-                                            <td class="text-center">${{ $vacant->salary }}</td>
-                                            <td class="text-center">{{ $vacant->num_vacants }}</td>
-                                            @if ($vacant->state == 1)
-                                                <td class="text-center"><label class="badge-success"
-                                                        style="border-radius: 10px;padding:0.3rem">Abierta</label></td>
-                                            @else
-                                                <td class="text-center"><label class="badge-danger"
-                                                        style="border-radius: 10px;padding:0.3rem">Cerrada</label></td>
-                                            @endif
-                                            <td class="text-center">
-                                                <div style="display: flex" class="text-center justify-content-center">
-                                                    <div class="pl-1">
-                                                        <button class="btn btn-warning"
-                                                            data-target="#Modalview{{ $vacant->id }}"
-                                                            data-toggle="modal"><i class="fas fa-eye"></i></button>
-                                                            @include('admin.vacant.showvacantes')
-                                                    </div>
-                                                    <div class="pl-1">
-                                                        <button class="btn btn-info" data-target="#Modaledit{{ $vacant->id }}"
-                                                            data-toggle="modal"><i class="fas fa-edit"></i></i></button>
-                                                            @include('admin.vacant.editvacantes')
-                                                    </div>
-                                                    <div class="pl-1">
-                                                        <form method="POST"
-                                                            action="{{ route('cerrarvacante', $vacant->id) }}">
-                                                            @csrf
-                                                            <div class="form-group">
-                                                                <button class="btn btn-danger"><i
-                                                                        class="fas fa-window-close"></i></button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>  --}}
 
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card box" style="background-color: #fff;">

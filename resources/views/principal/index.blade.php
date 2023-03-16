@@ -203,7 +203,7 @@
                 <a href="{{ route('buscarvacante2', ['id' => 3]) }}"><img id="img_btn" src="{{ asset('imgs/tienda.png') }}" class="img-fluid" alt="tag"></a>
             </div>
         </div>
-        <p class="text-center text-light h3">...o revisa las vacantes dispopnibles que tenemos para ti...</p>
+        <p class="text-center text-light h3">...o revisa las vacantes disponibles que tenemos para ti...</p>
         <div class="d-flex justify-content-center">
             <a class="btn btn-light btn-block mt-5 col-4"
                 style="border-radius: 30px; border-color: #e85199; color: #e85199" href="{{route('vacantes.index')}}">Información</a>

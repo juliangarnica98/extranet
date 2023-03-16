@@ -37,6 +37,7 @@ Route::group(['prefix' => 'administrador'], function() {
     //rutas de usuarios
     Route::get('/usuarios', [App\Http\Controllers\Administrador\UserController::class, 'index'])->name('admin.usuarios');    
     Route::post('/crear-usuarios', [App\Http\Controllers\Administrador\UserController::class, 'store'])->name('admin.crear.usuarios');    
+    Route::post('/cambiar-status/{id}', [App\Http\Controllers\Administrador\UserController::class, 'update'])->name('admin.crear.update');    
 });
 
 Route::group(['prefix' => 'reclutador'], function() {
@@ -51,5 +52,15 @@ Route::group(['prefix' => 'reclutador'], function() {
     Route::get('reclutamientos', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'index'])->name('reclutador.show');
     Route::post('store', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'store'])->name('reclutador.store');
     Route::put('calificar/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'update'])->name('reclutador.update');    
+});
+
+
+Route::group(['prefix' => 'Analista'], function() {
+   
+});
+
+
+Route::group(['prefix' => 'Analista-Reclutador'], function() {
+   
 });
 

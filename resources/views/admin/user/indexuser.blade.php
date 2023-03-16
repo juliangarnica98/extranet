@@ -122,7 +122,11 @@
     @endif
 
     <div class="page-content page-container " id="page-content" style="background-color: ">
-        <h2 class="text-center text-dark pt-2 ">USUARIOS</h2>
+        {{-- <div class="navegacion text-center border-white">
+            / <a href="{{route('admin.usuarios')}}" class="text-decoration-none text-dark ">USUARIOS</a>
+       </div> --}}
+        {{-- <h2 class="text-center text-dark pt-2 ">USUARIOS</h2> --}}
+        <h2 class="ml-5 text-dark pt-2 ">USUARIOS</h2>
         {{-- <hr class="border border-dark border-1"> --}}
         <div class="row pl-3 pr-3 pt-3 text-dark">
             <div class="col-sm-4">
@@ -196,12 +200,22 @@
                                                 <th class="col text-center">
                                                     @if ($reclutador->status == 1)
                                                         Activo
-                                                    @else
+                                                    @endif
+                                                    @if ($reclutador->status == 0)
                                                         Inactivo
                                                     @endif
+
                                                 </th>
                                                 <th class="col text-center">
-                                                    <button class="btn btn-danger"><i class="fas fa-exchange-alt"></i></button>
+                                                    <form method="POST"
+                                                        action="{{ route('admin.crear.update', $reclutador->id) }}">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <button class="btn btn-danger"><i
+                                                                    class="fas fa-exchange-alt"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                 </th>
 
 
@@ -267,13 +281,22 @@
                                                 <th class="col text-center">
                                                     @if ($analista->status == 1)
                                                         Activo
-                                                    @else
+                                                    @endif
+                                                    @if ($analista->status == 0)
                                                         Inactivo
                                                     @endif
                                                 </th>
                                                 <th class="col text-center">
-                                                    <button class="btn btn-danger"><i class="fas fa-exchange-alt"></i>
-                                                    </button>
+                                                    <form method="POST"
+                                                        action="{{ route('admin.crear.update', $analista->id) }}">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <button class="btn btn-danger"><i
+                                                                    class="fas fa-exchange-alt"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+
                                                 </th>
                                             </tr>
                                         @endforeach
