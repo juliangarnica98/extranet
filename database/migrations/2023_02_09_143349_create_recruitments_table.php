@@ -16,11 +16,11 @@ class CreateRecruitmentsTable extends Migration
         Schema::create('recruitments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('regional');
+            // $table->string('regional');
             $table->text('comentarios');
-            $table->string('pruebas');
+            $table->string('pruebas')->nullable();
             
-            $table->string('fecha');
+            $table->string('fecha')->nullable();
             $table->string('ethikos')->nullable();
             $table->string('ten_disc')->nullable();
 

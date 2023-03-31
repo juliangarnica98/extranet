@@ -82,6 +82,7 @@ class CvController extends Controller
         $cv->should_choose = $request->should_choose;
         $cv->shirt_size = $request->shirt_size;
 
+        $cv->area=$request->area;
         $cv->shoes_size = $request->shoes_size;
         $cv->pant_size = $request->pant_size;
         $cv->vacant_id = $request->vacant_id;
@@ -105,9 +106,10 @@ class CvController extends Controller
     }
 
 
-    public function vacante($id,$type)
+    public function vacante($id,$type,$area)
     {   
-        return view('principal.cv',compact('id','type'));
+        // dd($area);
+        return view('principal.cv',compact('id','type','area'));
     }
     
     

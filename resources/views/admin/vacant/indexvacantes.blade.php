@@ -126,8 +126,8 @@
         <h2 class="ml-5 text-dark pt-2 ">VACANTES</h2>
         <div class="row pl-3 pr-3 pt-3">
 
-            <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-danger h-100 py-2 box">
+            <div class="col-xl-4 col-md-6 mb-4 mt-5">
+                <div class="card border-left-danger mt-4 py-2 box">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -141,9 +141,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-success h-100 py-2 box">
+
+                <div class="card border-left-success mt-4 py-2 box">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -157,9 +156,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-warning box h-100 py-2">
+
+                <div class="card border-left-warning  mt-4 box  py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -174,29 +172,24 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-
-        <div class="row pl-3 pr-3 pt-0 justify-content-center">
-
-
-            <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-xl-8 col-md-6 mb-4">
                 <div class="card box" style="background-color: #fff;">
                     <div class="card-body">
                         <h1 class="card-title">Vacantes</h1>
-                        <p class="card-description">
-                            <button class="btn btn-success" data-target="#Modalstore" data-toggle="modal"><i
-                                    class="fas fa-plus"></i></button>
-                            @include('admin.vacant.storevacantes')
+                        <p class="card-description text-center">
+                            {{-- <button class="btn btn-success" data-target="#Modalstore" data-toggle="modal"></button> --}}
+                                    <a href="{{route('admin.vacant.create')}}" class="btn btn-success"><i
+                                        class="fas fa-plus"></i> Nueva vacante</a>
+                            {{-- @include('admin.vacant.storevacantes') --}}
                         </p>
 
                         <form method="get" action="{{ route('admin.search') }}">
                             <div class="form-row">
-                                <div class="col-sm-4">
-                                    <input class="form-control" type="text" name="busqueda">
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="busqueda" style="border-radius: 25px">
                                 </div>
-                                <div class="col-auto">
-                                    <input type="submit" class="btn btn-primary" value="buscar">
+                                <div class="col-sm-2">
+                                    <input type="submit" class="btn btn-primary btn-block" value="buscar" >
                                 </div>
                             </div>
                         </form>
@@ -208,6 +201,7 @@
                                 <table class="table  " style="background-color: #FFF; border-radius: 10px;">
                                     <thead>
                                         <tr>
+                                            <th class="col-1 text-center">Creador</th>
                                             <th class="col-1 text-center">Fecha</th>
                                             <th class="col-1 text-center">Titulo</th>
                                             <th class="col-1 text-center">Ciudad</th>
@@ -222,6 +216,7 @@
 
                                         @foreach ($vacants as $vacant)
                                             <tr>
+                                                <td class="text-center">{{ $vacant->author }}</td>
                                                 <td class="text-center">{{ date('d-m-Y', strtotime($vacant->created_at)) }}
                                                 </td>
                                                 <td class="text-center">{{ $vacant->title }}</td>
@@ -244,10 +239,11 @@
                                                             @include('admin.vacant.showvacantes')
                                                         </div>
                                                         <div class="pl-1">
-                                                            <button class="btn btn-info"
+                                                            <a href="{{route('admin.vacant.edit',$vacant->id)}}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                                            {{-- <button class="btn btn-info"
                                                                 data-target="#Modaledit{{ $vacant->id }}"
                                                                 data-toggle="modal"><i class="fas fa-edit"></i></i></button>
-                                                            @include('admin.vacant.editvacantes')
+                                                            @include('admin.vacant.editvacantes') --}}
                                                         </div>
                                                         <div class="pl-1">
                                                             <form method="POST"
@@ -279,7 +275,6 @@
 
                     </div>
                 </div>
-
             </div>
 
         </div>

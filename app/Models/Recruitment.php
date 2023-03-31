@@ -10,7 +10,7 @@ class Recruitment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'regional',
+       
         'comentarios',
         'pruebas',
         'fecha',

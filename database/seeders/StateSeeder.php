@@ -17,6 +17,9 @@ class StateSeeder extends Seeder
         {
             $data=[
                 [
+                'description' => 'postulado '
+                ],
+                [
                 'description' => 'Llamada inicial '
                 ],
                 [

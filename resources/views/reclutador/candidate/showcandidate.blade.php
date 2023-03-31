@@ -103,6 +103,24 @@
 </style>
 
 @section('content')
+@if (Session::has('error'))
+<script>
+    Swal.fire(
+        'Error',
+        "{{ Session::get('error') }}",
+        'error'
+    )
+</script>
+@endif
+@if (Session::has('message'))
+<script>
+    Swal.fire(
+        '¡Bien hecho!',
+        "{{ Session::get('message') }}",
+        'success'
+    )
+</script>
+@endif
     <div class="page-content page-container" id="page-content">
         <div class="">
 
@@ -115,16 +133,28 @@
                                 
                             </p> --}}
                             <hr>
-                            <div>
-                                <button class="btn btn-warning mr-5" data-target="#Modalstore{{ $cv->id }}"
-                                    data-toggle="modal" @if ($cv->pruebas == 1) disabled='disabled' @endif><i
-                                        class="fas fa-file-download"></i> Descargar hoja de vida</button>
-                                <button class="btn btn-success" data-target="#Modalstore{{ $cv->id }}"
-                                    data-toggle="modal" @if ($cv->pruebas == 1) disabled='disabled' @endif><i
-                                        class="fas fa-check"></i> Seleccionar candidato</button>
-                                <button class="btn btn-danger" data-target="#Modalstore{{ $cv->id }}"
-                                    data-toggle="modal" @if ($cv->pruebas == 1) disabled='disabled' @endif><i
-                                        class="fas fa-times"></i> Rechazar candidato</button>
+                            <div class="row d-flex justify-content-center aling-items-center text-center">
+                                <div class="col-sm-4">
+                                    <button class="btn btn-warning mr-5" @if ($cv->pruebas == 1) disabled='disabled' @endif>
+                                        <i class="fas fa-file-download"></i> Descargar hoja de vida</button>
+                                </div>
+                                <div class="col-sm-4">
+                                    <form action="{{route('reclutador.candidate.index',$cv->id)}}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-success" ><i
+                                                class="fas fa-check"></i> Seleccionar candidato</button>
+                                </form>
+                                        
+                                </div>
+                                <div class="col-sm-4">
+                                    <button class="btn btn-danger" data-target="#Modaldescartar{{ $cv->id }}"
+                                        data-toggle="modal"><i class="fas fa-times"></i> Descartar candidato</button>
+                                            @include('reclutador.candidate.modals.descartarcandidato')
+                                </div>
+                                
+                                
+                                
+                                
                             </div>
 
                             <hr>

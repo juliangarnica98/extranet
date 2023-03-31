@@ -140,13 +140,11 @@
                                             <th class="col text-center">Fecha</th>
                                             <th class="col text-center">Vacante</th>
                                             <th class="col text-center">Nombre</th>
-
-                                            <th class="col text-center">Regional</th>
                                             <th class="col text-center">Comentarios</th>
                                             <th class="col text-center">Envio Pruebas</th>
-
                                             <th class="col text-center">Calificar</th>
                                             <th class="col text-center">Ver calificaciones</th>
+                                            <th class="col text-center">Descartar cantidato</th>
                                         </tr>
                                     </thead>
                                     {{-- {{var_dump($reclutamientos[0])}} --}}
@@ -166,13 +164,21 @@
                                                 <td class="col text-center">
                                                     {{ $reclutado->cv->name }}
                                                 </td>
-                                                <td class="col text-center">{{ $reclutado->regional }}</td>
+                                                
                                                 <th class="col text-center">{{ $reclutado->comentarios }}</th>
-                                                <td class="col text-center">{{ $reclutado->fecha }}</td>
-
+                                                {{-- <td class="col text-center">{{ $reclutado->fecha }}</td> --}}
                                                 <td class="col text-center">
                                                     <div style="display: flex" class="text-center justify-content-center">
-                                                        <div class="pl-1">
+                                                        <div class="pl">
+                                                            <form action="">
+                                                                <button class="btn btn-success">Envio de pruebas</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col text-center">
+                                                    <div style="display: flex" class="text-center justify-content-center">
+                                                        <div class="pl">
                                                             <button class="btn btn-success"
                                                                 data-target="#Modaledit{{ $reclutado->id }}"
                                                                 data-toggle="modal" 
@@ -193,6 +199,15 @@
                                                                 <i class="fas fa-eye"></i>
                                                             </button>
                                                             @include('reclutador.reclutamiento.showreclutamiento')
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col text-center">
+                                                    <div style="display: flex" class="text-center justify-content-center">
+                                                        <div class="pl-1">
+                                                            <button class="btn btn-danger" data-target="#Modaldescartar{{ $reclutado->cv->id }}"
+                                                                data-toggle="modal"><i class="fas fa-times"></i> Descartar candidato</button>
+                                                                    @include('reclutador.reclutamiento.modals.descartarcandidato')
                                                         </div>
                                                     </div>
                                                 </td>

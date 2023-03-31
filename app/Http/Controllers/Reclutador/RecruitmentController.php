@@ -24,7 +24,7 @@ class RecruitmentController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'regional' => 'required|max:255',
+            // 'regional' => 'required|max:255',
             'comentarios' => 'required|max:255',
         ]);
         if($validator->fails()){
@@ -32,16 +32,11 @@ class RecruitmentController extends Controller
         }
 
         $reclutamiet = new Recruitment;
-        $now = new \DateTime();
-        $reclutamiet->regional = $request->regional;
         $reclutamiet->comentarios = $request->comentarios;
-        $reclutamiet->pruebas = 1;
-        $reclutamiet->fecha = $now->format('d-m-Y H:i');
         $cv = Cv::find($request->cv_id);
-        $cv->pruebas = 1;
         $cv->save();
         $cv->recruitment()->save($reclutamiet);
-        return redirect('reclutador/index')->with('message','Registro exitoso');
+        return redirect('reclutador/reclutamientos')->with('message','Registro exitoso');
     }
 
 
@@ -50,6 +45,22 @@ class RecruitmentController extends Controller
         
     }
 
+    public function pruebas( $id)
+    {
+        
+        $now = new \DateTime();
+        $reclutamiet = Recruitment::find($id);
+        $reclutamiet->pruebas = 1;
+        $reclutamiet->fecha = $now->format('d-m-Y H:i');
+        $cv = Cv::find($reclutamiet->cv_id);
+        $cv->pruebas = 1;
+        $cv->state_id=3;
+        $cv->save();
+        $cv->recruitment()->save($reclutamiet);
+      
+
+        return redirect('reclutador/reclutamientos')->with('message','Calificación');
+    }
   
     public function update(Request $request, $id)
     {

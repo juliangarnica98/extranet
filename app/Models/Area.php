@@ -10,11 +10,10 @@ class Area extends Model
     use HasFactory;
     protected $fillable = [
         'description',
-        
-        
+    
     ];
-    public function positions()
+    public function vacant()
     {
-        return $this->hasMany('App\Position');
+        return $this->hasOne('App\Models\Vacant');
     }
 }

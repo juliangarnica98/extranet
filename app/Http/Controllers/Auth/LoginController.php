@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Request;
 use Spatie\Permission\Traits\HasRoles;
 
 class LoginController extends Controller
@@ -36,8 +37,15 @@ class LoginController extends Controller
         }elseif(Auth::user()->hasRole('Reclutador')){
             return '/reclutador/perfil';
         }
+        elseif(Auth::user()->hasRole('Jefe')){
+            return '/jefe/perfil';
+        }
     }
   
+    protected function loggedOut() {
+        return redirect('/login');
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

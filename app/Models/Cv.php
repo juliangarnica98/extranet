@@ -45,6 +45,7 @@ class Cv extends Model
         'vacant_id',
         'state_id',
         'type',
+        'area',
 
         'pruebas'
     ];
@@ -60,5 +61,9 @@ class Cv extends Model
     public function recruitment()
     {
     return $this->hasOne('App\Models\Recruitment');
+    }
+    public function discarded()
+    {
+    return $this->hasOne('App\Models\Discarded');
     }
 }

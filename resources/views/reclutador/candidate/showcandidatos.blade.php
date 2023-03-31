@@ -110,6 +110,24 @@
 </style>
 
 @section('content')
+@if (Session::has('error'))
+<script>
+    Swal.fire(
+        'Error',
+        "{{ Session::get('error') }}",
+        'error'
+    )
+</script>
+@endif
+@if (Session::has('message'))
+<script>
+    Swal.fire(
+        '¡Bien hecho!',
+        "{{ Session::get('message') }}",
+        'success'
+    )
+</script>
+@endif
     <div class="page-content page-container" id="page-content">
         <div class="">
             {{-- <div class="row pl-3 pr-3 pt-3 justify-content-center">

@@ -20,19 +20,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RolSeeder::class);
         $this->call(UserSeeder::class);
-       
-        $this->call(RegionalSeeder::class);
-        $this->call(GerenciaSeeder::class);
-        $this->call(AreasTableSeeder::class);
-        $this->call(PositionsTableSeeder::class);
-        $this->call(CdcsTableSeeder::class);
         $this->call(StateSeeder::class);
         $this->call(TypeCvSeeder::class);
+        $this->call(AreaSeeder::class);
         $this->call(JobSeeder::class);
-        // $this->call(BossSeeder::class);
-
-        // $this->call(BossSeeder::class);
-        
+ 
         
     }
 }

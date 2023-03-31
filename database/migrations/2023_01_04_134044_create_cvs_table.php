@@ -54,6 +54,7 @@ class CreateCvsTable extends Migration
 
             $table->unsignedBigInteger('vacant_id');
             $table->unsignedBigInteger('type');
+            $table->string('area');
             // $table->foreign('vacant_id')->references('id')->on('vacants')->onDelete('cascade');;
 
             $table->unsignedBigInteger('state_id');

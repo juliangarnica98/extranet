@@ -19,49 +19,47 @@ class UserController extends Controller
     {
         Paginator::useBootstrap();
         $reclutadores = User::role(['Reclutador'])->paginate(5);
-        $analistas = User::role(['Analista'])->paginate(5);
-        // dd($users);
-        return view('admin.user.indexuser',compact('reclutadores','analistas'));
+        $id = Auth::user()->id;
+        return view('admin.user.indexuser',compact('reclutadores'));
     }
 
     public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
+    {   
+
+        $rules = [
             'name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'email' => 'required|max:255',
+            'email' => 'required|max:255|unique:users',
             'password' => 'required|min:6|max:255',
+        ];
+        $messages = [
+            'name.required' => 'El nombre es requerido.',
+            'name.max' =>'El nombre del usuario no puede ser mayor a :max caracteres.',
             
-        ]);
+            'last_name.required' => 'El apellido es requerido.',
+            'last_name.max' =>'El apellido del usuario no puede ser mayor a :max caracteres.',
+
+            'email.required'=> 'El correo es requerido.',
+            'email.max' =>'El correo del usuario no puede ser mayor a :max caracteres.',
+            'email.unique' =>'El correo del usuario ya existe.',
+
+            'password.required'=> 'La contraseña es requerida.',
+            'password.min'=> 'La contraseña debe tener al menos :min caracteres.',
+            'password.max' =>'El contraseña no puede ser mayor a :max caracteres.',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
         if($validator->fails()){
-            // dd($validator->errors());
+ 
             return back()->with('error',$validator->errors()->first());
         }
-        if($request->rol == 'Reclutador'){
-            User::create([
-                'name'=>$request->name,
-                'last_name'=>$request->last_name,
-                'email'=>$request->email,
-                'password' => Hash::make($request->password)
-            ])->assignRole('Reclutador');
-            return back()->with('message','Se ha creado el usuario correctamente');
-        }elseif($request->rol == 'Analista'){
-            User::create([
-                'name'=>$request->name,
-                'last_name'=>$request->last_name,
-                'email'=>$request->email,
-                'password' => Hash::make($request->password)
-            ])->assignRole('Analista');
-            return back()->with('message','Se ha creado el usuario correctamente');
-        }else{
-            return back()->with('error','Error al crear usuario');
-        }
-    }
-
-
-    public function show($id)
-    {
-        
+        User::create([
+            'name'=>$request->name,
+            'last_name'=>$request->last_name,
+            'email'=>$request->email,
+            'password' => Hash::make($request->password)
+        ])->assignRole('Reclutador');    
+        return back()->with('message','El usuario se ha creado correctamente');    
     }
 
   
@@ -81,10 +79,7 @@ class UserController extends Controller
             return back()->with('message','El usuario se activo');
         }
         
-
-        
     }
-
 
     public function destroy($id)
     {

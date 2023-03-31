@@ -138,31 +138,36 @@
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nombre</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="" name="name">
+                                <input type="text" class="form-control" id="exampleInputEmail1" value="{{old('name')}}"
+                                    aria-describedby="emailHelp" placeholder="" name="name" style="border-radius: 25px;">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Apellido</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="" name="last_name">
+                                <input type="text" class="form-control" id="exampleInputEmail1" value="{{old('last_name')}}"
+                                    aria-describedby="emailHelp" placeholder="" name="last_name"
+                                    style="border-radius: 25px;">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Correo electronico</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="" name="email">
+                                <input type="text" class="form-control" id="exampleInputEmail1" value="{{old('email')}}"
+                                    aria-describedby="emailHelp" placeholder="" name="email" style="border-radius: 25px;">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Contraseña</label>
                                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder=""
-                                    name="password">
+                                    name="password" style="border-radius: 25px;">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Rol</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name="rol">
-                                    <option>Reclutador</option>
-                                    <option>Analista</option>
-                                </select>
-                            </div>
+                            {{-- @if ($id == 1)
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Rol</label>
+                                    <select class="form-control" id="exampleFormControlSelect1" name="rol"
+                                        style="border-radius: 25px;">
+                                        <option>Reclutador</option>
+                                        <option>Analista</option>
+                                    </select>
+                                </div>
+                            @endif --}}
+
 
                             <button type="submit" class="btn btn-primary btn-block">Crear</button>
                         </form>
@@ -170,152 +175,207 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <div class="card box" style="background-color: #fff;">
-                    <div class="card-body">
-                        <h5 class="card-title">Reclutadores creados</h5>
+                {{-- @if ($id == 1) --}}
+                    <div class="card box" style="background-color: #fff;">
+                        <div class="card-body">
+                            <h5 class="card-title">Reclutadores creados</h5>
 
-                        <div class="table-responsive">
-                            <table class="table " style="background-color: #FFF; border-radius: 10px;">
-                                <thead>
-                                    <tr class="d-flex">
-                                        <th class="col text-center">Nombre</th>
-                                        <th class="col text-center">Apellido</th>
-                                        <th class="col text-center">Correo</th>
-                                        <th class="col text-center">Estado</th>
-                                        <th class="col text-center">Cambiar estado</th>
+                            <div class="table-responsive">
+                                <table class="table " style="background-color: #FFF; border-radius: 10px;">
+                                    <thead>
+                                        <tr class="d-flex">
+                                            <th class="col text-center">Nombre</th>
+                                            <th class="col text-center">Apellido</th>
+                                            <th class="col text-center">Correo</th>
+                                            <th class="col text-center">Estado</th>
+                                            <th class="col text-center">Cambiar estado</th>
 
-                                    </tr>
-                                </thead>
+                                        </tr>
+                                    </thead>
 
-                                <tbody>
-                                    @if (count($reclutadores) == 0)
-                                        No se le han creado nuevos usuarios
-                                    @else
-                                        @foreach ($reclutadores as $reclutador)
-                                            <tr class="d-flex ">
-                                                <td class="col text-center">{{ $reclutador->name }}</td>
-                                                <td class="col text-center">{{ $reclutador->last_name }}</td>
-                                                <th class="col text-center">{{ $reclutador->email }}</th>
-                                                {{-- <th class="col text-center">{{ $reclutador->rol }}</th> --}}
-                                                <th class="col text-center">
-                                                    @if ($reclutador->status == 1)
-                                                        Activo
-                                                    @endif
-                                                    @if ($reclutador->status == 0)
-                                                        Inactivo
-                                                    @endif
+                                    <tbody>
+                                        @if (count($reclutadores) == 0)
+                                            No se le han creado nuevos usuarios
+                                        @else
+                                            @foreach ($reclutadores as $reclutador)
+                                                <tr class="d-flex ">
+                                                    <td class="col text-center">{{ $reclutador->name }}</td>
+                                                    <td class="col text-center">{{ $reclutador->last_name }}</td>
+                                                    <th class="col text-center">{{ $reclutador->email }}</th>
+                                                    {{-- <th class="col text-center">{{ $reclutador->rol }}</th> --}}
+                                                    <th class="col text-center">
+                                                        @if ($reclutador->status == 1)
+                                                            Activo
+                                                        @endif
+                                                        @if ($reclutador->status == 0)
+                                                            Inactivo
+                                                        @endif
 
-                                                </th>
-                                                <th class="col text-center">
-                                                    <form method="POST"
-                                                        action="{{ route('admin.crear.update', $reclutador->id) }}">
-                                                        @csrf
-                                                        <div class="form-group">
-                                                            <button class="btn btn-danger"><i
-                                                                    class="fas fa-exchange-alt"></i>
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </th>
+                                                    </th>
+                                                    <th class="col text-center">
+                                                        <form method="POST"
+                                                            action="{{ route('admin.crear.update', $reclutador->id) }}">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <button class="btn btn-danger"><i
+                                                                        class="fas fa-exchange-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </th>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                    </tbody>
 
-
-                                                {{-- <td class="col text-center">
-                                                <div style="display: flex"
-                                                    class="text-center justify-content-center">
-                                                    <div class="pl-1">
-                                                        <button class="btn btn-warning"
-                                                            data-target="#Modalver{{ $cv->id }}"
-                                                            data-toggle="modal"><i class="fas fa-eye"></i></button>
-                                                        @include('admin.candidate.showcandidatos')
-                                                    </div>
-                                                </div>
-                                            </td> --}}
-
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                </tbody>
-
-                            </table>
-                        </div>
-                        <div class="container pt-3">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-12 text-xs-center">
-                                    {{ $reclutadores->links() }}
+                                </table>
+                            </div>
+                            <div class="container pt-3">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-12 text-xs-center">
+                                        {{ $reclutadores->links() }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {{-- {{$users}} --}}
+
+                        </div>
                     </div>
-                </div>
 
-                <div class="card box mt-5" style="background-color: #fff;">
-                    {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
-                    <div class="card-body">
-                        <h5 class="card-title">Analistas creados</h5>
+                    {{-- <div class="card box mt-5" style="background-color: #fff;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">Analistas creados</h5>
 
-                        <div class="table-responsive">
-                            <table class="table " style="background-color: #FFF; border-radius: 10px;">
-                                <thead>
-                                    <tr class="d-flex">
-                                        <th class="col text-center">Nombre</th>
-                                        <th class="col text-center">Apellido</th>
-                                        <th class="col text-center">Correo</th>
+                            <div class="table-responsive">
+                                <table class="table " style="background-color: #FFF; border-radius: 10px;">
+                                    <thead>
+                                        <tr class="d-flex">
+                                            <th class="col text-center">Nombre</th>
+                                            <th class="col text-center">Apellido</th>
+                                            <th class="col text-center">Correo</th>
 
-                                        <th class="col text-center">Estado</th>
-                                        <th class="col text-center">Cambiar estado</th>
+                                            <th class="col text-center">Estado</th>
+                                            <th class="col text-center">Cambiar estado</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (count($analistas) == 0)
-                                        No se le han creado nuevos usuarios
-                                    @else
-                                        @foreach ($analistas as $analista)
-                                            <tr class="d-flex">
-                                                <td class="col text-center">{{ $analista->name }}</td>
-                                                <td class="col text-center">{{ $analista->last_name }}</td>
-                                                <th class="col text-center">{{ $analista->email }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (count($analistas) == 0)
+                                            No se le han creado nuevos usuarios
+                                        @else
+                                            @foreach ($analistas as $analista)
+                                                <tr class="d-flex">
+                                                    <td class="col text-center">{{ $analista->name }}</td>
+                                                    <td class="col text-center">{{ $analista->last_name }}</td>
+                                                    <th class="col text-center">{{ $analista->email }}</th>
 
-                                                <th class="col text-center">
-                                                    @if ($analista->status == 1)
-                                                        Activo
-                                                    @endif
-                                                    @if ($analista->status == 0)
-                                                        Inactivo
-                                                    @endif
-                                                </th>
-                                                <th class="col text-center">
-                                                    <form method="POST"
-                                                        action="{{ route('admin.crear.update', $analista->id) }}">
-                                                        @csrf
-                                                        <div class="form-group">
-                                                            <button class="btn btn-danger"><i
-                                                                    class="fas fa-exchange-alt"></i>
-                                                            </button>
-                                                        </div>
-                                                    </form>
+                                                    <th class="col text-center">
+                                                        @if ($analista->status == 1)
+                                                            Activo
+                                                        @endif
+                                                        @if ($analista->status == 0)
+                                                            Inactivo
+                                                        @endif
+                                                    </th>
+                                                    <th class="col text-center">
+                                                        <form method="POST"
+                                                            action="{{ route('admin.crear.update', $analista->id) }}">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <button class="btn btn-danger"><i
+                                                                        class="fas fa-exchange-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </form>
 
-                                                </th>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                </tbody>
+                                                    </th>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                    </tbody>
 
-                            </table>
-                        </div>
-                        <div class="container pt-3">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-12 text-xs-center">
-                                    {{ $analistas->links() }}
+                                </table>
+                            </div>
+                            <div class="container pt-3">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-12 text-xs-center">
+                                        {{ $analistas->links() }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {{-- {{$users}} --}}
+                     
+                        </div>
+                    </div> --}}
+                {{-- @else
+                    <div class="card box" style="background-color: #fff;">
+                        <div class="card-body">
+                            <h5 class="card-title">Usuarios creados</h5>
+
+                            <div class="table-responsive">
+                                <table class="table " style="background-color: #FFF; border-radius: 10px;">
+                                    <thead>
+                                        <tr class="d-flex">
+                                            <th class="col text-center">Nombre</th>
+                                            <th class="col text-center">Apellido</th>
+                                            <th class="col text-center">Correo</th>
+                                            <th class="col text-center">Estado</th>
+                                            <th class="col text-center">Cambiar estado</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @if (count($Analista_Reclutador) == 0)
+                                            No se le han creado nuevos usuarios
+                                        @else
+                                            @foreach ($Analista_Reclutador as $Analista_Reclutad)
+                                                <tr class="d-flex ">
+                                                    <td class="col text-center">{{ $Analista_Reclutad->name }}</td>
+                                                    <td class="col text-center">{{ $Analista_Reclutad->last_name }}</td>
+                                                    <th class="col text-center">{{ $Analista_Reclutad->email }}</th>
+                                                    
+                                                    <th class="col text-center">
+                                                        @if ($Analista_Reclutad->status == 1)
+                                                            Activo
+                                                        @endif
+                                                        @if ($Analista_Reclutad->status == 0)
+                                                            Inactivo
+                                                        @endif
+
+                                                    </th>
+                                                    <th class="col text-center">
+                                                        <form method="POST"
+                                                            action="{{ route('admin.crear.update', $Analista_Reclutad->id) }}">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <button class="btn btn-danger"><i
+                                                                        class="fas fa-exchange-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </th>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div class="container pt-3">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-12 text-xs-center">
+                                        {{ $Analista_Reclutador->links() }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
-                </div>
+                @endif --}}
+
             </div>
         </div>
     </div>

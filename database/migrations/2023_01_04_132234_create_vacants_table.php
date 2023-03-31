@@ -16,6 +16,7 @@ class CreateVacantsTable extends Migration
         Schema::create('vacants', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('author');
             $table->string('title');
             $table->string('city');
             $table->string('description');
@@ -32,6 +33,12 @@ class CreateVacantsTable extends Migration
                    
             $table->unsignedBigInteger('type_cv_id');
             $table->foreign('type_cv_id')->references('id')->on('type_cvs')->onDelete('cascade');
+
+            $table->string('area');
+            $table->string('filtro');
+            
+            $table->unsignedBigInteger('area_id');
+            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
     
         });
     }

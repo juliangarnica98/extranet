@@ -2,355 +2,427 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Retiros LiliY&oi- @yield('title')</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Custom fonts for this template-->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="{{ asset('libs/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <title>Talento Lili</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="{{ asset('libs/sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('libs/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <style>
+        .bg-main {
+            background: linear-gradient(rgba(4, 165, 155, 0.9), rgba(235, 77, 151, 0.9)), url("{{ asset('imgs/bg-masthead - copia.jpg') }}") fixed center center;
+        }
+    </style>
 
 </head>
-<style>
-    .fa-user {
-        color: rgb(252, 0, 126)
-    }
 
-    .background-barnav {
-        background-color: #000000;
-    }
-
-    .background-barnav2 {
-        background: rgb(232, 81, 153);
-        background: linear-gradient(90deg, rgba(232, 81, 153, 1) 47%, rgba(3, 168, 162, 1) 100%);
-    }
-
-    .pad-50 {
-        padding-top: 20%;
-    }
-
-    .scroll {
-        max-height: 60vh;
-        overflow-y: auto;
-    }
-
-    *::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-    }
-
-    *::-webkit-scrollbar-track {
-        background: #e85199;
-    }
-
-    *::-webkit-scrollbar-thumb {
-        background-color: #818181;
-        border-radius: 20px;
-        border: 3px solid transparent;
-    }
-
-    #content {
-        background-color: #fff;
-    }
+<body>
 
 
-    table {
-        table-layout: fixed;
-        font-size: 1rem;
-    }
-
-    .miTablaPersonalizada th {
-        width: 10vw;
-        overflow: auto;
-        font-size: 1rem;
-    }
-
-    .headt td {
-        height: 2rem;
-    }
-
-    input {
-        color: #000000;
-        border: none;
-
-        border-bottom: 3px solid rgb(232, 81, 153);
-    }
-
-    .imagen_portada {
-        padding-top: 1rem;
-        padding-bottom: calc(10rem - 4.5rem);
-        background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("{{ asset('imgs/work.jpg') }}");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        background-size: cover;
-    }
-
-    .imagen_portada h1 {
-        font-size: 2.25rem;
-    }
-
-    @media (min-width: 992px) {
-        .imagen_portada {
-            height: 100vh;
-            min-height: 40rem;
-
-            padding-bottom: 0;
-        }
-
-        .imagen_portada h1 {
-            font-size: 3rem;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .imagen_portada h1 {
-            font-size: 3.5rem;
-        }
-    }
-
-    .quienes_somos {
-        background-color: #0fa3a1
-    }
-    .box{
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-</style>
-
-<body id="page-top">
-    <div class="navegacion">
-        <nav class="navbar navbar-expand-lg navbar-light box" style="background-color: #ffffff">
-            <a class="navbar-brand text-light" href="/">
-                <h1 style="color: #f06fb9"> Talentos Lili&Yoi</h1>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse mr-auto justify-content-end align-items-right"
-                id="navbarSupportedContent">
-                <ul class="navbar-nav">
-
-
-                    <li class="nav-item"> <a class="navbar-brand  nav-link" href="/login" style="color: #f06fb9">Iniciar sesion</a>
-                    </li>
-
-                </ul>
+    <header id="header" class="fixed-top" style="background-color: #000000">
+        <div class="container d-flex align-items-center">
+            <h1 class="logo me-auto"><a href="{{ route('home.index') }}">Talentos Lili&Yoi</a></h1>
+            <div class="text-center d-flex align-items-center justify-content-center">
+                <nav id="navbar" class="navbar ">
+                    <ul>
+                        <li><a class="nav-link scrollto" href="{{ route('login') }}">Iniciar Sesión</a></li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
             </div>
-        </nav>
-    </div>
-    @if (Session::has('error'))
-        <script>
-            Swal.fire(
-                'Error al importar archivo',
-                "{{ Session::get('error') }}",
-                'error'
-            )
-        </script>
-    @endif
-    @if (Session::has('message'))
-        <script>
-            Swal.fire(
-                '¡Bien hecho!',
-                "{{ Session::get('message') }}",
-                'success'
-            )
-        </script>
-    @endif
-    <div class="div">
-        <div class="imagen_portada">
+        </div>
+    </header>
 
-            <div class="container">
-                <div class="row justify-content-center pb-3">
-                    <div class="col-md-5">
-                        <input type="text" class="form-control" placeholder="Buscar..">
-                    </div>
+
+
+    {{-- <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <h1>Talentos Lili&Yoi</h1>
+                    <h2>Conoce nuestras vacantes disponibles o registra tu hoja de vida</h2>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card" style="height: 85vh">
-                            <div class="card-body pt-2 pb-2 pl-0 pr-0">
-                                <div class="card mt-2 border-0">
-                                    <div class="d-flex justify-content-center">
-                                        <a href="#" class="card-block stretched-link text-decoration-none">
-                                            <div class="card-body pt-0 pb-0 ">
-                                                <h5 class="card-title text-dark pl-0"><strong>
-                                                        Empleos encontrados <i class="fas fa-user-md"></i>
-                                                        {{ $num_vacants }} </strong> </h5>
-                                            </div>
-                                        </a>
-                                    </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="{{ asset('imgs/hero-img.png') }}" class="img-fluid animated" alt="">
+                </div>
+            </div>
+        </div>
+    </section> --}}
 
+    <main id="main" style="padding-top: 4%" class="bg-main pb-5">
+
+
+
+        @if (Session::has('error'))
+            <script>
+                Swal.fire(
+                    'Error al importar archivo',
+                    "{{ Session::get('error') }}",
+                    'error'
+                )
+            </script>
+        @endif
+        @if (Session::has('message'))
+            <script>
+                Swal.fire(
+                    '¡Bien hecho!',
+                    "{{ Session::get('message') }}",
+                    'success'
+                )
+            </script>
+        @endif
+        <div class="div pt-5">
+            <div class="imagen_portada">
+
+                <div class="container">
+                    {{-- <div class="row justify-content-center pb-3">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="Buscar..">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary col-12" style="">Buscar</button>
+                        </div>
+                    </div> --}}
+                    <div class="row">
+                        <div class="col-md-3" style="">
+                            <div class="card"
+                                style="height: 85vh; background-color: rgba(255, 255, 255, 0.6);height: auto">
+                                <div class="card-body">
+                                    <h2 class="card-title text-center"><strong> FILTROS<br>
+                                        </strong>
+                                    </h2>
+                                    <form action="{{ route('filtrar.vacantes') }}" method="get">
+                                        @csrf
+                                        <span for="" class="text-center">Area</span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="area"
+                                                id="flexRadioDisabled" value="cedi">
+                                            <label class="form-check-label" for="flexRadioDisabled">
+                                                Cedi
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="area"
+                                                id="flexRadioCheckedDisabled" value="administrativo">
+                                            <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                                Administrativos
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="area"
+                                                id="flexRadioCheckedDisabled" value="comercial">
+                                            <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                                Comercial
+                                            </label>
+                                        </div>
+                                        <span for="" class="text-center">Salario</span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="salario"
+                                                id="flexRadioDisabled" value="1">
+                                            <label class="form-check-label" for="flexRadioDisabled">
+                                                $0 - $1'000.000
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="salario"
+                                                id="flexRadioCheckedDisabled" value="2">
+                                            <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                                $1'000.001 - $3'000.000
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="salario"
+                                                id="flexRadioCheckedDisabled" value="3">
+                                            <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                                $3'000.001 - mas
+                                            </label>
+                                        </div>
+
+                                        <button class="btn col-10 m-2 text-center"
+                                            style="background-color: #e85199;border-radius: 25px;">Buscar</button>
+                                    </form>
                                 </div>
-                                @foreach ($vacants as $vacant)
-                                    <div class="border-top border-bottom mt-1">
-                                        <div class="card pl-0 pr-0 ml-0 mr-0 border-0">
-                                            {{-- border-right-0 border-left-0 --}}
-                                            <a href="{{ route('buscarvacante', ['id' => $vacant->id]) }}"
-                                                class="card-block stretched-link text-decoration-none">
-                                                <div class="card-body pt-1 pb-1 ml-0 mr-0">
-                                                    
-                                                    <h5 class="card-title text-dark text-center">
-                                                        <strong>{{ $vacant->title }}</strong>
-                                                    </h5>
-                                                    <h6 class="card-subtitle mb-1 text-dark">{{ $vacant->city }} -
-                                                        ${{ number_format($vacant->salary, 1, ',', '.') }} COP
-                                                    </h6>
-                                                    <p class="card-text text-dark">Educación requerida:
-                                                        {{ $vacant->education }} </p>
-                                                    <small id="ago"
-                                                        class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
-                                                        {{ date('d-m-Y', strtotime($vacant->created_at)) }}</small>
+                            </div>
+                        </div>
+                        <div class="col-md-5" style="">
+                            <div class="card" style="height: 85vh; background-color: rgba(255, 255, 255, 0.6)">
+                                <div class="card-body pt-2 pb-2 pl-0 pr-0">
+                                    <div class="card mt-2 border-0"
+                                        style=" background-color: rgba(255, 255, 255, 0.7)">
+                                        <div class="d-flex justify-content-center">
+                                            <a href="#" class="card-block stretched-link text-decoration-none">
+                                                <div class="card-body pt-0 pb-0 ">
+                                                    <h5 class="card-title text-dark pl-0"><strong>
+                                                            Empleos encontrados <i class="fas fa-user-md"></i>
+                                                            </strong> </h5>
                                                 </div>
                                             </a>
                                         </div>
+
                                     </div>
-                                @endforeach
+                                    @foreach ($vacants as $vacant)
+                                        <div class="border-top border-bottom mt-1">
+                                            <div class="card pl-0 pr-0 ml-0 mr-0 border-0"
+                                                style=" background-color: rgba(255, 255, 255, 0.7)">
+                                                {{-- border-right-0 border-left-0 --}}
+                                                <a href="{{ route('buscarvacante', ['id' => $vacant->id]) }}"
+                                                    class="card-block stretched-link text-decoration-none">
+                                                    <div class="card-body pt-1 pb-1 ml-0 mr-0">
+
+                                                        <h5 class="card-title text-dark text-center">
+                                                            <strong>{{ $vacant->title }}</strong>
+                                                        </h5>
+                                                        <h6 class="card-subtitle mb-1 text-dark">{{ $vacant->city }} -
+                                                            ${{ number_format($vacant->salary, 1, ',', '.') }} COP
+                                                        </h6>
+                                                        <p class="card-text text-dark">Educación requerida:
+                                                            {{ $vacant->education }} </p>
+                                                        <small id="ago"
+                                                            class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
+                                                            {{ date('d-m-Y', strtotime($vacant->created_at)) }}</small>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <div class="card text-dark"
+                                style="height: auto;background-color: rgba(255, 255, 255, 0.6)">
+                                @if (isset($vacant_found))
+                                    <div class="card-body">
+                                        <h2 class="card-title text-center"><strong> {{ $vacant_found->title }} <br>
+                                            </strong>
+                                        </h2>
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="text-center">
+                                                    {{ $vacant_found->city }} <br>
+                                                    <small id="ago"
+                                                        class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
+                                                        {{ date('d-m-Y', strtotime($vacant_found->created_at)) }}</small>
+                                                    <br>
+
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="d-flex justify-content-center">
+                                                    {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
+
+                                                    <a href="{{ route('home.vacante', ['id' => $vacant_found->id, 'type' => '2', 'area' => $vacant_found->area_id]) }}"
+                                                        class="btn btn-block col-6"
+                                                        style="border-radius: 20px; background-color: #e85199;color:#fff">Aplicar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <hr>
+                                        <div class="row pb-3 mt-3">
+                                            <div class="col-4">
+                                                <p class="card-text border text-center" style="border-radius: 20px;">
+                                                    ${{ number_format($vacant_found->salary, 1, ',', '.') }} COP</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="card-text border text-center" style="border-radius: 20px;">
+                                                    {{ $vacant_found->city }}</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="card-text border text-center" style="border-radius: 20px;">
+                                                    Contrato {{ $vacant_found->type_contract }}</p>
+                                            </div>
+                                        </div>
+
+                                        <p class="card-text text-dark">
+                                        <h4><strong>Descripción:</strong> </h4>
+                                        {{ $vacant_found->description }}
+                                        <br>
+                                        <strong>Vacantes:</strong> {{ $vacant_found->num_vacants }}
+
+                                        </p>
+                                        <h4><strong>Requisitos:</strong> </h4>
+                                        <p class="text-dark">
+                                            &#8226; <strong>Disponibilidad para viajar:</strong>
+                                            {{ $vacant_found->availability_travel }} <br>
+                                            &#8226; <strong>Idioma necesario:</strong> {{ $vacant_found->language }}
+                                            <br>
+                                            &#8226; <strong>Nivel educativo requerido:</strong>
+                                            {{ $vacant_found->education }} <br>
+                                            &#8226; <strong>Experiencia:</strong> {{ $vacant_found->experience }}
+                                        </p>
+                                        <div class="d-flex justify-content-center">
+
+                                            <a href="{{ route('home.vacante', ['id' => $vacant_found->id, 'type' => '2', 'area' => $vacant_found->area_id]) }}"
+                                                {{-- route('remindHelper',['brand'=>$brandName, 'product'=>productId]) --}} {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
+                                                class="btn btn-info btn-block col-12"
+                                                style="border-radius: 20px; ">Aplicar</a>
+                                        </div>
+
+                                    </div>
+                                @else
+                                    
+                                        {{-- <div class="card-body">
+                                            <h2 class="card-title text-center"><strong> {{ $first_vacant->title }}
+                                                    <br>
+                                                </strong>
+                                            </h2>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="text-center">
+                                                        {{ $first_vacant->city }} <br>
+                                                        <small id="ago"
+                                                            class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
+                                                            {{ date('d-m-Y', strtotime($first_vacant->created_at)) }}</small>
+                                                        <br>
+
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="d-flex justify-content-center">
+                                                        
+                                                        <a href="{{ route('home.vacante', ['id' => $first_vacant->id, 'type' => '2', 'area' => $first_vacant->area_id]) }}"
+                                                            class="btn btn-block col-6"
+                                                            style="border-radius: 20px; background-color: #e85199;color:#fff">Aplicar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <hr>
+                                            <div class="row pb-3 mt-3">
+                                                <div class="col-4">
+                                                    <p class="card-text border text-center"
+                                                        style="border-radius: 20px;">
+                                                        ${{ number_format($first_vacant->salary, 1, ',', '.') }} COP
+                                                    </p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="card-text border text-center"
+                                                        style="border-radius: 20px;">
+                                                        {{ $first_vacant->city }}</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="card-text border text-center"
+                                                        style="border-radius: 20px;">
+                                                        Contrato {{ $first_vacant->type_contract }}</p>
+                                                </div>
+                                            </div>
+
+                                            <p class="card-text text-dark">
+                                            <h4><strong>Descripción:</strong> </h4>
+                                            {{ $first_vacant->description }}
+                                            <br>
+                                            <strong>Vacantes:</strong> {{ $first_vacant->num_vacants }}
+
+                                            </p>
+                                            <h4><strong>Requisitos:</strong> </h4>
+                                            <p class="text-dark">
+                                                &#8226; <strong>Disponibilidad para viajar:</strong>
+                                                {{ $first_vacant->availability_travel }} <br>
+                                                &#8226; <strong>Idioma necesario:</strong>
+                                                {{ $first_vacant->language }}
+                                                <br>
+                                                &#8226; <strong>Nivel educativo requerido:</strong>
+                                                {{ $first_vacant->education }} <br>
+                                                &#8226; <strong>Experiencia:</strong> {{ $first_vacant->experience }}
+                                            </p>
+                                            <div class="d-flex justify-content-center">
+
+
+
+                                                <a href="{{ route('home.vacante', ['id' => $first_vacant->id, 'type' => '2', 'area' => $first_vacant->area_id]) }}"
+                                                   
+                                                    class="btn btn-info btn-block col-12"
+                                                    style="border-radius: 20px; ">Aplicar</a>
+                                            </div>
+
+                                        </div> --}}
+                                    
+                                        <h2 class="card-title text-center"><strong>Selecciona la vacante de tu interes
+                                                <br>
+                                            </strong>
+                                        </h2>
+                                        
+                                    
+                                @endif
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 ">
-                        <div class="card text-dark" style="height: auto">
-                            @if (isset($vacant_found))
-                                <div class="card-body">
-                                    <h2 class="card-title text-center"><strong> {{ $vacant_found->title }} <br>
-                                        </strong>
-                                    </h2>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p class="text-center">
-                                                {{ $vacant_found->city }} <br>
-                                                <small id="ago"
-                                                    class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
-                                                    {{ date('d-m-Y', strtotime($vacant_found->created_at)) }}</small>
-                                                <br>
-
-                                            </p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="d-flex justify-content-center">
-                                                {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
-                                                <a href="{{ route('home.vacante', ['id' => $vacant_found->id, 'type' => '2']) }}"
-                                                    class="btn btn-block"
-                                                    style="border-radius: 20px; background-color: #e85199;color:#fff">Aplicar</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                </div>
 
 
+            </div>
+        </div>
+    </main>
 
-                                    <hr>
-                                    <div class="row pb-3 mt-3">
-                                        <div class="col-4">
-                                            <p class="card-text border text-center" style="border-radius: 20px;">
-                                                ${{ number_format($vacant_found->salary, 1, ',', '.') }} COP</p>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="card-text border text-center" style="border-radius: 20px;">
-                                                {{ $vacant_found->city }}</p>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="card-text border text-center" style="border-radius: 20px;">
-                                                Contrato {{ $vacant_found->type_contract }}</p>
-                                        </div>
-                                    </div>
 
-                                    <p class="card-text text-dark">
-                                    <h4><strong>Descripción:</strong> </h4>
-                                    {{ $vacant_found->description }}
-                                    <br>
-                                    <strong>Vacantes:</strong> {{ $vacant_found->num_vacants }}
-
-                                    </p>
-                                    <h4><strong>Requisitos:</strong> </h4>
-                                    <p class="text-dark">
-                                        &#8226; <strong>Disponibilidad para viajar:</strong>
-                                        {{ $vacant_found->availability_travel }} <br>
-                                        &#8226; <strong>Idioma necesario:</strong> {{ $vacant_found->language }} <br>
-                                        &#8226; <strong>Nivel educativo requerido:</strong>
-                                        {{ $vacant_found->education }} <br>
-                                        &#8226; <strong>Experiencia:</strong> {{ $vacant_found->experience }}
-                                    </p>
-                                    <div class="d-flex justify-content-center">
-                                        
-                                        <a href="{{ route('home.vacante', ['id' => $vacant_found->id, 'type' => '2']) }}"
-                                            {{-- route('remindHelper',['brand'=>$brandName, 'product'=>productId]) --}} {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}} class="btn btn-info btn-block"
-                                            style="border-radius: 20px; ">Aplicar</a>
-                                    </div>
-
-                                </div>
-                            @endif
+    <footer id="footer">
+        <div class="footer-top" style="background-color: #000000">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 footer-links">
+                        <h4 class="text-center" style="color: #fff">Nuestras redes sociales</h4>
+                        <div class="social-links mt-3 text-center">
+                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                         </div>
                     </div>
+
                 </div>
             </div>
-
-
         </div>
-    </div>
-
-    <div class="footer">
-        <footer class="text-center text-white" style="background-color: #212529">
-            <!-- Grid container -->
-            <div class="container pt-4">
-                <!-- Section: Social media -->
-                <section class="mb-4">
-                    <!-- Facebook -->
-                    <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!" role="button"
-                        data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
-
-                    <!-- Twitter -->
-                    <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!" role="button"
-                        data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
-
-                    <!-- Google -->
-                    <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!" role="button"
-                        data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
-
-                    <!-- Instagram -->
-                    <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!" role="button"
-                        data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
-
-                    <!-- Linkedin -->
-                    <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!" role="button"
-                        data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
-                    <!-- Github -->
-                    <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!" role="button"
-                        data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
-                </section>
-                <!-- Section: Social media -->
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                &copy; Copyright <strong><span>lilipink.com</span></strong>. Todos los derechos reservados
             </div>
-            <!-- Grid container -->
+        </div>
+    </footer>
 
-            <!-- Copyright -->
-            <div class="text-center text-light p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2022 Copyright:
-                <a class="text-light" href="https://www.lilipink.com/">lilipink.com</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
-    </div>
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
 
+    <script src="{{ asset('vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/waypoints/noframework.waypoints.js') }}"></script>
+    <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
     <script src="{{ asset('libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('libs/sbadmin/js/sb-admin-2.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/es.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(document).ready(function() {
             moment.locale('es');

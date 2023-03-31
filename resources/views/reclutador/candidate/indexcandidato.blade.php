@@ -109,8 +109,26 @@
 </style>
 
 @section('content')
+@if (Session::has('error'))
+<script>
+    Swal.fire(
+        'Error',
+        "{{ Session::get('error') }}",
+        'error'
+    )
+</script>
+@endif
+@if (Session::has('message'))
+<script>
+    Swal.fire(
+        '¡Bien hecho!',
+        "{{ Session::get('message') }}",
+        'success'
+    )
+</script>
+@endif
     <div class="page-content page-container" id="page-content">
-        <h2 class="text-center text-dark pt-2 ">VACANTES</h2>
+        <h2 class="text-center text-dark pt-2 ">CANDIDATOS</h2>
         <div class="">
             {{-- <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12">
@@ -126,86 +144,17 @@
                 <div class="col-md-4 grid-margin stretch-card">
                     <div class="card box" style="background-color: #ffffff;height: 85vh">
                         <div class="card-body">
-                            <h1 class="card-title">Vacantes creadas</h1>
+                            <h1 class="card-title">USUARIOS</h1>
                             <p class="card-description">
-                                Especificación de aspirantes
+                                FILTROS DE VACANTES 
                             </p>
-                            {{-- <div class=" table-responsive">
-                                <table class="table " style="background-color: #FFF; border-radius: 10px;">
-                                    <thead>
-                                        <tr class="d-flex">
-                                            <th class="col text-center">Fecha</th>
-                                            <th class="col text-center">titulo</th>
-                                            <th class="col text-center">Descripción</th>
-                                            <th class="col text-center">Tipo de contrato</th>
-                                            <th class="col text-center">Celular</th>
-                                            <th class="col text-center">Pruebas</th>
-                                            <th class="col text-center">Reclutar</th>
-                                            <th class="col text-center">Ver</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody> --}}
-
-                            {{-- @foreach ($cvs as $cv)
-                                            <tr class="d-flex">
-                                                <td class="col text-center">{{ date('d-m-Y', strtotime($cv->created_at)) }}
-                                                </td>
-                                                @foreach ($vacants as $vacant)
-                                                    @if ($cv->vacant_id === $vacant->id)
-                                                        <th class="col text-center">{{ $vacant->title }}</th>
-                                                    @endif
-                                                @endforeach
-                                                <td class="col text-center">{{ $cv->name }}</td>
-                                                <th class="col text-center">{{ $cv->num_id }}</th>
-                                                <td class="col text-center">{{ $cv->num_cell }}</td>
-
-                                        
-                                                <td class="col text-center">
-                                                    @if ($cv->pruebas == 1)
-                                                        <i class="fas fa-check"></i>
-                                                    @else
-                                                        <i class="fas fa-times"></i>
-                                                    @endif
-                                                    
-                                                        
-                                                                                                   
-                                                </td>
-                                                <td class="col text-center">
-                                                    <div style="display: flex" class="text-center justify-content-center">
-                                                        <div class="pl-1">
-                                                            <button class="btn btn-success"
-                                                                data-target="#Modalstore{{ $cv->id }}" data-toggle="modal"
-                                                                @if ($cv->pruebas == 1) disabled='disabled' @endif 
-                                                                ><i class="far fa-edit"></i></button>
-                                                            @include('reclutador.candidate.actioncandidato')
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="col text-center">
-                                                    <div style="display: flex" class="text-center justify-content-center">
-                                                        <div class="pl-1">
-                                                            <button class="btn btn-warning"
-                                                                data-target="#Modalver{{ $cv->id }}" data-toggle="modal"><i
-                                                                    class="fas fa-eye"></i></button>
-                                                            @include('reclutador.candidate.showcandidatos')
-                                                        </div>
-                                                    </div>
-                                                </td>
-    
-                                            </tr>
-                                        @endforeach --}}
-                            {{-- </tbody>
-                                </table>
-
-                            </div> --}}
-
                         </div>
                     </div>
                 </div>
                 <div class="col-md-8 grid-margin stretch-card">
                     <div class="card box" style="background-color: #ffffff;height: 85vh">
                         <div class="card-body">
-                            <h1 class="card-title">Vacantes creadas</h1>
+                            <h1 class="card-title">Candidatos por vacantes</h1>
                             <div class="row">
                                 {{-- <div class="col-md-4"><p class="card-description">Selecciona una vacante </p></div> --}}
                                 <div class="col-md-12">
@@ -237,7 +186,7 @@
                                                             <strong>{{ $vacant->title }}</strong>
                                                         </h5>
                                                         <div class=" text-center">
-                                                            <small class="h6 text-dark">Personas que han aplicado: {{ $vacant->num_aplic }}</small>
+                                                            <small class="h6 text-dark">Candidatos: {{ $vacant->num_aplic }}</small>
 
                                                         </div>
                                                     </div>

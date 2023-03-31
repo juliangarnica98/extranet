@@ -181,22 +181,11 @@
 
 
 
-            {{-- <div class="pt-50">
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="#">
-                        <i class="fas fa-user-tie"></i>
-                        <span>MI PERFIL</span></a>
-                </li>
-            </div> --}}
-            <!-- Divider -->
+            
             @can('admin.index')
                 <div class="">
                     <div class="pt-50">
-                        {{-- <li class="nav-item pt-2 pb-2">
-                            <a class="nav-link text-center" href="{{ route('admin.perfil') }}">
-                                <i class="fas fa-user-tie bg-black"></i>
-                                <span class="text-light">MI PERFIL</span></a>
-                        </li> --}}
+                        
                         <li class="nav-item pb-2 ">
                             <a class="nav-link text-center" href="">
                                 <i class="fas fa-chart-line"></i>
@@ -230,22 +219,47 @@
             @endcan
             @can('reclutador.index')
                 <div class="">
-                    <div class="pt-50">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reclutador.perfil') }}">
+                    <div class="pt-5">
+                        {{-- <li class="nav-item">
+                            <a class="nav-link text-center" href="{{ route('reclutador.perfil') }}">
                                 <i class="fas fa-user-tie"></i>
                                 <span>MI PERFIL</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="{{ route('reclutador.index') }}">
-                                <i class="fa fa-id-card" aria-hidden="true"></i>
+                        </li> --}}
+                        <li class="nav-item pt-5">
+                            <a class="nav-link text-center" href="{{ route('reclutador.vacantes.index') }}">
+                                <i class="fa fa-briefcase" aria-hidden="true"></i>
                                 <span>VACANTES</span></a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reclutador.show') }}">
+                        <li class="nav-item ">
+                            <a class="nav-link text-center" href="{{ route('reclutador.index') }}">
+                                <i class="fas fa-users"></i>
+                                <span>CANDIDATOS</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-center" href="{{ route('reclutador.seleccionados.index') }}">
                                 <i class="fas fa-user-check"></i>
+                                <span>SELECCIONADOS</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-center" href="{{ route('reclutador.discarded.index') }}">
+                                <i class="fas fa-user-times"></i>
+                                <span>DESCARTADOS</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-center" href="{{ route('reclutador.show') }}">
+                                <i class="far fa-folder-open"></i>
                                 <span>RECLUTAMIENTOS</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-center" href="{{ route('reclutador.show') }}">
+                                <i class="fas fa-folder-open"></i>
+                                <span>ANALISTAS</span></a>
+                        </li>
+                        
+                        <li class="nav-item ">
+                            <a class="nav-link text-center" href="{{ route('reclutador.show') }}">
+                                <i class="fas fa-file-archive"></i>
+                                <span>REPORTES</span></a>
                         </li>
                     </div>
 
