@@ -352,7 +352,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <input type="number" placeholder="número de documento" name="num_id" class="col-12">
+                                <input type="number" value="{{$documento}}" name="num_id" class="col-12" readonly>
                             </div>
 
 
@@ -500,7 +500,7 @@
 
                     <input type="hidden" name="vacant_id" value="{{ $id }}">
                     <input type="hidden" name="type" value="{{ $type }}">
-                    <input type="hidden" name="area" value="{{ $area }}">
+                    {{-- <input type="hidden" name="area" value="{{ $area }}"> --}}
 
                     <div class="step">
                         <div id="otra_empresa">

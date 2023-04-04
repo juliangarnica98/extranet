@@ -37,8 +37,8 @@ class CreateVacantsTable extends Migration
             $table->string('area');
             $table->string('filtro');
             
-            $table->unsignedBigInteger('area_id');
-            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
+            // $table->unsignedBigInteger('area_id');
+            // $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
     
         });
     }

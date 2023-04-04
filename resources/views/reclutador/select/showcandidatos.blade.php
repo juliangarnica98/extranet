@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 <style>
     body {
@@ -101,106 +100,106 @@
         font-size: 1rem;
         line-height: 1;
     }
-    .vancants{
+
+    .vancants {
         transition: width 2s;
     }
-    .vancants:hover{
+
+    .vancants:hover {
         box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
     }
 </style>
 
 @section('content')
-@if (Session::has('error'))
-<script>
-    Swal.fire(
-        'Error',
-        "{{ Session::get('error') }}",
-        'error'
-    )
-</script>
-@endif
-@if (Session::has('message'))
-<script>
-    Swal.fire(
-        '¡Bien hecho!',
-        "{{ Session::get('message') }}",
-        'success'
-    )
-</script>
-@endif
+    @if (Session::has('error'))
+        <script>
+            Swal.fire(
+                'Error',
+                "{{ Session::get('error') }}",
+                'error'
+            )
+        </script>
+    @endif
+    @if (Session::has('message'))
+        <script>
+            Swal.fire(
+                '¡Bien hecho!',
+                "{{ Session::get('message') }}",
+                'success'
+            )
+        </script>
+    @endif
     <div class="page-content page-container" id="page-content">
         <div class="">
-            {{-- <div class="row pl-3 pr-3 pt-3 justify-content-center">
-                <div class="col-md-12">
-                    <div class="card " style="background-color: #ebebeb;">
-                        <div class="text-center">
-                            o
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+
             <div class="row pl-3 pr-3 pt-2 justify-content-center">
-                <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card box" style="background-color: #ffffff;height: 85vh">
-                        <div class="card-body">
-                            <h1 class="card-title">Personas que aplicaron</h1>
-                            <div class="row">
-                                {{-- <div class="col-md-4"><p class="card-description">Selecciona una vacante </p></div> --}}
-                                <div class="col-md-12">
-                                    <form method="get" action="">
-                                        <div class="form-row">
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="busqueda">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input type="submit" class="btn btn-primary btn-block" value="buscar" style="border-radius: 25px">
-                                            </div>
+                @if (count($cvs) == 0)
+                    <strong>No hay candidatos seleccionados para esta vacante</strong>
+                @else
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card box">
+                            <div class="card-body">
+                                <form method="get" action="">
+                                    <div class="form-row">
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="text" name="busqueda"
+                                                style=" border-radius: 25px;">
                                         </div>
-                                    </form>
+                                        <div class="col-sm-2">
+                                            <input type="submit" class="btn btn-primary btn-block" value="buscar">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="card box mt-3" style="background-color: #ffffff;height: 85vh">
+                            <div class="card-body">
+                                <h1 class="card-title">Personas selecciondas</h1>
+                                <div class="table-responsive">
+                                    <table class="table " style="background-color: #FFF; border-radius: 10px;">
+                                        <thead>
+                                            <tr class="d-flex">
+                                                <th class="col text-center">Correo:</th>
+                                                <th class="col text-center">Ciudad de residencia:</th>
+                                                <th class="col text-center">Dirección: </th>
+                                                <th class="col text-center">Edad:</th>
+                                                <th class="col text-center"></th>
+                                                <th class="col text-center"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($cvs as $cv)
+                                                <tr class="d-flex">
+                                                    <th class="col-2 text-center">{{ $cv->email }}</th>
+                                                    <td class="col text-center">{{ $cv->city_address }}</td>
+                                                    <td class="col text-center">{{ $cv->address }}</td>
+                                                    <td class="col text-center">{{ $cv->age }}</td>
+                                                    <td>
+                                                        <button class="btn btn-info"
+                                                            data-target="#Modalstore{{ $cv->id }}"
+                                                            data-toggle="modal"><i class="fas fa-check"></i> Reclutar
+                                                            candidato</button>
+                                                        @include('reclutador.select.modals.actioncandidato')
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-danger"
+                                                            data-target="#Modaldescartar{{ $cv->id }}"
+                                                            data-toggle="modal"><i class="fas fa-times"></i> Descartar
+                                                            candidato</button>
+                                                        @include('reclutador.select.modals.descartarcandidato')
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            
-                            
-                            @foreach ($cvs as $cv)
-                                <div class="border-top border-bottom mt-1">
-                                    <div class="card pl-0 pr-0 ml-0 mr-0 border-0">
-                                      
-                                        {{-- <a href="{{ route('vercandidato', ['id' => $cv->id]) }}"
-                                           
-                                            class="card-block stretched-link text-decoration-none"> --}}
-                                            <div class="card-body pt-1 pb-1 ml-0 mr-0">
-                                                <h5 class="card-title text-dark text-center">
-                                                    <strong>{{ $cv->name }}</strong>
-                                                </h5>
-                                                <div class="row">
-                                                    <div class="col text-dark">Correo: <span class="text-center h6">{{ $cv->email }}</span><br></div>
-                                                    <div class="col text-dark">Ciudad de residencia: <span class="text-center h6">{{ $cv->city_address }}</span><br></div>
-                                                    <div class="col text-dark">Dirección:  <span class="text-center h6">{{ $cv->address }}</span><br></div>
-                                                    <div class="col text-dark">Edad: <span class="text-center h6">{{ $cv->age }}</span><br></div>
-                                                    <div class="col text-dark">
-                                                        <button class="btn btn-danger" data-target="#Modalstore{{ $cv->id }}"
-                                                            data-toggle="modal"><i class="fas fa-times"></i> Reclutar candidato</button>
-                                                            @include('reclutador.select.modals.actioncandidato')
-                                                    </div>
-                                                    <div class="col text-dark">
-                                                        <button class="btn btn-danger" data-target="#Modaldescartar{{ $cv->id }}"
-                                                            data-toggle="modal"><i class="fas fa-times"></i> Descartar candidato</button>
-                                                                @include('reclutador.select.modals.descartarcandidato')
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        {{-- </a> --}}
-                                    </div>
-                                </div>
-                            @endforeach
-
                         </div>
                     </div>
-                </div>
-
+                @endif
             </div>
+
         </div>
     </div>
-
 @endsection

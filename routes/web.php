@@ -18,15 +18,19 @@ Route::get('/', function () {
 Auth::routes(["register" => false]);
 
 Route::group(['prefix' => 'extranet'], function() {
-    Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
-    Route::get('/vacantes', [App\Http\Controllers\HomeController::class, 'vacantes'])->name('vacantes.index');
-    Route::get('/trabajo/{id} ', [App\Http\Controllers\HomeController::class, 'vacantes2'])->name('buscarvacante2');
-    Route::get('/buscarvacante/{id} ', [App\Http\Controllers\HomeController::class, 'buscar'])->name('buscarvacante');
-    Route::get('/filtrar-vacantes', [App\Http\Controllers\HomeController::class, 'filtrar'])->name('filtrar.vacantes');
+    Route::get('/index', [App\Http\Controllers\Principal\HomeController::class, 'index'])->name('home.index');
+    Route::get('/vacantes', [App\Http\Controllers\Principal\HomeController::class, 'vacantes'])->name('vacantes.index');
+    Route::get('/trabajo/{id} ', [App\Http\Controllers\Principal\HomeController::class, 'vacantes2'])->name('buscarvacante2');
+    Route::get('/buscarvacante/{id} ', [App\Http\Controllers\Principal\HomeController::class, 'buscar'])->name('buscarvacante');
+    Route::get('/filtrar-vacantes', [App\Http\Controllers\Principal\HomeController::class, 'filtrar'])->name('filtrar.vacantes');
 
-    Route::get('/hoja-vida', [App\Http\Controllers\CvController::class, 'index'])->name('cv.index');
-    Route::get('/hoja-vida/registrar', [App\Http\Controllers\CvController::class, 'store'])->name('cv.store');
-    Route::get('vacante/{id}/{type}/{area?}', [App\Http\Controllers\CvController::class, 'vacante'])->name('home.vacante');
+    Route::get('/hoja-vida', [App\Http\Controllers\Principal\CvController::class, 'index'])->name('cv.index');
+    Route::get('/hoja-vida/registrar', [App\Http\Controllers\Principal\CvController::class, 'store'])->name('cv.store');
+    Route::post('vacante/{id}/{type}', [App\Http\Controllers\Principal\CvController::class, 'vacante'])->name('home.vacante');
+    // Route::post('aplicar-vacante/{id}/{type}/{documento}', [App\Http\Controllers\Principal\CvController::class, 'vacanteConCedula'])->name('cv.aplicar.vacante');
+    Route::post('aplicar-vacante', [App\Http\Controllers\Principal\CvController::class, 'vacanteConCedula'])->name('cv.aplicar.vacante');
+    Route::get('editar-cv/{id}/{type}/{documento}', [App\Http\Controllers\Principal\CvController::class, 'update'])->name('cv.vacant.update');
+    //Route::put('', [App\Http\Controllers\Principal\CvController::class, 'edit'])->name('cv.vacant.edit');    
 });
 
 Route::group(['prefix' => 'administrador'], function() {
@@ -34,7 +38,6 @@ Route::group(['prefix' => 'administrador'], function() {
     Route::get('perfil', [App\Http\Controllers\Administrador\ProfileController::class, 'index'])->name('admin.perfil');
     Route::put('editarperfil', [App\Http\Controllers\Administrador\ProfileController::class, 'update'])->name('admin.editarperfil');
     //rutas de vacantes
-
     Route::get('buscar', [App\Http\Controllers\Administrador\VacantController::class, 'search'])->name('admin.search');
     Route::get('nuevasvacantes', [App\Http\Controllers\Administrador\VacantController::class, 'index'])->name('admin.index');
     Route::get('crear-vacante', [App\Http\Controllers\Administrador\VacantController::class, 'create'])->name('admin.vacant.create');
@@ -64,6 +67,7 @@ Route::group(['prefix' => 'reclutador'], function() {
     Route::get('reclutamientos', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'index'])->name('reclutador.show');
     Route::post('store', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'store'])->name('reclutador.store');
     Route::put('calificar/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'update'])->name('reclutador.update');    
+    Route::put('envio-pruebas/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'send'])->name('reclutador.reclutamiento.pruebas');    
     //rutas de descartados
     Route::get('descartados', [App\Http\Controllers\Reclutador\DiscardedController::class, 'discarded'])->name('reclutador.discarded.index');   
     //rutas de vacantes
@@ -77,6 +81,8 @@ Route::group(['prefix' => 'reclutador'], function() {
     //rutas seleccionados
     Route::get('seleccionados', [App\Http\Controllers\Reclutador\SelectCandidateController::class, 'index'])->name('reclutador.seleccionados.index');
     Route::get('/buscar-candidato-seleccionado/{id} ', [App\Http\Controllers\Reclutador\SelectCandidateController::class, 'buscar'])->name('reclutador.seleccionados.buscar');
+    //rutas Registros de cv
+    Route::get('resgistros', [App\Http\Controllers\Reclutador\RegisterController::class, 'index'])->name('reclutador.registros.index');
 
 });
 

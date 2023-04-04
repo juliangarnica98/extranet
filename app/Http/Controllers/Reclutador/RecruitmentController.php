@@ -45,9 +45,9 @@ class RecruitmentController extends Controller
         
     }
 
-    public function pruebas( $id)
+    public function send($id)
     {
-        
+
         $now = new \DateTime();
         $reclutamiet = Recruitment::find($id);
         $reclutamiet->pruebas = 1;
@@ -57,8 +57,6 @@ class RecruitmentController extends Controller
         $cv->state_id=3;
         $cv->save();
         $cv->recruitment()->save($reclutamiet);
-      
-
         return redirect('reclutador/reclutamientos')->with('message','Calificación');
     }
   

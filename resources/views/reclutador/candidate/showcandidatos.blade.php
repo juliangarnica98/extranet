@@ -150,7 +150,7 @@
                                     <form method="get" action="">
                                         <div class="form-row">
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="busqueda">
+                                                <input class="form-control" type="text" name="busqueda" style="border-radius: 25px">
                                             </div>
                                             <div class="col-md-2">
                                                 <input type="submit" class="btn btn-primary btn-block" value="buscar" style="border-radius: 25px">
@@ -162,14 +162,12 @@
                             
                             
                             @foreach ($cvs as $cv)
-                                <div class="border-top border-bottom mt-1">
+                                {{-- <div class="border-top border mt-1">
                                     <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants">
-                                        {{-- border-right-0 border-left-0 --}}
-                                        <a href="{{ route('vercandidato', ['id' => $cv->id]) }}"
-                                            {{-- <a href="" --}}
+                                        <a href="{{ route('vercandidato', ['id' => $cv->id]) }}"      
                                             class="card-block stretched-link text-decoration-none">
                                             <div class="card-body pt-1 pb-1 ml-0 mr-0">
-                                                <h5 class="card-title text-dark text-center border-bottom">
+                                                <h5 class="card-title text-dark border-bottom">
                                                     <strong>{{ $cv->name }}</strong>
                                                 </h5>
                                                 <div class="row">
@@ -177,12 +175,7 @@
                                                         <div class="d-flex justify-content-center">
                                                             <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-25"
                                                                 alt="">
-                                                        </div>
-                                                       
-                                                        {{-- <div class=" text-center">
-                                                            <small class="h6 text-dark">Personas que han aplicado: {{ $vacant->num_aplic }}</small>
-
-                                                        </div> --}}
+                                                        </div>   
                                                     </div>
                                                     <div class="col-md-4 text-dark">
                                                         <span class="h6">Correo:</span><br>
@@ -195,15 +188,43 @@
                                                             <span class="text-center h6">{{ $cv->email }}</span><br>
                                                             <span class="text-center h6">{{ $cv->city_address }}</span><br>
                                                             <span class="text-center h6">{{ $cv->address }}</span><br>
-                                                            <span class="text-center h6">{{ $cv->age }}</span><br>
-                                                            {{-- <small id=""
-                                                                class="text-dark">{{ date('d-m-Y', strtotime($vacant->created_at)) }}
-                                                            </small> --}}
-                                                        
+                                                            <span class="text-center h6">{{ $cv->age }}</span><br>    
                                                     </div>
                                                 </div>
-
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div> --}}
+                                <div class="" style="border-radius: 25px">
+                                    <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants" >
+                                        <a href="{{ route('vercandidato', ['id' => $cv->id]) }}"      
+                                            class="card-block stretched-link text-decoration-none">
+                                            <div class="card-body pt-1 pb-1 ml-0 mr-0 border-bottom border-top">
                                                 
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <h5 class="card-title text-center text-dark ">
+                                                            <strong>{{ $cv->name }}</strong>
+                                                        </h5>  
+                                                    </div>
+                                                    <div class="col-md-4 text-dark">
+                                                        <div class="d-flex justify-content-center">
+                                                            <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-25"
+                                                                alt="">
+                                                        </div> 
+                                                        {{-- <span class="h6">:</span><br>
+                                                        <span class="h6"></span><br>
+                                                        <span class="h6"></span><br>
+                                                        <span class="h6"></span><br> --}}
+                                                    </div>
+                                                    <div class="col-md-4 text-dark ">
+                                                        
+                                                            <strong class="text-center">Correo: {{ $cv->email }}</strong><br>
+                                                            <strong class="text-center">Ciudad de residencia: {{ $cv->city_address }}</strong><br>
+                                                            <strong class="text-center">Dirección: {{ $cv->address }}</strong><br>
+                                                            <strong class="text-center"> Edad:{{ $cv->age }}</strong><br>    
+                                                    </div>
+                                                </div>
                                             </div>
                                         </a>
                                     </div>
@@ -217,11 +238,4 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container pt-3">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 text-xs-center">
-                {{ $cvs->links() }}
-            </div>
-        </div>
-    </div> --}}
 @endsection

@@ -170,7 +170,10 @@
                                                 <td class="col text-center">
                                                     <div style="display: flex" class="text-center justify-content-center">
                                                         <div class="pl">
-                                                            <form action="">
+                                                            <form action="{{route('reclutador.reclutamiento.pruebas',$reclutado->id)}}" method="post">
+                                                                @csrf
+                                                                @method('put')
+                                                                {{-- <input type="text" value="{{$reclutado->id}}" name="id" hidden> --}}
                                                                 <button class="btn btn-success">Envio de pruebas</button>
                                                             </form>
                                                         </div>

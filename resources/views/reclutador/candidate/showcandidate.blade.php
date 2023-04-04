@@ -141,7 +141,7 @@
                                 <div class="col-sm-4">
                                     <form action="{{route('reclutador.candidate.index',$cv->id)}}" method="POST">
                                         @csrf
-                                        <button class="btn btn-success" ><i
+                                        <button class="btn btn-success" @if ($cv->state_id != 1) disabled='disabled' @endif><i
                                                 class="fas fa-check"></i> Seleccionar candidato</button>
                                 </form>
                                         

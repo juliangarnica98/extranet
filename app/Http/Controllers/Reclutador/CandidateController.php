@@ -52,6 +52,7 @@ class CandidateController extends Controller
         $state->cv()->save($cv);  
         $vacant = Vacant::where('id',$cv->vacant_id)->first();
         $vacant->num_aplic=$vacant->num_aplic-1;
+        $vacant->save();
         return redirect('reclutador/candidatos')->with('message','Se ha descartado el candidato');
     }
     public function seleccionar($id){

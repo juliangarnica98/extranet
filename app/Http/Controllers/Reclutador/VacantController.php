@@ -73,7 +73,13 @@ class VacantController extends Controller
         $vacant->area = $request->area;
         $vacant->state = 1;   
         $vacant-> num_aplic=0;
-        $vacant->area_id=$area_id->id;
+        // $vacant->area_id=$area_id->id;
+        $vacant->area = $request->area;
+
+        $vacant->filtro= ($request->salary <= 1000000) ?'1' :'' ;
+        $vacant->filtro= ($request->salary >= 1000001 && $request->salary <= 3000000) ?'2' :$vacant->filtro ;
+        $vacant->filtro= ($request->salary >= 3000001) ?'3' :$vacant->filtro ;
+
         $typecv->vacant()->save($vacant);
         return back()->with('message','Se ha creado la vacante correctamente');
     }

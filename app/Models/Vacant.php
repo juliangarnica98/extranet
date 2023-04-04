@@ -25,7 +25,7 @@ class Vacant extends Model
         'filtro',
         'num_aplic',
         'type_cv_id',
-        'area_id'
+        // 'area_id'
     ];
 
     // public function cvs()

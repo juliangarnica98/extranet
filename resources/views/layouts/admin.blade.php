@@ -21,9 +21,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('libs/sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script> -->
+    
 
 </head>
 <style>
@@ -229,6 +227,11 @@
                             <a class="nav-link text-center" href="{{ route('reclutador.vacantes.index') }}">
                                 <i class="fa fa-briefcase" aria-hidden="true"></i>
                                 <span>VACANTES</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center" href="{{ route('reclutador.registros.index') }}">
+                                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                <span>REGISTROS</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link text-center" href="{{ route('reclutador.index') }}">

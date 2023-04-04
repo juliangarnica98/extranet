@@ -20,18 +20,7 @@ class VacantController extends Controller
    
     public function index(){
         Paginator::useBootstrap();
-        // $id = Auth::user()->id;
-        // if($id==1){
-        //     $vacants = Vacant::where('area_id',2)->orWhere('area_id',1)->paginate(4);
-        //     $vacants_t = Vacant::where('area_id',2)->orWhere('area_id',1)->count();
-        //     $vacants_c = Vacant::where('area_id',2)->orWhere('area_id',1)->where('state',0)->count();
-        //     $vacants_a = Vacant::where('area_id',2)->orWhere('area_id',1)->where('state',1)->count();
-        // }else{
-        //     $vacants = Vacant::where('area_id',3)->paginate(4);
-        //     $vacants_t = Vacant::where('area_id',3)->count();
-        //     $vacants_c = Vacant::where('area_id',3)->where('state',0)->count();
-        //     $vacants_a = Vacant::where('area_id',3)->where('state',1)->count();
-        // }
+
         $vacants = Vacant::paginate(4);
         $vacants_t = Vacant::count();
         $vacants_c = Vacant::where('state',0)->count();
@@ -86,7 +75,7 @@ class VacantController extends Controller
         $vacant->type_contract = $request->type_contract;
         $vacant->state = 1;   
         $vacant-> num_aplic=0;
-        $vacant->area_id=$area_id->id;
+        // $vacant->area_id=$area_id->id;
         $vacant->area = $request->area;
 
         $vacant->filtro= ($request->salary <= 1000000) ?'1' :'' ;
