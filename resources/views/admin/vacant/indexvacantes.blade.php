@@ -177,10 +177,12 @@
                     <div class="card-body">
                         <h1 class="card-title">Vacantes</h1>
                         <p class="card-description text-center">
-                            {{-- <button class="btn btn-success" data-target="#Modalstore" data-toggle="modal"></button> --}}
-                                    <a href="{{route('admin.vacant.create')}}" class="btn btn-success"><i
-                                        class="fas fa-plus"></i> Nueva vacante</a>
-                            {{-- @include('admin.vacant.storevacantes') --}}
+
+                            <a href="{{ route('admin.vacant.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
+                                Nueva vacante</a>
+                            <a href="{{ route('admin.vacant.archivadas') }}" class="btn btn-info"><i class="fas fa-archive"></i>
+                                Vacantes archivadas</a>
+
                         </p>
 
                         <form method="get" action="{{ route('admin.search') }}">
@@ -189,7 +191,7 @@
                                     <input class="form-control" type="text" name="busqueda" style="border-radius: 25px">
                                 </div>
                                 <div class="col-sm-2">
-                                    <input type="submit" class="btn btn-primary btn-block" value="buscar" >
+                                    <input type="submit" class="btn btn-primary btn-block" value="buscar">
                                 </div>
                             </div>
                         </form>
@@ -207,7 +209,7 @@
                                             <th class="col-1 text-center">Ciudad</th>
                                             <th class="col-1 text-center">Salario</th>
                                             <th class="col-1 text-center">Vacantes</th>
-                                            <th class="col-1 text-center">Estado</th>
+
                                             <th class="col-1 text-center col-1">Accion</th>
 
                                         </tr>
@@ -223,13 +225,7 @@
                                                 <td class="text-center">{{ $vacant->city }}</td>
                                                 <td class="text-center">${{ $vacant->salary }}</td>
                                                 <td class="text-center">{{ $vacant->num_vacants }}</td>
-                                                @if ($vacant->state == 1)
-                                                    <td class="text-center"><label class="badge-success"
-                                                            style="border-radius: 10px;padding:0.3rem">Abierta</label></td>
-                                                @else
-                                                    <td class="text-center"><label class="badge-danger"
-                                                            style="border-radius: 10px;padding:0.3rem">Cerrada</label></td>
-                                                @endif
+
                                                 <td class="text-center">
                                                     <div style="display: flex" class="text-center justify-content-center">
                                                         <div class="pl-1">
@@ -239,7 +235,8 @@
                                                             @include('admin.vacant.showvacantes')
                                                         </div>
                                                         <div class="pl-1">
-                                                            <a href="{{route('admin.vacant.edit',$vacant->id)}}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                                            <a href="{{ route('admin.vacant.edit', $vacant->id) }}"
+                                                                class="btn btn-success"><i class="fas fa-edit"></i></a>
                                                             {{-- <button class="btn btn-info"
                                                                 data-target="#Modaledit{{ $vacant->id }}"
                                                                 data-toggle="modal"><i class="fas fa-edit"></i></i></button>
@@ -247,11 +244,11 @@
                                                         </div>
                                                         <div class="pl-1">
                                                             <form method="POST"
-                                                                action="{{ route('cerrarvacante', $vacant->id) }}">
+                                                                action="{{ route('admin.archivar.vacant', $vacant->id) }}">
                                                                 @csrf
                                                                 <div class="form-group">
-                                                                    <button class="btn btn-danger"><i
-                                                                            class="fas fa-window-close"></i></button>
+                                                                    <button class="btn btn-info"><i
+                                                                            class="fas fa-archive"></i></button>
                                                                 </div>
                                                             </form>
                                                         </div>

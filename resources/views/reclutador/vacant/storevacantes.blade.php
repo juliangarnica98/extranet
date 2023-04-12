@@ -130,7 +130,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-7">
-                            <form method="POST" action="{{ route('reclutador.vacantes.store') }}">
+                            <form method="POST" action="{{ route('reclutador.crearvacante') }}">
                                 @csrf
                                 <div class="form-group">
                                     <div class="row justify-content-center">

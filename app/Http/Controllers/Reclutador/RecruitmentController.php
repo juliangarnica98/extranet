@@ -14,7 +14,10 @@ class RecruitmentController extends Controller
     
     public function index()
     {
-      $reclutamientos = Recruitment::with('cv')->get();
+    $cvs = Cv::where('state_id','!=',11)->paginate();
+    if($cvs){
+        $reclutamientos = Recruitment::with('cv')->get();
+    }
     //   return($reclutamientos);
       return view('reclutador.reclutamiento.indexreclutamiento',compact('reclutamientos'));
     }

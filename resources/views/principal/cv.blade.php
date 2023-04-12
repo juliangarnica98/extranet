@@ -289,17 +289,7 @@
             <div class="">
 
                 <form id="signUpForm" action="{{ route('cv.store') }}">
-                    <!-- start step indicators -->
-                    {{-- <div class="form-header d-flex mb-4">
-                        <span class="stepIndicator">BIENVENIDA</span>
-                        <span class="stepIndicator">HÁBEAS DATA</span>
-                        <span class="stepIndicator">INFORMACIÓN PERSONAL</span>
-                        <span class="stepIndicator">INFORMACIÓN LABORAL </span>
-                        <span class="stepIndicator">INFORMACIÓN LABORAL </span>
-                        <span class="stepIndicator">CUENTANOS DE TI</span>
-                        <span class="stepIndicator">INFORMACIÓN ADICIONAL</span>
-                    </div> --}}
-                    <!-- end step indicators -->
+                 
 
 
                     <div class="step">
@@ -515,9 +505,7 @@
                                         class="col-12">
                                 </div>
                             </div>
-                            {{-- <div class="mb-3">
-                            
-                        </div> --}}
+                           
                             <div class="mb-3 row">
                                 <div class="col-md-12">
                                     <textarea name="funtion_last_company2" id="" cols="30" rows="6" placeholder="Funciones"
@@ -540,15 +528,8 @@
                             </div>
                         </div>
 
-                        {{-- <div class="mb-3">
-                            
-                        </div>
-                        <div class="mb-3">
-                           
-                        </div> --}}
                     </div>
                     <div class="step">
-                        {{-- <p class="text-center mb-4"> <strong>  </strong></p> --}}
                         <h3 class="text-center mb-4"> Cuentanos de ti</h3>
                         <div class="mb-3 row">
                             <div class="col-md-6">
@@ -584,7 +565,6 @@
 
                     </div>
                     <div class="step">
-                        {{-- <p class="text-center mb-4"> <strong> </strong></p> --}}
                         <h3 class="text-center mb-4"> Información adicional </h3>
                         <div class="mb-3 row">
                             <div class="col-md-4">

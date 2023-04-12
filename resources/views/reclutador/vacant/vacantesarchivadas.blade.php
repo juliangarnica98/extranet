@@ -123,67 +123,15 @@
 
     <div class="page-content page-container" id="page-content">
         {{-- <h2 class="text-center text-dark pt-2 ">VACANTES</h2> --}}
-        <h2 class="ml-5 text-dark pt-2 ">VACANTES</h2>
+        <h2 class="ml-5 text-dark pt-2 ">VACANTES ARCHIVADAS</h2>
         <div class="row pl-3 pr-3 pt-3">
 
-            <div class="col-xl-4 col-md-6 mb-4 mt-5">
-                <div class="card border-left-danger mt-4 py-2 box">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total vacantes
-                                </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vacants_t }}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card border-left-success mt-4 py-2 box">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Vacantes abiertas
-                                </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vacants_a }}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card border-left-warning  mt-4 box  py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Vacantes cerradas
-                                </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vacants_c }}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-8 col-md-6 mb-4">
+            
+            <div class="col-xl-12 col-md-6 mb-4">
                 <div class="card box" style="background-color: #fff;">
                     <div class="card-body">
                         <h1 class="card-title">Vacantes</h1>
-                        <p class="card-description text-center">
-
-                            <a href="{{ route('reclutador.vacant.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
-                                Nueva vacante</a>
-                            <a href="{{ route('reclutador.vacant.archivadas') }}" class="btn btn-info"><i class="fas fa-archive"></i>
-                                Vacantes archivadas</a>
-
-                        </p>
+                        
 
                         <form method="get" action="{{ route('reclutador.search') }}">
                             <div class="form-row">
@@ -196,7 +144,7 @@
                             </div>
                         </form>
                         @if (count($vacants) == 0)
-                            No se le han encontrado vacantes
+                            No se le han encontrado vacantes archivadas
                         @else
                             <div class="table-responsive">
 
@@ -204,13 +152,14 @@
                                     <thead>
                                         <tr>
                                             <th class="col-1 text-center">Creador</th>
-                                            <th class="col-1 text-center">Fecha</th>
+                                            <th class="col-1 text-center">Fecha creacion</th>
+                                            <th class="col-1 text-center">Fecha archvio</th>
                                             <th class="col-1 text-center">Titulo</th>
                                             <th class="col-1 text-center">Ciudad</th>
                                             <th class="col-1 text-center">Salario</th>
                                             <th class="col-1 text-center">Vacantes</th>
 
-                                            <th class="col-1 text-center col-1">Accion</th>
+                                            <th class="col-1 text-center col-1">Duplicar</th>
 
                                         </tr>
                                     </thead>
@@ -221,6 +170,8 @@
                                                 <td class="text-center">{{ $vacant->author }}</td>
                                                 <td class="text-center">{{ date('d-m-Y', strtotime($vacant->created_at)) }}
                                                 </td>
+                                                <td class="text-center">{{ date('d-m-Y', strtotime($vacant->archivate_date)) }}
+                                                </td>
                                                 <td class="text-center">{{ $vacant->title }}</td>
                                                 <td class="text-center">{{ $vacant->city }}</td>
                                                 <td class="text-center">${{ $vacant->salary }}</td>
@@ -229,26 +180,11 @@
                                                 <td class="text-center">
                                                     <div style="display: flex" class="text-center justify-content-center">
                                                         <div class="pl-1">
-                                                            <button class="btn btn-warning"
-                                                                data-target="#Modalview{{ $vacant->id }}"
-                                                                data-toggle="modal"><i class="fas fa-eye"></i></button>
-                                                            @include('admin.vacant.showvacantes')
-                                                        </div>
-                                                        <div class="pl-1">
-                                                            <a href="{{ route('reclutador.vacant.edit', $vacant->id) }}"
-                                                                class="btn btn-success"><i class="fas fa-edit"></i></a>
-                                                            {{-- <button class="btn btn-info"
-                                                                data-target="#Modaledit{{ $vacant->id }}"
-                                                                data-toggle="modal"><i class="fas fa-edit"></i></i></button>
-                                                            @include('admin.vacant.editvacantes') --}}
-                                                        </div>
-                                                        <div class="pl-1">
-                                                            <form method="POST"
-                                                                action="{{ route('reclutador.archivar.vacant', $vacant->id) }}">
+                                                            <form method="GET"
+                                                                action="{{ route('reclutador.vacant.duplicar', $vacant->id) }}">
                                                                 @csrf
                                                                 <div class="form-group">
-                                                                    <button class="btn btn-info"><i
-                                                                            class="fas fa-archive"></i></button>
+                                                                    <button class="btn btn-info"><i class="fas fa-clone"></i></button>
                                                                 </div>
                                                             </form>
                                                         </div>

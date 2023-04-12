@@ -1,158 +1,3 @@
-{{-- <div class="modal fade" id="Modaledit{{ $vacant->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">Editar
-                    vacante</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="POST" action="{{ route('admin.edit.vacant', $vacant->id) }}">
-                @method('PUT')
-                @csrf
-
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <div class="row justify-content-center">
-                            <div class="col-5">
-
-                                <div class="form-outline">
-
-                                    <input type="text" id="form8Example1" class="form-control" name="title"
-                                        value="{{ $vacant->title }}" />
-                                    <label class="form-label text-dark" for="form8Example1">Titulo</label>
-                                </div>
-                            </div>
-                            <div class="col-5">
-
-                                <div class="form-outline">
-                                    <input type="text" id="form8Example2" class="form-control" name="city"
-                                        value="{{ $vacant->city }}" />
-                                    <label class="form-label text-dark" for="form8Example2">Ciudad</label>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="row justify-content-center">
-
-                            <div class="col-5">
-
-                                <div class="form-outline">
-                                    <input type="text" id="" class="form-control" name="salary"
-                                        value="{{ $vacant->salary }}" />
-                                    <label class="form-label text-dark" for="form8Example4">Salario</label>
-                                </div>
-                            </div>
-                            <div class="col-5">
-
-                                <div class="form-outline">
-                                    <input type="text" id="" class="form-control" name="num_vacants"
-                                        value="{{ $vacant->num_vacants }}" />
-                                    <label class="form-label text-dark" for="form8Example4">Número
-                                        de
-                                        vacantes</label>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
-
-                        <div class="row justify-content-center">
-                            <div class="col-5">
-                                <div class="form-outline">
-                                    <select class="form-select form-control" name="education">
-                                        <option value="Primaria" {{$vacant->education == 'Primaria' ? 'selected' : ''}} >Primaria</option>
-                                        <option value="Bachillerato" {{$vacant->education == 'Bachillerato' ? 'selected' : ''}} >Bachillerato</option>
-                                        <option value="Técnico" {{$vacant->education == 'Técnico' ? 'selected' : ''}} >Técnico</option>
-                                        <option value="Tecnólogo" {{$vacant->education == 'Tecnólogo' ? 'selected' : ''}} >Tecnólogo</option>
-                                        <option value="Pregrado" {{$vacant->education == 'Pregrado' ? 'selected' : ''}} >Pregrado</option>
-                                        <option value="Postgrado" {{$vacant->education == 'Postgrado' ? 'selected' : ''}} >Postgrado</option>
-                                        <option value="Maestria" {{$vacant->education == 'Maestria' ? 'selected' : ''}}  >Maestria</option>
-                                    </select>
-                                    <label class="form-label text-dark" for="form8Example4">Educación minima</label>
-                                </div>
-                            </div>
-                            <div class="col-5">
-                                <div class="form-outline">
-                                    <input type="text" id="" class="form-control" name="language" value="{{ $vacant->language }}"  />
-                                    <label class="form-label text-dark" for="form8Example4">Idiomas requeridos</label>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row justify-content-center">
-                            <div class="col-5">
-                                <div class="form-outline">
-                                    
-                                    <select class="form-select form-control" name="availability_travel">7
-                                        <option value="no" {{$vacant->availability_travel == 'no' ? 'selected' : ''}} >No</option>
-                                        <option value="si" {{$vacant->availability_travel == 'si' ? 'selected' : ''}} >Si</option>
-                                       
-                                    </select>
-                                    <label class="form-label text-dark" for="form8Example4">Disponibilidad de viajar</label>
-                                </div>
-                            </div>
-                            <div class="col-5">
-                                <div class="form-outline">
-                                    <select class="form-select form-control" name="type_contract">7
-                                        <option value="fijo" {{$vacant->type_contract == 'fijo' ? 'selected' : ''}}>Fijo</option>
-                                        <option value="indefinido" {{$vacant->type_contract == 'indefinido' ? 'selected' : ''}}>Indefinido</option>
-                                        <option value="obra o labor" {{$vacant->type_contract == 'obra o labo' ? 'selected' : ''}}>Obra o labor</option>
-                                    </select>
-                                    <label class="form-label text-dark" for="form8Example4">Tipo de contrato</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row justify-content-center">
-                            <div class="col-10">
-
-                                <div class="form-outline">
-                                    
-                                    <textarea id="" class="form-control" name="description"  cols="30" rows="3" value="{{ $vacant->description }}" ></textarea>
-                                    <label class="form-label text-dark" for="form8Example3">Descripcion</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row justify-content-center">
-                            <div class="col-10">
-
-                                <div class="form-outline">
-
-                                    <textarea class="form-control" name="experience" id="" cols="30" rows="3" value="{{ $vacant->experience }}"></textarea>
-                                    <label class="form-label text-dark" for="form8Example3">Experiencia
-                                        requerida</label>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    
-
-                       
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary">Guardar
-                        cambios</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div> --}}
 
 @extends('layouts.admin')
 <style>
@@ -279,34 +124,30 @@
 
     <div class="page-content page-container" id="page-content">
 
-        <h2 class="ml-5 text-dark pt-2 ">EDITAR VACANTE</h2>
+        <h2 class="ml-5 text-dark pt-2 ">DUPLICAR VACANTE</h2>
         <div class="container">
             <div class="card box">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-7">
-                            <form method="POST" action="{{ route('reclutador.edit.vacant', $vacant->id) }}">
-                                @method('PUT')
+                            <form method="POST" action="{{ route('admin.crearvacante') }}">
                                 @csrf
                                 <div class="form-group">
-                                    @if ($id == 1)
-                                        <div class="row justify-content-center">
-                                            <div class="col-6">
+                                    <div class="row justify-content-center">
+                                        <div class="col-12">
 
-                                                <div class="form-outline">
-                                                    <label class="form-label text-dark" for="form8Example4">Área de
-                                                        vacante</label>
-                                                    <select class="form-select form-control" style="border-radius: 25px"
-                                                        name="area_id">
-                                                        <option value="1" {{ $vacant->area_id == "1" ? 'selected' : '' }}>Cedi</option>
-                                                        <option value="2" {{ $vacant->area_id == "2" ? 'selected' : '' }}>Administrativo</option>
+                                            <div class="form-outline">
+                                                <label class="form-label text-dark" for="form8Example1">Área</label>
+                                                <select class="form-select form-control" name="area"
+                                                    style="border-radius: 25px">
+                                                    <option value="cedi" {{ $vacant->area == "cedi" ? 'selected' : '' }}>CEDI</option>
+                                                    <option value="administrativo" {{ $vacant->area == "administrativo" ? 'selected' : '' }}>ADMINISTRATIVO</option>
+                                                    <option value="comercial" {{ $vacant->area == "comercial" ? 'selected' : '' }}>COMERCIAL</option>
+                                                </select>
 
-                                                    </select>
-
-                                                </div>
                                             </div>
                                         </div>
-                                    @endif
+                                    </div>
                                     <div class="row justify-content-center">
                                         <div class="col-6">
 
@@ -322,8 +163,8 @@
                                             <div class="form-outline">
                                                 <label class="form-label text-dark" for="form8Example2">Ciudad</label>
                                                 <select class="form-select form-control" name="city"
-                                                    style="border-radius: 25px" >
-                                                    
+                                                    style="border-radius: 25px">
+                                                   
                                                     <option value="Bogotá" {{ $vacant->city == "Bogotá" ? 'selected' : '' }}>Bogotá</option>
                                                     <option value="Medellín" {{ $vacant->city == "Medellín" ? 'selected' : '' }}>Medellín</option>
                                                     <option value="Cali" {{ $vacant->city == "Cali" ? 'selected' : '' }}>Cali</option>
@@ -392,8 +233,8 @@
                                                 <label class="form-label text-dark" for="form8Example4">Número
                                                     de
                                                     vacantes</label>
-                                                <input type="number" id="" class="form-control"  value="{{$vacant->num_vacants}}"
-                                                    name="num_vacants" style="border-radius: 25px" id="vacantes"/>
+                                                <input type="number" id="" class="form-control"
+                                                    name="num_vacants" style="border-radius: 25px" id="vacantes" value="{{$vacant->num_vacants}}"/>
 
                                             </div>
                                         </div>
@@ -491,23 +332,20 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button class="text-center btn btn-primary btn-block">Editar vacante</button>
+                                    <button class="text-center btn btn-primary btn-block">Duplicar vacante</button>
                                 </div>
                             </form>
                         </div>
                         <div class="col-md-5 aling-items-center d-flex justify-content-center">
+
                             <img src="{{asset('images/vacant.png')}}" class="img-fluid" alt="">
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>
-    {{-- <script>
-        var salary = document.getElementById("salary");
-        salary.addEventListener("input", updateValue);
-        function updateValue(e) {
-            console.log(new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(document.getElementById("salary").value));
-        }
-    </script> --}}
 @endsection

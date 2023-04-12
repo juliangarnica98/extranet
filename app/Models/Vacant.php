@@ -11,6 +11,7 @@ class Vacant extends Model
     protected $fillable = [
         'title',
         'author',
+        'archivate_date',
         'city',
         'description',
         'state',

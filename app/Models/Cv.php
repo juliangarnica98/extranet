@@ -41,7 +41,7 @@ class Cv extends Model
         'shirt_size',
         'pant_size',
         'shoes_size',
-        
+        'revision',
         'vacant_id',
         'state_id',
         'type',

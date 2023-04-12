@@ -25,7 +25,8 @@ class CreateVacantsTable extends Migration
             $table->text('experience');
             $table->text('num_vacants');
             $table->string('num_aplic');
-
+            $table->string('archivate_date')->nullable();
+            
             $table->string('education');
             $table->string('language');
             $table->string('availability_travel');

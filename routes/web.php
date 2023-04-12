@@ -5,17 +5,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 
+Auth::routes(["register" => false]);
 
 Route::get('/', function () {  
-    // if(Auth::check()){
-    //     return redirect()->route('home.index');
-    // }else{
-        
-    // }
     return redirect()->route('home.index');
 });
 
-Auth::routes(["register" => false]);
 
 Route::group(['prefix' => 'extranet'], function() {
     Route::get('/index', [App\Http\Controllers\Principal\HomeController::class, 'index'])->name('home.index');
@@ -40,11 +35,13 @@ Route::group(['prefix' => 'administrador'], function() {
     //rutas de vacantes
     Route::get('buscar', [App\Http\Controllers\Administrador\VacantController::class, 'search'])->name('admin.search');
     Route::get('nuevasvacantes', [App\Http\Controllers\Administrador\VacantController::class, 'index'])->name('admin.index');
+    Route::get('vacantes-archivadas', [App\Http\Controllers\Administrador\VacantController::class, 'archivadas'])->name('admin.vacant.archivadas');
+    Route::get('vacantes-duplicar/{id}', [App\Http\Controllers\Administrador\VacantController::class, 'duplicar'])->name('admin.vacant.duplicar');
     Route::get('crear-vacante', [App\Http\Controllers\Administrador\VacantController::class, 'create'])->name('admin.vacant.create');
     Route::get('editar-vacante/{id}', [App\Http\Controllers\Administrador\VacantController::class, 'update'])->name('admin.vacant.edit');
     Route::post('registrarvacantes', [App\Http\Controllers\Administrador\VacantController::class, 'store'])->name('admin.crearvacante');
     Route::put('editvacant/{id}', [App\Http\Controllers\Administrador\VacantController::class, 'edit'])->name('admin.edit.vacant');
-    Route::post('cerrarvacante/{id}', [App\Http\Controllers\Administrador\VacantController::class, 'close'])->name('cerrarvacante');
+    Route::post('archivar-vacante/{id}', [App\Http\Controllers\Administrador\VacantController::class, 'archivar'])->name('admin.archivar.vacant');
     //rutas de candidatos
     Route::get('/candidatos', [App\Http\Controllers\Administrador\CandidateController::class, 'postulaciones'])->name('admin.postulaciones');    
     //rutas de usuarios
@@ -71,13 +68,17 @@ Route::group(['prefix' => 'reclutador'], function() {
     //rutas de descartados
     Route::get('descartados', [App\Http\Controllers\Reclutador\DiscardedController::class, 'discarded'])->name('reclutador.discarded.index');   
     //rutas de vacantes
-    Route::get('buscar', [App\Http\Controllers\Reclutador\VacantController::class, 'search'])->name('reclutador.vacantes.search');
+
+    Route::get('buscar', [App\Http\Controllers\Reclutador\VacantController::class, 'search'])->name('reclutador.search');
     Route::get('nuevasvacantes', [App\Http\Controllers\Reclutador\VacantController::class, 'index'])->name('reclutador.vacantes.index');
-    Route::get('crear-vacante', [App\Http\Controllers\Reclutador\VacantController::class, 'create'])->name('reclutador.vacantes.create');
-    Route::get('editar-vacante/{id}', [App\Http\Controllers\Reclutador\VacantController::class, 'update'])->name('reclutador.vacantes.edit');
-    Route::post('registrarvacantes', [App\Http\Controllers\Reclutador\VacantController::class, 'store'])->name('reclutador.vacantes.store');
-    Route::put('editvacant/{id}', [App\Http\Controllers\Reclutador\VacantController::class, 'edit'])->name('reclutador.vacantes.update');
-    Route::post('cerrarvacante/{id}', [App\Http\Controllers\Reclutador\VacantController::class, 'close'])->name('reclutador.vacantes.close');
+    Route::get('vacantes-archivadas', [App\Http\Controllers\Reclutador\VacantController::class, 'archivadas'])->name('reclutador.vacant.archivadas');
+    Route::get('vacantes-duplicar/{id}', [App\Http\Controllers\Reclutador\VacantController::class, 'duplicar'])->name('reclutador.vacant.duplicar');
+    Route::get('crear-vacante', [App\Http\Controllers\Reclutador\VacantController::class, 'create'])->name('reclutador.vacant.create');
+    Route::get('editar-vacante/{id}', [App\Http\Controllers\Reclutador\VacantController::class, 'update'])->name('reclutador.vacant.edit');
+    Route::post('registrarvacantes', [App\Http\Controllers\Reclutador\VacantController::class, 'store'])->name('reclutador.crearvacante');
+    Route::put('editvacant/{id}', [App\Http\Controllers\Reclutador\VacantController::class, 'edit'])->name('reclutador.edit.vacant');
+    Route::post('archivar-vacante/{id}', [App\Http\Controllers\Reclutador\VacantController::class, 'archivar'])->name('reclutador.archivar.vacant');
+
     //rutas seleccionados
     Route::get('seleccionados', [App\Http\Controllers\Reclutador\SelectCandidateController::class, 'index'])->name('reclutador.seleccionados.index');
     Route::get('/buscar-candidato-seleccionado/{id} ', [App\Http\Controllers\Reclutador\SelectCandidateController::class, 'buscar'])->name('reclutador.seleccionados.buscar');

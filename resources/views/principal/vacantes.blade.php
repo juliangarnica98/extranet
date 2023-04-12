@@ -44,7 +44,8 @@
             <div class="text-center d-flex align-items-center justify-content-center">
                 <nav id="navbar" class="navbar ">
                     <ul>
-                        <li><a class="nav-link scrollto" href="{{ route('login') }}">Iniciar Sesión</a></li>
+                        <li><a class="nav-link scrollto" href="{{ route('login') }}" target="_parent">Iniciar Sesión</a></li>
+                        {{-- <li><a class="nav-link scrollto" href="/login" target="">Iniciar Sesión</a></li> --}}
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav>

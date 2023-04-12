@@ -39,12 +39,12 @@
 
                 <span>Postulaciones:</span>
                 <label class="text-center">{{ $vacant->num_aplic }}</label><br>
-                <span>Estado:</span>
+                {{-- <span>Estado:</span>
                 @if ($vacant->state == 1)
                     <label class="badge-success" style="border-radius: 10px;padding:0.3rem">Abierta</label>
                 @else
                     <label class="badge-danger" style="border-radius: 10px;padding:0.3rem">Cerrada</label>
-                @endif
+                @endif --}}
 
 
 

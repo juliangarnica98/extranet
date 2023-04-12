@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 <style>
     body {
@@ -101,33 +100,35 @@
         font-size: 1rem;
         line-height: 1;
     }
-    .vancants{
+
+    .vancants {
         transition: width 2s;
     }
-    .vancants:hover{
+
+    .vancants:hover {
         box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
     }
 </style>
 
 @section('content')
-@if (Session::has('error'))
-<script>
-    Swal.fire(
-        'Error',
-        "{{ Session::get('error') }}",
-        'error'
-    )
-</script>
-@endif
-@if (Session::has('message'))
-<script>
-    Swal.fire(
-        '¡Bien hecho!',
-        "{{ Session::get('message') }}",
-        'success'
-    )
-</script>
-@endif
+    @if (Session::has('error'))
+        <script>
+            Swal.fire(
+                'Error',
+                "{{ Session::get('error') }}",
+                'error'
+            )
+        </script>
+    @endif
+    @if (Session::has('message'))
+        <script>
+            Swal.fire(
+                '¡Bien hecho!',
+                "{{ Session::get('message') }}",
+                'success'
+            )
+        </script>
+    @endif
     <div class="page-content page-container" id="page-content">
         <div class="">
             {{-- <div class="row pl-3 pr-3 pt-3 justify-content-center">
@@ -150,17 +151,19 @@
                                     <form method="get" action="">
                                         <div class="form-row">
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="busqueda" style="border-radius: 25px">
+                                                <input class="form-control" type="text" name="busqueda"
+                                                    style="border-radius: 25px">
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="submit" class="btn btn-primary btn-block" value="buscar" style="border-radius: 25px">
+                                                <input type="submit" class="btn btn-primary btn-block" value="buscar"
+                                                    style="border-radius: 25px">
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            
-                            
+
+
                             @foreach ($cvs as $cv)
                                 {{-- <div class="border-top border mt-1">
                                     <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants">
@@ -196,33 +199,40 @@
                                     </div>
                                 </div> --}}
                                 <div class="" style="border-radius: 25px">
-                                    <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants" >
-                                        <a href="{{ route('vercandidato', ['id' => $cv->id]) }}"      
+                                    <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants">
+                                        <a href="{{ route('vercandidato', ['id' => $cv->id]) }}"
                                             class="card-block stretched-link text-decoration-none">
                                             <div class="card-body pt-1 pb-1 ml-0 mr-0 border-bottom border-top">
-                                                
+
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <h5 class="card-title text-center text-dark ">
-                                                            <strong>{{ $cv->name }}</strong>
-                                                        </h5>  
+                                                            <strong>{{ $cv->name }}</strong><br>
+                                                            @if ($cv->revision == 0)
+                                                                <strong style="color: rgba(235, 77, 151, 0.9)">No revisado</strong>
+                                                            @elseif ($cv->revision == 1)
+                                                                <strong style="color:rgba(4, 165, 155, 0.9">Revisado</strong>
+                                                            @endif
+                                                        </h5>
                                                     </div>
                                                     <div class="col-md-4 text-dark">
                                                         <div class="d-flex justify-content-center">
                                                             <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-25"
                                                                 alt="">
-                                                        </div> 
+                                                        </div>
                                                         {{-- <span class="h6">:</span><br>
                                                         <span class="h6"></span><br>
                                                         <span class="h6"></span><br>
                                                         <span class="h6"></span><br> --}}
                                                     </div>
                                                     <div class="col-md-4 text-dark ">
-                                                        
-                                                            <strong class="text-center">Correo: {{ $cv->email }}</strong><br>
-                                                            <strong class="text-center">Ciudad de residencia: {{ $cv->city_address }}</strong><br>
-                                                            <strong class="text-center">Dirección: {{ $cv->address }}</strong><br>
-                                                            <strong class="text-center"> Edad:{{ $cv->age }}</strong><br>    
+
+                                                        <strong class="text-center">Correo: {{ $cv->email }}</strong><br>
+                                                        <strong class="text-center">Ciudad de residencia:
+                                                            {{ $cv->city_address }}</strong><br>
+                                                        <strong class="text-center">Dirección:
+                                                            {{ $cv->address }}</strong><br>
+                                                        <strong class="text-center"> Edad:{{ $cv->age }}</strong><br>
                                                     </div>
                                                 </div>
                                             </div>

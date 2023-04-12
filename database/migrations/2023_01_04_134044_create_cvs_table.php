@@ -49,7 +49,7 @@ class CreateCvsTable extends Migration
             $table->string('pant_size');
             $table->string('shoes_size');
             $table->string('state_job_vacante');
-
+            $table->boolean('revision')->default(0);
             $table->string('pruebas')->nullable();
 
             $table->unsignedBigInteger('vacant_id');

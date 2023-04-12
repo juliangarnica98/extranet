@@ -134,7 +134,13 @@
 
             <div class="row pl-3 pr-3 pt-2 justify-content-center">
                 @if (count($cvs) == 0)
-                    <strong>No hay candidatos seleccionados para esta vacante</strong>
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card box">
+                            <div class="card-body">
+                                <h5 class="text-center">No hay candidatos seleccionados para esta vacante</h5>
+                            </div>
+                        </div>
+                    </div>
                 @else
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card box">

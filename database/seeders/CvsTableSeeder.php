@@ -58,6 +58,7 @@ class CvsTableSeeder extends Seeder
                 'type' => 2,
                 'area' => '3',
                 'state_id' => 1,
+                'revision' => 0,
             ),
             1 => 
             array (
@@ -98,6 +99,7 @@ class CvsTableSeeder extends Seeder
                 'type' => 2,
                 'area' => '3',
                 'state_id' => 1,
+                'revision' => 0,
             ),
         ));
         

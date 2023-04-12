@@ -30,6 +30,9 @@ class CandidateController extends Controller
     }
     public function vercandidato($id)
     {
+        $revisar_cv = Cv::where('type',2)->where('id',$id)->first();
+        $revisar_cv->revision=1;
+        $revisar_cv->save();
         Paginator::useBootstrap();
         $cv = Cv::where('type',2)->where('id',$id)->first();
         $vacants = Vacant::paginate();

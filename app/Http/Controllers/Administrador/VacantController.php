@@ -13,6 +13,7 @@ use Validator;
 
 use App\Http\Controllers\Controller;
 use App\Models\Area;
+use Date;
 use Illuminate\Support\Facades\Auth;
 
 class VacantController extends Controller
@@ -21,12 +22,18 @@ class VacantController extends Controller
     public function index(){
         Paginator::useBootstrap();
 
-        $vacants = Vacant::paginate(4);
+        $vacants = Vacant::where('state',1)->paginate(4);
         $vacants_t = Vacant::count();
         $vacants_c = Vacant::where('state',0)->count();
         $vacants_a = Vacant::where('state',1)->count();
         $cvs = Cv::all();
         return view('admin.vacant.indexvacantes',compact('vacants','cvs','vacants_t','vacants_c','vacants_a'));
+    }
+    public function archivadas(){
+        Paginator::useBootstrap();
+        $vacants = Vacant::where('state',0)->paginate(5);
+        $cvs = Cv::all();
+        return view('admin.vacant.vacantesarchivadas',compact('vacants','cvs'));
     }
     public function create(){
         $id = Auth::user()->id;
@@ -55,11 +62,7 @@ class VacantController extends Controller
         if($validator->fails()){
             return back()->with('error','¡Hay errores en los campos!');
         }
-        if($request->area_id){
-            $area_id=Area::find($request->area_id);
-        }else{
-            $area_id=Area::find(3);
-        }
+       
         $typecv = Type_cv::find(2);
         $vacant = new Vacant();
         $vacant->author = Auth::user()->name;
@@ -134,17 +137,22 @@ class VacantController extends Controller
 
         $vacant->state = 1;   
         $vacant-> num_aplic=0;
-        $vacant->area_id=$area_id->id;
         $typecv->vacant()->save($vacant);
         // $vacant->save();
         return back()->with('message','Se ha editado la vacante correctamente');
     }
-    public function close($id)
+    public function archivar($id)
     {   
         $vacant = Vacant::where('id',$id)->first();
         $vacant->state = 0;
+        $vacant->archivate_date=date("d-m-Y h:i:s");
         $vacant->save();
-        return back()->with('message','Se ha cerrado la oferta exitosamente');
+        return back()->with('message','Se ha archivado la oferta exitosamente');
+    }
+    public function duplicar($id)
+    {   
+        $vacant = Vacant::where('id',$id)->first();
+        return view('admin.vacant.duplicarvacantes',compact('vacant'));
     }
     public function search(Request $request)
     {

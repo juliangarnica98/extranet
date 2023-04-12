@@ -26,7 +26,7 @@ class LoginController extends Controller
     use AuthenticatesUsers, HasRoles;
 
   
-    // protected $redirectTo = RouteServiceProvider::HOME;
+    //  protected $redirectTo = RouteServiceProvider::HOME;
 
    
     public function redirectTo(){
