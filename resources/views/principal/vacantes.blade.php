@@ -87,6 +87,7 @@
                     cancelButtonText: 'Cancelar',
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        // console.log({{ old('vacant_id') }});
                         let data = {
                             documento: {{ old('documento') }},
                             type: '2',

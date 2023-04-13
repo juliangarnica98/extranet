@@ -42,7 +42,7 @@ class Cv extends Model
         'pant_size',
         'shoes_size',
         'revision',
-        'vacant_id',
+        // 'vacant_id',
         'state_id',
         'type',
         'area',
@@ -50,10 +50,7 @@ class Cv extends Model
         'pruebas'
     ];
 
-    public function vacant()
-    {
-        return $this->belongsTo('App\Vacant');
-    }
+   
     public function state()
     {
         return $this->belongsTo('App\Models\State');
@@ -65,5 +62,9 @@ class Cv extends Model
     public function discarded()
     {
     return $this->hasOne('App\Models\Discarded');
+    }
+
+    public function vacants(){
+        return $this->belongsToMany(Vacant::class, 'cvvacants');
     }
 }

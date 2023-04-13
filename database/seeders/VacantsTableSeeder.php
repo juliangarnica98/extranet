@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Vacant;
 use Illuminate\Database\Seeder;
 
 class VacantsTableSeeder extends Seeder
@@ -14,16 +15,420 @@ class VacantsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        $data=[
+            [
+                'author' => 'Karina',
+                'title' => 'Auxiliar de centro de distribución',
+                'city' => 'Bogotá cll 196 con auto norte',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'cedi',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Auxiliar de centro de distribución',
+                'city' => 'Siberia parque siemens',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'cedi',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
 
-        \DB::table('vacants')->delete();
-        
-        \DB::table('vacants')->insert(array (
-            0 => 
-            array (
-                'id' => 1,
-                'created_at' => '2023-03-31 13:44:21',
-                'updated_at' => '2023-03-31 14:27:38',
+
+
+            [
+
+                'author' => 'Karina',
+                'title' => 'Jefe de selección',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [      
+                'author' => 'Karina',
+                'title' => 'Analista de selección',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Especialista de comunicaciones',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Analista de contabilidad',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Analista de finanzas',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Auxiliar Administrativo',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Auxiliar de inventario',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Manager  comercial',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Coordinador de CRM',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+
+                'author' => 'Karina',
+                'title' => 'Desarrollador de aplicaciones',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+
+                'author' => 'Karina',
+                'title' => 'Auxiliar de Visual Merchandising',
+                'city' => 'Ibagué- Santamarta',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Coordinador de planeación',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Analista de selección y formación',
+                'city' => 'Siberia',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+
+                'author' => 'Karina',
+                'title' => 'Fotógrafo',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Karina',
+                'title' => 'Auxiliar de contabilidad',
+                'city' => 'Bogotá',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'administrativo',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+
+
+            [
+
+                'author' => 'Sofia',
+                'title' => 'Asesor de ventas',
+                'city' => 'Tiendas a nivel nacional',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'comercial',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                
+                'author' => 'Sofia',
+                'title' => 'Mercaderista',
+                'city' => 'Canal tradicional y grandes superficial a nivel nal',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'comercial',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+                'author' => 'Sofia',
+                'title' => 'Auxiliar integral',
+                'city' => 'Bodegas de nuestras tiendas a nivel nacional',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'comercial',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+
+                'author' => 'Sofia',
+                'title' => 'Lider de tienda',
+                'city' => 'Tiendas a nivel nacional',
+                'description' => 'Sin descripción',
+                'state' => '1',
+                'salary' => '0',
+                'experience' => 'Sin experiencia',
+                'num_vacants' => '1',
+                'num_aplic' => '0',
+                'education' => 'Ninguno',
+                'language' => 'Ninguno',
+                'availability_travel' => 'si',
+                'type_contract' => 'obra o labor',
+                'type_cv_id' => 2,
+                'area' => 'comercial',
+                'filtro' => '0',
+                'job'=>'1'
+            ],
+            [
+
                 'author' => 'Karina',
                 'title' => 'DBA',
                 'city' => 'Bogotá',
@@ -40,13 +445,10 @@ class VacantsTableSeeder extends Seeder
                 'type_cv_id' => 2,
                 'area' => 'administrativo',
                 'filtro' => '3',
-              
-            ),
-            1 => 
-            array (
-                'id' => 2,
-                'created_at' => '2023-03-31 14:35:48',
-                'updated_at' => '2023-03-31 14:35:48',
+                'job'=>'0'
+            ],
+            [
+
                 'author' => 'Karina',
                 'title' => 'Analista contable',
                 'city' => 'Bogotá',
@@ -63,9 +465,14 @@ class VacantsTableSeeder extends Seeder
                 'type_cv_id' => 2,
                 'area' => 'administrativo',
                 'filtro' => '2',
-    
-            ),
-        ));
+                'job'=>'0'
+            ],
+        ];
+        foreach ($data as $datas) {
+            Vacant::create($datas);
+        }
+
+   
         
         
     }

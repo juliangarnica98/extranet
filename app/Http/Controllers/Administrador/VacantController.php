@@ -22,16 +22,16 @@ class VacantController extends Controller
     public function index(){
         Paginator::useBootstrap();
 
-        $vacants = Vacant::where('state',1)->paginate(4);
-        $vacants_t = Vacant::count();
-        $vacants_c = Vacant::where('state',0)->count();
-        $vacants_a = Vacant::where('state',1)->count();
+        $vacants = Vacant::where('state',1)->where('job',0)->paginate(4);
+        $vacants_t = Vacant::where('job',0)->count();
+        $vacants_c = Vacant::where('state',0)->where('job',0)->count();
+        $vacants_a = Vacant::where('state',1)->where('job',0)->count();
         $cvs = Cv::all();
         return view('admin.vacant.indexvacantes',compact('vacants','cvs','vacants_t','vacants_c','vacants_a'));
     }
     public function archivadas(){
         Paginator::useBootstrap();
-        $vacants = Vacant::where('state',0)->paginate(5);
+        $vacants = Vacant::where('state',0)->where('job',0)->paginate(5);
         $cvs = Cv::all();
         return view('admin.vacant.vacantesarchivadas',compact('vacants','cvs'));
     }
@@ -80,6 +80,7 @@ class VacantController extends Controller
         $vacant-> num_aplic=0;
         // $vacant->area_id=$area_id->id;
         $vacant->area = $request->area;
+        $vacant->job=0;
 
         $vacant->filtro= ($request->salary <= 1000000) ?'1' :'' ;
         $vacant->filtro= ($request->salary >= 1000001 && $request->salary <= 3000000) ?'2' :$vacant->filtro ;
@@ -113,11 +114,7 @@ class VacantController extends Controller
         if($validator->fails()){
             return back()->with('error','¡Hay errores en los campos!');
         }
-        if($request->area_id){
-            $area_id=Area::find($request->area_id);
-        }else{
-            $area_id=Area::find(3);
-        }
+       
         $typecv = Type_cv::find(2);
         $vacant =  Vacant::where('id',$id)->first();
         $vacant->title = $request->title;

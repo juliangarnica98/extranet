@@ -52,7 +52,7 @@ class CreateCvsTable extends Migration
             $table->boolean('revision')->default(0);
             $table->string('pruebas')->nullable();
 
-            $table->unsignedBigInteger('vacant_id');
+            // $table->unsignedBigInteger('vacant_id');
             $table->unsignedBigInteger('type');
             $table->string('area');
             // $table->foreign('vacant_id')->references('id')->on('vacants')->onDelete('cascade');;

@@ -72,11 +72,7 @@
             <div class="imagen_portada">
 
                 <div class="container">
-                    <div class="row justify-content-center pb-3">
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" placeholder="Buscar..">
-                        </div>
-                    </div>
+                    
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-7 ">
                             <div class="card " style="height: 85vh;background-color: rgba(255, 255, 255, 0.6)">
@@ -87,13 +83,7 @@
                                                 <div class="card-body pt-0 pb-0 ">
                                                     <h5 class="card-title pl-0" style="color: #e85099"><strong>
                                                             Empleos <i class="fas fa-user-md"></i>
-                                                            @if ($type == 1)
-                                                                Centro de distribución
-                                                            @elseif ($type == 2)
-                                                                Administrativo
-                                                            @else
-                                                                Tiendas
-                                                            @endif
+                                                            {{$type}}
                                                         </strong> </h5>
                                                 </div>
                                             </a>
@@ -104,14 +94,14 @@
                                         <div class="border-top border-bottom mt-1">
                                             <div class="card pl-0 pr-0 ml-0 mr-0 border-0 "  style="background-color: rgba(255, 255, 255, 0.5)">
 
-                                                <a href="{{ route('home.vacante', ['id' => $job->id, 'type' => '1', 'area' => $type]) }}"
+                                                <a href="{{ route('home.vacante2', ['id' => $job->id, 'type' => '1', 'area' => $type]) }}"
                                                     class="card-block stretched-link text-decoration-none">
                                                     <div class="card-body pt-1 pb-1 ml-0 mr-0 ">
                                                         <h5 class="card-title text-dark text-center">
-                                                            <strong>{{ $job->description }}</strong>
+                                                            <strong>{{ $job->title }}</strong>
                                                         </h5>
                                                         <p class="card-text text-dark">Ubicación:
-                                                            {{ $job->location }} </p>
+                                                            {{ $job->city }} </p>
                                                     </div>
                                                 </a>
                                             </div>

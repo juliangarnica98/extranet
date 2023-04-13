@@ -129,7 +129,8 @@
                                 <form method="get" action="">
                                     <div class="form-row">
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="busqueda" style=" border-radius: 25px;">
+                                            <input class="form-control" type="text" name="busqueda"
+                                                style=" border-radius: 25px;">
                                         </div>
                                         <div class="col-sm-2">
                                             <input type="submit" class="btn btn-primary btn-block" value="buscar">
@@ -143,53 +144,41 @@
                                                 {{-- <th class="col text-center">Fecha</th> --}}
                                                 <th class="col text-center">Vacante</th>
                                                 <th class="col text-center">Nombre</th>
-                                               
                                                 <th class="col text-center">Documento</th>
                                                 <th class="col text-center">Celular</th>
-                                                
                                                 <th class="col text-center">Edad</th>
-                                                
                                                 <th class="col text-center">Ver</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($candidatos_vacantes as $vacant)
+                                                @foreach ($vacant->cvs as $cv)
+                                                    <tr class="d-flex">
+                                                        <th class="col-2 text-center">{{ $vacant->title }}</th>
 
-                                            @foreach ($candidatos_vacantes as $cv)
-                                                <tr class="d-flex">
-                                                    {{-- <td class="col-1 text-center">
-                                                        {{ date('d-m-Y', strtotime($cv->created_at)) }}
-                                                    </td> --}}
-                                                    @foreach ($vacants as $vacant)
-                                                        @if ($cv->vacant_id === $vacant->id)
-                                                            <th class="col-2 text-center">{{ $vacant->title }}</th>
-                                                        @endif
-                                                    @endforeach
-                                                    <td class="col text-center">{{ $cv->name }}</td>
-                                                    
-                                                    <th class="col text-center">{{ $cv->num_id }}</th>
-                                                    <td class="col text-center">{{ $cv->num_cell }}</td>
-                                                    
-                                                    <td class="col text-center">{{ $cv->age }}</td>
-                                                    
-                                                    <td class="col text-center">
-                                                        <div style="display: flex"
-                                                            class="text-center justify-content-center">
-                                                            <div class="pl-1">
-                                                                <button class="btn btn-warning"
-                                                                    data-target="#Modalver{{ $cv->id }}"
-                                                                    data-toggle="modal"><i class="fas fa-eye"></i></button>
-                                                                @include('admin.candidate.showcandidatos')
+                                                        <td class="col text-center">{{ $cv->name }}</td>
+                                                        <th class="col text-center">{{ $cv->num_id }}</th>
+                                                        <td class="col text-center">{{ $cv->num_cell }}</td>
+                                                        <td class="col text-center">{{ $cv->age }}</td>
+                                                        <td class="col text-center">
+                                                            <div style="display: flex"
+                                                                class="text-center justify-content-center">
+                                                                <div class="pl-1">
+                                                                    <button class="btn btn-warning"
+                                                                        data-target="#Modalver{{ $cv->id }}"
+                                                                        data-toggle="modal"><i
+                                                                            class="fas fa-eye"></i></button>
+                                                                    @include('admin.candidate.showcandidatos')
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
-                                @endif
+                            @endif
                         </div>
                         <div class="container pt-3">
                             <div class="row d-flex justify-content-center">
@@ -198,7 +187,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -208,16 +197,14 @@
 
                         <div class="card-body">
                             <h1 class="card-title">TRABAJA CON NOSOTROS</h1>
-                            {{-- <p class="card-description">
-                                Especificación de aspirantes
-                            </p> --}}
                             @if (count($trabaja_con_nosotros) == 0)
                                 No se le han registrado candidatos
                             @else
                                 <form method="get" action="">
                                     <div class="form-row">
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="busqueda" style=" border-radius: 25px;">
+                                            <input class="form-control" type="text" name="busqueda"
+                                                style=" border-radius: 25px;">
                                         </div>
                                         <div class="col-sm-2">
                                             <input type="submit" class="btn btn-primary btn-block" value="buscar">
@@ -230,54 +217,41 @@
                                             <tr class="d-flex">
                                                 <th class="col text-center">Vacante</th>
                                                 <th class="col text-center">Nombre</th>
-                                               
                                                 <th class="col text-center">Documento</th>
                                                 <th class="col text-center">Celular</th>
-                                                
                                                 <th class="col text-center">Edad</th>
-                                                
                                                 <th class="col text-center">Ver</th>
-
-
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($trabaja_con_nosotros as $vacant)
+                                                @foreach ($vacant->cvs as $cv)
+                                                    <tr class="d-flex">
+                                                        <th class="col-2 text-center">{{ $vacant->title }}</th>
 
-                                            @foreach ($trabaja_con_nosotros as $cv)
-                                                <tr class="d-flex">
-                                                    {{-- <td class="col-1 text-center">
-                                                        {{ date('d-m-Y', strtotime($cv->created_at)) }}
-                                                    </td> --}}
-                                                    @foreach ($vacants as $vacant)
-                                                        @if ($cv->vacant_id === $vacant->id)
-                                                            <th class="col-2 text-center">{{ $vacant->title }}</th>
-                                                        @endif
-                                                    @endforeach
-                                                    <td class="col text-center">{{ $cv->name }}</td>
-                                                    {{-- <td class="col text-center">{{ $cv->type_id }}</td> --}}
-                                                    <th class="col text-center">{{ $cv->num_id }}</th>
-                                                    <td class="col text-center">{{ $cv->num_cell }}</td>
-                                                    {{-- <td class="col text-center">{{ $cv->num_cell2 }}</td> --}}
-                                                    <td class="col text-center">{{ $cv->age }}</td>
-                                                    {{-- <td class="col text-center">{{ $cv->email }}</td> --}}
-                                                    <td class="col text-center">
-                                                        <div style="display: flex"
-                                                            class="text-center justify-content-center">
-                                                            <div class="pl-1">
-                                                                <button class="btn btn-warning"
-                                                                    data-target="#Modalver{{ $cv->id }}"
-                                                                    data-toggle="modal"><i class="fas fa-eye"></i></button>
-                                                                @include('admin.candidate.showcandidatos')
+                                                        <td class="col text-center">{{ $cv->name }}</td>
+                                                        <th class="col text-center">{{ $cv->num_id }}</th>
+                                                        <td class="col text-center">{{ $cv->num_cell }}</td>
+                                                        <td class="col text-center">{{ $cv->age }}</td>
+                                                        <td class="col text-center">
+                                                            <div style="display: flex"
+                                                                class="text-center justify-content-center">
+                                                                <div class="pl-1">
+                                                                    <button class="btn btn-warning"
+                                                                        data-target="#Modalver{{ $cv->id }}"
+                                                                        data-toggle="modal"><i
+                                                                            class="fas fa-eye"></i></button>
+                                                                    @include('admin.candidate.showcandidatos')
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
-                                @endif
+                            @endif
                         </div>
                         <div class="container pt-3">
                             <div class="row d-flex justify-content-center">
@@ -286,12 +260,12 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-    
+
 @endsection

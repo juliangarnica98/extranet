@@ -37,9 +37,8 @@ class Vacant extends Model
     {
         return $this->belongsTo('App\Models\Type_cv');
     }
-    public function area()
-    {
-        return $this->belongsTo('App\Models\Area');
+    public function cvs(){
+        return $this->belongsToMany(Cv::class, 'cvvacants');
     }
 
 

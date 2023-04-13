@@ -15,15 +15,16 @@ Route::get('/', function () {
 Route::group(['prefix' => 'extranet'], function() {
     Route::get('/index', [App\Http\Controllers\Principal\HomeController::class, 'index'])->name('home.index');
     Route::get('/vacantes', [App\Http\Controllers\Principal\HomeController::class, 'vacantes'])->name('vacantes.index');
-    Route::get('/trabajo/{id} ', [App\Http\Controllers\Principal\HomeController::class, 'vacantes2'])->name('buscarvacante2');
+    Route::get('/trabajo/{area} ', [App\Http\Controllers\Principal\HomeController::class, 'vacantes2'])->name('buscarvacante2');
     Route::get('/buscarvacante/{id} ', [App\Http\Controllers\Principal\HomeController::class, 'buscar'])->name('buscarvacante');
     Route::get('/filtrar-vacantes', [App\Http\Controllers\Principal\HomeController::class, 'filtrar'])->name('filtrar.vacantes');
 
     Route::get('/hoja-vida', [App\Http\Controllers\Principal\CvController::class, 'index'])->name('cv.index');
     Route::get('/hoja-vida/registrar', [App\Http\Controllers\Principal\CvController::class, 'store'])->name('cv.store');
     Route::post('vacante/{id}/{type}', [App\Http\Controllers\Principal\CvController::class, 'vacante'])->name('home.vacante');
+    Route::get('vacante2/{id}/{type}', [App\Http\Controllers\Principal\CvController::class, 'vacante2'])->name('home.vacante2');
     // Route::post('aplicar-vacante/{id}/{type}/{documento}', [App\Http\Controllers\Principal\CvController::class, 'vacanteConCedula'])->name('cv.aplicar.vacante');
-    Route::post('aplicar-vacante', [App\Http\Controllers\Principal\CvController::class, 'vacanteConCedula'])->name('cv.aplicar.vacante');
+    Route::post('/aplicar-vacante', [App\Http\Controllers\Principal\CvController::class, 'vacanteConCedula'])->name('cv.aplicar.vacante');
     Route::get('editar-cv/{id}/{type}/{documento}', [App\Http\Controllers\Principal\CvController::class, 'update'])->name('cv.vacant.update');
     //Route::put('', [App\Http\Controllers\Principal\CvController::class, 'edit'])->name('cv.vacant.edit');    
 });
