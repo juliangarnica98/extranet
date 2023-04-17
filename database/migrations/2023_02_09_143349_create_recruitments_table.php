@@ -23,6 +23,9 @@ class CreateRecruitmentsTable extends Migration
             $table->string('fecha')->nullable();
             $table->string('ethikos')->nullable();
             $table->string('ten_disc')->nullable();
+            $table->string('potencial_comercial')->nullable();
+            $table->string('iq_factorial')->nullable();
+            $table->string('vp_test')->nullable();
 
             $table->unsignedBigInteger('cv_id');
             $table->foreign('cv_id')->references('id')->on('cvs')->onDelete('cascade');

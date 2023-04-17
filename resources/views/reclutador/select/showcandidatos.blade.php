@@ -133,7 +133,7 @@
         <div class="">
 
             <div class="row pl-3 pr-3 pt-2 justify-content-center">
-                @if (count($cvs) == 0)
+                @if (count($vacants) == 0)
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card box">
                             <div class="card-body">
@@ -175,7 +175,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($cvs as $cv)
+                                            @foreach ($vacants as $vacant)
+                                                @foreach ($vacant->cvs as $cv)
                                                 <tr class="d-flex">
                                                     <th class="col-2 text-center">{{ $cv->email }}</th>
                                                     <td class="col text-center">{{ $cv->city_address }}</td>
@@ -196,6 +197,7 @@
                                                         @include('reclutador.select.modals.descartarcandidato')
                                                     </td>
                                                 </tr>
+                                                @endforeach
                                             @endforeach
                                         </tbody>
                                     </table>

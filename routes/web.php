@@ -49,6 +49,9 @@ Route::group(['prefix' => 'administrador'], function() {
     Route::get('/usuarios', [App\Http\Controllers\Administrador\UserController::class, 'index'])->name('admin.usuarios');    
     Route::post('/crear-usuarios', [App\Http\Controllers\Administrador\UserController::class, 'store'])->name('admin.crear.usuarios');    
     Route::post('/cambiar-status/{id}', [App\Http\Controllers\Administrador\UserController::class, 'update'])->name('admin.crear.update');    
+    //Rutas de importacion de jefes
+    Route::post('admin-import-excel', [App\Http\Controllers\Administrador\BossController::class, 'importExcel'])->name('admin.import.excel');
+    Route::get('jefes', [App\Http\Controllers\Administrador\BossController::class, 'index'])->name('admin.index.jefes');
 });
 
 Route::group(['prefix' => 'reclutador'], function() {

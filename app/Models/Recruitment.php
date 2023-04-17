@@ -16,7 +16,10 @@ class Recruitment extends Model
         'fecha',
         'ethikos',
         'ten_disc',
-        'cv_id'
+        'cv_id',
+        'potencial_comercial',
+        'iq_factorial',
+        'vp_test',
     ];
     public function cv() {
         return $this->belongsTo('App\Models\Cv');

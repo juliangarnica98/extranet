@@ -25,11 +25,21 @@
                         {{-- <label for="exampleInputPassword1">Password</label> --}}
                         <input type="number" class="form-control" placeholder="TEN_DISC" name="ten_disc">
                     </div>
-                    {{-- <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div> --}}
-                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <div class="form-group">
+                        {{-- <label for="exampleInputPassword1">Password</label> --}}
+                        <input type="number" class="form-control" placeholder="Potencial Comercial" name="potencial_comercial">
+                    </div>
+                    <div class="form-group">
+                        {{-- <label for="exampleInputPassword1">Password</label> --}}
+                        <input type="number" class="form-control" placeholder="IQ factorial" name="iq_factorial">
+                    </div>
+                    <div class="form-group">
+                        {{-- <label for="exampleInputPassword1">Password</label> --}}
+                        <input type="number" class="form-control" placeholder="V&P test" name="vp_test">
+                    </div>
+                
+                    
+                    <button type="submit" class="btn btn-primary">Enviar resultados</button>
                 </form>
 
 

@@ -131,15 +131,7 @@
     @endif
     <div class="page-content page-container" id="page-content">
         <div class="">
-            {{-- <div class="row pl-3 pr-3 pt-3 justify-content-center">
-                <div class="col-md-12">
-                    <div class="card " style="background-color: #ebebeb;">
-                        <div class="text-center">
-                            o
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+ 
             <div class="row pl-3 pr-3 pt-2 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card box" style="background-color: #ffffff;height: 85vh">
@@ -164,40 +156,8 @@
                             </div>
 
 
-                            @foreach ($cvs as $cv)
-                                {{-- <div class="border-top border mt-1">
-                                    <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants">
-                                        <a href="{{ route('vercandidato', ['id' => $cv->id]) }}"      
-                                            class="card-block stretched-link text-decoration-none">
-                                            <div class="card-body pt-1 pb-1 ml-0 mr-0">
-                                                <h5 class="card-title text-dark border-bottom">
-                                                    <strong>{{ $cv->name }}</strong>
-                                                </h5>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <div class="d-flex justify-content-center">
-                                                            <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-25"
-                                                                alt="">
-                                                        </div>   
-                                                    </div>
-                                                    <div class="col-md-4 text-dark">
-                                                        <span class="h6">Correo:</span><br>
-                                                        <span class="h6">Ciudad de residencia:</span><br>
-                                                        <span class="h6">Dirección:</span><br>
-                                                        <span class="h6">Edad:</span><br>
-                                                    </div>
-                                                    <div class="col-md-4 text-dark ">
-                                                        
-                                                            <span class="text-center h6">{{ $cv->email }}</span><br>
-                                                            <span class="text-center h6">{{ $cv->city_address }}</span><br>
-                                                            <span class="text-center h6">{{ $cv->address }}</span><br>
-                                                            <span class="text-center h6">{{ $cv->age }}</span><br>    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div> --}}
+                            @foreach ($vacants as $vacant)
+                                @foreach ($vacant->cvs as $cv)
                                 <div class="" style="border-radius: 25px">
                                     <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants">
                                         <a href="{{ route('vercandidato', ['id' => $cv->id]) }}"
@@ -220,10 +180,6 @@
                                                             <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-25"
                                                                 alt="">
                                                         </div>
-                                                        {{-- <span class="h6">:</span><br>
-                                                        <span class="h6"></span><br>
-                                                        <span class="h6"></span><br>
-                                                        <span class="h6"></span><br> --}}
                                                     </div>
                                                     <div class="col-md-4 text-dark ">
 
@@ -239,6 +195,7 @@
                                         </a>
                                     </div>
                                 </div>
+                                @endforeach
                             @endforeach
 
                         </div>

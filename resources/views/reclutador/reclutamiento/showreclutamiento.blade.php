@@ -17,6 +17,16 @@
                 
                 <span>TEN_DISC:</span>
                 <label class="text-center">{{ $reclutado->ten_disc }}</label><br>
+
+                <span>POTENCIAL COMERCIAL:</span>
+                <label class="text-center">{{ $reclutado->potencial_comercial }}</label><br>
+
+                <span>IQ FACTORIAL:</span>
+                <label class="text-center">{{ $reclutado->iq_factorial }}</label><br>
+                
+                <span>V&P TEST:</span>
+                <label class="text-center">{{ $reclutado->vp_test }}</label><br>
+                
               
             </div>
             <div class="modal-footer">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Reclutador;
 use App\Http\Controllers\Controller;
 
 use App\Models\Cv;
+use App\Models\Cvvacant;
 use App\Models\Discarded;
 use App\Models\Recruitment;
 use App\Models\State;
@@ -16,16 +17,11 @@ use Illuminate\Pagination\Paginator;
 
 class CandidateController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    //     $this->middleware('can:admin.index');    
-    // }
-    
+   
     public function index()
     {
         Paginator::useBootstrap();
-        $vacants = Vacant::where('state',1)->paginate();
+        $vacants = Vacant::where('state',1)->where('job',0)->paginate();
         return view('reclutador.candidate.indexcandidato',compact('vacants'));
     }
     public function vercandidato($id)
@@ -41,10 +37,10 @@ class CandidateController extends Controller
     }
     public function buscar($id)
     {    
-        $cvs = Cv::where('vacant_id',$id)->where('state_id','!=',11)->paginate();
-        $vacants = Vacant::paginate();
+        Paginator::useBootstrap();
         $states = State::paginate();
-        return view('reclutador.candidate.showcandidatos',compact('vacants','cvs','states'));
+        $vacants=Vacant::with('cvs')->where('id',$id)->paginate();
+        return view('reclutador.candidate.showcandidatos',compact('vacants','states'));
     }
     public function descartar($id,Request $request){
         $cv = Cv::where('id',$id)->first();

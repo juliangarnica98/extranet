@@ -25,17 +25,16 @@ class SelectCandidateController extends Controller
     public function index()
     {
         Paginator::useBootstrap();
-        $vacants = Vacant::where('state',1)->paginate();
+        $vacants = Vacant::where('state',1)->where('job',0)->paginate();
         // dd($vacants);
         return view('reclutador.select.indexselect',compact('vacants'));
     }
     public function buscar($id)
     {
-        
-        $cvs = Cv::where('vacant_id',$id)->where('state_id',2)->paginate();
-        $vacants = Vacant::paginate();
+        Paginator::useBootstrap();
         $states = State::paginate();
-        return view('reclutador.select.showcandidatos',compact('vacants','cvs','states'));
+        $vacants=Vacant::with('cvs')->where('id',$id)->paginate();
+        return view('reclutador.select.showcandidatos',compact('vacants','states'));
     }
 
     /**

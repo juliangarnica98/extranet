@@ -70,6 +70,9 @@ class RecruitmentController extends Controller
         $validator = Validator::make($request->all(), [
             'ethikos' => 'required|numeric|digits_between:2,3',
             'ten_disc' => 'required|numeric|min:2|digits_between:2,3',
+            'potencial_comercial' => 'numeric|min:2|digits_between:2,3',
+            'iq_factorial' => 'numeric|min:2|digits_between:2,3',
+            'vp_test' => 'numeric|min:2|digits_between:2,3',
         ]);
         if($validator->fails()){
             return back()->with('error','¡Hay errores en los campos!');
@@ -78,6 +81,9 @@ class RecruitmentController extends Controller
       
         $reclutamiet->ethikos = $request->ethikos;
         $reclutamiet->ten_disc = $request->ten_disc;
+        $reclutamiet->potencial_comercial = $request->potencial_comercial;
+        $reclutamiet->iq_factorial = $request->iq_factorial;
+        $reclutamiet->vp_test = $request->vp_test;
         $reclutamiet->save();
         return redirect('reclutador/reclutamientos')->with('message','Calificación');
     }

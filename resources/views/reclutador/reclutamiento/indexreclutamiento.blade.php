@@ -127,7 +127,7 @@
 
             <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card" style="background-color: #ffffff;">
+                    <div class="card box" style="background-color: #ffffff;">
                         <div class="card-body">
                             <h1 class="card-title">Nuevos Aspirantes</h1>
                             <p class="card-description">
@@ -174,7 +174,7 @@
                                                                 @csrf
                                                                 @method('put')
                                                                 {{-- <input type="text" value="{{$reclutado->id}}" name="id" hidden> --}}
-                                                                <button class="btn btn-success">Envio de pruebas</button>
+                                                                <button class="btn btn-warning"><i class="fas fa-tasks"></i></i></button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -209,7 +209,7 @@
                                                     <div style="display: flex" class="text-center justify-content-center">
                                                         <div class="pl-1">
                                                             <button class="btn btn-danger" data-target="#Modaldescartar{{ $reclutado->cv->id }}"
-                                                                data-toggle="modal"><i class="fas fa-times"></i> Descartar candidato</button>
+                                                                data-toggle="modal"><i class="fas fa-times"></i> </button>
                                                                     @include('reclutador.reclutamiento.modals.descartarcandidato')
                                                         </div>
                                                     </div>

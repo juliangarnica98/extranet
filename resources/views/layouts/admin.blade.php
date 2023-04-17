@@ -194,6 +194,11 @@
                                 <i class="fa fa-users" aria-hidden="true"></i>
                                 <span class="text-light">USUARIOS</span></a>
                         </li>
+                        <li class="nav-item pb-2">
+                            <a class="nav-link text-center" href="{{ route('admin.index.jefes') }}">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="text-light">JEFES</span></a>
+                        </li>
 
                         <li class="nav-item pb-2">
                             <a class="nav-link text-center" href="{{ route('admin.postulaciones') }}">
