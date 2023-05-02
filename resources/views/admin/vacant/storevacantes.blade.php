@@ -129,7 +129,7 @@
             <div class="card box">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-11">
                             <form method="POST" action="{{ route('admin.crearvacante') }}">
                                 @csrf
                                 <div class="form-group">
@@ -336,10 +336,11 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-5 aling-items-center d-flex justify-content-center">
+                        <div class="col-md-1" style="background-color: rgb(232, 81, 153);"></div>
+                        {{-- <div class="col-md-5 aling-items-center d-flex justify-content-center">
 
                             <img src="{{asset('images/vacant.png')}}" class="img-fluid" alt="">
-                        </div>
+                        </div> --}}
 
                     </div>
 

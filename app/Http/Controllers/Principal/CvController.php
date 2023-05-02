@@ -23,7 +23,6 @@ class CvController extends Controller
     {
        
         $cv = new  Cv();
-        $state = State::find(1);
         $cv->name = $request->name;
         $cv->type_id = $request->type_id;
         $cv->num_id = $request->num_id;
@@ -50,14 +49,9 @@ class CvController extends Controller
         $cv->like_to_work = $request->like_to_work;
         $cv->should_choose = $request->should_choose;
         $cv->shirt_size = $request->shirt_size;
-
-        $cv->area=3;
         $cv->shoes_size = $request->shoes_size;
         $cv->pant_size = $request->pant_size;
-        // $cv->vacant_id = $request->vacant_id;
-        $cv->type = $request->type;
-        $cv->state_job_vacante=1;
-        $state->cv()->save($cv);  
+        $cv->save();
 
         
         $vacante = Vacant::where('id',$request->vacant_id)->first();
@@ -66,9 +60,10 @@ class CvController extends Controller
     
 
         $cvvcante= new Cvvacant();
+        $state = State::find(1);
         $cvvcante->cv_id=$cv->id;
         $cvvcante->vacant_id= $request->vacant_id;
-        $cvvcante->save();
+        $state->cvvacant()->save($cvvcante); 
 
 
         return redirect('extranet/vacantes')->with('message','Estaremos en contacto contigo');
@@ -109,9 +104,10 @@ class CvController extends Controller
         return view('principal.cv',compact('id','type','documento'));
     }
     public function vacante2($id,$type){
+        
         return view('principal.cv2',compact('id','type'));
     }
-    //funcion para aplicacion de vacantes que ya habian creado su hoja de vida
+    
     public function vacanteConCedula(Request $request)
     {   
         $cv_serach=Cv::where('num_id',$request->documento)->first();
@@ -122,9 +118,10 @@ class CvController extends Controller
         }
 
         $cvvcante= new Cvvacant();
+        $state = State::find(1);
         $cvvcante->cv_id=$cv_serach->id;
         $cvvcante->vacant_id= $request->vacant_id;
-        $cvvcante->save();      
+        $state->cvvacant()->save($cvvcante);   
         return ['mensaje' =>'Registro exitoso'];
         
     }

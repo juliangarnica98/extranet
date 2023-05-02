@@ -19,10 +19,11 @@ class DiscardedController extends Controller
     public function discarded()
     {
         Paginator::useBootstrap();
-        $discardeds=Discarded::with('cv')->paginate(10);
+        $discardeds=Discarded::with('cvvacant')->paginate(10);
         $vacantes=Vacant::all();
-        // $cvs=Cv::all();
-        return view('reclutador.discarded.indexdiscarded',compact('discardeds','vacantes'));
+        $cvs=Cv::all();
+        // return $discardeds;
+        return view('reclutador.discarded.indexdiscarded',compact('discardeds','vacantes','cvs'));
     }
 
     /**

@@ -10,7 +10,7 @@
                 </button>
             </div>
 
-            <form method="POST" action="{{route('reclutador.candidato.rechazar',$cv->id)}}">
+            <form method="POST" action="{{route('reclutador.candidato.rechazar',[$postulacion->cv_id,$postulacion->vacant_id])}}">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">

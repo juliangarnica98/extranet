@@ -912,7 +912,7 @@ section {
 .cta {
   background: linear-gradient(rgba(4, 165, 155, 0.9), rgba(235, 77, 151, 0.9)), url("../imgs/bg-masthead\ -\ copia.jpg") fixed center center;
   background-size: cover;
-  padding: 120px 0;
+  /* padding: 120px 0; */
 }
 
 .cta h3 {

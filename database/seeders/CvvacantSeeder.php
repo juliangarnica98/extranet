@@ -14,19 +14,19 @@ class CvvacantSeeder extends Seeder
      */
     public function run()
     {
-        $data=[
-            [
-                'vacant_id' => 22,
-                'cv_id'=>1
-            ],
-            [
-                'vacant_id' => 22,
-                'cv_id'=>2
-            ],
-        ];
-        foreach ($data as $data) {
-            Cvvacant::create($data);
+        // $data=[
+        //     [
+        //         'vacant_id' => 22,
+        //         'cv_id'=>1
+        //     ],
+        //     [
+        //         'vacant_id' => 22,
+        //         'cv_id'=>2
+        //     ],
+        // ];
+        // foreach ($data as $data) {
+        //     Cvvacant::create($data);
 
-        }
+        // }
     }
 }

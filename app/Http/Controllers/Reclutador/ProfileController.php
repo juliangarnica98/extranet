@@ -18,19 +18,7 @@ class ProfileController extends Controller
     }
 
 
-  
-    public function store(Request $request)
-    {
-
-    }
-
-
-    public function show($id)
-    {
-        
-    }
-
-  
+ 
     public function update(Request $request)
     {
         $usuario = User::find(Auth::User()->id);

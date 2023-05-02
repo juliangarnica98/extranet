@@ -29,14 +29,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('lilipink')
             ],
         ];
-        $jefes=[
-            [
-                'name' => 'Jefe',
-                'last_name'=>'prueba',
-                'email'=>'jefe.prueba@fastmoda.com.co',
-                'password' => Hash::make('lilipink')
-            ],
-        ];
+
         // $reclutadores=[
         //     [
         //         'name' => 'Reclutador1',
@@ -65,10 +58,7 @@ class UserSeeder extends Seeder
             User::create($usuario)->assignRole('Admin');
 
         }
-        foreach ($jefes as $jefe) {
-            User::create($jefe)->assignRole('Jefe');
-
-        }
+  
 
 
         // foreach ($reclutadores as $usuario) {

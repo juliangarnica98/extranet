@@ -149,34 +149,37 @@
                                     {{-- {{var_dump($reclutamientos[0])}} --}}
                                     <tbody>
                                         @foreach ($discardeds as $discarded)
-                                            {{-- @foreach ($reclutado->cv as $cv) --}}
+                                           
+                                                
+                                                <tr class="d-flex">
 
-                                            <tr class="d-flex">
+                                                    <td class="col text-center">
+                                                        {{ date('d-m-Y', strtotime($discarded->created_at)) }}
+                                                    </td>
 
-                                                <td class="col text-center">
-                                                    {{-- {{ date('d-m-Y', strtotime($reclutado->cv->created_at)) }} --}}
-                                                    {{ date('d-m-Y', strtotime($discarded->created_at)) }}
-                                                </td>
+                                                    <td class="col text-center">
+                                                        @foreach ($vacantes as $vacant)
+                                                            @if ($vacant->id == $discarded->cvvacant->vacant_id)
+                                                                {{ $vacant->title }}
+                                                            @endif
+                                                        @endforeach
 
-                                                <td class="col text-center">
-                                                    @foreach ($vacantes as $vacant)
-                                                        @if ($vacant->id == $discarded->cv->vacant_id)
-                                                            {{ $vacant->title }}
-                                                        @endif
-                                                    @endforeach
-
-                                                </td>
-
-
-                                                <td class="col text-center">
-                                                    {{ $discarded->cv->name }}
-                                                </td>
-                                                <td class="col text-center">{{ $discarded->comentarios }}</td>
+                                                    </td>
 
 
+                                                    <td class="col text-center">
+                                                        @foreach ($cvs as $cv)
+                                                            @if ($cv->id == $discarded->cvvacant->cv_id)
+                                                                {{ $cv->name }}
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                    <td class="col text-center">{{ $discarded->comentarios }}</td>
 
-                                            </tr>
-                                            {{-- @endforeach --}}
+
+
+                                                </tr>
+                                            
                                         @endforeach
                                     </tbody>
                                 </table>

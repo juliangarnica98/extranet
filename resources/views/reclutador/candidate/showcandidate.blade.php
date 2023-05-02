@@ -135,13 +135,14 @@
                             <hr>
                             <div class="row d-flex justify-content-center aling-items-center text-center">
                                 <div class="col-sm-4">
-                                    <button class="btn btn-warning mr-5" @if ($cv->pruebas == 1) disabled='disabled' @endif>
+                                    {{-- <button class="btn btn-warning mr-5" @if ($cv->pruebas == 1) disabled='disabled' @endif> --}}
+                                        <button class="btn btn-warning mr-5" >
                                         <i class="fas fa-file-download"></i> Descargar hoja de vida</button>
                                 </div>
                                 <div class="col-sm-4">
-                                    <form action="{{route('reclutador.candidate.index',$cv->id)}}" method="POST">
+                                    <form action="{{route('reclutador.candidate.index',[$postulacion->cv_id,$postulacion->vacant_id])}}" method="POST">
                                         @csrf
-                                        <button class="btn btn-success" @if ($cv->state_id != 1) disabled='disabled' @endif><i
+                                        <button class="btn btn-success" @if ($postulacion->state_id >= 2) disabled='disabled' @endif><i
                                                 class="fas fa-check"></i> Seleccionar candidato</button>
                                 </form>
                                         
@@ -151,14 +152,9 @@
                                         data-toggle="modal"><i class="fas fa-times"></i> Descartar candidato</button>
                                             @include('reclutador.candidate.modals.descartarcandidato')
                                 </div>
-                                
-                                
-                                
-                                
+
                             </div>
-
                             <hr>
-
                             <div class="row pt-4">
                                 <div class="col-md-5">
                                     <div class="card box">
@@ -175,9 +171,6 @@
                                             <div class="row">
 
                                                 <div class="col-md-6 text-dark">
-                                                    {{-- <span class="">Fecha:</span> <br> --}}
-                                                    {{-- <span class="">Vacante:</span><br> --}}
-                                                    {{-- <span class="h6">Estado del candidato:</span><br> --}}
                                                     <span class="h6">Correo:</span><br>
                                                     <span class="h6">Ciudad de residencia:</span><br>
                                                     <span class="h6">Dirección:</span><br>
@@ -194,22 +187,7 @@
                                                     <span class="h6">Perfil academico culminado:</span>
                                                 </div>
                                                 <div class="col-md-6 text-dark">
-                                                    {{-- <span
-                                                        class="text-center">{{ date('d-m-Y', strtotime($cv->created_at)) }}</span><br> --}}
-                                                    {{-- <span class="text-center">
-                                                        @foreach ($vacants as $vacant)
-                                                            @if ($cv->vacant_id === $vacant->id)
-                                                                {{ $vacant->title }}
-                                                            @endif
-                                                        @endforeach
-                                                    </span><br> --}}
-                                                    {{-- <span class="text-center badge-success h6 ">
-                                                        @foreach ($states as $state)
-                                                            @if ($cv->state_id == $state->id)
-                                                                {{ $state->description }}
-                                                            @endif
-                                                        @endforeach
-                                                    </span><br> --}}
+                                                
                                                     <span class="text-center h6">{{ $cv->email }}</span><br>
                                                     <span class="text-center h6">{{ $cv->city_address }}</span><br>
                                                     <span class="text-center h6">{{ $cv->address }}</span><br>
@@ -231,61 +209,7 @@
                                 </div>
                                 <div class="col-md-7">
 
-                                    {{-- <div class="card box">
-                                        <div class="card-body">
-                                            <h2 class="text-center text-dark">Información personal</h2>
-                                            <hr>
-                                            <div class="row">
-
-                                                <div class="col-md-6 text-dark">
-                                                    {{-- <span class="">Fecha:</span> <br> --}}
-                                                    {{-- <span class="">Vacante:</span><br> 
-                                                    
-                                                    <span class="h6">Estado del candidato:</span><br>
-                                                    <span class="h6">Tipo de documento:</span><br>
-                                                    <span class="h6">Numero de documento:</span><br>
-                                                    <span class="h6">Número de celular:</span><br>
-                                                    <span class="h6">Número de celular opcional:</span><br>
-                                                    <span class="h6">Edad:</span><br>
-                                                    <span class="h6">Correo:</span><br>
-                                                    <span class="h6">Dirección:</span><br>
-                                                    <span class="h6">Ciudad de residencia:</span><br>
-                                                    <span class="h6">Perfil academico culminado:</span>
-                                                </div>
-                                                <div class="col-md-6 text-dark">
-                                                    {{-- <span
-                                                        class="text-center">{{ date('d-m-Y', strtotime($cv->created_at)) }}</span><br> --}}
-                                                    {{-- <span class="text-center">
-                                                        @foreach ($vacants as $vacant)
-                                                            @if ($cv->vacant_id === $vacant->id)
-                                                                {{ $vacant->title }}
-                                                            @endif
-                                                        @endforeach
-                                                    </span><br> 
-                                
-
-                                                    <span class="text-center badge-success h6 ">
-                                                        @foreach ($states as $state)
-                                                            @if ($cv->state_id == $state->id)
-                                                                {{ $state->description }}
-                                                            @endif
-                                                        @endforeach
-                                                    </span><br>
-                                                    <span class="text-center h6">{{ $cv->type_id }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->num_id }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->num_cell }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->num_cell2 }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->age }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->email }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->address }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->city_address }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->academic_profile }}</span><br>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-
+                                   
                                     <div class="card box">
                                         <div class="card-body">
                                             <h2 class="text-center text-dark ">Información laboral</h2>
@@ -364,11 +288,5 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container pt-3">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 text-xs-center">
-                {{ $cvs->links() }}
-            </div>
-        </div>
-    </div> --}}
+
 @endsection

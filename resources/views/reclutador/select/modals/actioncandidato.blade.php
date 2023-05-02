@@ -13,20 +13,14 @@
             <form method="POST" action="{{route('reclutador.store')}}">
                 @csrf
                 <div class="modal-body">
-                    {{-- <div class="form-group">
-                        <label for="">REGIONAL</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="inputPassword" placeholder="" name="regional">
-                        </div>
-                    </div> --}}
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label for="">COMENTARIOS</label>
                             <textarea name="comentarios" cols="40" rows="5" class="form-control"></textarea>
                         </div>
                     </div>
-                    <input type="hidden" name="cv_id" value="{{ $cv->id }}" id="">
-
+                    <input type="hidden" name="cv_id" value="{{ $postulacion->cv_id }}" id="">
+                    <input type="hidden" name="vacant_id" value="{{ $postulacion->vacant_id }}" id="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

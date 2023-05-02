@@ -133,7 +133,7 @@
         <div class="">
 
             <div class="row pl-3 pr-3 pt-2 justify-content-center">
-                @if (count($vacants) == 0)
+                @if (count($postulaciones)==0 )
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card box">
                             <div class="card-body">
@@ -175,29 +175,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($vacants as $vacant)
-                                                @foreach ($vacant->cvs as $cv)
+                                            {{-- @foreach ($vacants as $vacant)
+                                                @foreach ($vacant->cvs as $cv) --}}
+                                            @foreach ($postulaciones as $postulacion)
                                                 <tr class="d-flex">
-                                                    <th class="col-2 text-center">{{ $cv->email }}</th>
-                                                    <td class="col text-center">{{ $cv->city_address }}</td>
-                                                    <td class="col text-center">{{ $cv->address }}</td>
-                                                    <td class="col text-center">{{ $cv->age }}</td>
-                                                    <td>
-                                                        <button class="btn btn-info"
-                                                            data-target="#Modalstore{{ $cv->id }}"
-                                                            data-toggle="modal"><i class="fas fa-check"></i> Reclutar
-                                                            candidato</button>
-                                                        @include('reclutador.select.modals.actioncandidato')
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-danger"
-                                                            data-target="#Modaldescartar{{ $cv->id }}"
-                                                            data-toggle="modal"><i class="fas fa-times"></i> Descartar
-                                                            candidato</button>
-                                                        @include('reclutador.select.modals.descartarcandidato')
-                                                    </td>
+                                                    @foreach ($cvs as $cv)
+                                                        @if ($postulacion->cv_id == $cv->id)
+                                                            <th class="col-2 text-center">{{ $cv->email }}</th>
+                                                            <td class="col text-center">{{ $cv->city_address }}</td>
+                                                            <td class="col text-center">{{ $cv->address }}</td>
+                                                            <td class="col text-center">{{ $cv->age }}</td>
+                                                            <td>
+
+                                                                <a 
+                                                                    href="{{ route('vercandidatoseleccionado', ['id' => $cv->id,$postulacion->vacant_id]) }}"class="btn btn-info"><i
+                                                                        class="fas fa-check"></i> Reclutar
+                                                                    candidato
+                                                                </a>
+
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-danger"
+                                                                    data-target="#Modaldescartar{{ $cv->id }}"
+                                                                    data-toggle="modal"><i class="fas fa-times"></i>
+                                                                    Descartar
+                                                                    candidato</button>
+                                                                @include('reclutador.select.modals.descartarcandidato')
+                                                            </td>
+                                                        @endif
+                                                    @endforeach
                                                 </tr>
-                                                @endforeach
                                             @endforeach
                                         </tbody>
                                     </table>

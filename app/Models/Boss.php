@@ -9,5 +9,9 @@ class Boss extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function recruitments(){
+        return $this->hasMany(Recruitment::class);
+    }
    
 }

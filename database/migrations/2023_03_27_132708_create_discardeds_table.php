@@ -18,8 +18,8 @@ class CreateDiscardedsTable extends Migration
             $table->timestamps();
             $table->text('comentarios');
 
-            $table->unsignedBigInteger('cv_id');
-            $table->foreign('cv_id')->references('id')->on('cvs')->onDelete('cascade');
+            $table->unsignedBigInteger('cvvacant_id');
+            $table->foreign('cvvacant_id')->references('id')->on('cvvacants')->onDelete('cascade');
 
 
         });

@@ -159,41 +159,43 @@
                             @foreach ($vacants as $vacant)
                                 @foreach ($vacant->cvs as $cv)
                                 <div class="" style="border-radius: 25px">
-                                    <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants">
-                                        <a href="{{ route('vercandidato', ['id' => $cv->id]) }}"
-                                            class="card-block stretched-link text-decoration-none">
-                                            <div class="card-body pt-1 pb-1 ml-0 mr-0 border-bottom border-top">
+                                    @if ($cv->pivot->state_id != 11)
+                                        <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants">
+                                            <a href="{{ route('vercandidato', ['id' => $cv->id,'vacant'=>$vacant->id]) }}"
+                                                class="card-block stretched-link text-decoration-none">
+                                                <div class="card-body pt-1 pb-1 ml-0 mr-0 border-bottom border-top">
 
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <h5 class="card-title text-center text-dark ">
-                                                            <strong>{{ $cv->name }}</strong><br>
-                                                            @if ($cv->revision == 0)
-                                                                <strong style="color: rgba(235, 77, 151, 0.9)">No revisado</strong>
-                                                            @elseif ($cv->revision == 1)
-                                                                <strong style="color:rgba(4, 165, 155, 0.9">Revisado</strong>
-                                                            @endif
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-md-4 text-dark">
-                                                        <div class="d-flex justify-content-center">
-                                                            <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-25"
-                                                                alt="">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <h5 class="card-title text-center text-dark ">
+                                                                <strong>{{ $cv->name }}</strong><br>
+                                                                @if ($cv->pivot->revision == 0)
+                                                                    <strong style="color: rgba(235, 77, 151, 0.9)">No revisado</strong>
+                                                                @elseif ($cv->pivot->revision == 1)
+                                                                    <strong style="color:rgba(4, 165, 155, 0.9">Revisado</strong>
+                                                                @endif
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-md-4 text-dark">
+                                                            <div class="d-flex justify-content-center">
+                                                                <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-25"
+                                                                    alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 text-dark ">
+
+                                                            <strong class="text-center">Correo: {{ $cv->email }}</strong><br>
+                                                            <strong class="text-center">Ciudad de residencia:
+                                                                {{ $cv->city_address }}</strong><br>
+                                                            <strong class="text-center">Dirección:
+                                                                {{ $cv->address }}</strong><br>
+                                                            <strong class="text-center"> Edad:{{ $cv->age }}</strong><br>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 text-dark ">
-
-                                                        <strong class="text-center">Correo: {{ $cv->email }}</strong><br>
-                                                        <strong class="text-center">Ciudad de residencia:
-                                                            {{ $cv->city_address }}</strong><br>
-                                                        <strong class="text-center">Dirección:
-                                                            {{ $cv->address }}</strong><br>
-                                                        <strong class="text-center"> Edad:{{ $cv->age }}</strong><br>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                            </a>
+                                        </div>
+                                    @endif
                                 </div>
                                 @endforeach
                             @endforeach

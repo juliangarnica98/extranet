@@ -6,7 +6,9 @@ namespace App\Http\Controllers\Reclutador;
 use App\Http\Controllers\Controller;
 use App\Models\Area;
 use App\Models\Cv;
+use App\Models\Cvvacant;
 use App\Models\Discarded;
+use App\Models\Recruitment;
 use App\Models\State;
 use App\Models\Type_cv;
 use App\Models\Vacant;
@@ -32,11 +34,21 @@ class SelectCandidateController extends Controller
     public function buscar($id)
     {
         Paginator::useBootstrap();
-        $states = State::paginate();
-        $vacants=Vacant::with('cvs')->where('id',$id)->paginate();
-        return view('reclutador.select.showcandidatos',compact('vacants','states'));
+        $postulaciones=Cvvacant::where('vacant_id',$id)->where('state_id',2)->paginate(10);
+        $vacants=Vacant::paginate();      
+        $cvs=Cv::paginate();      
+        return view('reclutador.select.showcandidatos',compact('vacants','postulaciones','cvs'));
     }
-
+    public function vercandidato($id,$vacant)
+    {
+        Paginator::useBootstrap();
+        $postulacion = Cvvacant::where('cv_id',$id)->where('vacant_id',$vacant)->first();
+        $cv = Cv::where('id',$id)->first();
+        $vacants = Vacant::paginate();       
+        $reclutamiento = Recruitment::where('cvvacant_id',$postulacion->id)->first();
+        // dd($postulacion);
+        return view('reclutador.select.showcandidate',compact('cv','vacants','postulacion','reclutamiento'));
+    }
     /**
      * Show the form for creating a new resource.
      *

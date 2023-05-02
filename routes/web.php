@@ -13,7 +13,9 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'extranet'], function() {
-    Route::get('/index', [App\Http\Controllers\Principal\HomeController::class, 'index'])->name('home.index');
+    Route::get('/home', [App\Http\Controllers\Principal\HomeController::class, 'index2'])->name('home.index2');
+
+    Route::get('/index', [App\Http\Controllers\Principal\HomeController::class, 'index2'])->name('home.index');
     Route::get('/vacantes', [App\Http\Controllers\Principal\HomeController::class, 'vacantes'])->name('vacantes.index');
     Route::get('/trabajo/{area} ', [App\Http\Controllers\Principal\HomeController::class, 'vacantes2'])->name('buscarvacante2');
     Route::get('/buscarvacante/{id} ', [App\Http\Controllers\Principal\HomeController::class, 'buscar'])->name('buscarvacante');
@@ -24,7 +26,7 @@ Route::group(['prefix' => 'extranet'], function() {
     Route::post('vacante/{id}/{type}', [App\Http\Controllers\Principal\CvController::class, 'vacante'])->name('home.vacante');
     Route::get('vacante2/{id}/{type}', [App\Http\Controllers\Principal\CvController::class, 'vacante2'])->name('home.vacante2');
     // Route::post('aplicar-vacante/{id}/{type}/{documento}', [App\Http\Controllers\Principal\CvController::class, 'vacanteConCedula'])->name('cv.aplicar.vacante');
-    Route::post('/aplicar-vacante', [App\Http\Controllers\Principal\CvController::class, 'vacanteConCedula'])->name('cv.aplicar.vacante');
+    Route::post('aplicar-vacante', [App\Http\Controllers\Principal\CvController::class, 'vacanteConCedula'])->name('cv.aplicar.vacante');
     Route::get('editar-cv/{id}/{type}/{documento}', [App\Http\Controllers\Principal\CvController::class, 'update'])->name('cv.vacant.update');
     //Route::put('', [App\Http\Controllers\Principal\CvController::class, 'edit'])->name('cv.vacant.edit');    
 });
@@ -60,12 +62,13 @@ Route::group(['prefix' => 'reclutador'], function() {
     Route::put('editarperfil', [App\Http\Controllers\Reclutador\ProfileController::class, 'update'])->name('reclutador.editarperfil');
     //rutas de candidatos
     Route::get('/buscar-candidato/{id} ', [App\Http\Controllers\Reclutador\CandidateController::class, 'buscar'])->name('reclutador.aspirantes');
-    Route::get('/ver-candidato/{id}', [App\Http\Controllers\Reclutador\CandidateController::class, 'vercandidato'])->name('vercandidato');
+    Route::get('/ver-candidato/{id}/{vacant}', [App\Http\Controllers\Reclutador\CandidateController::class, 'vercandidato'])->name('vercandidato');
     Route::get('/candidatos', [App\Http\Controllers\Reclutador\CandidateController::class, 'index'])->name('reclutador.index');
-    Route::post('/descartar-candidato/{id}', [App\Http\Controllers\Reclutador\CandidateController::class, 'descartar'])->name('reclutador.candidato.rechazar');
-    Route::post('seleccionar/{id}', [App\Http\Controllers\Reclutador\CandidateController::class, 'seleccionar'])->name('reclutador.candidate.index');
+    Route::post('/descartar-candidato/{id}/{vacant}', [App\Http\Controllers\Reclutador\CandidateController::class, 'descartar'])->name('reclutador.candidato.rechazar');
+    Route::post('seleccionar/{id}/{vacant}', [App\Http\Controllers\Reclutador\CandidateController::class, 'seleccionar'])->name('reclutador.candidate.index');
     //rutas de reclutamiento
     Route::get('reclutamientos', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'index'])->name('reclutador.show');
+    Route::get('ver-reclutamientos-vacante/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'show'])->name('reclutador.reclutamientos.buscar');
     Route::post('store', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'store'])->name('reclutador.store');
     Route::put('calificar/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'update'])->name('reclutador.update');    
     Route::put('envio-pruebas/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'send'])->name('reclutador.reclutamiento.pruebas');    
@@ -86,8 +89,17 @@ Route::group(['prefix' => 'reclutador'], function() {
     //rutas seleccionados
     Route::get('seleccionados', [App\Http\Controllers\Reclutador\SelectCandidateController::class, 'index'])->name('reclutador.seleccionados.index');
     Route::get('/buscar-candidato-seleccionado/{id} ', [App\Http\Controllers\Reclutador\SelectCandidateController::class, 'buscar'])->name('reclutador.seleccionados.buscar');
+    Route::get('/ver-candidato-seleccionado/{id}/{vacant}', [App\Http\Controllers\Reclutador\SelectCandidateController::class, 'vercandidato'])->name('vercandidatoseleccionado');
     //rutas Registros de cv
     Route::get('resgistros', [App\Http\Controllers\Reclutador\RegisterController::class, 'index'])->name('reclutador.registros.index');
+    //rutas de analista
+    Route::get('analistas', [App\Http\Controllers\Reclutador\AnalystController::class, 'index'])->name('reclutador.analista.index');
+    Route::get('ver-postulados-vacante/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'show'])->name('reclutador.analista.buscar');
+    Route::put('entrevista-analista/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'entrevista'])->name('reclutador.analista.entrevista');
+    Route::put('calificaion-comercial/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'calificacion'])->name('reclutador.analista.calificacion');
+    Route::put('asignar-jefe/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'jefe'])->name('reclutador.analista.jefe');
+    
+
 
 });
 
@@ -95,6 +107,10 @@ Route::group(['prefix' => 'jefe'], function() {
     //rutas de perfil
     Route::get('perfil', [App\Http\Controllers\Jefe\ProfileController::class, 'index'])->name('jefe.perfil');
     Route::put('editarperfil', [App\Http\Controllers\Jefe\ProfileController::class, 'update'])->name('jefe.editarperfil');
+    Route::get('index', [App\Http\Controllers\Jefe\CandidateController::class, 'index'])->name('jefe.candidatos.index');
+    Route::get('vercandidato/{id}/{vacant}/{recruitment}', [App\Http\Controllers\Jefe\CandidateController::class, 'show'])->name('jefe.candidatos.show');
+
+    
     //rutas de vacantes
 
    

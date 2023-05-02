@@ -25,6 +25,10 @@ class HomeController extends Controller
     {
         return view('principal.index');
     }
+    public function index2()
+    {
+        return view('principal.index');
+    }
     public function vacantes()
     {
         $vacants = Vacant::where('state',1)->where('job',0)->paginate(10);

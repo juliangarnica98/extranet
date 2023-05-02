@@ -19,52 +19,35 @@ class Cv extends Model
         'address',
         'city_address',
         'academic_profile',
-
         'name_last_company',
         'position_last_company',
         'funtion_last_company',
         'work_last_company',
         'date_init_company',
         'date_finally_company',
-
         'name_last_company2',
         'position_last_company2',
         'funtion_last_company2',
         'date_init_company2',
         'date_finally_company2',
-        
         'previously_work',
         'family',
         'like_to_work',
         'should_choose',
-
         'shirt_size',
         'pant_size',
         'shoes_size',
         'revision',
-        // 'vacant_id',
         'state_id',
         'type',
         'area',
-
         'pruebas'
     ];
 
    
-    public function state()
-    {
-        return $this->belongsTo('App\Models\State');
-    }
-    public function recruitment()
-    {
-    return $this->hasOne('App\Models\Recruitment');
-    }
-    public function discarded()
-    {
-    return $this->hasOne('App\Models\Discarded');
-    }
+ 
 
     public function vacants(){
-        return $this->belongsToMany(Vacant::class, 'cvvacants');
+        return $this->belongsToMany(Vacant::class, 'cvvacants')->withPivot('revision','pruebas','state_id'); 
     }
 }

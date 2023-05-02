@@ -9,19 +9,13 @@ class Recruitment extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-       
-        'comentarios',
-        'pruebas',
-        'fecha',
-        'ethikos',
-        'ten_disc',
-        'cv_id',
-        'potencial_comercial',
-        'iq_factorial',
-        'vp_test',
-    ];
-    public function cv() {
-        return $this->belongsTo('App\Models\Cv');
+
+    protected $guarded=[];
+    public function cvvacant() {
+        return $this->belongsTo('App\Models\Cvvacant');
+    }
+
+    public function boss(){
+        return $this->belongsTo(Boss::class);
     }
 }

@@ -31,30 +31,436 @@
         .bg-main {
             background: linear-gradient(rgba(4, 165, 155, 0.9), rgba(235, 77, 151, 0.9)), url("{{ asset('imgs/bg-masthead - copia.jpg') }}") fixed center center;
         }
+      .sizecontailer {
+            height: 100vh;
+        }
+
+        .init::-webkit-scrollbar {
+            display: none;
+        }
+
+        .bg-black {
+            background-color: #000000;
+        }
+
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+            color:
+                #cc0571;
+        }
+
+        .hover-underline-animation:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color:
+                #cc0571;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .hover-underline-animation:hover:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+
+        @media (min-width: 750px) {
+
+            .navbar,
+            .navbar-collapse {
+                flex-direction: column;
+            }
+
+            .navbar-expand-lg .navbar-nav {
+                flex-direction: column;
+            }
+
+            .navbar {
+                /* width: 28%; */
+                height: 100vh;
+                align-items: flex-start;
+            }
+
+            .navbar-brand {
+                margin-left: 0.5em;
+                padding-bottom: 0;
+                border-bottom: 4px solid #464646;
+            }
+
+            .navbar-center {
+                position: absolute;
+                left: 50%;
+                transform: translatex(-50%);
+            }
+            
+
+        }
+
     </style>
 
 </head>
 
 <body>
+    <div class="row" style="padding: 0; margin: 0;">
+        <div class="col-md-2 text-center" style="margin: 0;padding: 0%;">
 
 
-    <header id="header" class="fixed-top" style="background-color: #000000">
+
+            <nav class="navbar sizenav navbar-expand-lg navbar-dark bg-black">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse col-12 " id="navbarNav" >
+
+                    <ul class="navbar-nav d-flex justify-content-center mr-auto" style="margin-top: 30vh">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#"><img class="img-fluid" src="{{ asset('imgs/logo.png') }}"
+                                    alt=""></a>
+                        </li>
+                        <div class="divider bg-light mt-5" style=" border-top: 1px solid #fff;"></div>
+                        
+                        <li class="nav-item pt-3 mt-5">
+                            <strong> <a class="nav-link hover-underline-animation text-light" href="{{ route('login') }}"
+                                    style="font-weight: bold; font-size: 1.3rem">INICIAR SESION</a></strong>
+                        </li>
+                        <div class="divider bg-light mt-5" style=" border-top: 1px solid #fff;"></div>
+                        {{-- <li class="nav-item pt-5">
+                            <h5 class="text-center text-light" style="font-weight: bold;">NUESTRAS REDES SOCIALES</h5>
+                            <div class="social-links mt-3 text-center">
+                                <div class="row pt-5">
+                                    <div class="col">
+                                        <a href="#" class="facebook" style="font-size: 2rem;color: #cc0571;"><i
+                                                class="bx bxl-facebook"></i></a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="#" class="instagram" style="font-size: 2rem;color: #62a59d;"><i
+                                                class="bx bxl-instagram"></i></a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="#" class="linkedin" style="font-size: 2rem;color: #cc0571;"><i
+                                                class="bx bxl-linkedin"></i></a>
+                                    </div>
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col">
+                                        <a href="#" class="facebook" style="font-size: 2rem;color: #62a59d;"><i
+                                                class="bx bxl-facebook"></i></a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="#" class="instagram" style="font-size: 2rem;color: #cc0571;"><i
+                                                class="bx bxl-instagram"></i></a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="#" class="linkedin" style="font-size: 2rem;color: #62a59d;"><i
+                                                class="bx bxl-linkedin"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li> --}}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-10 bg-main" style="margin: 0;padding: 0%;">@if (Session::has('error'))
+            <script>
+                Swal.fire(
+                    'Error',
+                    "{{ Session::get('error') }}",
+                    'error'
+                )
+            </script>
+        @endif
+        @if (Session::has('message'))
+            <script>
+                Swal.fire(
+                    '¡Bien hecho!',
+                    "{{ Session::get('message') }}",
+                    'success'
+                )
+            </script>
+        @endif
+        @if (old('documento'))
+            <script>
+                Swal.fire({
+                    title: "Ya existe el documento en nuestras bases",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Aplicar a vacante',
+                    denyButtonText: `Editar información`,
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // console.log({{ old('vacant_id') }});
+                        let data = {
+                            documento: {{ old('documento') }},
+                            type: '2',
+                            vacant_id: {{ old('vacant_id') }}
+                        }
+                        fetch('/extranet/aplicar-vacante', {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                        'content')
+                                },
+                                method: 'post',
+                                body: JSON.stringify(data)
+                            }).then(response => response.json())
+                            .then(function(result) {
+                                Swal.fire('', result.mensaje, 'success')                                
+                            })
+                            .catch(function(error) {});
+                    } else if (result.isDenied) {
+                        window.location.href = 'http://www.google.com';
+                    }
+                })
+            </script>
+        @endif
+            <div class=" overflow-auto sizecontailer init">
+                <div class="div pt-5">
+                    <div class="imagen_portada">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-md-11">
+                                <div class="row">
+                                    <div class="col-md-3" style="">
+                                        <div class="card"
+                                            style="height: 85vh; background-color: rgba(255, 255, 255, 0.6);height: auto">
+                                            <div class="card-body">
+                                                <h2 class="card-title text-center"><strong> FILTROS<br>
+                                                    </strong>
+                                                </h2>
+                                                <form action="{{ route('filtrar.vacantes') }}" method="get">
+                                                    @csrf
+                                                    {{-- <span for="" class="text-center">Area</span>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="area"
+                                                            id="flexRadioDisabled" value="cedi">
+                                                        <label class="form-check-label" for="flexRadioDisabled">
+                                                            Cedi
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="area"
+                                                            id="flexRadioCheckedDisabled" value="administrativo">
+                                                        <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                                            Administrativos
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="area"
+                                                            id="flexRadioCheckedDisabled" value="comercial">
+                                                        <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                                            Comercial
+                                                        </label>
+                                                    </div> --}}
+                                                    <span for="" class="text-center">Salario</span>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="salario"
+                                                            id="flexRadioDisabled" value="1">
+                                                        <label class="form-check-label" for="flexRadioDisabled">
+                                                            $0 - $1'000.000
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="salario"
+                                                            id="flexRadioCheckedDisabled" value="2">
+                                                        <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                                            $1'000.001 - $3'000.000
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="salario"
+                                                            id="flexRadioCheckedDisabled" value="3">
+                                                        <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                                            $3'000.001 - mas
+                                                        </label>
+                                                    </div>
+        
+                                                    <button class="btn col-10 m-2 text-center"
+                                                        style="background-color: #e85199;border-radius: 25px;">Buscar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="">
+                                        <div class="card" style="height: 85vh; background-color: rgba(255, 255, 255, 0.6)">
+                                            <div class="card-body pt-2 pb-2 pl-0 pr-0">
+                                                <div class="card mt-2 border-0"
+                                                    style=" background-color: rgba(255, 255, 255, 0.7)">
+                                                    <div class="d-flex justify-content-center">
+                                                        <a href="#"
+                                                            class="card-block stretched-link text-decoration-none">
+                                                            <div class="card-body pt-0 pb-0 ">
+                                                                <h5 class="card-title text-dark pl-0"><strong>
+                                                                        Empleos encontrados <i class="fas fa-user-md"></i>
+                                                                    </strong> </h5>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+        
+                                                </div>
+                                                @foreach ($vacants as $vacant)
+                                                    <div class="border-top border-bottom mt-1">
+                                                        <div class="card pl-0 pr-0 ml-0 mr-0 border-0"
+                                                            style=" background-color: rgba(255, 255, 255, 0.7)">
+                                                            
+                                                            <a href="{{ route('buscarvacante', ['id' => $vacant->id]) }}"
+                                                                class="card-block stretched-link text-decoration-none">
+                                                                <div class="card-body pt-1 pb-1 ml-0 mr-0">
+        
+                                                                    <h5 class="card-title text-dark text-center">
+                                                                        <strong>{{ $vacant->title }}</strong>
+                                                                    </h5>
+                                                                    <h6 class="card-subtitle mb-1 text-dark">
+                                                                        {{ $vacant->city }} -
+                                                                        ${{ number_format($vacant->salary, 1, ',', '.') }} COP
+                                                                    </h6>
+                                                                    <p class="card-text text-dark">Educación requerida:
+                                                                        {{ $vacant->education }} </p>
+                                                                    <small id="ago"
+                                                                        class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
+                                                                        {{ date('d-m-Y', strtotime($vacant->created_at)) }}</small>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card text-dark"
+                                            style="height: auto;background-color: rgba(255, 255, 255, 0.6)">
+                                            @if (isset($vacant_found))
+                                                <div class="card-body">
+                                                    <h2 class="card-title text-center"><strong> {{ $vacant_found->title }}
+                                                            <br>
+                                                        </strong>
+                                                    </h2>
+        
+        
+        
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <p class="text-center">
+                                                                {{ $vacant_found->city }} <br>
+                                                                <small id="ago"
+                                                                    class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
+                                                                    {{ date('d-m-Y', strtotime($vacant_found->created_at)) }}</small>
+                                                                <br>
+        
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="d-flex justify-content-center">
+                                                                
+                                                                <button class="btn btn-block" data-toggle="modal"
+                                                                    style="border-radius: 20px; background-color: #e85199;color:#fff"
+                                                                    data-target="#cedula_verificacion">
+                                                                    Aplicar
+                                                                </button>
+        
+                                                                @include('principal.modals.verificarcedula')
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+        
+        
+                                                    <hr>
+                                                    <div class="row pb-3 mt-3">
+                                                        <div class="col-4">
+                                                            <p class="card-text border text-center"
+                                                                style="border-radius: 20px;">
+                                                                ${{ number_format($vacant_found->salary, 1, ',', '.') }} COP
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <p class="card-text border text-center"
+                                                                style="border-radius: 20px;">
+                                                                {{ $vacant_found->city }}</p>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <p class="card-text border text-center"
+                                                                style="border-radius: 20px;">
+                                                                Contrato {{ $vacant_found->type_contract }}</p>
+                                                        </div>
+                                                    </div>
+        
+                                                    <p class="card-text text-dark">
+                                                    <h4><strong>Descripción:</strong> </h4>
+                                                    {{ $vacant_found->description }}
+                                                    <br>
+                                                    <strong>Vacantes:</strong> {{ $vacant_found->num_vacants }}
+        
+                                                    </p>
+                                                    <h4><strong>Requisitos:</strong> </h4>
+                                                    <p class="text-dark">
+                                                        &#8226; <strong>Disponibilidad para viajar:</strong>
+                                                        {{ $vacant_found->availability_travel }} <br>
+                                                        &#8226; <strong>Idioma necesario:</strong>
+                                                        {{ $vacant_found->language }}
+                                                        <br>
+                                                        &#8226; <strong>Nivel educativo requerido:</strong>
+                                                        {{ $vacant_found->education }} <br>
+                                                        &#8226; <strong>Experiencia:</strong> {{ $vacant_found->experience }}
+                                                    </p>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="btn btn-block" data-toggle="modal"
+                                                            style="border-radius: 20px; background-color: #e85199;color:#fff"
+                                                            data-target="#cedula_verificacion">
+                                                            Aplicar
+                                                        </button>
+        
+                                                        @include('principal.modals.verificarcedula')
+                                                       
+                                                    </div>
+        
+                                                </div>
+                                            @else
+                                                <h2 class="card-title text-center"><strong>Selecciona la vacante de tu interes
+                                                        <br>
+                                                    </strong>
+                                                </h2>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+        </div>
+    </div>
+
+    {{-- <header id="header" class="fixed-top" style="background-color: #000000">
         <div class="container d-flex align-items-center">
             <h1 class="logo me-auto"><a href="{{ route('home.index') }}">Talentos Lili&Yoi</a></h1>
             <div class="text-center d-flex align-items-center justify-content-center">
                 <nav id="navbar" class="navbar ">
                     <ul>
                         <li><a class="nav-link scrollto" href="{{ route('login') }}" target="_parent">Iniciar Sesión</a></li>
-                        {{-- <li><a class="nav-link scrollto" href="/login" target="">Iniciar Sesión</a></li> --}}
+                        
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav>
             </div>
         </div>
-    </header>
+    </header> --}}
 
 
-    <main id="main" style="padding-top: 4%" class="bg-main pb-5">
+    {{-- <main id="main" style="padding-top: 4%" class="bg-main pb-5">
 
 
 
@@ -115,7 +521,7 @@
 
 
 
-        <div class="div pt-5">
+        {{-- <div class="div pt-5">
             <div class="imagen_portada">
                 <div class="d-flex justify-content-center">
                     <div class="col-md-11">
@@ -201,7 +607,7 @@
                                             <div class="border-top border-bottom mt-1">
                                                 <div class="card pl-0 pr-0 ml-0 mr-0 border-0"
                                                     style=" background-color: rgba(255, 255, 255, 0.7)">
-                                                    {{-- border-right-0 border-left-0 --}}
+                                                    
                                                     <a href="{{ route('buscarvacante', ['id' => $vacant->id]) }}"
                                                         class="card-block stretched-link text-decoration-none">
                                                         <div class="card-body pt-1 pb-1 ml-0 mr-0">
@@ -251,12 +657,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="d-flex justify-content-center">
-                                                        {{-- <a href="{{ route('admin.vacante', $vacant->id) }}" --}}
-                                                        {{-- <button type="button" class="btn btn-block" data-toggle="modal"
-                                                                       data-target="#cedula_verificacion">
-                                                                       Aplicar
-                                                                   </button>
-                                                                    --}}
+                                                        
                                                         <button class="btn btn-block" data-toggle="modal"
                                                             style="border-radius: 20px; background-color: #e85199;color:#fff"
                                                             data-target="#cedula_verificacion">
@@ -264,9 +665,7 @@
                                                         </button>
 
                                                         @include('principal.modals.verificarcedula')
-                                                        {{-- <a href="{{ route('home.vacante', ['id' => $vacant_found->id, 'type' => '2', 'area' => $vacant_found->area_id]) }}"
-                                                                       class="btn btn-block col-6"
-                                                                       style="border-radius: 20px; background-color: #e85199;color:#fff">Aplicar</a> --}}
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -319,10 +718,7 @@
                                                 </button>
 
                                                 @include('principal.modals.verificarcedula')
-                                                {{-- 
-                                                           <a href="{{ route('home.vacante', ['id' => $vacant_found->id, 'type' => '2', 'area' => $vacant_found->area_id]) }}"
-                                                               class="btn btn-info btn-block col-12"
-                                                               style="border-radius: 20px; ">Aplicar</a> --}}
+                                               
                                             </div>
 
                                         </div>
@@ -339,10 +735,10 @@
                 </div>
             </div>
         </div>
-    </main>
+    </main> --}}
 
 
-    <footer id="footer">
+    {{-- <footer id="footer">
         <div class="footer-top" style="background-color: #000000">
             <div class="container">
                 <div class="row">
@@ -365,7 +761,7 @@
                 &copy; Copyright <strong><span>lilipink.com</span></strong>. Todos los derechos reservados
             </div>
         </div>
-    </footer>
+    </footer> --}}
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

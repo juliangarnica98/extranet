@@ -10,8 +10,8 @@ class Discarded extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function cv()
+    public function cvvacant()
     {
-        return $this->belongsTo('App\Models\Cv');
+        return $this->belongsTo('App\Models\Cvvacant');
     }
 }

@@ -122,118 +122,123 @@
         </script>
     @endif
     <div class="page-content page-container" id="page-content">
-        <h2 class="text-center text-dark pt-2 ">RECLUTAMIENTOS</h2>
+        <h2 class="text-center text-dark pt-2 "></h2>
         <div class="">
 
             <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card box" style="background-color: #ffffff;">
-                        <div class="card-body">
-                            <h1 class="card-title">Nuevos Aspirantes</h1>
-                            <p class="card-description">
-                                Especificación de aspirantes
-                            </p>
-                            <div class=" table-responsive">
-                                <table class="table " style="background-color: #FFF; border-radius: 10px;">
-                                    <thead>
-                                        <tr class="d-flex">
-                                            <th class="col text-center">Fecha</th>
-                                            <th class="col text-center">Vacante</th>
-                                            <th class="col text-center">Nombre</th>
-                                            <th class="col text-center">Comentarios</th>
-                                            <th class="col text-center">Envio Pruebas</th>
-                                            <th class="col text-center">Calificar</th>
-                                            <th class="col text-center">Ver calificaciones</th>
-                                            <th class="col text-center">Descartar cantidato</th>
-                                        </tr>
-                                    </thead>
-                                    {{-- {{var_dump($reclutamientos[0])}} --}}
-                                    <tbody>
-                                        @foreach ($reclutamientos as $reclutado)
-                                            {{-- @foreach ($reclutado->cv as $cv) --}}
 
-                                            <tr class="d-flex">
-
-                                                <td class="col text-center">
-                                                    {{-- {{$reclutado['cv']}} --}}
-                                                    {{ date('d-m-Y', strtotime($reclutado->cv->created_at)) }}
-                                                </td>
-                                                <td class="col text-center">
-                                                    {{ $reclutado->cv->vacant_id }}
-                                                </td>
-                                                <td class="col text-center">
-                                                    {{ $reclutado->cv->name }}
-                                                </td>
-                                                
-                                                <th class="col text-center">{{ $reclutado->comentarios }}</th>
-                                                {{-- <td class="col text-center">{{ $reclutado->fecha }}</td> --}}
-                                                <td class="col text-center">
-                                                    <div style="display: flex" class="text-center justify-content-center">
-                                                        <div class="pl">
-                                                            <form action="{{route('reclutador.reclutamiento.pruebas',$reclutado->id)}}" method="post">
-                                                                @csrf
-                                                                @method('put')
-                                                                {{-- <input type="text" value="{{$reclutado->id}}" name="id" hidden> --}}
-                                                                <button class="btn btn-warning"><i class="fas fa-tasks"></i></i></button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="col text-center">
-                                                    <div style="display: flex" class="text-center justify-content-center">
-                                                        <div class="pl">
-                                                            <button class="btn btn-success"
-                                                                data-target="#Modaledit{{ $reclutado->id }}"
-                                                                data-toggle="modal" 
-                                                                @if ($reclutado->ethikos != "") disabled='disabled' @endif >
-                                                                <i class="far fa-edit"></i></button>
-                                                            @include('reclutador.reclutamiento.editreclutamiento')
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="col text-center">
-                                                    <div style="display: flex" class="text-center justify-content-center">
-                                                        <div class="pl-1">
-                                                            <button class="btn btn-warning"
-                                                                data-target="#Modalverreclutado{{ $reclutado->id }}"
-                                                                data-toggle="modal" 
-                                                                {{-- @if ($reclutado->ethikos != "") disabled='disabled' @endif  --}}
-                                                                >
-                                                                <i class="fas fa-eye"></i>
-                                                            </button>
-                                                            @include('reclutador.reclutamiento.showreclutamiento')
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="col text-center">
-                                                    <div style="display: flex" class="text-center justify-content-center">
-                                                        <div class="pl-1">
-                                                            <button class="btn btn-danger" data-target="#Modaldescartar{{ $reclutado->cv->id }}"
-                                                                data-toggle="modal"><i class="fas fa-times"></i> </button>
-                                                                    @include('reclutador.reclutamiento.modals.descartarcandidato')
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            {{-- @endforeach --}}
-                                        @endforeach
-                                    </tbody>
-                                </table>
-
+                    @if ( count($reclutamiento)==0 )
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card box">
+                                <div class="card-body">
+                                    <h5 class="text-center">No hay candidatos reclutados para esta vacante</h5>
+                                </div>
                             </div>
-
                         </div>
-                    </div>
+                    @else
+                        <div class="card box" style="background-color: #ffffff;">
+                            <div class="card-body">
+                                <h1 class="card-title">Nuevos Aspirantes</h1>
+                                <p class="card-description">
+                                    Especificación de aspirantes
+                                </p>
+                                <div class=" table-responsive">
+                                    <table class="table " style="background-color: #FFF; border-radius: 10px;">
+                                        <thead>
+                                            <tr class="d-flex">
+                                                <th class="col text-center">Fecha</th>
+                                                <th class="col text-center">Vacante</th>
+                                                <th class="col text-center">Nombre</th>
+                                                <th class="col text-center">Comentarios</th>
+                                                <th class="col text-center">Envio Pruebas</th>
+                                                <th class="col text-center">Calificar</th>
+                                                <th class="col text-center">Ver calificaciones</th>
+                                                <th class="col text-center">Descartar cantidato</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($postulaciones as $postulaciones)
+                                                <tr class="d-flex">
+                                                    <td class="col text-center">
+                                                        {{ date('d-m-Y', strtotime($postulaciones->recruitment->fecha)) }}
+                                                    </td>
+                                                    <td class="col text-center">
+                                                        {{ $vacant->title }}
+                                                    </td>
+                                                    <td class="col text-center">
+                                                        @foreach ($cvs as $cv)
+                                                            @if ($cv->id = $postulaciones->cv_id)
+                                                                {{ $cv->name }}
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                    <th class="col text-center">
+                                                        {{ $postulaciones->recruitment->comentarios }}</th>
+                                                    <td class="col text-center">
+                                                        <div style="display: flex"
+                                                            class="text-center justify-content-center">
+                                                            <div class="pl">
+                                                                <form
+                                                                    action="{{ route('reclutador.reclutamiento.pruebas', $postulaciones->recruitment->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                    <button class="btn btn-warning"
+                                                                        @if ($postulaciones->recruitment->pruebas != '') disabled='disabled' @endif><i
+                                                                            class="fas fa-tasks"></i></i></button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="col text-center">
+                                                        <div style="display: flex"
+                                                            class="text-center justify-content-center">
+                                                            <div class="pl">
+                                                                <button class="btn btn-success"
+                                                                    data-target="#Modaledit{{ $postulaciones->recruitment->id }}"
+                                                                    data-toggle="modal"
+                                                                    @if ($postulaciones->recruitment->ethikos != '') disabled='disabled' @endif>
+                                                                    <i class="far fa-edit"></i></button>
+                                                                @include('reclutador.reclutamiento.editreclutamiento')
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="col text-center">
+                                                        <div style="display: flex"
+                                                            class="text-center justify-content-center">
+                                                            <div class="pl-1">
+                                                                <button class="btn btn-warning"
+                                                                    data-target="#Modalverreclutado{{ $postulaciones->recruitment->id }}"
+                                                                    data-toggle="modal">
+                                                                    <i class="fas fa-eye"></i>
+                                                                </button>
+                                                                @include('reclutador.reclutamiento.showreclutamiento')
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="col text-center">
+                                                        <div style="display: flex"
+                                                            class="text-center justify-content-center">
+                                                            <div class="pl-1">
+                                                                <button class="btn btn-danger"
+                                                                    data-target="#Modaldescartar{{ $postulaciones->recruitment->id }}"
+                                                                    data-toggle="modal"><i class="fas fa-times"></i>
+                                                                </button>
+                                                                @include('reclutador.reclutamiento.modals.descartarcandidato')
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
-
             </div>
         </div>
     </div>
-    {{-- <div class="container pt-3">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 text-xs-center">
-                {{ $cvs->links() }}
-            </div>
-        </div>
-    </div> --}}
 @endsection

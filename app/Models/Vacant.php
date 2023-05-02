@@ -38,7 +38,7 @@ class Vacant extends Model
         return $this->belongsTo('App\Models\Type_cv');
     }
     public function cvs(){
-        return $this->belongsToMany(Cv::class, 'cvvacants');
+        return $this->belongsToMany(Cv::class, 'cvvacants')->withPivot('revision','pruebas','state_id'); ;
     }
 
 
@@ -48,7 +48,5 @@ class Vacant extends Model
     public function scopeSalarys($query,$busqueda){
         return $query->where('filtro', 'like', '%'.$busqueda.'%');
     }
-    // public function scopeCity($query,$busqueda){
-    //     return $query->where('city', 'like', '%'.$busqueda.'%');
-    // }
+
 }
