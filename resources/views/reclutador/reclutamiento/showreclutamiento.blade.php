@@ -1,38 +1,280 @@
-<div class="modal fade" id="Modalverreclutado{{ $postulaciones->recruitment->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">Calificaciones</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
 
 
-            <div class="modal-body">
 
-                <span>ETHIKOS:</span>
-                <label class="text-center">{{ $postulaciones->recruitment->ethikos}}</label><br>
-                
-                <span>TEN_DISC:</span>
-                <label class="text-center">{{ $postulaciones->recruitment->ten_disc }}</label><br>
+@extends('layouts.admin')
+<style>
+    body {
+        background-color: #f9f9fa
+    }
 
-                <span>POTENCIAL COMERCIAL:</span>
-                <label class="text-center">{{ $postulaciones->recruitment->potencial_comercial }}</label><br>
+    .flex {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto
+    }
 
-                <span>IQ FACTORIAL:</span>
-                <label class="text-center">{{ $postulaciones->recruitment->iq_factorial }}</label><br>
-                
-                <span>V&P TEST:</span>
-                <label class="text-center">{{ $postulaciones->recruitment->vp_test }}</label><br>
-                
-              
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+    @media (max-width:991.98px) {
+        .padding {
+            padding: 1.2rem
+        }
+    }
 
+    @media (max-width:767.98px) {
+        .padding {
+            padding: 1.2rem
+        }
+    }
+
+    .padding {
+        padding: 1.2rem
+    }
+
+
+
+    .pl-3,
+    .px-3 {
+        padding-left: 1rem !important
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #d2d2dc;
+        border-radius: 0
+    }
+
+    .card .card-title {
+        color: #000000;
+        margin-bottom: 0.625rem;
+        text-transform: capitalize;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    .card .card-description {
+        margin-bottom: 1rem;
+        font-weight: 400;
+        color: #000000;
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: .5rem;
+        line-height: 1.5rem;
+    }
+
+    .btn-formulario {
+        background-color: #fcb2d7;
+        color: #000000;
+    }
+
+    .btn-formulario:hover {
+        background-color: #d2d2dc;
+    }
+</style>
+@section('content')
+    @if (Session::has('error'))
+        <script>
+            Swal.fire(
+                'Error',
+                "{{ Session::get('error') }}",
+                'error'
+            )
+        </script>
+    @endif
+    @if (Session::has('message'))
+        <script>
+            Swal.fire(
+                '¡Bien hecho!',
+                "{{ Session::get('message') }}",
+                'success'
+            )
+        </script>
+    @endif
+
+    <div class="page-content page-container" id="page-content">
+
+        <h2 class="text-center  pt-5 text-black" style="color: #000000">CALIFICAR CANDIDATO</h2>
+        <div class="">
+
+            <form method="POST" action="#">
+                {{-- <form method="POST" action="{{ route('reclutador.update', $id) }}"> --}}
+                @csrf
+                @method('PUT')
+                <div class="card box mt-3">
+                    <div class="card-header card-header-warning" style="border-radius: 15px;">
+                        <h5 class="card-title text-center"><b>PRUEBAS REQUERIDAS</b></h5>
+                    </div>
+                    <div class="card-body text-black">
+                        <div class="row text-black">
+                            <div class="col-md-4 ">
+                                <div class="form-outline text-right pt-1">
+                                    <label class="form-label text-black " for="form8Example1">ETHIKOS</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="number" class="form-control" aria-describedby="emailHelp" placeholder=""
+                                        value="0" name="ethikos"  style="border-radius: 25px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-outline text-right pt-1">
+                                    <label class="form-label text-black" for="form8Example1">TEN DISC</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pt-1">
+                                <div class="form-outline">
+                                    <input type="number" class="form-control" placeholder="" name="ten_disc"
+                                        value="0"  style="border-radius: 25px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card box mt-3">
+                    <div class="card-header card-header-warning" style="border-radius: 15px;">
+                        <h5 class="card-title text-center"><b>PRUEBAS COMERCIAL</b></h5>
+                    </div>
+                    <div class="card-body text-black">
+                        <div class="row text-black">
+                            <div class="col-md-4 ">
+                                <div class="form-outline text-right pt-1">
+                                    <label class="form-label text-black " for="form8Example1">POTENCIAL COMERCIAL</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="number" class="form-control" placeholder="" name="potencial_comercial"
+                                        value="0"  style="border-radius: 25px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-outline text-right pt-1">
+                                    <label class="form-label text-black" for="form8Example1">IQ FACTORIAL</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pt-1">
+                                <div class="form-outline">
+                                    <input type="number" class="form-control" placeholder="" name="iq_factorial"
+                                        value="0"  style="border-radius: 25px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-outline text-right">
+                                    <label class="form-label text-black" for="form8Example3">V&P TEST</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pt-1">
+                                <div class="form-outline">
+                                    <input type="number" class="form-control" placeholder="" name="vp_test"
+                                        value="0"  style="border-radius: 25px">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card box mt-3">
+                    <div class="card-header card-header-warning" style="border-radius: 15px;">
+                        <h5 class="card-title text-center"><b>PRUEBAS DE LA VACANTE</b></h5>
+                    </div>
+                    <div class="card-body text-black">
+                        {{-- @if ($vacante->ventas == 'aplica')        --}}
+                            <div class="row text-black pt-1">
+                                <div class="col-md-4 text-right">
+                                    <label class="form-label text-black" for="form8Example3">CLINICA DE VENTAS</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select form-control" name="ventas"
+                                            style="border-radius: 25px">
+                                            <option value="no aprobo">NO APROBO</option>
+                                            <option value="aprobo">APROBO</option>
+                                        </select>
+                                
+                                </div>
+                            </div>
+                        {{-- @endif     --}}
+                        {{-- @if ($vacante->riesgos == 'aplica')        --}}
+                            <div class="row text-black pt-1">
+                                <div class="col-md-4 text-right">
+                                    <label class="form-label text-black" for="form8Example3">CENTRAL DE RIESGOS</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select form-control" name="riesgos"
+                                            style="border-radius: 25px">
+                                            <option value="no aprobo">NO APROBO</option>
+                                            <option value="aprobo">APROBO</option>
+                                        </select>
+                                
+                                </div>
+                            </div>
+                        {{-- @endif     --}}
+                        {{-- @if ($vacante->tecnica=='aplica')     --}}
+                            <div class="row text-black pt-1">
+                                <div class="col-md-4 text-right">
+                                    <label class="form-label text-black" for="form8Example3">PRUEBA TECNICA</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select form-control" name="tecnica"
+                                            style="border-radius: 25px">
+                                            <option value="no aprobo">NO APROBO</option>
+                                            <option value="aprobo">APROBO</option>
+                                        </select>
+                                
+                                </div>
+                            </div>
+                        {{-- @endif --}}
+                        {{-- @if ($vacante->visita=='aplica')     --}}
+                            <div class="row text-black pt-1">
+                                <div class="col-md-4 text-right">
+                                    <label class="form-label text-black" for="form8Example3">VISITA DOMICILIARIA</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select form-control" name="visita"
+                                            style="border-radius: 25px">
+                                            <option value="no aprobo">NO APROBO</option>
+                                            <option value="aprobo">APROBO</option>
+                                        </select>
+                                
+                                </div>
+                            </div>
+                        {{-- @endif
+                        @if ($vacante->poligrafo=='aplica')  --}}
+                            <div class="row text-black pt-1">
+                                <div class="col-md-4 text-right">
+                                    <label class="form-label text-black" for="form8Example3">POLIGRAFO</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select form-control" name="poligrafo"
+                                            style="border-radius: 25px">
+                                            <option value="no aprobo">NO APROBO</option>
+                                            <option value="aprobo">APROBO</option>
+                                        </select>
+                                
+                                </div>
+                            </div>
+                        {{-- @endif --}}
+                    </div>
+                    <div>
+                        {{-- <button class="box btn-formulario text-white text-center btn btn-block mt-3 mb-3"
+                            style="background-color: #e52b7f"><b>CREAR</b> </button> --}}
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</div>
+@endsection

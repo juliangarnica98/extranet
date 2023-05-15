@@ -472,7 +472,7 @@
                         </li>
                         <li class="nav-item pt-3">
                             <strong> <a class="nav-link hover-underline-animation text-light" href="#contacto"
-                                    style="font-weight: bold; font-size: 1.3rem">CONTACTO</a></strong>
+                                    style="font-weight: bold; font-size: 1.3rem">CONTÁCTANOS</a></strong>
                         </li>
                         <div class="divider bg-light mt-5" style=" border-top: 1px solid #fff;"></div>
                         <li class="nav-item pt-5">
@@ -521,8 +521,7 @@
                 </div>
                 <div id="marcas">
 
-                    <h1 class="text-center pt-5 t-stroke t-shadow-halftone2 " style="font-size: 3.5rem">
-                        NUESTRAS MARCAS</h1>
+                    <img src="{{asset('images/marcas.png')}}" alt="" class="img-fluid pt-5" >
                     <div class="marcas">
 
                         <div class="slider">
@@ -589,13 +588,12 @@
                 </div>
                 <div id="ofertas">
                     <div class="row">
+                        <div class="pt-0">
+                            <img src="{{asset('images/oferta.png')}}" alt="" class="img-fluid">
+                            
+                        </div>
                         <div class="container" data-aos="fade-up">
-                            <div class="pt-0">
-                                <h1 class="text-center pt-3 t-stroke t-shadow-halftone2 " style="font-size: 3.5rem">
-                                    OFERTAS DE
-                                    EMPLEO</h1>
-                                {{-- <h2 class="text-center pt-3" style="font-weight: bold; color :#cc0571"></h2> --}}
-                            </div>
+                            
                             <div class="row pt-5">
                                 <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in"
                                     data-aos-delay="100">
@@ -641,8 +639,10 @@
                             <i>
                                 <p class="h3">Si no has encontrado vacantes para ti registra tu hoja de vida</p>
                             </i>
-                            <a class="cta-btn align-middle mt-5" href="{{ route('vacantes.index') }}">Ver
+                            <a class="cta-btn align-middle mt-5" href="#">Ver
                                 vacantes</a>
+                                {{-- <a class="cta-btn align-middle mt-5" href="{{ route('vacantes.index') }}">Ver
+                                    vacantes</a> --}}
                         </div>
                         {{-- <div class="col-lg-3 cta-btn-container text-center">
                             
@@ -650,14 +650,14 @@
                     </div>
                 </div>
                 <div class="contact pb-3 pt-3 mt-3 mb-3" id="contacto">
-                    <div class="container" data-aos="fade-up">
-                        <div class="section-title">
-                            <h1 class="text-center pt-5 t-stroke t-shadow-halftone2 " style="font-size: 3.5rem">
-                                CONTACTO</h1>
+                    <div class="section-title">
+                        <img src="{{asset('images/contactanos.png')}}" alt="" class="img-fluid">
 
-                        </div>
+                    </div>
+                    <div class="container" data-aos="fade-up">
+                        
                         <div class="row d-flex justify-content-center">
-                            <div class="col-lg-6 mt-5 mt-lg-0 d-flex align-items-stretch">
+                            <div class="col-lg-6 mt-5 mt-lg-0 d-flex align-items-stretch pt-5">
                                 <form action="forms/contact.php" method="post" role="form"
                                     class="php-email-form">
                                     <div class="row">

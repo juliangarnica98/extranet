@@ -140,6 +140,7 @@ class VacantController extends Controller
     }
     public function archivar($id)
     {   
+        dd($id);
         $vacant = Vacant::where('id',$id)->first();
         $vacant->state = 0;
         $vacant->archivate_date=date("d-m-Y h:i:s");

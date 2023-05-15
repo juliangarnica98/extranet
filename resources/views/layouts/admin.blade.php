@@ -62,23 +62,19 @@
         border: 3px solid transparent;
     }
 
-    #content {
+    /* #content {
         background-color: #e7e7e7;
-    }
-
-    /* .container {
-        padding-top: 5%;
     } */
+
+    .container {
+        padding-top: 5%;
+    }
 
     input {
         color: #000000;
         border: none;
         border-bottom: 3px solid rgb(232, 81, 153);
         border-radius: 25px;
-    }
-
-    .active {
-        color: rgb(27, 159, 161);
     }
 
     .pt-50 {
@@ -132,7 +128,8 @@
     }
 
     .page-container {
-        background-color: #e7e7e7;
+        margin-left: 10%;
+        margin-right: 10%;
     }
 
     .bg-footer {
@@ -143,238 +140,253 @@
         color: #fffdfd;
     }
 
-    .text-light {
-        color: #000;
-    }
-
     .bg-black {
-        /* background-color: #000; */
         color: #000;
     }
 
-    .nav-item {
-        border: none;
-        outline: none;
-        background-color: #000000;
-        cursor: pointer;
+    .text-black {
+        color: #000;
     }
+
+    /* .nav-item{
+        background-color: #18a0a0;
+        border-radius: 25px;
+    } */
     .active,
     .nav-item:hover {
-        background-color: #8a8286;
+        background-color: #54d1d1;
+        border-radius: 25px;
+
     }
+
+    .sub-nav-link {
+        color: #000000;
+    }
+
+    .sub-nav-link:hover {
+        background-color: #f5cce0;
+        border-radius: 25px;
+        color: #000000;
+
+    }
+
+    a:hover {
+        color: #000000;
+    }
+
+    .navbar .nav-link {
+        color: #000000;
+    }
+
+    .navbar .nav-link .active {
+        color: rgb(255, 255, 255);
+    }
+
+    .navbar-dark {
+        background: linear-gradient(to right, rgba(0, 45, 165, 0.97), rgba(10, 88, 157, 0.97), rgba(10, 88, 157, 0.97), rgba(0, 45, 165, 0.97));
+    }
+
+    .navbar-brand {
+        margin-right: 20px;
+    }
+
+
+
+    .navbar-toggler:hover {
+        cursor: pointer;
+    }
+
+    .navbar-toggler:hover {
+        cursor: pointer;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 15px;
+        border: 3px solid #e6e7ed;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+    }
+    .pad-top-50{
+        padding-top: 20%
+    }
+    .not-active { 
+            pointer-events: none; 
+            cursor: default; 
+        } 
 </style>
 
-<body id="page-top">
+<body id="page-top" style="background-color: #01b9b5">
+    {{-- <body id="page-top" style="background-color: #02e0dd"> --}}
 
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="background-color: #f5cce0">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav  sidebar sidebar-dark accordion " id="accordionSidebar" style="background-color: #000000">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    {{-- <i class="fas fa-laugh-wink"></i> --}}
-                </div>
-                <div class="sidebar-brand-text mx-3"><img src="{{ asset('imgs/logo.png') }}" alt="Logo"
-                        class="img-fluid"><sup></sup></div>
-            </a>
-            <a class="nav-link  text-center" href="#" id="" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                {{-- <span class="mr-5 d-none d-lg-inline" >{{ Auth::user()->name[0] }} </span> --}}
-                <span class=" text-light ">{{ strtoupper(Auth::user()->name) }}</span>
+        <!-- End of Sidebar -->
 
-            </a>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column" style="background-color: #01b9b5">
+
+            <!-- Main Content -->
+            <div id="content w-100 h-100">
 
 
 
+                <nav class="navbar  navbar-expand-lg box " style="background-color: #ffffff">
 
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-            @can('admin.index')
-                <div class="container h-100">
-                    <div class="row d-flex justify-content-center">
-                        <div class="align-self-cente aling-items-center" style="padding-top: 40%">
-                            <ul class="nav">
-                                <li class="nav-item pb-0 border-top">
-                                    <a class="nav-link text-center" href="">
-                                        <i class="fas fa-chart-line"></i>
-                                        <span class="text-light">DASHBOARD</span></a>
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <div class="container-fluid justify-content-center">
+                            <ul class="navbar-nav nav w-100 aling-items-center text-center justify-content-center">
+                                <li class=" aling-items-center ">
+                                    <img width="10%" class="justify-content-center aling-items-center "
+                                        src="{{ asset('imgs/logo.png') }}" alt="">
                                 </li>
-                                <li class="nav-item pb-0 border-top">
-                                    <a class="nav-link text-center" href="{{ route('admin.usuarios') }}">
-                                        <i class="fa fa-users" aria-hidden="true"></i>
-                                        <span class="text-light">USUARIOS</span></a>
+                                <li class=" dropdown no-arrow nav-item " > 
+                                    <a class="nav-link col-auto dropdown-toggle" href="#" id="userDropdown"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        @if (auth()->check()) 
+                                        <b> <span class="d-none d-lg-inline"
+                                            style="color: #18a0a0">{{ mb_strtoupper(Auth::user()->name) }} </span></b>
+                                        @endif
+                                    </a>
+
+                                    <div class="dropdown-menu shadow animated--grow-in" aria-labelledby="userDropdown"
+                                        style="background-color: #fff">
+                                        <a class="dropdown-item" href="{{ route('admin.perfil') }}"
+                                            style="color: rgb(124, 124, 124)">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 "></i>
+                                            Perfil
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#" data-toggle="modal"
+                                            data-target="#logoutModal" style="color: rgb(124, 124, 124)">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+
+                                            Salir
+                                        </a>
+
+                                    </div>
                                 </li>
-                                <li class="nav-item pb-0 border-top">
-                                    <a class="nav-link text-center" href="{{ route('admin.index.jefes') }}">
-                                        <i class="fa fa-users" aria-hidden="true"></i>
-                                        <span class="text-light">JEFES</span></a>
-                                </li>
-                                <li class="nav-item pb-0 border-top">
-                                    <a class="nav-link text-center" href="{{ route('admin.postulaciones') }}">
-                                        <i class="fa fa-id-card" aria-hidden="true"></i>
-                                        <span class="text-light">CANDIDATOS</span></a>
-                                </li>
-                                <li class="nav-item pb-0 border-top">
-                                    <a class="nav-link text-center" href="{{ route('admin.index') }}">
-                                        <i class="fa fa-briefcase" aria-hidden="true"></i>
-                                        <span class="text-light">VACANTES</span></a>
-                                </li>
-                                <li class="nav-item pb-0 border-top border-bottom">
-                                    <a class="nav-link text-center" href="">
-                                        <i class="fas fa-file-alt"></i>
-                                        <span class="text-light">REPORTES</span></a>
-                                </li>
+                            </ul>
+                            <ul class="navbar-nav d-flex justify-content-center w-75 "
+                                style="background-color: #e52b7f; border-radius: 25px">
+                                @can('admin.index')
+                                    <li class="nav-item col-md-2" style="background-color: #18a0a0">
+                                        <a class="nav-link text-center" href="#">Dashborad <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-2">
+                                        <a class="nav-link text-center text-center"
+                                            href="{{ route('admin.usuarios') }}">Usuarios <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-2">
+                                        <a class="nav-link text-center" href="{{ route('admin.index.jefes') }}">Jefes <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-2">
+                                        <a class="nav-link text-center" href="{{ route('admin.postulaciones') }}">Candidatos
+                                            <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-2">
+                                        {{-- <a class="nav-link text-center" href="{{ route('admin.index') }}">Vacantes <span
+                                                class="sr-only">(current)</span></a> --}}
+                                                <a class="nav-link text-center" href="#">Vacantes <span
+                                                    class="sr-only">(current)</span></a>
+                                    </li>
+                                @endcan
+                                @can('reclutador.index')
+                                    <li class="nav-item col-md-4">
+                                        <a class="nav-link text-center text-white"
+                                            href="{{ route('reclutador.vacant.create') }}"><b><i class="fas fa-plus"></i>
+                                                CREAR VACANTE</b> <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-4">
+                                        <a class="nav-link text-white text-center"
+                                            href="{{ route('reclutador.registros.index') }}"><b><i
+                                                    class="fas fa-list"></i> REGISTROS</b> <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-4">
+                                        <a class="nav-link text-white text-center" href="{{ route('reclutador.index') }}"><b><i
+                                                    class="far fa-address-book"></i> VACANTES</b>
+                                            <span class="sr-only">(current)</span></a>
+                                    </li>
+                                @endcan
+                                @can('jefe.index')
+                                    <li class="nav-item col-md-6">
+                                        <a class="nav-link text-center col-auto"
+                                            href="{{ route('jefe.candidatos.index') }}">Reportes <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-6">
+                                        <a class="nav-link text-center col-auto" href="#">Reportes <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                @endcan
+
+
+
                             </ul>
                         </div>
 
                     </div>
-                </div>
-            @endcan
-            @can('reclutador.index')
-                <div class="">
-                    <div class=" justify-content-center " style="padding-top: 30%">
-                        <ul class="nav">
-                            <li class="nav-item border-top">
-                                <a class="nav-link text-center" href="{{ route('reclutador.vacantes.index') }}">
-                                    <i class="fa fa-briefcase"  aria-hidden="true"></i>
-                                    <span >VACANTES</span></a>
+                </nav>
+
+
+                {{-- <nav class="navbar fixed-top navbar-dark navbar-expand-md">
+                    <a class="navbar-brand" href="#">
+                        <img src="//placehold.it/100x28" height=28 class="" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse flex-column" id="navbar">
+                        <ul class="navbar-nav nav w-100">
+                            <li class="nav-item">
+                                <a class="nav-link " data-toggle="tab" href="#property-tab">PROPERTY</a>
                             </li>
-                            <li class="nav-item border-top">
-                                <a class="nav-link text-center" href="{{ route('reclutador.registros.index') }}">
-                                    <i class="fa fa-briefcase" aria-hidden="true"></i>
-                                    <span>REGISTROS</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#units-tab">UNITS</a>
                             </li>
-                            <li class="nav-item border-top">
-                                <a class="nav-link text-center" href="{{ route('reclutador.index') }}">
-                                    <i class="fas fa-users"></i>
-                                    <span>CANDIDATOS</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tenancies-tab">TENANCIES</a>
                             </li>
-                            <li class="nav-item border-top">
-                                <a class="nav-link text-center" href="{{ route('reclutador.seleccionados.index') }}">
-                                    <i class="fas fa-user-check"></i>
-                                    <span>SELECCIONADOS</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#pdfs-tab">PDFs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#contacts-tab">CONTACTS</a>
                             </li>
 
-                            <li class="nav-item border-top">
-                                <a class="nav-link text-center" href="{{ route('reclutador.show') }}">
-                                    <i class="far fa-folder-open"></i>
-                                    <span>RECLUTAMIENTOS</span></a>
+                        </ul>
+                        <ul class="navbar-nav nav w-100">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">ALL</a>
                             </li>
-                            <li class="nav-item border-top">
-                                <a class="nav-link text-center" href="{{ route('reclutador.analista.index') }}">
-                                    <i class="fas fa-folder-open"></i>
-                                    <span>ANALISTAS</span></a>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">CURRENT</a>
                             </li>
-                            <li class="nav-item border-top">
-                                <a class="nav-link text-center" href="{{ route('reclutador.discarded.index') }}">
-                                    <i class="fas fa-user-times"></i>
-                                    <span>DESCARTADOS</span></a>
-                            </li>
-                            <li class="nav-item border-top border-bottom">
-                                <a class="nav-link text-center" href="{{ route('reclutador.show') }}">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>REPORTES</span></a>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">PAST</a>
                             </li>
                         </ul>
                     </div>
+                </nav> --}}
 
-
-                </div>
-            @endcan
-            @can('jefe.index')
-            <div class="">
-                <div class=" justify-content-center " style="padding-top: 30%">
-                    <ul class="nav">
-                        <li class="nav-item border-top">
-                            <a class="nav-link text-center" href="{{ route('jefe.candidatos.index') }}">
-                                <i class="fa fa-briefcase"  aria-hidden="true"></i>
-                                <span >CANDIDATOS</span></a>
-                        </li>
-                        <li class="nav-item border-top border-bottom">
-                            {{-- <a class="nav-link text-center" href="{{ route('jefe.reportes.index') }}"> --}}
-                                <a class="nav-link text-center" href="">
-                                <i class="fas fa-file-archive"></i>
-                                <span>REPORTES</span></a>
-                        </li>
-                    </ul>
-                </div>
-
-
-            </div>
-        @endcan
-
-
-
-
-        </ul>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand mb-0 static-top elevation-3 bg-footer ">
-
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars" style="color: #000000"></i>
-                    </button>
-
-
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto border-bottom">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-
-                        </li>
-
-
-
-
-
-                        <li class=" dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{-- <span class="mr-5 d-none d-lg-inline" >{{ Auth::user()->name[0] }} </span> --}}
-                                <span class="mr-5 pr-5 text-dark"><i class="fas fa-wrench"></i> AJUSTES</span>
-
-                            </a>
-
-                            <div class="dropdown-menu shadow animated--grow-in" aria-labelledby="userDropdown"
-                                style="background-color: #fff">
-                                <a class="dropdown-item" href="{{ route('admin.perfil') }}"
-                                    style="color: rgb(124, 124, 124)">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 "></i>
-                                    Perfil
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal"
-                                    data-target="#logoutModal" style="color: rgb(124, 124, 124)">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
-                                    {{-- <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> --}}
-                                    Salir
-                                </a>
-
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-
-                <main class="py-0 border-top" style="">
-                    @yield('content')
+                <main class="py-0 border-top h-100" style="">
+                    <div class="container-fluid">
+                        @yield('content')
+                    </div>
                 </main>
 
 
@@ -384,10 +396,10 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-footer">
+            <footer class="sticky-footer ">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Fast Moda 2023</span>
+                        {{-- <span>Copyright &copy; Fast Moda 2023</span> --}}
                     </div>
                 </div>
             </footer>
@@ -397,9 +409,7 @@
         <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
@@ -448,7 +458,7 @@
 
 </body>
 {{-- <script>
-    
+
     $(".nav .nav-link").on("click", function(){
         console.log("hola");
         $(".nav").find(".active").removeClass("active");

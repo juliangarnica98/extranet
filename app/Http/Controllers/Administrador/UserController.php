@@ -13,13 +13,24 @@ use Illuminate\Pagination\Paginator;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+
 class UserController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth', ['only' => ['index']]);
+    // }
     public function index()
     {
         Paginator::useBootstrap();
         $reclutadores = User::role(['Reclutador'])->paginate(5);
+        // return $reclutadores;
         $id = Auth::user()->id;
+        
+        if(!$id){
+            return redirect()->route('logout');
+            // return redirect('logout');
+        }
         return view('admin.user.indexuser',compact('reclutadores'));
     }
 

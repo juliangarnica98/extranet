@@ -121,9 +121,9 @@
 
                 <div class="collapse navbar-collapse col-12 " id="navbarNav" >
 
-                    <ul class="navbar-nav d-flex justify-content-center mr-auto" style="margin-top: 30vh">
+                    <ul class="navbar-nav d-flex justify-content-center mr-auto" style="margin-top: 12rem;">
                         <li class="nav-item ">
-                            <a class="nav-link" href="#"><img class="img-fluid" src="{{ asset('imgs/logo.png') }}"
+                            <a class="nav-link" href="{{route('home.index')}}"><img class="img-fluid" src="{{ asset('imgs/logo.png') }}"
                                     alt=""></a>
                         </li>
                         <div class="divider bg-light mt-5" style=" border-top: 1px solid #fff;"></div>

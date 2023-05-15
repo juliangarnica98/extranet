@@ -52,7 +52,7 @@
 
                                 <div class="text-center">
                                     <a href="{{route('home.index')}}">
-                                      <img src="https://demodaoutlet.com/wp-content/uploads/2019/05/lili-pink.jpg"
+                                      <img src="{{asset('imgs/logo.png')}}"
                                         class="img-fluid" alt="logo">
                                     </a>
                                     

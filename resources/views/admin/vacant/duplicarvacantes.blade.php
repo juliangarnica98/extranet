@@ -124,15 +124,34 @@
 
     <div class="page-content page-container" id="page-content">
 
-        <h2 class="ml-5 text-dark pt-2 ">DUPLICAR VACANTE</h2>
+        <h2 class="ml-5 text-dark pt-2 ">EDITAR VACANTE</h2>
         <div class="container">
             <div class="card box">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-7">
-                            <form method="POST" action="{{ route('admin.crearvacante') }}">
+                            <form method="POST" action="{{ route('admin.edit.vacant', $vacant->id) }}">
+                                @method('PUT')
                                 @csrf
                                 <div class="form-group">
+                                    {{-- @if ($id == 1)
+                                        <div class="row justify-content-center">
+                                            <div class="col-6">
+
+                                                <div class="form-outline">
+                                                    <label class="form-label text-dark" for="form8Example4">Área de
+                                                        vacante</label>
+                                                    <select class="form-select form-control" style="border-radius: 25px"
+                                                        name="area_id">
+                                                        <option value="1" {{ $vacant->area_id == "1" ? 'selected' : '' }}>Cedi</option>
+                                                        <option value="2" {{ $vacant->area_id == "2" ? 'selected' : '' }}>Administrativo</option>
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif --}}
                                     <div class="row justify-content-center">
                                         <div class="col-12">
 
@@ -163,8 +182,8 @@
                                             <div class="form-outline">
                                                 <label class="form-label text-dark" for="form8Example2">Ciudad</label>
                                                 <select class="form-select form-control" name="city"
-                                                    style="border-radius: 25px">
-                                                   
+                                                    style="border-radius: 25px" >
+                                                    
                                                     <option value="Bogotá" {{ $vacant->city == "Bogotá" ? 'selected' : '' }}>Bogotá</option>
                                                     <option value="Medellín" {{ $vacant->city == "Medellín" ? 'selected' : '' }}>Medellín</option>
                                                     <option value="Cali" {{ $vacant->city == "Cali" ? 'selected' : '' }}>Cali</option>
@@ -233,8 +252,8 @@
                                                 <label class="form-label text-dark" for="form8Example4">Número
                                                     de
                                                     vacantes</label>
-                                                <input type="number" id="" class="form-control"
-                                                    name="num_vacants" style="border-radius: 25px" id="vacantes" value="{{$vacant->num_vacants}}"/>
+                                                <input type="number" id="" class="form-control"  value="{{$vacant->num_vacants}}"
+                                                    name="num_vacants" style="border-radius: 25px" id="vacantes"/>
 
                                             </div>
                                         </div>
@@ -332,20 +351,17 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button class="text-center btn btn-primary btn-block">Duplicar vacante</button>
+                                    <button class="text-center btn btn-primary btn-block">Editar vacante</button>
                                 </div>
                             </form>
                         </div>
                         <div class="col-md-5 aling-items-center d-flex justify-content-center">
-
                             <img src="{{asset('images/vacant.png')}}" class="img-fluid" alt="">
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
+
 @endsection

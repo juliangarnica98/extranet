@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StateSeeder::class);
         $this->call(TypeCvSeeder::class);
         $this->call(CvsTableSeeder::class);
-        $this->call(VacantsTableSeeder::class);
-        $this->call(CvvacantSeeder::class);
+        // $this->call(VacantsTableSeeder::class);
+        // $this->call(CvvacantSeeder::class);
     }
 }

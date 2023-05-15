@@ -100,94 +100,142 @@
         font-size: 1rem;
         line-height: 1;
     }
+    .link-a {
+        transition: width 2s;
+        transition-property: box-shadow, transform;
+        transition-duration: 350ms;
+        transition-timing-function: ease;
+    }
+
+    .link-a:hover {
+        transform: scale(0.9);
+    }
 </style>
 
 @section('content')
-@if (Session::has('error'))
-<script>
-    Swal.fire(
-        'Error',
-        "{{ Session::get('error') }}",
-        'error'
-    )
-</script>
-@endif
-@if (Session::has('message'))
-<script>
-    Swal.fire(
-        '¡Bien hecho!',
-        "{{ Session::get('message') }}",
-        'success'
-    )
-</script>
-@endif
+    @if (Session::has('error'))
+        <script>
+            Swal.fire(
+                'Error',
+                "{{ Session::get('error') }}",
+                'error'
+            )
+        </script>
+    @endif
+    @if (Session::has('message'))
+        <script>
+            Swal.fire(
+                '¡Bien hecho!',
+                "{{ Session::get('message') }}",
+                'success'
+            )
+        </script>
+    @endif
     <div class="page-content page-container" id="page-content">
         <div class="">
 
             <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card" style="background-color: #ffffff;">
-                        <div class="card-body">
-                            <h1 class="card-title">Hoja de vida </h1>
-                            {{-- <p class="card-description">
-                                
-                            </p> --}}
-                            <hr>
-                            <div class="row d-flex justify-content-center aling-items-center text-center">
-                                <div class="col-sm-4">
-                                    {{-- <button class="btn btn-warning mr-5" @if ($cv->pruebas == 1) disabled='disabled' @endif> --}}
-                                        <button class="btn btn-warning mr-5" >
-                                        <i class="fas fa-file-download"></i> Descargar hoja de vida</button>
-                                </div>
-                                <div class="col-sm-4">
-                                    <form action="{{route('reclutador.candidate.index',[$postulacion->cv_id,$postulacion->vacant_id])}}" method="POST">
-                                        @csrf
-                                        <button class="btn btn-success" @if ($postulacion->state_id >= 2) disabled='disabled' @endif><i
-                                                class="fas fa-check"></i> Seleccionar candidato</button>
-                                </form>
-                                        
-                                </div>
-                                <div class="col-sm-4">
-                                    <button class="btn btn-danger" data-target="#Modaldescartar{{ $cv->id }}"
-                                        data-toggle="modal"><i class="fas fa-times"></i> Descartar candidato</button>
-                                            @include('reclutador.candidate.modals.descartarcandidato')
-                                </div>
+                    <h4 class="text-center text-black"><b> POSTULADO</b></h4>
+                    <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
+                    <div class="row justify-content-center"
+                        style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
+                        <div class="col-md-2 sub-nav-link active"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-users"></i>
+                                    POSTULADOS</b><span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link "> <a class="nav-link text-center text-black "
+                                href="{{ route('reclutador.seleccionados.buscar', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-user-friends"></i>
+                                    SELECCIONADOS</b><span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.reclutamientos.buscar', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-tasks"></i> PRUEBAS</b><span class="sr-only">(current)</span></a>
+                        </div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.analista.index') }}"><b><i class="fas fa-comment-alt"></i>
+                                    ENTREVISTAS</b>
+                                <span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link">
 
+                            <a class="nav-link text-center text-black" href="#"><b><i class="fas fa-check-double"></i>
+                                    FINALISTAS</b>
+                                <span class="sr-only">(current)</span></a>
+                        </div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.discarded.index', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="far fa-times-circle"></i>
+                                    DESCARTADOS</b>
+                                <span class="sr-only">(current)</span></a></div>
+
+                    </div>
+                    <div class=" mt-3">
+                        <h6 class=" text-center text-black "></h6>
+                        
+                    </div>
+                    <div class="card mt-3" style="background-color: #ffffff;">
+                        <div class="card-body">
+                            <div class="row  d-flex justify-content-center aling-items-center text-center">
+                                <div class="col-md-2  justify-content-center" style="border-radius: 12px; background-color: #e85199">
+                                    <button class="btn  text-white btn-block" 
+                                        data-toggle="modal"><i class="fas fa-arrow-right" style="font-size: 1rem"></i> Esta en: <br><b> POSTULADOS</b>  </button>
+                                 
+                                </div>
+                                <div class="col-md-2 ml-1 justify-content-center " style="border-radius: 12px; background-color: #777b9e">
+                                    <form
+                                        action="{{ route('reclutador.candidate.index', [$postulacion->cv_id, $postulacion->vacant_id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        <button class="btn  text-white btn-block"
+                                            @if ($postulacion->state_id >= 2) disabled='disabled' @endif><i
+                                                class="fas fa-check"></i> Mover a:<b> SELECCIONADOS</b>  </button>
+                                    </form>
+                                </div>
+                                <div class="col-md-2 ml-1 justify-content-center " style="border-radius: 12px;background-color: #03a8a2">
+                                    <div class="row">
+
+                                        
+                                            <button class="btn  text-white btn-block" data-target="#Modaldescartar{{ $cv->id }}"
+                                                data-toggle="modal"><i class="fas fa-times"></i> <span>Mover a:</span> <b> DESCARTADOS </b></button>
+                                            @include('reclutador.candidate.modals.descartarcandidato')
+                                        
+                                    </div>
+                                </div>
+    
                             </div>
-                            <hr>
                             <div class="row pt-4">
                                 <div class="col-md-5">
                                     <div class="card box">
                                         <div class="card-body">
-                                            <h2 class="text-center text-dark">Información personal</h2>
+                                            <h2 class="text-center text-black">Información personal</h2>
 
                                             <div class="d-flex justify-content-center">
                                                 <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-50"
                                                     alt="">
                                             </div>
                                             <hr>
-                                            <h2 class="text-dark mt-3"><strong>{{ $cv->name }}</strong> </h2>
+                                            <h2 class="text-black mt-3"><strong>{{ $cv->name }}</strong> </h2>
                                             <cite></cite>
                                             <div class="row">
 
-                                                <div class="col-md-6 text-dark">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Correo:</span><br>
                                                     <span class="h6">Ciudad de residencia:</span><br>
                                                     <span class="h6">Dirección:</span><br>
                                                     <span class="h6">Edad:</span><br>
-                                                    
-                                                    
+
+
                                                     <span class="h6">Tipo de documento:</span><br>
                                                     <span class="h6">Numero de documento:</span><br>
                                                     <span class="h6">Número de celular:</span><br>
                                                     <span class="h6">Número de celular opcional:</span><br>
-                                                    
-                                                    
-                                                    
+
+
+
                                                     <span class="h6">Perfil academico culminado:</span>
                                                 </div>
-                                                <div class="col-md-6 text-dark">
-                                                
+                                                <div class="col-md-6 text-black">
+
                                                     <span class="text-center h6">{{ $cv->email }}</span><br>
                                                     <span class="text-center h6">{{ $cv->city_address }}</span><br>
                                                     <span class="text-center h6">{{ $cv->address }}</span><br>
@@ -200,8 +248,12 @@
 
                                                 </div>
                                             </div>
-                                            
-                                            
+                                            <div class="row mt-1">
+                                                <button class="btn btn-warning btn-block" >
+                                                    <i class="fas fa-file-download"></i > DESCARGAR CV</button>
+                                            </div>
+
+
                                         </div>
 
                                     </div>
@@ -209,14 +261,14 @@
                                 </div>
                                 <div class="col-md-7">
 
-                                   
+
                                     <div class="card box">
                                         <div class="card-body">
-                                            <h2 class="text-center text-dark ">Información laboral</h2>
+                                            <h2 class="text-center text-black ">Información laboral</h2>
                                             <hr>
                                             <div class="row">
 
-                                                <div class="col-md-6 text-dark">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Nombre ultima empresa:</span><br>
                                                     <span class="h6">Cargo:</span><br>
                                                     <span class="h6">Funciones:</span><br>
@@ -229,14 +281,16 @@
                                                     <span class="h6">Fecha inicio :</span> <br>
                                                     <span class="h6">Fecha fin :</span>
                                                 </div>
-                                                <div class="col-md-6 text-dark">
+                                                <div class="col-md-6 text-black">
                                                     <span class="text-center h6">{{ $cv->name_last_company }}</span><br>
                                                     <span
                                                         class="text-center h6">{{ $cv->position_last_company }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->funtion_last_company }}</span><br>
+                                                    <span
+                                                        class="text-center h6">{{ $cv->funtion_last_company }}</span><br>
                                                     <span class="text-center h6">{{ $cv->work_last_company }}</span><br>
                                                     <span class="text-center h6">{{ $cv->date_init_company }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->date_finally_company }}</span><br>
+                                                    <span
+                                                        class="text-center h6">{{ $cv->date_finally_company }}</span><br>
                                                     <span class="text-center h6">{{ $cv->name_last_company2 }}</span><br>
                                                     <span
                                                         class="text-center h6">{{ $cv->position_last_company2 }}</span><br>
@@ -252,10 +306,10 @@
 
                                     <div class="card box mt-4">
                                         <div class="card-body">
-                                            <h2 class="text-center text-dark ">Información adicional</h2>
+                                            <h2 class="text-center text-black ">Información adicional</h2>
                                             <hr>
                                             <div class="row">
-                                                <div class="col-md-6 text-dark">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Tiene familiares trabajamdo con nosotros
                                                         :</span><br>
                                                     <span class="h6">Por que le gustaria trabajar :</span><br>
@@ -266,7 +320,7 @@
                                                     <span class="h6">Talla pantalón :</span> <br>
                                                     <span class="h6">Talla zapatos :</span> <br>
                                                 </div>
-                                                <div class="col-md-6 text-dark">
+                                                <div class="col-md-6 text-black">
                                                     <span class="text-center h6">{{ $cv->family }}</span><br>
                                                     <span class="text-center h6">{{ $cv->like_to_work }}</span><br>
                                                     <span class="text-center h6">{{ $cv->previously_work }}</span><br>
@@ -288,5 +342,4 @@
             </div>
         </div>
     </div>
-
 @endsection

@@ -100,6 +100,17 @@
         font-size: 1rem;
         line-height: 1;
     }
+
+    .link-a {
+        transition: width 2s;
+        transition-property: box-shadow, transform;
+        transition-duration: 350ms;
+        transition-timing-function: ease;
+    }
+
+    .link-a:hover {
+        transform: translateY(-5px);
+    }
 </style>
 
 @section('content')
@@ -127,114 +138,181 @@
 
             <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
+                    <h4 class="text-center text-black"><b> ENVIADOS A PRUEBAS</b></h4>
+                    <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
 
-                    @if ( count($reclutamiento)==0 )
-                        <div class="col-md-12 grid-margin stretch-card">
+                    <div class="row justify-content-center"
+                        style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
+                        <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-users"></i>
+                                    POSTULADOS</b><span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link "> <a class="nav-link text-center text-black "
+                                href="{{ route('reclutador.seleccionados.buscar', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-user-friends"></i>
+                                    SELECCIONADOS</b><span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link active"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.reclutamientos.buscar', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-tasks"></i> PRUEBAS</b><span class="sr-only">(current)</span></a>
+                        </div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.analista.index') }}"><b><i class="fas fa-comment-alt"></i>
+                                    ENTREVISTAS</b>
+                                <span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link">
+
+                            <a class="nav-link text-center text-black" href="#"><b><i class="fas fa-check-double"></i>
+                                    FINALISTAS</b>
+                                <span class="sr-only">(current)</span></a>
+                        </div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.discarded.index', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="far fa-times-circle"></i>
+                                    DESCARTADOS</b>
+                                <span class="sr-only">(current)</span></a></div>
+
+                    </div>
+
+                    @if (count($reclutamiento) == 0)
                             <div class="card box">
                                 <div class="card-body">
-                                    <h5 class="text-center">No hay candidatos reclutados para esta vacante</h5>
+                                    <h5 class="text-center text-black">NO HAY CANDIDATOS ENVIADOS A PRUEBAS</h5>
                                 </div>
                             </div>
                         </div>
                     @else
-                        <div class="card box" style="background-color: #ffffff;">
-                            <div class="card-body">
-                                <h1 class="card-title">Nuevos Aspirantes</h1>
-                                <p class="card-description">
-                                    Especificación de aspirantes
-                                </p>
-                                <div class=" table-responsive">
-                                    <table class="table " style="background-color: #FFF; border-radius: 10px;">
-                                        <thead>
-                                            <tr class="d-flex">
-                                                <th class="col text-center">Fecha</th>
-                                                <th class="col text-center">Vacante</th>
-                                                <th class="col text-center">Nombre</th>
-                                                <th class="col text-center">Comentarios</th>
-                                                <th class="col text-center">Envio Pruebas</th>
-                                                <th class="col text-center">Calificar</th>
-                                                <th class="col text-center">Ver calificaciones</th>
-                                                <th class="col text-center">Descartar cantidato</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($postulaciones as $postulaciones)
-                                                <tr class="d-flex">
-                                                    <td class="col text-center">
-                                                        {{ date('d-m-Y', strtotime($postulaciones->recruitment->fecha)) }}
-                                                    </td>
-                                                    <td class="col text-center">
-                                                        {{ $vacant->title }}
-                                                    </td>
-                                                    <td class="col text-center">
-                                                        @foreach ($cvs as $cv)
-                                                            @if ($cv->id = $postulaciones->cv_id)
-                                                                {{ $cv->name }}
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
-                                                    <th class="col text-center">
-                                                        {{ $postulaciones->recruitment->comentarios }}</th>
-                                                    <td class="col text-center">
-                                                        <div style="display: flex"
-                                                            class="text-center justify-content-center">
-                                                            <div class="pl">
+                        <div class="row pt-4">
+
+                            <div class="col-md-3">
+                                <div class="card" style="background-color: #ffffff;height: auto">
+                                    <div class="card-body">
+                                        Filtros
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+
+                                <div class="row justify-content-center">
+
+                                    <div class="col-md-2">
+                                        <p class="text-center"> <small class="text-center text-black "><b>NOMBRE</b></small>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{-- <p class="text-center"> <small
+                                                class="text-center text-black "><b>COMENTARIOS</b></small></p> --}}
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p class="text-center"><small class="text-center text-black "><b>PRUEBAS
+                                                    ENVIADAS</b></small></p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p class="text-center"><small
+                                                class="text-center text-black "><b>CALIFICAR</b></small></p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p class="text-center"><small class="text-center text-black "><b>VER
+                                                    CALIFICACIONES</b></small></p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p class="text-center"><small
+                                                class="text-center text-black "><b>DESCARTAR</b></small></p>
+                                    </div>
+                                </div>
+
+
+                                @foreach ($postulaciones as $postulaciones)
+                                    @if ($postulaciones->recruitment != null)
+                                        <div class="" style="border-radius: 25px">
+                                            <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants mt-1">
+
+                                                <div class="card-body pt-0 pb-1 ml-0 mr-0 ">
+                                                    <div class="container-fluid">
+                                                        <div class="row justify-content-center aling-items-center">
+
+                                                            <div class="col-md-2 text-black text-center pt-3">
+                                                                <strong><i>
+                                                                        @foreach ($cvs as $cv)
+                                                                            @if ($cv->id == $postulaciones->cv_id)
+                                                                                {{ $cv->name }}
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </i></strong>
+
+                                                            </div>
+
+                                                            <div class="col-md-2 text-black text-center pt-1">
+                                                                <div class=" d-flex justify-content-center aling-items-center">
+                                                                    <img src="{{ asset('imgs/profile-icon-9.png') }}"
+                                                                        class="w-50" alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 text-black text-center pt-3">
+
                                                                 <form
                                                                     action="{{ route('reclutador.reclutamiento.pruebas', $postulaciones->recruitment->id) }}"
                                                                     method="post">
                                                                     @csrf
                                                                     @method('put')
-                                                                    <button class="btn btn-warning"
-                                                                        @if ($postulaciones->recruitment->pruebas != '') disabled='disabled' @endif><i
-                                                                            class="fas fa-tasks"></i></i></button>
+                                                                    @if ($postulaciones->recruitment->pruebas != '')
+                                                                        
+                                                                    @else
+                                                                        <button class="btn text-black"><i class="fas fa-check-circle text-black"></i></button>
+                                                                    @endif
+                                                                    
                                                                 </form>
+
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="col text-center">
-                                                        <div style="display: flex"
-                                                            class="text-center justify-content-center">
-                                                            <div class="pl">
-                                                                <button class="btn btn-success"
+
+
+                                                            <div class="col-md-2 text-black text-center pt-3">
+
+                                                                @if ($postulaciones->recruitment->ethikos == '')
+                                                                    <a href="{{route('reclutador.reclutamientos.calificar',[$postulaciones->recruitment->id,$name_vacant->id])}}"><i class="far fa-edit text-black"></i></a>
+                                                                @else
+                                                                    
+                                                                @endif
+                                                               
+                                                                {{-- <button class="btn"
                                                                     data-target="#Modaledit{{ $postulaciones->recruitment->id }}"
                                                                     data-toggle="modal"
                                                                     @if ($postulaciones->recruitment->ethikos != '') disabled='disabled' @endif>
-                                                                    <i class="far fa-edit"></i></button>
-                                                                @include('reclutador.reclutamiento.editreclutamiento')
+                                                                    <i class="far fa-edit text-black"></i></button> --}}
+                                                                {{-- @include('reclutador.reclutamiento.editreclutamiento') --}}
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="col text-center">
-                                                        <div style="display: flex"
-                                                            class="text-center justify-content-center">
-                                                            <div class="pl-1">
-                                                                <button class="btn btn-warning"
+                                                            <div class="col-md-2 text-black text-center pt-3">
+                                                                {{-- <button class="btn"
                                                                     data-target="#Modalverreclutado{{ $postulaciones->recruitment->id }}"
                                                                     data-toggle="modal">
-                                                                    <i class="fas fa-eye"></i>
-                                                                </button>
-                                                                @include('reclutador.reclutamiento.showreclutamiento')
+                                                                    <i class="fas fa-eye text-black"></i>
+                                                                </button> --}}
+                                                                @if ($postulaciones->recruitment->ethikos == '')
+                                                                <a href="{{route('reclutador.reclutamientos.calificar',[$postulaciones->recruitment->id,$name_vacant->id])}}"><i class="fas fa-eye text-black"></i></a>
+                                                                @else
+                                                                    
+                                                                @endif
+                                                                {{-- @include('reclutador.reclutamiento.showreclutamiento') --}}
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="col text-center">
-                                                        <div style="display: flex"
-                                                            class="text-center justify-content-center">
-                                                            <div class="pl-1">
-                                                                <button class="btn btn-danger"
+                                                            <div class="col-md-2 text-black text-center pt-3">
+                                                                <button class="btn text-black"
                                                                     data-target="#Modaldescartar{{ $postulaciones->recruitment->id }}"
-                                                                    data-toggle="modal"><i class="fas fa-times"></i>
+                                                                    data-toggle="modal"><i class="fas fa-times text-black"></i>
                                                                 </button>
                                                                 @include('reclutador.reclutamiento.modals.descartarcandidato')
                                                             </div>
                                                         </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                    </div>
+
+
+                                                </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+
                             </div>
+
                         </div>
                     @endif
                 </div>

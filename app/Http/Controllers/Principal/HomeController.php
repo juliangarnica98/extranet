@@ -37,12 +37,17 @@ class HomeController extends Controller
         // dd($first_vacant);
         return view('principal.vacantes',compact('vacants','num_vacants','first_vacant'));
     }
-    public function vacantes2($area)
-    {
-        $area_b=trim($area);
-        $jobs=Vacant::where('area',$area_b)->where('job',1)->paginate();       
-        $type=$area_b;
-        return view('principal.vacantes2',compact('jobs','type'));
+    public function vacantes2($area){
+    // {
+    //     $area_b=trim($area);
+    //     $jobs=Vacant::where('area',$area_b)->where('job',1)->paginate();       
+    //     $type=$area_b;
+    //     return view('principal.vacantes2',compact('jobs','type'));
+
+        $vacant_found = Vacant::where('state',1)->where('job',0)->where('area',$area)->first();
+        $vacants = Vacant::where('state',1)->where('job',0)->where('area',$area)->paginate(10);
+        $num_vacants=Vacant::where('state',1)->where('job',0)->where('area',$area)->count();
+        return view('principal.vacantes',compact('vacants','num_vacants','vacant_found'));
     }
     public function buscar($id)
     {

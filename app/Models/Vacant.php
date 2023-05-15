@@ -8,26 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Vacant extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'title',
-        'author',
-        'archivate_date',
-        'city',
-        'description',
-        'state',
-        'salary',
-        'experience',
-        'num_vacants',
-        'education',
-        'language',
-        'availability_travel',
-        'type_contract',
-        'area',
-        'filtro',
-        'num_aplic',
-        'type_cv_id',
-        // 'area_id'
-    ];
+    // protected $fillable = [
+    //     'title',
+    //     'author',
+    //     'archivate_date',
+    //     'city',
+    //     'description',
+    //     'state',
+    //     'salary',
+    //     'experience',
+    //     'num_vacants',
+    //     'education',
+    //     'language',
+    //     'availability_travel',
+    //     'type_contract',
+    //     'area',
+    //     'filtro',
+    //     'num_aplic',
+    //     'type_cv_id',
+       
+    // ];
+    protected $guarded = [];
 
     // public function cvs()
     // {

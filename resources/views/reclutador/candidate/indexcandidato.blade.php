@@ -100,124 +100,227 @@
         font-size: 1rem;
         line-height: 1;
     }
-    .vancants{
+
+    .vancants {
         transition: width 2s;
     }
-    .vancants:hover{
+
+    .vancants:hover {
         box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    }
+
+    .link-a {
+        transition: width 2s;
+        transition-property: box-shadow, transform;
+        transition-duration: 350ms;
+        transition-timing-function: ease;
+    }
+
+    .link-a:hover {
+        transform: translateY(-5px);
     }
 </style>
 
 @section('content')
-@if (Session::has('error'))
-<script>
-    Swal.fire(
-        'Error',
-        "{{ Session::get('error') }}",
-        'error'
-    )
-</script>
-@endif
-@if (Session::has('message'))
-<script>
-    Swal.fire(
-        '¡Bien hecho!',
-        "{{ Session::get('message') }}",
-        'success'
-    )
-</script>
-@endif
+    @if (Session::has('error'))
+        <script>
+            Swal.fire(
+                'Error',
+                "{{ Session::get('error') }}",
+                'error'
+            )
+        </script>
+    @endif
+    @if (Session::has('message'))
+        <script>
+            Swal.fire(
+                '¡Bien hecho!',
+                "{{ Session::get('message') }}",
+                'success'
+            )
+        </script>
+    @endif
     <div class="page-content page-container" id="page-content">
-        <h2 class="text-center text-dark pt-2 ">CANDIDATOS</h2>
+        <h2 class="text-center  pt-5 text-black" style="color: #000000">VACANTES</h2>
+
+        
+        @if (count($vacants) == 0)
+        <div class="card box" style="background-color: #ffffff;height: auto">
+            <div class="card-body">
+
+                <p class="card-description text-center">
+                    <b>NO SE HAN CANDIDATOS</b>
+                </p>
+            </div>
+        </div>
+        @else    
         <div class="">
-            {{-- <div class="row pl-3 pr-3 pt-3 justify-content-center">
-                <div class="col-md-12">
-                    <div class="card " style="background-color: #ebebeb;">
-                        <div class="text-center">
-                            o
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- @include('reclutador.candidate.navegacioncandidato') --}}
-            <div class="row pl-3 pr-3 pt-2 justify-content-center">
-                <div class="col-md-4 grid-margin stretch-card">
-                    <div class="card box" style="background-color: #ffffff;height: 85vh">
+            <div class="row  pt-2 justify-content-center">
+                <div class="col-md-3 grid-margin stretch-card">
+                    <div class="card box" style="background-color: #ffffff;height: auto">
                         <div class="card-body">
-                            <h1 class="card-title">USUARIOS</h1>
+
                             <p class="card-description">
-                                FILTROS DE VACANTES 
+                                Filtros
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8 grid-margin stretch-card">
-                    <div class="card box" style="background-color: #ffffff;height: 85vh">
-                        <div class="card-body">
-                            <h1 class="card-title">Candidatos por vacantes</h1>
+                <div class="col-md-9 grid-margin stretch-card">
+
+
+                    <div class="row ml-1 mr-1">
+                        <div class="col-md-3">
+                            <p class="text-center"> <small class="text-center text-black "><b>DESCRIPCIÓN</b></small></p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <small class=" text-black "><b>FECHA</b></small>
+                        </div>
+                        <div class="col-md-6 text-center" >
                             <div class="row">
-                                {{-- <div class="col-md-4"><p class="card-description">Selecciona una vacante </p></div> --}}
-                                <div class="col-md-12">
-                                    <form method="get" action="">
-                                        <div class="form-row">
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="busqueda">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input type="submit" class="btn btn-primary btn-block" value="buscar" style="border-radius: 25px">
-                                            </div>
-                                        </div>
-                                    </form>
+                                <div class="col-md-3">
+                                    <p class="text-center"> <small class="text-center text-black "><b>EDITAR</b></small></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p class="text-center"> <small class="text-center text-black "><b>DUPLICAR</b></small></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p class="text-center"><small class="text-center text-black "><b>CANDIDATOS</b></small></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p class="text-center"> <small class="text-center text-black "><b>ARCHIVAR</b></small></p>
                                 </div>
                             </div>
-                            
-                            
-                            @foreach ($vacants as $vacant)
-                                <div class="border-top border-bottom mt-1">
-                                    <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants" style="background-color: #ebebeb">
-                                        {{-- border-right-0 border-left-0 --}}
-                                        <a href="{{ route('reclutador.aspirantes', ['id' => $vacant->id]) }}"
-                                            class="card-block stretched-link text-decoration-none">
-                                            <div class="card-body pt-1 pb-1 ml-0 mr-0">
+                        </div>
+                        
+                    </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <h5 class="card-title text-dark text-center border-bottom">
-                                                            <strong>{{ $vacant->title }}</strong>
-                                                        </h5>
-                                                        <div class=" text-center">
-                                                            <small class="h6 text-dark">Candidatos: {{ $vacant->num_aplic }}</small>
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 border-left text-center">
-                                                        <h5 class=" text-dark">
-                                                            <small class="card-subtitle mb-1 text-dark">
-                                                                Descripción: {{ $vacant->description }}
-                                                            </small><br>
-                                                            <small class="card-subtitle mb-1 text-dark">{{ $vacant->city }} -
-                                                                ${{ number_format($vacant->salary, 1, ',', '.') }} COP
-                                                            </small><br>
-                                                            <small class="card-text text-dark">Educación requerida:
-                                                                {{ $vacant->education }} 
-                                                            </small> <br>
-                                                        </h5>
-                                                    </div>
+
+                    @foreach ($vacants as $vacant)
+                        <div class="mt-1">
+                            <div class="card pl-0 pr-0 ml-0 mr-0 border-0" style="background-color: #fff">
+                                {{-- border-right-0 border-left-0 --}}
+
+                                <div class="card-body pt-1 pb-1 ml-0 mr-0">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h5 class="text-black text-center">
+                                                <strong>{{ $vacant->title }}</strong><br>
+                                                <small class="card-subtitle mb-1 text-black">{{ $vacant->city }} <br>
+                                                    ${{ number_format($vacant->salary, 1, ',', '.') }} COP <br>
+                                                    @if ($vacant->state == 1)
+                                                        <b class="text-info">ACTIVA</b>
+                                                    @else
+                                                        <b class="text-danger">ARCHIVADA</b>
+                                                    @endif
+                                                </small><br>
+                                            </h5>
+                                        </div>
+                                        <div class="col-md-3  text-center">
+                                            <h6 class="text-black">
+                                                <div class="text-black text-center pt-4">
+                                                    {{ date_format($vacant->created_at, 'Y/m/d') }}
                                                 </div>
-
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-6 text-center" >
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <h5 class="text-black">
+                                                        <div class="text-black text-center pt-4 link-a">
+                                                            <a href="{{ route('reclutador.vacant.edit', ['id' => $vacant->id]) }}"
+                                                                {{-- <a href="#"editar-vacante --}}
+                                                                class="card-block stretched-link text-decoration-none text-black">
+                                                                <i class="fas fa-pen"></i>
+                                                            </a>
+                                                        </div>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h5 class="text-black">
+                                                        <div class="text-black text-center pt-4 link-a">
+                                                            <a href="{{ route('reclutador.vacant.duplicar', ['id' => $vacant->id]) }}"
+                                                                class="card-block stretched-link text-decoration-none text-black">
+                                                                <i class="fas fa-clone"></i>
+                                                            </a>
+                                                        </div>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h5 class="text-black">
+                                                        <div class="text-black text-center pt-4 link-a">
+                                                            <a href="{{ route('reclutador.aspirantes', ['id' => $vacant->id]) }}"
+                                                                class="card-block stretched-link text-decoration-none text-black">
+                                                                {{ $vacant->num_aplic }} <i class="fas fa-user-friends"></i>
+                                                            </a>
+                                                        </div>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h5 class="text-black">
+                                                        <div class="text-black text-center pt-4 link-a">
+                                                            @if ( $vacant->state==1)
+                                                            <a onclick="archivar_vacante({{ $vacant->id }})" 
+                                                                class="card-block stretched-link text-decoration-none text-black" >
+                                                                <i class="fas fa-archive"></i>
+                                                            </a>
+                                                            @else
+                                                                <i class="fas fa-archive text-danger"></i>       
+                                                            @endif
+                                                        </div>
+                                                    </h5>
+                                                </div>
                                                 
                                             </div>
-                                        </a>
+                                        </div>
+                            
                                     </div>
-                                </div>
-                            @endforeach
 
+
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
 
             </div>
         </div>
+        @endif
     </div>
+    <script>
+        // window.CSRF_TOKEN = '{{ csrf_token() }}';
+        function archivar_vacante(id) {
+            Swal.fire({
+                title: '¿Estas seguro de archivar la vacante?',
+                
+                showCancelButton: true,
+                confirmButtonText: 'Seguro',
+                cancelButtonText: 'Cancelar',
+             
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    fetch('/reclutador/archivar-vacante/' + id, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json;charset=UTF-8",
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+                .then((response) => {
+                    window.location.reload()
+                })
+                .then(json => console.log(json));
+                } else if (result.isDenied) {
+                    
+                }
+            })
+            
 
+        }
+    </script>
 @endsection

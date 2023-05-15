@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Reclutador;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cv;
+use App\Models\Cvvacant;
 use App\Models\Discarded;
 use App\Models\Vacant;
 use Illuminate\Http\Request;
@@ -16,14 +17,19 @@ class DiscardedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function discarded()
+    public function discarded($id)
     {
+        // return $id;
         Paginator::useBootstrap();
+        $descartados=Cvvacant::with('discarded')->where('vacant_id',$id)->where('state_id',11)->paginate(10);
+        // return $descartados;
         $discardeds=Discarded::with('cvvacant')->paginate(10);
         $vacantes=Vacant::all();
         $cvs=Cv::all();
+        $name_vacant=Vacant::where('id',$id)->first();
         // return $discardeds;
-        return view('reclutador.discarded.indexdiscarded',compact('discardeds','vacantes','cvs'));
+        // return $descartados;
+        return view('reclutador.discarded.indexdiscarded',compact('discardeds','vacantes','cvs','name_vacant','descartados'));
     }
 
     /**

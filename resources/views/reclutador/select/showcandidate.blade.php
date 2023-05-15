@@ -126,50 +126,81 @@
 
             <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card" style="background-color: #ffffff;">
+                    <h4 class="text-center text-black"><b> SELECCIONADO</b></h4>
+                    <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
+                    <div class="row justify-content-center"
+                        style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
+                        <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-users"></i>
+                                    POSTULADOS</b><span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link active"> <a class="nav-link text-center text-black "
+                                href="{{ route('reclutador.seleccionados.buscar', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-user-friends"></i>
+                                    SELECCIONADOS</b><span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.reclutamientos.buscar', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-tasks"></i> PRUEBAS</b><span class="sr-only">(current)</span></a>
+                        </div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.analista.index') }}"><b><i class="fas fa-comment-alt"></i>
+                                    ENTREVISTAS</b>
+                                <span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link">
+
+                            <a class="nav-link text-center text-black" href="#"><b><i class="fas fa-check-double"></i>
+                                    FINALISTAS</b>
+                                <span class="sr-only">(current)</span></a>
+                        </div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.discarded.index', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="far fa-times-circle"></i>
+                                    DESCARTADOS</b>
+                                <span class="sr-only">(current)</span></a></div>
+
+                    </div>
+                    <div class="card mt-3" style="background-color: #ffffff;">
                         <div class="card-body">
-                            <h1 class="card-title">Hoja de vida </h1>
-                            {{-- <p class="card-description">
-                                
-                            </p> --}}
-                            <hr>
-                            <div class="row d-flex justify-content-center aling-items-center text-center">
-                                <div class="col-sm-4">
-                                    <button class="btn btn-warning mr-5"
-                                        @if ($cv->pruebas == 1) disabled='disabled' @endif>
-                                        <i class="fas fa-file-download"></i> Descargar hoja de vida</button>
-                                </div>
-                                <div class="col-sm-4">
-                                    @if ($reclutamiento)
-                                        <button class="btn btn-info" data-target="#Modalstore{{ $cv->id }}"
-                                            data-toggle="modal"
-                                            @if ($reclutamiento->cvvacant_id == $postulacion->id) disabled='disabled' @endif><i
-                                                class="fas fa-check"></i> Reclutar
-                                            candidato</button>
-                                        @include('reclutador.select.modals.actioncandidato')
-                                    @else
-                                        <button class="btn btn-info" data-target="#Modalstore{{ $cv->id }}"
-                                            data-toggle="modal"><i
-                                                class="fas fa-check"></i> Reclutar
-                                            candidato</button>
-                                        @include('reclutador.select.modals.actioncandidato')
-                                    @endif
-
-
+                            <div class="row  d-flex justify-content-center aling-items-center text-center">
+                                <div class="col-md-2  justify-content-center"
+                                    style="border-radius: 12px; background-color: #e85199">
+                                    <button class="btn  text-white btn-block" data-toggle="modal"><i
+                                            class="fas fa-arrow-right" style="font-size: 1rem"></i> Esta en: <br><b>
+                                            SELECCIONADOS</b> </button>
 
                                 </div>
-                                <div class="col-sm-4">
-                                    <button class="btn btn-danger" data-target="#Modaldescartar{{ $cv->id }}"
-                                        data-toggle="modal"><i class="fas fa-times"></i> Descartar candidato</button>
-                                    @include('reclutador.candidate.modals.descartarcandidato')
+                                <div class="col-md-2 ml-1 justify-content-center "
+                                    style="border-radius: 12px; background-color: #777b9e">
+
+
+                                    <form action="{{ route('reclutador.candidate.pruebas', [$postulacion->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        <button class="btn  text-white btn-block"
+                                            @if ($reclutamiento)
+                                                     
+                                            @else
+                                                disabled='disabled'   
+                                            @endif
+                                        ><i class="fas fa-check"></i> Mover a:<b> PRUEBAS</b> </button>
+                                            
+                                    </form>
                                 </div>
+                                <div class="col-md-2 ml-1 justify-content-center "
+                                    style="border-radius: 12px;background-color: #03a8a2">
+                                    <div class="row">
 
 
+                                        <button class="btn  text-white btn-block"
+                                            data-target="#Modaldescartar{{ $cv->id }}" data-toggle="modal"><i
+                                                class="fas fa-times"></i> <span>Mover a:</span> <b> DESCARTADOS
+                                            </b></button>
+                                        @include('reclutador.candidate.modals.descartarcandidato')
 
+                                    </div>
+                                </div>
 
                             </div>
-
-                            <hr>
 
                             <div class="row pt-4">
                                 <div class="col-md-5">
@@ -203,22 +234,6 @@
                                                     <span class="h6">Perfil academico culminado:</span>
                                                 </div>
                                                 <div class="col-md-6 text-dark">
-                                                    {{-- <span
-                                                        class="text-center">{{ date('d-m-Y', strtotime($cv->created_at)) }}</span><br> --}}
-                                                    {{-- <span class="text-center">
-                                                        @foreach ($vacants as $vacant)
-                                                            @if ($cv->vacant_id === $vacant->id)
-                                                                {{ $vacant->title }}
-                                                            @endif
-                                                        @endforeach
-                                                    </span><br> --}}
-                                                    {{-- <span class="text-center badge-success h6 ">
-                                                        @foreach ($states as $state)
-                                                            @if ($cv->state_id == $state->id)
-                                                                {{ $state->description }}
-                                                            @endif
-                                                        @endforeach
-                                                    </span><br> --}}
                                                     <span class="text-center h6">{{ $cv->email }}</span><br>
                                                     <span class="text-center h6">{{ $cv->city_address }}</span><br>
                                                     <span class="text-center h6">{{ $cv->address }}</span><br>
@@ -231,7 +246,10 @@
 
                                                 </div>
                                             </div>
-
+                                            <div class="row mt-1">
+                                                <button class="btn btn-warning btn-block">
+                                                    <i class="fas fa-file-download"></i> DESCARGAR CV</button>
+                                            </div>
 
                                         </div>
 
@@ -239,61 +257,6 @@
 
                                 </div>
                                 <div class="col-md-7">
-
-                                    {{-- <div class="card box">
-                                        <div class="card-body">
-                                            <h2 class="text-center text-dark">Información personal</h2>
-                                            <hr>
-                                            <div class="row">
-
-                                                <div class="col-md-6 text-dark">
-                                                    {{-- <span class="">Fecha:</span> <br> --}}
-                                    {{-- <span class="">Vacante:</span><br> 
-                                                    
-                                                    <span class="h6">Estado del candidato:</span><br>
-                                                    <span class="h6">Tipo de documento:</span><br>
-                                                    <span class="h6">Numero de documento:</span><br>
-                                                    <span class="h6">Número de celular:</span><br>
-                                                    <span class="h6">Número de celular opcional:</span><br>
-                                                    <span class="h6">Edad:</span><br>
-                                                    <span class="h6">Correo:</span><br>
-                                                    <span class="h6">Dirección:</span><br>
-                                                    <span class="h6">Ciudad de residencia:</span><br>
-                                                    <span class="h6">Perfil academico culminado:</span>
-                                                </div>
-                                                <div class="col-md-6 text-dark">
-                                                    {{-- <span
-                                                        class="text-center">{{ date('d-m-Y', strtotime($cv->created_at)) }}</span><br> --}}
-                                    {{-- <span class="text-center">
-                                                        @foreach ($vacants as $vacant)
-                                                            @if ($cv->vacant_id === $vacant->id)
-                                                                {{ $vacant->title }}
-                                                            @endif
-                                                        @endforeach
-                                                    </span><br> 
-                                
-
-                                                    <span class="text-center badge-success h6 ">
-                                                        @foreach ($states as $state)
-                                                            @if ($cv->state_id == $state->id)
-                                                                {{ $state->description }}
-                                                            @endif
-                                                        @endforeach
-                                                    </span><br>
-                                                    <span class="text-center h6">{{ $cv->type_id }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->num_id }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->num_cell }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->num_cell2 }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->age }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->email }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->address }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->city_address }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->academic_profile }}</span><br>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
 
                                     <div class="card box">
                                         <div class="card-body">
@@ -318,10 +281,12 @@
                                                     <span class="text-center h6">{{ $cv->name_last_company }}</span><br>
                                                     <span
                                                         class="text-center h6">{{ $cv->position_last_company }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->funtion_last_company }}</span><br>
+                                                    <span
+                                                        class="text-center h6">{{ $cv->funtion_last_company }}</span><br>
                                                     <span class="text-center h6">{{ $cv->work_last_company }}</span><br>
                                                     <span class="text-center h6">{{ $cv->date_init_company }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->date_finally_company }}</span><br>
+                                                    <span
+                                                        class="text-center h6">{{ $cv->date_finally_company }}</span><br>
                                                     <span class="text-center h6">{{ $cv->name_last_company2 }}</span><br>
                                                     <span
                                                         class="text-center h6">{{ $cv->position_last_company2 }}</span><br>
@@ -365,19 +330,46 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row pt-4 justify-content-center">
+                                <div class="card col-md-12">
+
+                                    <form action="{{ route('reclutador.store') }}" method="POST">
+                                        @csrf
+                                        <div class="form-group"
+                                            class="text-center aling-items-center justify-content-center">
+                                            <div class="text-center aling-items-center justify-content-center text-black">
+                                                <label for=""
+                                                    class="text-center aling-items-center justify-content-center text-black"><b>COMENTARIOS</b></label>
+                                            </div>
+                                            @if ($reclutamiento)
+                                                <textarea name="comentarios" cols="40" rows="5" class="form-control" disabled>{{ $reclutamiento->comentarios }}</textarea>
+                                            @else
+                                                <textarea name="comentarios" cols="40" rows="5" class="form-control"></textarea>
+                                            @endif
+
+                                        </div>
+                                        <input type="hidden" name="cv_id" value="{{ $postulacion->cv_id }}"
+                                            id="">
+                                        <input type="hidden" name="vacant_id" value="{{ $postulacion->vacant_id }}"
+                                            id="">
+                                        @if ($reclutamiento)
+                                            <button class="btn btn-block text-white"
+                                                style="background-color: #01b9b5;display: none"> <b>ENVIAR A
+                                                    PRUEBAS</b></button>
+                                        @else
+                                            <button class="btn btn-block text-white" style="background-color: #01b9b5">
+                                                <b>ENVIAR COMENTARIOS</b></button>
+                                        @endif
+
+                                    </form>
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-    {{-- <div class="container pt-3">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 text-xs-center">
-                {{ $cvs->links() }}
-            </div>
-        </div>
-    </div> --}}
 @endsection

@@ -27,9 +27,16 @@ class CreateRecruitmentsTable extends Migration
             $table->string('iq_factorial')->nullable();
             $table->string('vp_test')->nullable();
 
+            $table->string('ventas')->nullable();
+            $table->string('riesgos')->nullable();
+            $table->string('tecnica')->nullable();
+            $table->string('visita')->nullable();
+            $table->string('poligrafo')->nullable();
+
             $table->text('entrevista_analista')->nullable();
-            $table->text('poligrafo')->nullable();
-            $table->text('visita_domiciliaria')->nullable();
+            $table->text('entrevista_coordinador')->nullable();
+            $table->text('entrevista_jefe')->nullable();
+            $table->text('entrevista_gerente')->nullable();
 
             $table->unsignedBigInteger('cvvacant_id');
             $table->foreign('cvvacant_id')->references('id')->on('cvvacants')->onDelete('cascade');

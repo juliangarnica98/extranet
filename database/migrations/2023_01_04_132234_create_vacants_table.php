@@ -39,10 +39,24 @@ class CreateVacantsTable extends Migration
             $table->string('filtro');
 
             $table->string('job');
-            
-            // $table->unsignedBigInteger('area_id');
-            // $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
-    
+
+            $table->string('residence_change');
+            $table->string('ventas');
+            $table->string('riesgos');
+            $table->string('tecnica');
+            $table->string('poligrafo');
+            $table->string('visita');
+
+            $table->string('entrevista_analista');
+            $table->string('entrevista_coordinador');
+            $table->string('entrevista_jefe');
+            $table->string('entrevista_gerente');   
+
+            $table->string('pregunta1')->nullable();
+            $table->string('pregunta2')->nullable();
+            $table->string('pregunta3')->nullable();
+            $table->string('pregunta4')->nullable();
+
         });
     }
 

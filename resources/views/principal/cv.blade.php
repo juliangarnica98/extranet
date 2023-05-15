@@ -131,29 +131,29 @@
 
 
     #signUpForm input {
-        padding: 15px 20px;
-        border: 2px solid #c2c2c2;
+        padding: 10px;
+        border: 1px solid #c3c3c3;
         /* border-bottom: 2px solid  #c2c2c2; */
 
         /* border-radius: 5px; */
-        color: #b47676;
+        color: #000000;
         border-radius: 25px;
     }
 
     #signUpForm textarea {
-        border: 2px solid #c2c2c2;
+        border: 1px solid #c3c3c3;
         /* border-bottom: 2px solid  #c2c2c2; */
         border-radius: 5px;
-        color: #646464;
+        color: #000000;
         border-radius: 25px;
     }
 
     #signUpForm select {
-        padding: 15px 20px;
-        border: 2px solid #c2c2c2;
+        padding: 10px;
+        border: 1px solid #c3c3c3;
         /* border-bottom: 2px solid  #c2c2c2;   */
         /* border-radius: 5px; */
-        color: #646464;
+        color: #000000;
         border-radius: 25px;
     }
 
@@ -198,27 +198,29 @@
     }
 
     #signUpForm .form-footer button {
-        background-color: #009688;
-        border: 1px solid #009688 !important;
+        background-color: #e85199;
+        border: 1px solid #e85199 !important;
         color: #ffffff;
-        border: none;
-        padding: 13px 30px;
+        padding: 10px;
         font-size: 1em;
         cursor: pointer;
         border-radius: 5px;
         flex: 1;
         margin-top: 5px;
         border-radius: 25px;
+        transition: all .3s ease-out;
     }
 
     #signUpForm .form-footer button:hover {
-        opacity: 0.8;
+        opacity: 0.9;
+        color: #fbfbfb;
     }
 
     #signUpForm .form-footer #prevBtn {
         background-color: #fff;
-        color: #009688;
+        color: #020303;
         border-radius: 25px;
+        transition: all .3s ease-out;
     }
 
 
@@ -245,10 +247,20 @@
     ,
     .btn {
         border-radius: 20px;
+        transition: all .3s ease-out;
+    }
+
+    .btn:hover {
+        transform: translate(0, -5px);
     }
 
     #nextBtn {
         border-radius: 25px;
+        font-weight: bold;
+    }
+
+    .text-black {
+        color: #000000;
     }
 </style>
 
@@ -286,204 +298,350 @@
     </header>
     <main id="main" style="padding-top: 4%" class="bg-main pb-5">
         <div class="div">
-            <div class="">
+            <div class="container">
 
                 <form id="signUpForm" action="{{ route('cv.store') }}">
-                 
+
 
 
                     <div class="step">
                         <div class="d-flex justify-content-center mb-4">
 
-                            <img style="width: 120vh" src="{{ asset('images/pasos.jpg') }}" alt="">
+                            <img style="width: 120vh" class="img-fluid" src="{{ asset('images/pasos.jpg') }}"
+                                alt="">
 
                         </div>
                     </div>
                     <div class="step">
+                        <div class="row justify-content-center text-center aling-items-center">
+                            <div class="col-md-10 ">
+                                <p class="text-center mb-4 text-black">HÁBEAS DATA: Dando cumplimiento a lo dispuesto en
+                                    la Ley 1581 de
+                                    2012,
+                                    "Por el cual se dictan disposiciones generales para la protección de datos
+                                    personales" y de
+                                    conformidad con lo señalado en el Decreto 1377 de 2013, manifiesto que he sido
+                                    informado
+                                    informado(a) de manera clara, previa y expresa que los datos que se recolectan
+                                    mediante el
+                                    diligenciamiento de formatos o con la entrega de documentos (hojas de vida, anexos)
+                                    serán
+                                    tratados de manera leal y lícita para todo lo relacionado con cuestiones laborales
+                                    de orden
+                                    legal o contractual. En virtud de lo anterior, autorizo de manera voluntaria,
+                                    previa,
+                                    explícita,
+                                    informada e inequívoca a Fast Moda S.A.S para tratar mis datos personales de acuerdo
+                                    con su
+                                    Política de Tratamiento de Datos Personales para los fines relacionados con su
+                                    objeto y en
+                                    especial para fines legales, contractuales, misionales descritos en la Política de
+                                    Tratamiento
+                                    de Datos Personales, manifestando que la información obtenida para el Tratamiento de
+                                    mis
+                                    datos
+                                    personales la he suministrado de forma voluntaria y es verídica. </p>
 
-                        <p class="text-center mb-4">HÁBEAS DATA: Dando cumplimiento a lo dispuesto en la Ley 1581 de
-                            2012,
-                            "Por el cual se dictan disposiciones generales para la protección de datos personales" y de
-                            conformidad con lo señalado en el Decreto 1377 de 2013, manifiesto que he sido informado
-                            informado(a) de manera clara, previa y expresa que los datos que se recolectan mediante el
-                            diligenciamiento de formatos o con la entrega de documentos (hojas de vida, anexos) serán
-                            tratados de manera leal y lícita para todo lo relacionado con cuestiones laborales de orden
-                            legal o contractual. En virtud de lo anterior, autorizo de manera voluntaria, previa,
-                            explícita,
-                            informada e inequívoca a Fast Moda S.A.S para tratar mis datos personales de acuerdo con su
-                            Política de Tratamiento de Datos Personales para los fines relacionados con su objeto y en
-                            especial para fines legales, contractuales, misionales descritos en la Política de
-                            Tratamiento
-                            de Datos Personales, manifestando que la información obtenida para el Tratamiento de mis
-                            datos
-                            personales la he suministrado de forma voluntaria y es verídica. </p>
+                                <div class="d-flex justify-content-center mb-4">
+                                    <input type="checkbox" name="habeas" value="" id="habeas"
+                                        onclick="HabeasClic()" class="">&nbsp;
+                                    Aceptar condiciones
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <h3 class="text-center mb-4 text-black">INGRESA TU INFORMACIÓN PERSONAL</h3>
 
-                        <div class="d-flex justify-content-center mb-4">
-                            <input type="checkbox" name="habeas" value="" id="habeas" onclick="HabeasClic()"
-                                class="">&nbsp;
-                            Aceptar condiciones
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">NOMBRE</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="text" id="form8Example1" class="form-control" name="name"
+                                        style="border-radius: 25px" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">TIPO DE DOCUMENTO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <select class="form-select form-control" name="type_id" style="border-radius: 25px">
+                                        <option value="CC">C.C</option>
+                                        <option value="Permiso especial de permanencia">Permiso especial de permanencia
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">NUMERO DE
+                                        DOCUMENTO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="number" value="{{ $documento }}" name="num_id" class="col-12"
+                                        readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">NUMERO DE
+                                        CELULAR</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="number" placeholder="" name="num_cell" class="col-12">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">OTRO NUMERO DE
+                                        CELULAR</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="numer" placeholder="" name="num_cell2" class="col-12">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">EDAD</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="number" placeholder="" name="age" class="col-12">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">CORREO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="email" placeholder="" name="email" class="col-12">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">DIRECCIÓN</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="text" placeholder="" name="address" class=" col-12">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">CIUDAD DE
+                                        RESIDENCIA</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <select class="form-select col-12 form_control" name="city_address">
+
+                                        <option value="Bogotá">Bogotá</option>
+                                        <option value="Medellín">Medellín</option>
+                                        <option value="Cali">Cali</option>
+                                        <option value="Barranquilla">Barranquilla</option>
+                                        <option value="Cartagena de Indias">Cartagena de Indias</option>
+                                        <option value="Soacha">Soacha</option>
+                                        <option value="Tunja">Tunja</option>
+                                        <option value="Cúcuta">Cúcuta</option>
+                                        <option value="Soledad">Soledad</option>
+                                        <option value="Bucaramanga">Bucaramanga</option>
+                                        <option value="Bello">Bello</option>
+                                        <option value="Villavicencio">Villavicencio</option>
+                                        <option value="Ibagué">Ibagué</option>
+                                        <option value="Santa Marta">Santa Marta</option>
+                                        <option value="Valledupar">Valledupar</option>
+                                        <option value="Manizales">Manizales</option>
+                                        <option value="Pereira">Pereira</option>
+                                        <option value="Montería">Montería</option>
+                                        <option value="Neiva">Neiva</option>
+                                        <option value="Pasto">Pasto</option>
+                                        <option value="Armenia">Armenia</option>
+                                        <option value="Rioacha">Rioacha</option>
+                                        <option value="Sincelejo">Sincelejo</option>
+                                        <option value="Barrancabermeja">Barrancabermeja</option>
+                                        <option value="Popayan">Popayan</option>
+                                        <option value="Dos quebradas">Dos quebradas</option>
+                                        <option value="Jamundi">Jamundi</option>
+                                        <option value="Palmira">Palmira</option>
+                                        <option value="Ipiales">Ipiales</option>
+                                        <option value="Yumbo">Yumbo</option>
+                                        <option value="Cartago">Cartago</option>
+                                        <option value="Tulua">Tulua</option>
+                                        <option value="Girardot">Girardot</option>
+                                        <option value="Pitalito">Pitalito</option>
+                                        <option value="Florencia">Florencia</option>
+                                        <option value="Cajica">Cajica</option>
+                                        <option value="Yopal">Yopal</option>
+                                        <option value="Duitama">Duitama</option>
+                                        <option value="Villeta">Villeta</option>
+                                        <option value="Sogamoso">Sogamoso</option>
+                                        <option value="Fusagasuga">Fusagasuga</option>
+                                        <option value="Sopo">Sopo</option>
+                                        <option value="Tocancipa">Tocancipa</option>
+                                        <option value="Chia">Chia</option>
+                                        <option value="Apartado">Apartado</option>
+                                        <option value="Zipaquira">Zipaquira</option>
+                                        <option value="Mosquera">Mosquera</option>
+                                        <option value="Madrid">Madrid</option>
+                                        <option value="Funza">Funza</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">PERFIL ACADEMICO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <select class="form-select col-12  form_control" name="academic_profile">
+
+                                        <option value="Primaria">Primaria</option>
+                                        <option value="Bachillerato">Bachillerato</option>
+                                        <option value="Técnico">Técnico</option>
+                                        <option value="Tecnólogo">Tecnólogo</option>
+                                        <option value="Pregrado">Profesional</option>
+                                        <option value="Postgrado">Postgrado</option>
+                                        <option value="Maestria">Maestria</option>
+                                        <option value="Esta estudiando">Esta estudiando</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
                     <div class="step">
-                        <h3 class="text-center mb-4">Ingresa tu información personal</h3>
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                <input type="text" placeholder="Nombre completo del aspirante" name="name"
-                                    class="col-12">
-                            </div>
-                            <div class="col-md-4">
-                                {{-- <small class="text-center">Tipo de documento</small> --}}
-                                <select class="col-12" name="type_id">
-                                    <option selected value="">Tipo de documento</option>
-                                    <option value="CC">C.C</option>
-                                    <option value="Permiso especial de permanencia">Permiso especial de permanencia
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="number" value="{{$documento}}" name="num_id" class="col-12" readonly>
-                            </div>
-
-
-
-
-                        </div>
-                        {{-- oninput="this.className = ''" --}}
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                <input type="number" placeholder="número de celular" name="num_cell" class="col-12">
-                            </div>
-                            <div class="col-md-4">
-                                <input type="numer" placeholder="Otro número de celular " name="num_cell2"
-                                    class="col-12">
-                            </div>
-                            <div class="col-md-4">
-                                <input type="number" placeholder="Edad" name="age" class="col-12">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-md-6">
-                                <input type="email" placeholder="Correo" name="email" class="col-12">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" placeholder="Dirección" name="address" class=" col-12">
-                            </div>
-
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-md-6">
-                                <select class="form-select col-12 form_control" name="city_address">
-                                    <option selected value="">Ciudad de residencia</option>
-                                    <option value="Bogotá">Bogotá</option>
-                                    <option value="Medellín">Medellín</option>
-                                    <option value="Cali">Cali</option>
-                                    <option value="Barranquilla">Barranquilla</option>
-                                    <option value="Cartagena de Indias">Cartagena de Indias</option>
-                                    <option value="Soacha">Soacha</option>
-                                    <option value="Tunja">Tunja</option>
-                                    <option value="Cúcuta">Cúcuta</option>
-                                    <option value="Soledad">Soledad</option>
-                                    <option value="Bucaramanga">Bucaramanga</option>
-                                    <option value="Bello">Bello</option>
-                                    <option value="Villavicencio">Villavicencio</option>
-                                    <option value="Ibagué">Ibagué</option>
-                                    <option value="Santa Marta">Santa Marta</option>
-                                    <option value="Valledupar">Valledupar</option>
-                                    <option value="Manizales">Manizales</option>
-                                    <option value="Pereira">Pereira</option>
-                                    <option value="Montería">Montería</option>
-                                    <option value="Neiva">Neiva</option>
-                                    <option value="Pasto">Pasto</option>
-                                    <option value="Armenia">Armenia</option>
-                                    <option value="Rioacha">Rioacha</option>
-                                    <option value="Sincelejo">Sincelejo</option>
-                                    <option value="Barrancabermeja">Barrancabermeja</option>
-                                    <option value="Popayan">Popayan</option>
-                                    <option value="Dos quebradas">Dos quebradas</option>
-                                    <option value="Jamundi">Jamundi</option>
-                                    <option value="Palmira">Palmira</option>
-                                    <option value="Ipiales">Ipiales</option>
-                                    <option value="Yumbo">Yumbo</option>
-                                    <option value="Cartago">Cartago</option>
-                                    <option value="Tulua">Tulua</option>
-                                    <option value="Girardot">Girardot</option>
-                                    <option value="Pitalito">Pitalito</option>
-                                    <option value="Florencia">Florencia</option>
-                                    <option value="Cajica">Cajica</option>
-                                    <option value="Yopal">Yopal</option>
-                                    <option value="Duitama">Duitama</option>
-                                    <option value="Villeta">Villeta</option>
-                                    <option value="Sogamoso">Sogamoso</option>
-                                    <option value="Fusagasuga">Fusagasuga</option>
-                                    <option value="Sopo">Sopo</option>
-                                    <option value="Tocancipa">Tocancipa</option>
-                                    <option value="Chia">Chia</option>
-                                    <option value="Apartado">Apartado</option>
-                                    <option value="Zipaquira">Zipaquira</option>
-                                    <option value="Mosquera">Mosquera</option>
-                                    <option value="Madrid">Madrid</option>
-                                    <option value="Funza">Funza</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <select class="form-select col-12  form_control" name="academic_profile">
-                                    <option selected value="">Perfil academico</option>
-                                    <option value="Primaria">Primaria</option>
-                                    <option value="Bachillerato">Bachillerato</option>
-                                    <option value="Técnico">Técnico</option>
-                                    <option value="Tecnólogo">Tecnólogo</option>
-                                    <option value="Pregrado">Pregrado</option>
-                                    <option value="Postgrado">Postgrado</option>
-                                    <option value="Maestria">Maestria</option>
-                                    <option value="Esta estudiando">Esta estudiando</option>
-                                </select>
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                    <div class="step">
-                        <h3 class="text-center mb-4">Ingresa la información de la ultima empresa en la que
-                            laboraste</h3>
+                        <h3 class="text-center mb-4">INFORMACIÓN LABORAL DE ULTIMA COMPAÑIA</h3>
                         {{-- <p class="text-center mb-4"><strong>  </strong></p> --}}
-                        <div class="mb-3 row">
-                            <div class="col-md-6">
-                                <input type="text" placeholder="Nombre de la ultima empresa"
-                                    name="name_last_company" class="col-12">
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">NOMBRE</label>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" placeholder="Cargo" name="position_last_company"
-                                    class="col-12">
-                            </div>
-
-
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-md-12">
-
-                                <textarea name="funtion_last_company" id="" cols="30" rows="6" placeholder="Funciones"
-                                    class="col-12"></textarea>
+                                <div class="form-outline">
+                                    <input type="text" placeholder="" name="name_last_company" class="col-12">
+                                </div>
                             </div>
                         </div>
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                <select class="form-select col-12 form_control" name="work_last_company">
-                                    <option selected value="">¿Trabajas aqui actualmente?</option>
-                                    <option value="Si">Si</option>
-                                    <option value="No">No</option>
-                                </select>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">CARGO</label>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <span class="ml-5">Fecha inicio de contrato</span>
-                                <input type="date" placeholder="Fecha de inicio" name="date_init_company"
-                                    class="col-12 ">
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="text" placeholder="" name="position_last_company"
+                                        class="col-12">
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <span class="pl-5">Fecha fin de contrato</span>
-                                <input type="date" placeholder="fecha de fin" name="date_finally_company"
-                                    class="col-12 ">
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">FUNCIONES</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <textarea name="funtion_last_company" id="" cols="30" rows="6" placeholder="" class="col-12"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">¿
+                                        TRABAJAS ACTUALMENTE AHI?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <select class="form-select col-12 form_control" name="work_last_company">
+                                        <option value="No">NO</option>
+                                        <option value="Si">SI</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">FECHA INICIO CONTRATO
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="date" placeholder="Fecha de inicio" name="date_init_company"
+                                        class="col-12 ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">FECHA FIN CONTRATO
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="date" placeholder="fecha de fin" name="date_finally_company"
+                                        class="col-12 ">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -494,123 +652,224 @@
 
                     <div class="step">
                         <div id="otra_empresa">
-                            <h3 class="text-center mb-4"> Información de la penúltima empresa</h3>
-                            <div class="mb-3 row">
-                                <div class="col-md-6">
-                                    <input type="text" placeholder="Nombre de la penultima empresa"
-                                        name="name_last_company2" class="col-12">
+                            <h3 class="text-center mb-4">INFORMACIÓN LABORAL DE PENULTIMA COMPAÑIA</h3>
+
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">NOMBRE
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="Cargo" name="position_last_company2"
-                                        class="col-12">
+                                    <div class="form-outline">
+                                        <input type="text" placeholder="" name="name_last_company2"
+                                            class="col-12">
+                                    </div>
                                 </div>
                             </div>
-                           
-                            <div class="mb-3 row">
-                                <div class="col-md-12">
-                                    <textarea name="funtion_last_company2" id="" cols="30" rows="6" placeholder="Funciones"
-                                        class="col-12"></textarea>
 
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">CARGO
+                                        </label>
+                                    </div>
                                 </div>
-
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="text" placeholder="" name="position_last_company2"
+                                            class="col-12">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mb-3 row">
-                                <div class="col-md-6">
-                                    <small class="ml-5">Fecha inicio contrato</small>
-                                    <input type="date" placeholder="Fecha de inicio" name="date_init_company2"
-                                        class="col-12" value="2000-01-01">
+
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FUNCIONES
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <small class="ml-5">Fecha fin contrato</small>
-                                    <input type="date" placeholder="fecha de fin" name="date_finally_company2"
-                                        class="col-12" value="2000-01-01">
+                                    <div class="form-outline">
+                                        <textarea name="funtion_last_company2" id="" cols="30" rows="6" placeholder="" class="col-12"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FECHA INICIO
+                                            CONTRATO
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="date" placeholder="Fecha de inicio" name="date_init_company2"
+                                            class="col-12" value="2000-01-01">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FECHA FIN CONTRATO
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="date" placeholder="fecha de fin" name="date_finally_company2"
+                                            class="col-12" value="2000-01-01">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="step">
+                        <h3 class="text-center mb-4"> CUENTANOS DE TI</h3>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">¿TRABAJASTE CON NOSOTROS ANTERIORMENTE?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <select class="form-select col-12 form_control" name="previously_work">
+                                        <option value="No">NO</option>
+                                        <option value="Si">SI</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                     
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">¿TIENES ALGUN FAMILIAR EN LA EMPRESA?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <select class="form-select col-12 form_control" name="family">
+                                        <option value="No">NO</option>
+                                        <option value="Si">SI</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">¿POR QUÉ TE GUSTARIA TRABAJAR CON NOSOTOS?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <textarea name="like_to_work" id="" cols="20" rows="4"
+                                    placeholder="" class="col-12"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">¿POR QUÉ TE DEBERIAMOS ESCOGER?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <textarea name="should_choose" id="" cols="20" rows="4"
+                                    placeholder="" class="col-12"></textarea>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                     <div class="step">
-                        <h3 class="text-center mb-4"> Cuentanos de ti</h3>
-                        <div class="mb-3 row">
+                        <h3 class="text-center mb-4"> INFORMACIÓN ADICIONAL</h3>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">TALLA CAMISA</label>
+                                </div>
+                            </div>
                             <div class="col-md-6">
-                                <select class="form-select col-12 form_control" name="previously_work">
-                                    <option selected value="">¿Trabajaste anteriormente con nosotros?</option>
-                                    <option value="Si">Si</option>
-                                    <option value="No">No</option>
-                                </select>
+                                <div class="form-outline">
+                                    <select class="form-select col form_control" name="shirt_size">
+                                        <option value="xs">XS</option>
+                                        <option value="s">S</option>
+                                        <option value="m">M</option>
+                                        <option value="l">L</option>
+                                        <option value="xl">XL</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">Talla zapatos</label>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <select class="form-select col-12 form_control" name="family">
-                                    <option selected value="">¿Tienes algun familiar trabajando con nosotros?
-                                    </option>
-                                    <option value="Si">Si</option>
-                                    <option value="No">No</option>
-                                </select>
+                                <div class="form-outline">
+                                    <select class="form-select col form_control " name="shoes_size">
+                                       
+                                        <option value="34">34</option>
+                                        <option value="35">35</option>
+                                        <option value="36">36</option>
+                                        <option value="37">37</option>
+                                        <option value="38">38</option>
+                                        <option value="39">39</option>
+                                        <option value="40">40</option>
+                                        <option value="41">41</option>
+                                        <option value="42">42</option>
+                                        <option value="43">43</option>
+                                        <option value="44">44</option>
+    
+                                    </select>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="mb-3 row">
-                            <div class="col-md-12">
-                                <textarea name="like_to_work" id="" cols="20" rows="4"
-                                    placeholder="¿Por que te gustaria trabajar con nosotros?" class="col-12"></textarea>
+                        
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">TALLA PANTALON</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-md-12">
-                                <textarea name="should_choose" id="" cols="20" rows="4"
-                                    placeholder="¿Por que te deberiamos escoger?" class="col-12"></textarea>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="step">
-                        <h3 class="text-center mb-4"> Información adicional </h3>
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                <select class="form-select col form_control" name="shirt_size">
-                                    <option selected value="">Talla camisa</option>
-                                    <option value="xs">XS</option>
-                                    <option value="s">S</option>
-                                    <option value="m">M</option>
-                                    <option value="l">L</option>
-                                    <option value="xl">XL</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="number" placeholder="Talla de pantalon" name="pant_size"
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="number" placeholder="Talla de pantalon" name="pant_size"
                                     class="col-12">
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select col form_control " name="shoes_size">
-                                    <option selected value="">Talla zapatos</option>
-                                    <option value="34">34</option>
-                                    <option value="35">35</option>
-                                    <option value="36">36</option>
-                                    <option value="37">37</option>
-                                    <option value="38">38</option>
-                                    <option value="39">39</option>
-                                    <option value="40">40</option>
-                                    <option value="41">41</option>
-                                    <option value="42">42</option>
-                                    <option value="43">43</option>
-                                    <option value="44">44</option>
-
-                                </select>
+                                </div>
                             </div>
                         </div>
-
-
                     </div>
-
-
-
-
-                    <div class="form-footer d-flex">
-                        <button class="btn" type="button" id="prevBtn"
-                            onclick="nextPrev(-1)">Anterior</button>
-                        <button class="btn" type="button" id="nextBtn"
-                            onclick="nextPrev(1)">Siguiente</button>
+                    <div class="container">
+                        <div class="form-footer d-flex mt-5">
+                            <button class="btn" type="button" id="prevBtn"
+                                onclick="nextPrev(-1)"><b>ANTERIOR</b></button>
+                            <button class="btn" type="button" id="nextBtn"
+                                onclick="nextPrev(1)"><b>SIGUIENTE</b></button>
+                        </div>
                     </div>
 
                 </form>
@@ -674,9 +933,9 @@
                 document.getElementById("prevBtn").style.display = "inline";
             }
             if (n == (x.length - 1)) {
-                document.getElementById("nextBtn").innerHTML = "Enviar";
+                document.getElementById("nextBtn").innerHTML = "ENVIAR";
             } else {
-                document.getElementById("nextBtn").innerHTML = "Siguiente";
+                document.getElementById("nextBtn").innerHTML = "SIGUIENTE";
             }
             //... and run a function that will display the correct step indicator:
             // fixStepIndicator(n)

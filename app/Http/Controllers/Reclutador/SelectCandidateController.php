@@ -34,10 +34,11 @@ class SelectCandidateController extends Controller
     public function buscar($id)
     {
         Paginator::useBootstrap();
-        $postulaciones=Cvvacant::where('vacant_id',$id)->where('state_id',2)->paginate(10);
+        $postulaciones=Cvvacant::where('vacant_id',$id)->whereIn('state_id',['2'])->paginate(10);
         $vacants=Vacant::paginate();      
         $cvs=Cv::paginate();      
-        return view('reclutador.select.showcandidatos',compact('vacants','postulaciones','cvs'));
+        $name_vacant = Vacant::where('id',$id)->first();
+        return view('reclutador.select.showcandidatos',compact('vacants','postulaciones','cvs','name_vacant'));
     }
     public function vercandidato($id,$vacant)
     {
@@ -46,72 +47,21 @@ class SelectCandidateController extends Controller
         $cv = Cv::where('id',$id)->first();
         $vacants = Vacant::paginate();       
         $reclutamiento = Recruitment::where('cvvacant_id',$postulacion->id)->first();
-        // dd($postulacion);
-        return view('reclutador.select.showcandidate',compact('cv','vacants','postulacion','reclutamiento'));
+        $name_vacant=Vacant::where('id',$vacant)->first();
+        
+        // return $reclutamiento;
+        return view('reclutador.select.showcandidate',compact('cv','vacants','postulacion','reclutamiento','name_vacant'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function pruebas($id)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // $now = new \DateTime();
+        // $reclutamiet = Recruitment::find($id);
+        // $reclutamiet->pruebas = 1;
+        // $reclutamiet->fecha = $now->format('d-m-Y H:i');
+        
+        $postulacion = Cvvacant::where('id',$id)->first();
+        $postulacion->state_id=3;
+        $postulacion->save();
+        return back()->with('message','Se ha cambiado de estado correctamente');
     }
 }

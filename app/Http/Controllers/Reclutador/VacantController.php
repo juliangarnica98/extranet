@@ -78,13 +78,31 @@ class VacantController extends Controller
         $vacant->area = $request->area;
         $vacant->job=0;
 
+        $vacant->residence_change=$request->residence_change;
+
+        $vacant->ventas=$request->ventas;
+        $vacant->riesgos=$request->riesgos;
+        $vacant->tecnica=$request->tecnica;
+        $vacant->poligrafo=$request->poligrafo;
+        $vacant->visita=$request->visita;
+
+        $vacant->entrevista_analista=$request->entrevista_analista;
+        $vacant->entrevista_coordinador=$request->entrevista_coordinador;
+        $vacant->entrevista_jefe=$request->entrevista_jefe;
+        $vacant->entrevista_gerente=$request->entrevista_gerente;
+
+       // $table->string('pregunta1')->nullable();
+        // $table->string('pregunta2')->nullable();
+        // $table->string('pregunta3')->nullable();
+        // $table->string('pregunta4')->nullable();
+
         $vacant->filtro= ($request->salary <= 1000000) ?'1' :'' ;
         $vacant->filtro= ($request->salary >= 1000001 && $request->salary <= 3000000) ?'2' :$vacant->filtro ;
         $vacant->filtro= ($request->salary >= 3000001) ?'3' :$vacant->filtro ;
 
         $typecv->vacant()->save($vacant);
 
-        return back()->with('message','Se ha creado la vacante correctamente');
+        return redirect('/reclutador/vacantes')->with('message','Se ha creado la vacante correctamente');
     }
     public function update($id){
         
@@ -93,6 +111,14 @@ class VacantController extends Controller
        return view('reclutador.vacant.editvacantes',compact('vacant','id'));
 
     }
+    public function duplicar($id){
+        
+        $vacant = Vacant::where('id',$id)->first();
+        $id = Auth::user()->id;
+        return view('reclutador.vacant.duplicarvacantes',compact('vacant','id'));
+ 
+     }
+    
     public function edit($id, Request $request){
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
@@ -105,6 +131,9 @@ class VacantController extends Controller
             'language' => 'required|max:255',
             'availability_travel' => 'required|max:255',
             'type_contract' => 'required|max:255',
+            
+
+           
             
         ]);
         if($validator->fails()){
@@ -127,7 +156,19 @@ class VacantController extends Controller
         $vacant->language = $request->language;
         $vacant->availability_travel = $request->availability_travel;
         $vacant->type_contract = $request->type_contract;
+        
+        $vacant->residence_change=$request->residence_change;
+        $vacant->ventas=$request->ventas;
+        $vacant->riesgos=$request->riesgos;
+        $vacant->tecnica=$request->tecnica;
+        $vacant->poligrafo=$request->poligrafo;
+        $vacant->visita=$request->visita;
 
+        $vacant->entrevista_analista=$request->entrevista_analista;
+        $vacant->entrevista_coordinador=$request->entrevista_coordinador;
+        $vacant->entrevista_jefe=$request->entrevista_jefe;
+        $vacant->entrevista_gerente=$request->entrevista_gerente;
+        
         $vacant->state = 1;   
         $vacant-> num_aplic=0;
         $typecv->vacant()->save($vacant);
@@ -142,11 +183,11 @@ class VacantController extends Controller
         $vacant->save();
         return back()->with('message','Se ha archivado la oferta exitosamente');
     }
-    public function duplicar($id)
-    {   
-        $vacant = Vacant::where('id',$id)->where('job',0)->first();
-        return view('reclutador.vacant.duplicarvacantes',compact('vacant'));
-    }
+    // public function duplicar($id)
+    // {   
+    //     $vacant = Vacant::where('id',$id)->where('job',0)->first();
+    //     return view('reclutador.vacant.duplicarvacantes',compact('vacant'));
+    // }
     public function search(Request $request)
     {
         Paginator::useBootstrap();

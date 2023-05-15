@@ -122,81 +122,126 @@
         </script>
     @endif
     <div class="page-content page-container" id="page-content">
-        <h2 class="text-center text-dark pt-2 ">
+        {{-- <h2 class="text-center text-dark pt-2 ">
             CANDIDATOS DESCARTADOS
-        </h2>
+        </h2> --}}
         <div class="">
 
             <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card" style="background-color: #ffffff;">
-                        <div class="card-body">
-                            <h1 class="card-title">Nuevos aspirantes descartados</h1>
-                            <p class="card-description">
-                                Especificación de descartados
-                            </p>
-                            <div class=" table-responsive">
-                                <table class="table " style="background-color: #FFF; border-radius: 10px;">
-                                    <thead>
-                                        <tr class="d-flex">
-                                            <th class="col text-center">Fecha</th>
-                                            <th class="col text-center">Vacante</th>
-                                            <th class="col text-center">Nombre del candidato</th>
-                                            <th class="col text-center">Cometarios</th>
+                    <h4 class="text-center text-black"><b> DESCARTADO</b></h4>
+                    <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
 
-                                        </tr>
-                                    </thead>
-                                    {{-- {{var_dump($reclutamientos[0])}} --}}
-                                    <tbody>
-                                        @foreach ($discardeds as $discarded)
-                                           
-                                                
-                                                <tr class="d-flex">
-
-                                                    <td class="col text-center">
-                                                        {{ date('d-m-Y', strtotime($discarded->created_at)) }}
-                                                    </td>
-
-                                                    <td class="col text-center">
-                                                        @foreach ($vacantes as $vacant)
-                                                            @if ($vacant->id == $discarded->cvvacant->vacant_id)
-                                                                {{ $vacant->title }}
-                                                            @endif
-                                                        @endforeach
-
-                                                    </td>
-
-
-                                                    <td class="col text-center">
-                                                        @foreach ($cvs as $cv)
-                                                            @if ($cv->id == $discarded->cvvacant->cv_id)
-                                                                {{ $cv->name }}
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
-                                                    <td class="col text-center">{{ $discarded->comentarios }}</td>
-
-
-
-                                                </tr>
-                                            
-                                        @endforeach
-                                    </tbody>
-                                </table>
-
-                            </div>
-
+                    <div class="row justify-content-center"
+                        style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
+                        <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-users"></i>
+                                    POSTULADOS</b><span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link "> <a class="nav-link text-center text-black "
+                                href="{{ route('reclutador.seleccionados.buscar', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-user-friends"></i>
+                                    SELECCIONADOS</b><span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.reclutamientos.buscar', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="fas fa-tasks"></i> PRUEBAS</b><span class="sr-only">(current)</span></a>
                         </div>
+                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.analista.index') }}"><b><i class="fas fa-comment-alt"></i>
+                                    ENTREVISTAS</b>
+                                <span class="sr-only">(current)</span></a></div>
+                        <div class="col-md-2 sub-nav-link">
+
+                            <a class="nav-link text-center text-black" href="#"><b><i class="fas fa-check-double"></i>
+                                    FINALISTAS</b>
+                                <span class="sr-only">(current)</span></a>
+                        </div>
+                        <div class="col-md-2 sub-nav-link active"><a class="nav-link text-center text-black"
+                                href="{{ route('reclutador.discarded.index', ['id' => $name_vacant->id]) }}"><b><i
+                                        class="far fa-times-circle"></i>
+                                    DESCARTADOS</b>
+                                <span class="sr-only">(current)</span></a></div>
+
                     </div>
+                    @if (sizeof($descartados) == 0)
+                        <div class="card box mt-3" style="background-color: #ffffff;height: auto">
+                            <div class="card-body">
+
+                                <p class="card-description text-center">
+                                    <b>NO SE HAN DESCARTADO CANDIDATOS</b>
+                                </p>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row pt-4">
+                            <div class="col-md-3">
+                                <div class="card" style="background-color: #ffffff;height: auto">
+                                    <div class="card-body">
+                                        Filtros
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div>
+                                    <div class="row ">
+                                        <div class="col-md-4">
+                                            <p class="text-center"> <small class="text-center text-black "><b>NOMBRE DEL
+                                                        CANDIDATO</b></small></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p class="text-center"> <small class=" text-black "><b>FECHA</b></small></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p class="text-center"> <small
+                                                    class="text-center text-black "><b>COMENTARIOS</b></small></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                @foreach ($descartados as $descartado)
+                                    {{-- @foreach ($descartado->descarded as $descarded) --}}
+                                    <div class="" style="border-radius: 25px">
+                                        {{-- @if ($cv->pivot->state_id != 11) --}}
+                                        <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants">
+
+                                            <div class="card-body pt-1 pb-1 ml-0 mr-0 ">
+
+                                                <div class="row ">
+
+                                                    <div class="col-md-4 text-black pt-2">
+                                                        <p class="text-center"><strong>
+                                                                @foreach ($cvs as $cv)
+                                                                    @if ($cv->id == $descartado->cv_id)
+                                                                        {{ $cv->name }}
+                                                                    @endif
+                                                                @endforeach
+                                                            </strong>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-4 text-black pt-2">
+                                                        <p class="text-center">
+                                                            <strong>{{ date('d-m-Y', strtotime($descartado->discarded->created_at)) }}</strong><br>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-4 text-black pt-2">
+                                                        <p class="text-center">
+                                                            <strong>{{ $descartado->discarded->comentarios }}</strong>
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
                 </div>
 
-            </div>
-        </div>
-    </div>
-    <div class="container pt-3">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 text-xs-center">
-                {{ $discardeds->links() }}
             </div>
         </div>
     </div>
