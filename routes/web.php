@@ -33,7 +33,7 @@ Route::group(['prefix' => 'extranet'], function() {
     //Route::put('', [App\Http\Controllers\Principal\CvController::class, 'edit'])->name('cv.vacant.edit');    
 });
 
-Route::group(['prefix' => 'administrador', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'administrador'], function() {
     //rutas de perfil
     Route::get('perfil', [App\Http\Controllers\Administrador\ProfileController::class, 'index'])->name('admin.perfil');
     Route::put('editarperfil', [App\Http\Controllers\Administrador\ProfileController::class, 'update'])->name('admin.editarperfil');
@@ -58,7 +58,7 @@ Route::group(['prefix' => 'administrador', 'middleware' => 'auth'], function() {
     Route::get('jefes', [App\Http\Controllers\Administrador\BossController::class, 'index'])->name('admin.index.jefes');
 });
 
-Route::group(['prefix' => 'reclutador', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'reclutador'], function() {
     //rutas de perfil
     Route::get('perfil', [App\Http\Controllers\Reclutador\ProfileController::class, 'index'])->name('reclutador.perfil');
     Route::put('editarperfil', [App\Http\Controllers\Reclutador\ProfileController::class, 'update'])->name('reclutador.editarperfil');
@@ -108,7 +108,7 @@ Route::group(['prefix' => 'reclutador', 'middleware' => 'auth'], function() {
 
 });
 
-Route::group(['prefix' => 'jefe', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'jefe'], function() {
     //rutas de perfil
     Route::get('perfil', [App\Http\Controllers\Jefe\ProfileController::class, 'index'])->name('jefe.perfil');
     Route::put('editarperfil', [App\Http\Controllers\Jefe\ProfileController::class, 'update'])->name('jefe.editarperfil');
