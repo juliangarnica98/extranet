@@ -72,6 +72,8 @@ Route::group(['prefix' => 'reclutador', 'middleware' => 'auth'], function() {
     //rutas de reclutamiento
     Route::get('enviados-pruebas/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'show'])->name('reclutador.reclutamientos.buscar');
     Route::get('calificar-candidato/{id}/{vacante}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'calificar'])->name('reclutador.reclutamientos.calificar');
+    Route::get('ver-calificacion-candidato/{id}/{vacante}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'vercalificacion'])->name('reclutador.reclutamientos.vercalificar');
+    
     Route::post('store', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'store'])->name('reclutador.store');
     Route::put('calificar/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'update'])->name('reclutador.update');    
     Route::put('envio-pruebas/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'send'])->name('reclutador.reclutamiento.pruebas');    

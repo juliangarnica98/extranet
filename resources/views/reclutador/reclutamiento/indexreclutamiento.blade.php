@@ -286,11 +286,9 @@
                                                                     data-toggle="modal">
                                                                     <i class="fas fa-eye text-black"></i>
                                                                 </button> --}}
-                                                                @if ($postulaciones->recruitment->ethikos == '')
-                                                                <a href="{{route('reclutador.reclutamientos.calificar',[$postulaciones->recruitment->id,$name_vacant->id])}}"><i class="fas fa-eye text-black"></i></a>
-                                                                @else
-                                                                    
-                                                                @endif
+                                                                
+                                                                <a href="{{route('reclutador.reclutamientos.vercalificar',[$postulaciones->recruitment->id,$name_vacant->id])}}"><i class="fas fa-eye text-black"></i></a>
+                                                                
                                                                 {{-- @include('reclutador.reclutamiento.showreclutamiento') --}}
                                                             </div>
                                                             <div class="col-md-2 text-black text-center pt-3">

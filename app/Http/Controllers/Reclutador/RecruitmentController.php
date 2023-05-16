@@ -111,4 +111,11 @@ class RecruitmentController extends Controller
         // return $id;
         return view('reclutador.reclutamiento.editreclutamiento',compact('id','vacante'));
     }
+    public function vercalificacion($id,$vacante)
+    {
+        $pruebas = Recruitment::where('id',$id)->first();
+        $vacante=Vacant::where('id',$vacante)->first();
+        // return $pruebas;
+        return view('reclutador.reclutamiento.showreclutamiento',compact('id','vacante','pruebas'));
+    }
 }

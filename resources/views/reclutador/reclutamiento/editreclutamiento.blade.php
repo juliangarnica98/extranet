@@ -270,7 +270,7 @@
                     </div>
                     <div>
                         <button class="box btn-formulario text-white text-center btn btn-block mt-3 mb-3"
-                            style="background-color: #e52b7f"><b>CREAR</b> </button>
+                            style="background-color: #e52b7f"><b>GUARDAR</b> </button>
                     </div>
                 </div>
             </form>

@@ -99,7 +99,7 @@
 
     <div class="page-content page-container" id="page-content">
 
-        <h2 class="text-center  pt-5 text-black" style="color: #000000">CALIFICAR CANDIDATO</h2>
+        <h2 class="text-center  pt-5 text-black" style="color: #000000">VER CALIFICACIÓN DE CANDIDATO</h2>
         <div class="">
 
             <form method="POST" action="#">
@@ -120,7 +120,7 @@
                             <div class="col-md-6">
                                 <div class="form-outline">
                                     <input type="number" class="form-control" aria-describedby="emailHelp" placeholder=""
-                                        value="0" name="ethikos"  style="border-radius: 25px">
+                                    value="{{$pruebas->ethikos}}" name="ethikos"  style="border-radius: 25px">
                                 </div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
                                     <input type="number" class="form-control" placeholder="" name="ten_disc"
-                                        value="0"  style="border-radius: 25px">
+                                        value="{{$pruebas->ten_disc}}"  style="border-radius: 25px">
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                             <div class="col-md-6">
                                 <div class="form-outline">
                                     <input type="number" class="form-control" placeholder="" name="potencial_comercial"
-                                        value="0"  style="border-radius: 25px">
+                                    value="{{$pruebas->potencial_comercial}}"  style="border-radius: 25px">
                                 </div>
                             </div>
                         </div>
@@ -167,7 +167,7 @@
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
                                     <input type="number" class="form-control" placeholder="" name="iq_factorial"
-                                        value="0"  style="border-radius: 25px">
+                                    value="{{$pruebas->iq_factorial}}"  style="border-radius: 25px">
                                 </div>
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
                                     <input type="number" class="form-control" placeholder="" name="vp_test"
-                                        value="0"  style="border-radius: 25px">
+                                    value="{{$pruebas->vp_test}}"  style="border-radius: 25px">
                                 </div>
                             </div>
                         </div>
@@ -193,7 +193,7 @@
                         <h5 class="card-title text-center"><b>PRUEBAS DE LA VACANTE</b></h5>
                     </div>
                     <div class="card-body text-black">
-                        {{-- @if ($vacante->ventas == 'aplica')        --}}
+                        @if ($vacante->ventas == 'aplica')       
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">CLINICA DE VENTAS</label>
@@ -201,14 +201,15 @@
                                 <div class="col-md-6">
                                     <select class="form-select form-control" name="ventas"
                                             style="border-radius: 25px">
-                                            <option value="no aprobo">NO APROBO</option>
-                                            <option value="aprobo">APROBO</option>
+                                            
+                                            <option value="no aprobo" {{ $pruebas->ventas == 'no aprobo' ? 'selected' : '' }}>NO APROBO</option>
+                                            <option value="aprobo" {{ $pruebas->ventas == 'aprobo' ? 'selected' : '' }}>APROBO</option>
                                         </select>
                                 
                                 </div>
                             </div>
-                        {{-- @endif     --}}
-                        {{-- @if ($vacante->riesgos == 'aplica')        --}}
+                        @endif    
+                        @if ($vacante->riesgos == 'aplica')       
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">CENTRAL DE RIESGOS</label>
@@ -216,14 +217,14 @@
                                 <div class="col-md-6">
                                     <select class="form-select form-control" name="riesgos"
                                             style="border-radius: 25px">
-                                            <option value="no aprobo">NO APROBO</option>
-                                            <option value="aprobo">APROBO</option>
+                                            <option value="no aprobo" {{ $pruebas->riesgos == 'no aprobo' ? 'selected' : '' }}>NO APROBO</option>
+                                            <option value="aprobo" {{ $pruebas->riesgos == 'aprobo' ? 'selected' : '' }}>APROBO</option>
                                         </select>
                                 
                                 </div>
                             </div>
-                        {{-- @endif     --}}
-                        {{-- @if ($vacante->tecnica=='aplica')     --}}
+                        @endif    
+                        @if ($vacante->tecnica=='aplica')    
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">PRUEBA TECNICA</label>
@@ -231,14 +232,14 @@
                                 <div class="col-md-6">
                                     <select class="form-select form-control" name="tecnica"
                                             style="border-radius: 25px">
-                                            <option value="no aprobo">NO APROBO</option>
-                                            <option value="aprobo">APROBO</option>
+                                            <option value="no aprobo" {{ $pruebas->tecnica == 'no aprobo' ? 'selected' : '' }}>NO APROBO</option>
+                                            <option value="aprobo" {{ $pruebas->tecnica == 'aprobo' ? 'selected' : '' }}>APROBO</option>
                                         </select>
                                 
                                 </div>
                             </div>
-                        {{-- @endif --}}
-                        {{-- @if ($vacante->visita=='aplica')     --}}
+                        @endif
+                        @if ($vacante->visita=='aplica')    
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">VISITA DOMICILIARIA</label>
@@ -246,14 +247,14 @@
                                 <div class="col-md-6">
                                     <select class="form-select form-control" name="visita"
                                             style="border-radius: 25px">
-                                            <option value="no aprobo">NO APROBO</option>
-                                            <option value="aprobo">APROBO</option>
+                                            <option value="no aprobo" {{ $pruebas->visita == 'no aprobo' ? 'selected' : '' }}>NO APROBO</option>
+                                            <option value="aprobo" {{ $pruebas->visita == 'aprobo' ? 'selected' : '' }}>APROBO</option>
                                         </select>
                                 
                                 </div>
                             </div>
-                        {{-- @endif
-                        @if ($vacante->poligrafo=='aplica')  --}}
+                        @endif
+                        @if ($vacante->poligrafo=='aplica') 
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">POLIGRAFO</label>
@@ -261,13 +262,13 @@
                                 <div class="col-md-6">
                                     <select class="form-select form-control" name="poligrafo"
                                             style="border-radius: 25px">
-                                            <option value="no aprobo">NO APROBO</option>
-                                            <option value="aprobo">APROBO</option>
+                                            <option value="no aprobo" {{ $pruebas->poligrafo == 'no aprobo' ? 'selected' : '' }}>NO APROBO</option>
+                                            <option value="aprobo" {{ $pruebas->poligrafo == 'aprobo' ? 'selected' : '' }}>APROBO</option>
                                         </select>
                                 
                                 </div>
                             </div>
-                        {{-- @endif --}}
+                        @endif
                     </div>
                     <div>
                         {{-- <button class="box btn-formulario text-white text-center btn btn-block mt-3 mb-3"
