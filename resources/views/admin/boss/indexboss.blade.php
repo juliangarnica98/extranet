@@ -141,25 +141,25 @@
         </script>
     @endif
     <div class="page-content page-container" id="page-content">
-        <div class="">
-
+        {{-- <h2 class="text-center text-dark pt-2 ">VACANTES</h2> --}}
+        <h2 class="text-black pt-5 text-center">JEFES</h2>
             <div class="row pl-3 pr-3 pt-3 justify-content-center">
                 <div class="col-md-9 grid-margin stretch-card">
 
                     <div class="card box" style="background-color: #fff;">
                         <div class="card-body">
-                            <h1 class="card-title">Jefes</h1>
+                           
                             <p class="card-description">
                                 {{-- <a href="{{ url('administrador/exporttable/') }}"
                                     class="d-none d-sm-inline-block btn btn-sm  shadow-sm"
                                     style="background-color:  #17a0a1; color:#fff"><i class="fas fa-download fa-sm "></i>
                                     Generar reporte</a> --}}
                             </p>
-                            <div class="table-responsive">
+                            <div class="table-responsive text-black">
                                 @if (count($jefes) == 0)
                                         No se han importado los jefes
                                 @else
-                                    <table class="table table-hover" style="background-color: #FFF; border-radius: 10px;">
+                                    <table class="table table-hover text-black" style="background-color: #FFF; border-radius: 10px;">
                                         <thead>
                                             <tr>
                                                 <th scope="col " class="text-center">Nombre </th>
@@ -187,7 +187,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 grid-margin stretch-card pt-5">
+                <div class="col-md-3 grid-margin stretch-card">
                     <div class="card box" style="background-color: #fff;">
                         <div class="card-body">
                             <h1 class="card-title">Importar Jefes</h1>
@@ -207,7 +207,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
     </div>
 
     <div class="container pt-3">

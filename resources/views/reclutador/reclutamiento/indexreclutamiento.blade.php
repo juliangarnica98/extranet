@@ -266,30 +266,13 @@
 
 
                                                             <div class="col-md-2 text-black text-center pt-3">
-
                                                                 @if ($postulaciones->recruitment->ethikos == '')
                                                                     <a href="{{route('reclutador.reclutamientos.calificar',[$postulaciones->recruitment->id,$name_vacant->id])}}"><i class="far fa-edit text-black"></i></a>
                                                                 @else
-                                                                    
                                                                 @endif
-                                                               
-                                                                {{-- <button class="btn"
-                                                                    data-target="#Modaledit{{ $postulaciones->recruitment->id }}"
-                                                                    data-toggle="modal"
-                                                                    @if ($postulaciones->recruitment->ethikos != '') disabled='disabled' @endif>
-                                                                    <i class="far fa-edit text-black"></i></button> --}}
-                                                                {{-- @include('reclutador.reclutamiento.editreclutamiento') --}}
                                                             </div>
                                                             <div class="col-md-2 text-black text-center pt-3">
-                                                                {{-- <button class="btn"
-                                                                    data-target="#Modalverreclutado{{ $postulaciones->recruitment->id }}"
-                                                                    data-toggle="modal">
-                                                                    <i class="fas fa-eye text-black"></i>
-                                                                </button> --}}
-                                                                
                                                                 <a href="{{route('reclutador.reclutamientos.vercalificar',[$postulaciones->recruitment->id,$name_vacant->id])}}"><i class="fas fa-eye text-black"></i></a>
-                                                                
-                                                                {{-- @include('reclutador.reclutamiento.showreclutamiento') --}}
                                                             </div>
                                                             <div class="col-md-2 text-black text-center pt-3">
                                                                 <button class="btn text-black"

@@ -105,19 +105,16 @@
     @endif
    
 
-        <div class="page-content page-container " id="page-content" style="background-color: ">
-            {{-- <div class="navegacion text-center border-white">
-                / <a href="{{route('admin.usuarios')}}" class="text-decoration-none text-dark ">USUARIOS</a>
-           </div> --}}
-            {{-- <h2 class="text-center text-dark pt-2 ">USUARIOS</h2> --}}
-            <h2 class="ml-5 text-dark pt-2 text-center bg-black">USUARIOS</h2>
+    <div class="page-content page-container" id="page-content">
+        {{-- <h2 class="text-center text-dark pt-2 ">VACANTES</h2> --}}
+        <h2 class="text-black pt-5 text-center">USUARIOS</h2>
             {{-- <hr class="border border-dark border-1"> --}}
             <div class="row pl-3 pr-3 pt-3 text-dark">
                 <div class="col-sm-4">
                     <div class="card" >
                         {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
-                        <div class="card-body">
-                            <h5 class="card-title">Nuevos usuarios</h5>
+                        <div class="card-body text-black">
+                            <h5 class="card-title">CREAR USUARIO</h5>
                             <form method="POST" action="{{ route('admin.crear.usuarios') }}">
                                 @csrf
                                 <div class="form-group">
@@ -164,8 +161,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">Reclutadores creados</h5>
     
-                                <div class="table-responsive">
-                                    <table class="table " style="background-color: #FFF; border-radius: 10px;">
+                                <div class="table-responsive text-black">
+                                    <table class="table text-black" style="background-color: #FFF; border-radius: 10px;">
                                         <thead>
                                             <tr class="d-flex">
                                                 <th class="col text-center">Nombre</th>

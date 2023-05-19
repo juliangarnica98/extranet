@@ -142,7 +142,7 @@
                             </div>
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
-                                    <textarea id="" class="form-control" name="description" cols="30" rows="2"
+                                    <textarea id="" class="form-control" name="description" cols="30" rows="10"
                                                     style="border-radius: 25px"></textarea>
                                 </div>
                             </div>

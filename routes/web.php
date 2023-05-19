@@ -24,7 +24,7 @@ Route::group(['prefix' => 'extranet'], function() {
     Route::get('/filtrar-vacantes', [App\Http\Controllers\Principal\HomeController::class, 'filtrar'])->name('filtrar.vacantes');
 
     Route::get('/hoja-vida', [App\Http\Controllers\Principal\CvController::class, 'index'])->name('cv.index');
-    Route::get('/hoja-vida/registrar', [App\Http\Controllers\Principal\CvController::class, 'store'])->name('cv.store');
+    Route::post('/hoja-vida/registrar', [App\Http\Controllers\Principal\CvController::class, 'store'])->name('cv.store');
     Route::post('vacante/{id}/{type}', [App\Http\Controllers\Principal\CvController::class, 'vacante'])->name('home.vacante');
     Route::get('vacante2/{id}/{type}', [App\Http\Controllers\Principal\CvController::class, 'vacante2'])->name('home.vacante2');
     // Route::post('aplicar-vacante/{id}/{type}/{documento}', [App\Http\Controllers\Principal\CvController::class, 'vacanteConCedula'])->name('cv.aplicar.vacante');
@@ -33,7 +33,7 @@ Route::group(['prefix' => 'extranet'], function() {
     //Route::put('', [App\Http\Controllers\Principal\CvController::class, 'edit'])->name('cv.vacant.edit');    
 });
 
-Route::group(['prefix' => 'administrador'], function() {
+Route::group(['prefix' => 'administrador', 'middleware' => 'auth'], function() {
     //rutas de perfil
     Route::get('perfil', [App\Http\Controllers\Administrador\ProfileController::class, 'index'])->name('admin.perfil');
     Route::put('editarperfil', [App\Http\Controllers\Administrador\ProfileController::class, 'update'])->name('admin.editarperfil');
@@ -58,7 +58,7 @@ Route::group(['prefix' => 'administrador'], function() {
     Route::get('jefes', [App\Http\Controllers\Administrador\BossController::class, 'index'])->name('admin.index.jefes');
 });
 
-Route::group(['prefix' => 'reclutador'], function() {
+Route::group(['prefix' => 'reclutador', 'middleware' => 'auth'], function() {
     //rutas de perfil
     Route::get('perfil', [App\Http\Controllers\Reclutador\ProfileController::class, 'index'])->name('reclutador.perfil');
     Route::put('editarperfil', [App\Http\Controllers\Reclutador\ProfileController::class, 'update'])->name('reclutador.editarperfil');
@@ -108,7 +108,7 @@ Route::group(['prefix' => 'reclutador'], function() {
 
 });
 
-Route::group(['prefix' => 'jefe'], function() {
+Route::group(['prefix' => 'jefe', 'middleware' => 'auth'], function() {
     //rutas de perfil
     Route::get('perfil', [App\Http\Controllers\Jefe\ProfileController::class, 'index'])->name('jefe.perfil');
     Route::put('editarperfil', [App\Http\Controllers\Jefe\ProfileController::class, 'update'])->name('jefe.editarperfil');
@@ -116,9 +116,6 @@ Route::group(['prefix' => 'jefe'], function() {
     Route::get('vercandidato/{id}/{vacant}/{recruitment}', [App\Http\Controllers\Jefe\CandidateController::class, 'show'])->name('jefe.candidatos.show');
 
     
-    //rutas de vacantes
-
-   
 });
 
 

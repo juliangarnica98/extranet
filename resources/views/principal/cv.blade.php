@@ -262,6 +262,47 @@
     .text-black {
         color: #000000;
     }
+
+
+
+
+
+    .file-input {
+        display: none;
+    }
+
+    .file-input+label {
+        display: flex;
+        flex: 1;
+    }
+
+    .file-ningun {
+        background: #eee;
+        border: 1px solid #CACACA;
+        padding: 5px 10px;
+        flex: 1;
+        border-radius: 25px 0 0 25px;
+
+    }
+
+    .file-ningun span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 200px;
+        display: block;
+    }
+
+    .file-buscar {
+        background: #5bc0DE url('{{ asset('images/folder.png') }}') 4px center/25px no-repeat;
+        border: 1px solid #5BC0DE;
+        padding: 5px 10px;
+        color: #fff;
+        white-space: nowrap;
+        border-radius: 0px 25px 25px 0px;
+        padding-left: 30px;
+        cursor: pointer;
+    }
 </style>
 
 <body id="page-top">
@@ -300,10 +341,8 @@
         <div class="div">
             <div class="container">
 
-                <form id="signUpForm" action="{{ route('cv.store') }}">
-
-
-
+                <form id="signUpForm" action="{{ route('cv.store') }}" method="POST" enctype="multipart/form-data">
+                   @csrf
                     <div class="step">
                         <div class="d-flex justify-content-center mb-4">
 
@@ -315,7 +354,8 @@
                     <div class="step">
                         <div class="row justify-content-center text-center aling-items-center">
                             <div class="col-md-10 ">
-                                <p class="text-center mb-4 text-black">HÁBEAS DATA: Dando cumplimiento a lo dispuesto en
+                                <p class="text-center mb-4 text-black">HÁBEAS DATA: Dando cumplimiento a lo dispuesto
+                                    en
                                     la Ley 1581 de
                                     2012,
                                     "Por el cual se dictan disposiciones generales para la protección de datos
@@ -371,12 +411,14 @@
                         <div class="row text-black mt-1">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">TIPO DE DOCUMENTO</label>
+                                    <label class="form-label text-black " for="form8Example1">TIPO DE
+                                        DOCUMENTO</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
-                                    <select class="form-select form-control" name="type_id" style="border-radius: 25px">
+                                    <select class="form-select form-control" name="type_id"
+                                        style="border-radius: 25px">
                                         <option value="CC">C.C</option>
                                         <option value="Permiso especial de permanencia">Permiso especial de permanencia
                                         </option>
@@ -645,11 +687,8 @@
                             </div>
                         </div>
                     </div>
-
                     <input type="hidden" name="vacant_id" value="{{ $id }}">
                     <input type="hidden" name="type" value="{{ $type }}">
-                    {{-- <input type="hidden" name="area" value="{{ $area }}"> --}}
-
                     <div class="step">
                         <div id="otra_empresa">
                             <h3 class="text-center mb-4">INFORMACIÓN LABORAL DE PENULTIMA COMPAÑIA</h3>
@@ -732,16 +771,14 @@
                         </div>
 
                     </div>
-
-
-
                     <div class="step">
                         <h3 class="text-center mb-4"> CUENTANOS DE TI</h3>
 
                         <div class="row text-black mt-1">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">¿TRABAJASTE CON NOSOTROS ANTERIORMENTE?</label>
+                                    <label class="form-label text-black " for="form8Example1">¿TRABAJASTE CON NOSOTROS
+                                        ANTERIORMENTE?</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -754,11 +791,12 @@
                             </div>
                         </div>
 
-                     
+
                         <div class="row text-black mt-1">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">¿TIENES ALGUN FAMILIAR EN LA EMPRESA?</label>
+                                    <label class="form-label text-black " for="form8Example1">¿TIENES ALGUN FAMILIAR
+                                        EN LA EMPRESA?</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -774,13 +812,13 @@
                         <div class="row text-black mt-1">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">¿POR QUÉ TE GUSTARIA TRABAJAR CON NOSOTOS?</label>
+                                    <label class="form-label text-black " for="form8Example1">¿POR QUÉ TE GUSTARIA
+                                        TRABAJAR CON NOSOTOS?</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
-                                    <textarea name="like_to_work" id="" cols="20" rows="4"
-                                    placeholder="" class="col-12"></textarea>
+                                    <textarea name="like_to_work" id="" cols="20" rows="4" placeholder="" class="col-12"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -788,13 +826,13 @@
                         <div class="row text-black mt-1">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">¿POR QUÉ TE DEBERIAMOS ESCOGER?</label>
+                                    <label class="form-label text-black " for="form8Example1">¿POR QUÉ TE DEBERIAMOS
+                                        ESCOGER?</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
-                                    <textarea name="should_choose" id="" cols="20" rows="4"
-                                    placeholder="" class="col-12"></textarea>
+                                    <textarea name="should_choose" id="" cols="20" rows="4" placeholder="" class="col-12"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -825,13 +863,13 @@
                         <div class="row text-black mt-1">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">Talla zapatos</label>
+                                    <label class="form-label text-black " for="form8Example1">TALLA ZAPATOS</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
                                     <select class="form-select col form_control " name="shoes_size">
-                                       
+
                                         <option value="34">34</option>
                                         <option value="35">35</option>
                                         <option value="36">36</option>
@@ -843,12 +881,12 @@
                                         <option value="42">42</option>
                                         <option value="43">43</option>
                                         <option value="44">44</option>
-    
+
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row text-black mt-1">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
@@ -858,7 +896,34 @@
                             <div class="col-md-6">
                                 <div class="form-outline">
                                     <input type="number" placeholder="Talla de pantalon" name="pant_size"
-                                    class="col-12">
+                                        class="col-12">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-black mt-1 ">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">FOTO DEL
+                                        CANDIDATO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-outline">
+                                    <input type="file" name="photo_cv">
+                                    {{-- <input type="file"  class="file-input" id="archivo1" name="photo_cv" accept="image/*" data-button="Examinar" data-empty="Sin archivos" multiple> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-black mt-1 ">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">HOJA DE VIDA</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-outline">
+                                    <input type="file" name="file_cv">
+                                    {{-- <input type="file"  class="file-input" id="archivo2" name="file_cv" accept=".pdf,.doc,.docx" data-button="Examinar" data-empty="Sin archivos" multiple> --}}
                                 </div>
                             </div>
                         </div>
@@ -905,28 +970,58 @@
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
-    <script src="{{ asset('vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
     <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('vendor/waypoints/noframework.waypoints.js') }}"></script>
-    <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('libs/jquery/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/es.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="{{ asset('js/main.js') }}"></script>
+
     <script>
-        var currentTab = 0; // Current tab is set to be the first tab (0)
-        showTab(currentTab); // Display the current tab
+        const create = str => document.createElement(str);
+        const files = document.querySelectorAll('.file-input');
+        Array.from(files).forEach(
+            f => {
+                const label = create('label');
+                const span_text = create('span');
+                const span_name = create('span');
+                const span_button = create('span');
+
+                label.htmlFor = f.id;
+
+                span_text.className = 'file-ningun';
+                span_button.className = 'file-buscar';
+
+                span_name.innerHTML = f.dataset.empty || 'Ningun archivo seleccionado';
+                span_button.innerHTML = f.dataset.button || 'Buscar';
+
+                label.appendChild(span_text);
+                label.appendChild(span_button);
+                span_text.appendChild(span_name);
+                f.parentNode.appendChild(label);
+
+                span_name.style.width = (span_text.clientWidth - 20) + 'px';
+
+                f.addEventListener('change', e => {
+                    if (f.files.length == 0) {
+                        span_name.innerHTML = f.dataset.empty || 'Ningún archivo seleccionado';
+                    } else if (f.files.length > 1) {
+                        span_name.innerHTML = f.files.length + ' archivos seleccionados';
+                    } else {
+                        span_name.innerHTML = f.files[0].name;
+                    }
+                });
+            }
+        );
+        var currentTab = 0;
+        showTab(currentTab);
 
         function showTab(n) {
-            // This function will display the specified tab of the form...
             var x = document.getElementsByClassName("step");
             x[n].style.display = "block";
-            //... and fix the Previous/Next buttons:
             if (n == 0) {
                 document.getElementById("prevBtn").style.display = "none";
             } else {
@@ -937,85 +1032,46 @@
             } else {
                 document.getElementById("nextBtn").innerHTML = "SIGUIENTE";
             }
-            //... and run a function that will display the correct step indicator:
-            // fixStepIndicator(n)
         }
 
         function nextPrev(n) {
-            // This function will figure out which tab to display
             var x = document.getElementsByClassName("step");
-            // Exit the function if any field in the current tab is invalid:
             if (n == 1 && !validateForm()) return false;
-            // Hide the current tab:
             x[currentTab].style.display = "none";
-            // Increase or decrease the current tab by 1:
             currentTab = currentTab + n;
-            // if you have reached the end of the form...
             if (currentTab >= x.length) {
-                // ... the form gets submitted:
                 document.getElementById("signUpForm").submit();
                 return false;
             }
-            // Otherwise, display the correct tab:
             showTab(currentTab);
         }
 
         function validateForm() {
-            // This function deals with validation of the form fields
             var x, y, i, valid = true;
             x = document.getElementsByClassName("step");
             y = x[currentTab].getElementsByTagName("input");
             z = x[currentTab].getElementsByTagName("select");
             t = x[currentTab].getElementsByTagName("textarea");
-            // A loop that checks every input field in the current tab:
             for (i = 0; i < y.length; i++) {
-                // If a field is empty...
                 if (y[i].value == "") {
-                    // add an "invalid" class to the field:
                     y[i].className += " invalid";
-                    // and set the current valid status to false
                     valid = false;
                 }
-
             }
             for (i = 0; i < z.length; i++) {
-                // If a field is empty...
                 if (z[i].value == "") {
-                    // add an "invalid" class to the field:
                     z[i].className += " invalid";
-                    // and set the current valid status to false
                     valid = false;
                 }
-
             }
             for (i = 0; i < t.length; i++) {
-                // If a field is empty...
                 if (t[i].value == "") {
-                    // add an "invalid" class to the field:
                     t[i].className += " invalid";
-                    // and set the current valid status to false
                     valid = false;
                 }
-
             }
-
-
-            // If the valid status is true, mark the step as finished and valid:
-            // if (valid) {
-            //     document.getElementsByClassName("stepIndicator")[currentTab].className += " finish";
-            // }
             return valid;
         }
-
-        // function fixStepIndicator(n) {
-        //     // This function removes the "active" class of all steps...
-        //     var i, x = document.getElementsByClassName("stepIndicator");
-        //     for (i = 0; i < x.length; i++) {
-        //         x[i].className = x[i].className.replace(" active", "");
-        //     }
-        //     //... and adds the "active" class on the current step:
-        //     x[n].className += " active";
-        // }
 
         function HabeasClic() {
             var checkBox = document.getElementById("habeas");
@@ -1026,7 +1082,6 @@
             }
         }
     </script>
-    <script src="{{ asset('libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('libs/sbadmin/js/sb-admin-2.min.js') }}"></script>
 

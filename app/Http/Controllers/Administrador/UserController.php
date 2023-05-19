@@ -16,10 +16,10 @@ use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth', ['only' => ['index']]);
-    // }
+    public function __construct()
+    {
+        $this->middleware(['role:Admin']);
+    }
     public function index()
     {
         Paginator::useBootstrap();

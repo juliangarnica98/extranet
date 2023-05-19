@@ -280,7 +280,7 @@
                             <ul class="navbar-nav d-flex justify-content-center w-75 "
                                 style="background-color: #e52b7f; border-radius: 25px">
                                 @can('admin.index')
-                                    <li class="nav-item col-md-2" style="background-color: #18a0a0">
+                                    {{-- <li class="nav-item col-md-2" style="background-color: #18a0a0">
                                         <a class="nav-link text-center" href="#">Dashborad <span
                                                 class="sr-only">(current)</span></a>
                                     </li>
@@ -298,10 +298,36 @@
                                             <span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item col-md-2">
-                                        {{-- <a class="nav-link text-center" href="{{ route('admin.index') }}">Vacantes <span
-                                                class="sr-only">(current)</span></a> --}}
+                                       
                                                 <a class="nav-link text-center" href="#">Vacantes <span
                                                     class="sr-only">(current)</span></a>
+                                    </li> --}}
+                                    <li class="nav-item col-md-2">
+                                        <a class="nav-link text-center text-white"
+                                            href="{{ route('admin.usuarios') }}"><b><i class="fas fa-users"></i>
+                                                USUARIOS</b>  <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-2">
+                                        <a class="nav-link text-center text-white" href="{{ route('admin.index.jefes') }}"><b><i class="fas fa-user-tie"></i>
+                                            JEFES</b>  <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-3">
+                                        <a class="nav-link text-center text-white"
+                                            href="{{ route('reclutador.vacant.create') }}"><b><i class="fas fa-plus"></i>
+                                                CREAR VACANTE</b> <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-2">
+                                        <a class="nav-link text-white text-center"
+                                            href="{{ route('reclutador.registros.index') }}"><b><i
+                                                    class="fas fa-list"></i> REGISTROS</b> <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item col-md-2">
+                                        <a class="nav-link text-white text-center" href="{{ route('reclutador.index') }}"><b><i
+                                                    class="far fa-address-book"></i> VACANTES</b>
+                                            <span class="sr-only">(current)</span></a>
                                     </li>
                                 @endcan
                                 @can('reclutador.index')

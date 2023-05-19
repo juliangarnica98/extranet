@@ -21,8 +21,16 @@ class CvController extends Controller
     // funcion para guardar informacion de la hoja de vida
     public function store(Request $request)
     {
-       
+        
+        // $request->file('photo_cv')->store('avatars');
+        // return $request->file();
         $cv = new  Cv();
+        
+        $request->file('photo_cv')->store('avatars');
+        $request->file('file_cv')->store('cvs');
+        $cv->photo_cv = $request->file('photo_cv')->store('avatars');
+        $cv->file_cv = $request->file('file_cv')->store('cvs');
+
         $cv->name = $request->name;
         $cv->type_id = $request->type_id;
         $cv->num_id = $request->num_id;

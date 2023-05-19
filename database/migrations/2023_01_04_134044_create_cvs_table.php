@@ -47,6 +47,9 @@ class CreateCvsTable extends Migration
             $table->string('shirt_size');
             $table->string('pant_size');
             $table->string('shoes_size');
+
+            $table->string('photo_cv');
+            $table->string('file_cv');
       
         
             
