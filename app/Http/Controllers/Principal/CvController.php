@@ -13,23 +13,21 @@ use Illuminate\Http\Request;
 
 class CvController extends Controller
 {
-    // funcion para retornar vista de hoja de vida
     public function index()
     {
         return view('principal.cv');
     }
-    // funcion para guardar informacion de la hoja de vida
     public function store(Request $request)
     {
-        
-        // $request->file('photo_cv')->store('avatars');
-        // return $request->file();
+
         $cv = new  Cv();
+        $ext_photo = $request->file('photo_cv')->getClientOriginalExtension();
+        $ext_cv = $request->file('file_cv')->getClientOriginalExtension();
+        $path_photo = $request->file('photo_cv')->storeAs('public/avatars/',$request->num_id.'.'.$ext_photo);
+        $path_cv = $request->file('file_cv')->storeAs('public/cvs/',$request->num_id.'.'.$ext_cv);        
         
-        $request->file('photo_cv')->store('avatars');
-        $request->file('file_cv')->store('cvs');
-        $cv->photo_cv = $request->file('photo_cv')->store('avatars');
-        $cv->file_cv = $request->file('file_cv')->store('cvs');
+        $cv->photo_cv = basename($path_photo);
+        $cv->file_cv = basename($path_cv);
 
         $cv->name = $request->name;
         $cv->type_id = $request->type_id;
@@ -61,7 +59,6 @@ class CvController extends Controller
         $cv->pant_size = $request->pant_size;
         $cv->save();
 
-        
         $vacante = Vacant::where('id',$request->vacant_id)->first();
         $vacante->num_aplic += 1;
         $vacante->save();

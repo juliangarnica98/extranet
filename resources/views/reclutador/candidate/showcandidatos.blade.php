@@ -230,8 +230,9 @@
                                                                         <div class="col-md-6">
                                                                             <div
                                                                                 class=" d-flex justify-content-end aling-items-end">
-                                                                                <img src="{{ asset('imgs/profile-icon-9.png') }}"
-                                                                                    class="w-50" alt="">
+                                                                                {{-- <img src="{{ asset('imgs/profile-icon-9.png') }}"
+                                                                                    class="w-50" alt=""> --}}
+                                                                                    <img style="width: 4rem;height: 4rem;border-radius: 50%" class="img-fluid" src="{{ asset("storage/avatars/".$cv->photo_cv)}}" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">

@@ -909,8 +909,8 @@
                             </div>
                             <div class="col-md-6 ">
                                 <div class="form-outline">
-                                    <input type="file" name="photo_cv">
-                                    {{-- <input type="file"  class="file-input" id="archivo1" name="photo_cv" accept="image/*" data-button="Examinar" data-empty="Sin archivos" multiple> --}}
+                                    {{-- <input type="file" name="photo_cv"> --}}
+                                    <input type="file"  class="file-input" id="archivo1" name="photo_cv" accept="image/*" data-button="Examinar" data-empty="Sin archivos" multiple>
                                 </div>
                             </div>
                         </div>
@@ -922,8 +922,8 @@
                             </div>
                             <div class="col-md-6 ">
                                 <div class="form-outline">
-                                    <input type="file" name="file_cv">
-                                    {{-- <input type="file"  class="file-input" id="archivo2" name="file_cv" accept=".pdf,.doc,.docx" data-button="Examinar" data-empty="Sin archivos" multiple> --}}
+                                    {{-- <input type="file" name="file_cv"> --}}
+                                    <input type="file"  class="file-input" id="archivo2" name="file_cv" accept=".pdf,.doc,.docx" data-button="Examinar" data-empty="Sin archivos" multiple>
                                 </div>
                             </div>
                         </div>

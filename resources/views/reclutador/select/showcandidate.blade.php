@@ -209,8 +209,7 @@
                                             <h2 class="text-center text-dark">Información personal</h2>
 
                                             <div class="d-flex justify-content-center">
-                                                <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-50"
-                                                    alt="">
+                                                <img style="width: 20rem;height: 20rem; ;border-radius: 50%; " class="img-fluid" src="{{ asset("storage/avatars/".$cv->photo_cv)}}" />
                                             </div>
                                             <hr>
                                             <h2 class="text-dark mt-3"><strong>{{ $cv->name }}</strong> </h2>
@@ -248,7 +247,7 @@
                                             </div>
                                             <div class="row mt-1">
                                                 <button class="btn btn-warning btn-block">
-                                                    <i class="fas fa-file-download"></i> DESCARGAR CV</button>
+                                                    <a class="btn btn-warning btn-block" href="{{ asset("storage/cvs/".$cv->file_cv)}}" download><i class="fas fa-file-download"></i > DESCARGAR CV</a>  
                                             </div>
 
                                         </div>
