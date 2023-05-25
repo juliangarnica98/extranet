@@ -73,10 +73,10 @@ Route::group(['prefix' => 'reclutador', 'middleware' => 'auth'], function() {
     Route::get('enviados-pruebas/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'show'])->name('reclutador.reclutamientos.buscar');
     Route::get('calificar-candidato/{id}/{vacante}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'calificar'])->name('reclutador.reclutamientos.calificar');
     Route::get('ver-calificacion-candidato/{id}/{vacante}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'vercalificacion'])->name('reclutador.reclutamientos.vercalificar');
-    
     Route::post('store', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'store'])->name('reclutador.store');
     Route::put('calificar/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'update'])->name('reclutador.update');    
     Route::put('envio-pruebas/{id}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'send'])->name('reclutador.reclutamiento.pruebas');    
+    Route::post('entrevistas/{id}/{vacant}', [App\Http\Controllers\Reclutador\RecruitmentController::class, 'entrevistas'])->name('reclutador.reclutamiento.entrevistas');
     //rutas de descartados
     Route::get('descartados/{id}', [App\Http\Controllers\Reclutador\DiscardedController::class, 'discarded'])->name('reclutador.discarded.index');   
     //rutas de vacantes
@@ -98,11 +98,14 @@ Route::group(['prefix' => 'reclutador', 'middleware' => 'auth'], function() {
     //rutas Registros de cv
     Route::get('resgistros', [App\Http\Controllers\Reclutador\RegisterController::class, 'index'])->name('reclutador.registros.index');
     //rutas de analista
-    Route::get('analistas', [App\Http\Controllers\Reclutador\AnalystController::class, 'index'])->name('reclutador.analista.index');
+    Route::get('entrevistas/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'index'])->name('reclutador.analista.index');
     Route::get('ver-postulados-vacante/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'show'])->name('reclutador.analista.buscar');
     Route::put('entrevista-analista/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'entrevista'])->name('reclutador.analista.entrevista');
     Route::put('calificaion-comercial/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'calificacion'])->name('reclutador.analista.calificacion');
     Route::put('asignar-jefe/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'jefe'])->name('reclutador.analista.jefe');
+    
+    Route::get('generar-excel/{id}', [App\Http\Controllers\Reclutador\ExcelController::class, 'store'])->name('descargar.excel');
+    Route::post('generar-excel/', [App\Http\Controllers\Reclutador\ExcelController::class, 'export'])->name('generar.excel');
     
 
 

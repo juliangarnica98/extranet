@@ -143,7 +143,7 @@
                                         class="fas fa-tasks"></i> PRUEBAS</b><span class="sr-only">(current)</span></a>
                         </div>
                         <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.analista.index') }}"><b><i class="fas fa-comment-alt"></i>
+                                href="{{ route('reclutador.analista.index', ['id' => $name_vacant->id]) }}"><b><i class="fas fa-comment-alt"></i>
                                     ENTREVISTAS</b>
                                 <span class="sr-only">(current)</span></a></div>
                         <div class="col-md-2 sub-nav-link">

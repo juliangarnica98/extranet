@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cv;
 use App\Models\Cvvacant;
 use App\Models\Recruitment;
+use App\Models\State;
 use App\Models\Vacant;
 use Illuminate\Http\Request;
 use Validator;
@@ -45,18 +46,20 @@ class RecruitmentController extends Controller
         Paginator::useBootstrap();
         $postulaciones = Cvvacant::with('recruitment')->where('vacant_id',$id)->where('state_id',3)->paginate(10);
         $pos_validacion = Cvvacant::with('recruitment')->where('vacant_id',$id)->first();
+        // return $pos_validacion;
         $vacant = Vacant::where('id',$id)->first();
         $name_vacant = Vacant::where('id',$id)->first();
         $cvs = Cv::all();
-        if($pos_validacion){
-            $reclutamiento= Recruitment::where('cvvacant_id',$pos_validacion->id)->get();
-        }else{
-            $reclutamiento=[];
-        }
+        // if($pos_validacion){
+        //     $reclutamiento= Recruitment::where('cvvacant_id',$pos_validacion->id)->get();
+           
+        // }else{
+        //     $reclutamiento=[];
+        // }
         
         
         //  return $reclutamiento;
-        return view('reclutador.reclutamiento.indexreclutamiento',compact('vacant','postulaciones','cvs','reclutamiento','name_vacant'));
+        return view('reclutador.reclutamiento.indexreclutamiento',compact('vacant','postulaciones','cvs','name_vacant'));
     }
 
     public function send($id)
@@ -107,15 +110,21 @@ class RecruitmentController extends Controller
 
     public function calificar($id,$vacante)
     {
+        $name_vacant =Vacant::where('id',$vacante)->first();
         $vacante=Vacant::where('id',$vacante)->first();
-        // return $id;
-        return view('reclutador.reclutamiento.editreclutamiento',compact('id','vacante'));
+        return view('reclutador.reclutamiento.editreclutamiento',compact('id','vacante','name_vacant'));
     }
     public function vercalificacion($id,$vacante)
     {
         $pruebas = Recruitment::where('id',$id)->first();
+        $name_vacant =Vacant::where('id',$vacante)->first();
         $vacante=Vacant::where('id',$vacante)->first();
-        // return $pruebas;
-        return view('reclutador.reclutamiento.showreclutamiento',compact('id','vacante','pruebas'));
+        return view('reclutador.reclutamiento.showreclutamiento',compact('id','vacante','pruebas','name_vacant'));
+    }
+    public function entrevistas($id,$vacant){
+        $postulacion = Cvvacant::where('cv_id',$id)->where('vacant_id',$vacant)->first();
+        $state = State::find(4);
+        $state->cvvacant()->save($postulacion);  
+        return back()->with('message','Se ha actualizado el estado del candidato');
     }
 }

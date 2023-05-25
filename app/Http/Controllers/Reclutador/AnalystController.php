@@ -15,11 +15,17 @@ use Validator;
 class AnalystController extends Controller
 {
     
-    public function index()
+    public function index($id)
     {
+        
         Paginator::useBootstrap();
-        $vacants = Vacant::where('state',1)->where('job',0)->paginate();
-        return view('reclutador.analistas.indexpostulados',compact('vacants'));
+        $postulaciones = Cvvacant::with('recruitment')->where('vacant_id',$id)->where('state_id',4)->paginate(10);
+        $pos_validacion = Cvvacant::with('recruitment')->where('vacant_id',$id)->first();
+        // return $pos_validacion;
+        $vacant = Vacant::where('id',$id)->first();
+        $name_vacant = Vacant::where('id',$id)->first();
+        $cvs = Cv::all();
+        return view('reclutador.analistas.indexpostulados',compact('vacant','postulaciones','cvs','name_vacant'));
     }
 
 

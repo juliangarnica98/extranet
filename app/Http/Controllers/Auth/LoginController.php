@@ -32,7 +32,7 @@ class LoginController extends Controller
     public function redirectTo(){
 
         if(Auth::user()->hasRole('Admin')){
-            return '/administrador/perfil'; 
+            return '/administrador/jefes'; 
             
         }elseif(Auth::user()->hasRole('Reclutador')){
             return '/reclutador/crear-vacante';
