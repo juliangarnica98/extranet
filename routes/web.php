@@ -99,10 +99,12 @@ Route::group(['prefix' => 'reclutador', 'middleware' => 'auth'], function() {
     Route::get('resgistros', [App\Http\Controllers\Reclutador\RegisterController::class, 'index'])->name('reclutador.registros.index');
     //rutas de analista
     Route::get('entrevistas/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'index'])->name('reclutador.analista.index');
-    Route::get('ver-postulados-vacante/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'show'])->name('reclutador.analista.buscar');
-    Route::put('entrevista-analista/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'entrevista'])->name('reclutador.analista.entrevista');
-    Route::put('calificaion-comercial/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'calificacion'])->name('reclutador.analista.calificacion');
-    Route::put('asignar-jefe/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'jefe'])->name('reclutador.analista.jefe');
+    Route::get('asignacion-entrevistas/{id}/{vacante}', [App\Http\Controllers\Reclutador\AnalystController::class, 'entrevista'])->name('reclutador.analista.entrevista');
+    Route::get('ver-entrevistas/{id}/{vacante}', [App\Http\Controllers\Reclutador\AnalystController::class, 'verentrevista'])->name('reclutador.analista.verentrevista');
+    // Route::get('ver-postulados-vacante/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'show'])->name('reclutador.analista.buscar');
+    // Route::put('entrevista-analista/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'entrevista'])->name('reclutador.analista.entrevista');
+    // Route::put('calificaion-comercial/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'calificacion'])->name('reclutador.analista.calificacion');
+    // Route::put('asignar-jefe/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'jefe'])->name('reclutador.analista.jefe');
     
     Route::get('generar-excel/{id}', [App\Http\Controllers\Reclutador\ExcelController::class, 'store'])->name('descargar.excel');
     Route::post('generar-excel/', [App\Http\Controllers\Reclutador\ExcelController::class, 'export'])->name('generar.excel');

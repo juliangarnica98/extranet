@@ -47,7 +47,7 @@ class VacantController extends Controller
             'city' => 'required|max:255',
             'salary' => 'required|max:255',
             'num_vacants' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'experience' => 'required|max:255',
             'education' => 'required|max:255',
             'language' => 'required|max:255',

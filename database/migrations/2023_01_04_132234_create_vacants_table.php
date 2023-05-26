@@ -19,7 +19,7 @@ class CreateVacantsTable extends Migration
             $table->string('author');
             $table->string('title');
             $table->string('city');
-            $table->string('description');
+            $table->text('description');
             $table->string('state');
             $table->string('salary');
             $table->text('experience');

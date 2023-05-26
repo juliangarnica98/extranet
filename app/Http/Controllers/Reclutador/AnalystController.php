@@ -27,63 +27,72 @@ class AnalystController extends Controller
         $cvs = Cv::all();
         return view('reclutador.analistas.indexpostulados',compact('vacant','postulaciones','cvs','name_vacant'));
     }
-
-
-    public function show($id)
-    {
-        Paginator::useBootstrap();
-        $postulaciones = Cvvacant::with('recruitment')->where('vacant_id',$id)->paginate(10);
-        $pos_validacion = Cvvacant::with('recruitment')->where('vacant_id',$id)->first();
-        $vacant = Vacant::where('id',$id)->first();
-        $cvs = Cv::all();
-        $reclutamiento= Recruitment::where('cvvacant_id',$pos_validacion->id)->get();
-        $bosses = Boss::orderBy('name', 'ASC')->get();
-        return view('reclutador.analistas.indexpostulado',compact('vacant','postulaciones','cvs','reclutamiento','bosses'));
+    public function entrevista($id,$vacante){
+        // return $vacante;
+        $name_vacant = Vacant::where('id',$vacante)->first();
+        return view('reclutador.analistas.indexentrevista',compact('name_vacant'));
+    }
+    public function verentrevista($id,$vacante){
+        // return $vacante;
+        $name_vacant = Vacant::where('id',$vacante)->first();
+        return view('reclutador.analistas.showentrevista',compact('name_vacant'));
     }
 
-    public function entrevista(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'entrevista_analista' => 'required',
-        ]);
-        if($validator->fails()){
-            return back()->with('error','¡Hay errores en los campos!');
-        }
-        $reclutamiento = Recruitment::where('id',$id)->first();
-        $reclutamiento->entrevista_analista=$request->entrevista_analista;
-        $reclutamiento->save();
-        return back()->with('message','Se ha regsitrado la entrevista');
+    // public function show($id)
+    // {
+    //     Paginator::useBootstrap();
+    //     $postulaciones = Cvvacant::with('recruitment')->where('vacant_id',$id)->paginate(10);
+    //     $pos_validacion = Cvvacant::with('recruitment')->where('vacant_id',$id)->first();
+    //     $vacant = Vacant::where('id',$id)->first();
+    //     $cvs = Cv::all();
+    //     $reclutamiento= Recruitment::where('cvvacant_id',$pos_validacion->id)->get();
+    //     $bosses = Boss::orderBy('name', 'ASC')->get();
+    //     return view('reclutador.analistas.indexpostulado',compact('vacant','postulaciones','cvs','reclutamiento','bosses'));
+    // }
+
+    // public function entrevista(Request $request, $id)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'entrevista_analista' => 'required',
+    //     ]);
+    //     if($validator->fails()){
+    //         return back()->with('error','¡Hay errores en los campos!');
+    //     }
+    //     $reclutamiento = Recruitment::where('id',$id)->first();
+    //     $reclutamiento->entrevista_analista=$request->entrevista_analista;
+    //     $reclutamiento->save();
+    //     return back()->with('message','Se ha regsitrado la entrevista');
      
-    }
-    public function calificacion(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'poligrafo' => 'required',
-            'visita_domiciliaria' => 'required',
-        ]);
-        if($validator->fails()){
-            return back()->with('error','¡Hay errores en los campos!');
-        }
-        $reclutamiento = Recruitment::where('id',$id)->first();
-        $reclutamiento->poligrafo=$request->poligrafo;
-        $reclutamiento->visita_domiciliaria=$request->visita_domiciliaria;
-        $reclutamiento->save();
-        return back()->with('message','Se ha regsitrado las calificaciones');
-    }
-    public function jefe(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'boss_id' => 'required',
-        ]);
-        if($validator->fails()){
-            return back()->with('error','¡Hay errores en los campos!');
-        }
-        $reclutamiento = Recruitment::where('id',$id)->first();
-        $reclutamiento->boss_id=$request->boss_id;
-        $reclutamiento->save();
-        return back()->with('message','Se ha asignado el jefe correctamente');
+    // }
+    // public function calificacion(Request $request, $id)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'poligrafo' => 'required',
+    //         'visita_domiciliaria' => 'required',
+    //     ]);
+    //     if($validator->fails()){
+    //         return back()->with('error','¡Hay errores en los campos!');
+    //     }
+    //     $reclutamiento = Recruitment::where('id',$id)->first();
+    //     $reclutamiento->poligrafo=$request->poligrafo;
+    //     $reclutamiento->visita_domiciliaria=$request->visita_domiciliaria;
+    //     $reclutamiento->save();
+    //     return back()->with('message','Se ha regsitrado las calificaciones');
+    // }
+    // public function jefe(Request $request, $id)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'boss_id' => 'required',
+    //     ]);
+    //     if($validator->fails()){
+    //         return back()->with('error','¡Hay errores en los campos!');
+    //     }
+    //     $reclutamiento = Recruitment::where('id',$id)->first();
+    //     $reclutamiento->boss_id=$request->boss_id;
+    //     $reclutamiento->save();
+    //     return back()->with('message','Se ha asignado el jefe correctamente');
         
-    }
+    // }
 
 
     

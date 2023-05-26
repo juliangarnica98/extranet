@@ -46,19 +46,9 @@ class RecruitmentController extends Controller
         Paginator::useBootstrap();
         $postulaciones = Cvvacant::with('recruitment')->where('vacant_id',$id)->where('state_id',3)->paginate(10);
         $pos_validacion = Cvvacant::with('recruitment')->where('vacant_id',$id)->first();
-        // return $pos_validacion;
         $vacant = Vacant::where('id',$id)->first();
         $name_vacant = Vacant::where('id',$id)->first();
         $cvs = Cv::all();
-        // if($pos_validacion){
-        //     $reclutamiento= Recruitment::where('cvvacant_id',$pos_validacion->id)->get();
-           
-        // }else{
-        //     $reclutamiento=[];
-        // }
-        
-        
-        //  return $reclutamiento;
         return view('reclutador.reclutamiento.indexreclutamiento',compact('vacant','postulaciones','cvs','name_vacant'));
     }
 

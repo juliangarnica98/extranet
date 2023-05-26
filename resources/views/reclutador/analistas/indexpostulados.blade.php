@@ -193,20 +193,21 @@
 
                     <div class="row justify-content-center pl-5 pr-5">
 
-                        <div class="col-md-3">
-                            <p class="text-center"> <small class="text-center text-black "><b>NOMBRE</b></small>
+                        <div class="col-md-4">
+                            <p class="text-center"> <small class="text-center text-black "><b>CANDIDATO</b></small>
                             </p>
                         </div>
                         
                         
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <p class="text-center"><small class="text-center text-black "><b>ASIGNAR ENTREVISTAS</b></small></p>
                         </div>
-                        <div class="col-md-3">
+                       
+                        <div class="col-md-2">
                             <p class="text-center"><small class="text-center text-black "><b>VER ENREVISTAS
                                 </b></small></p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <p class="text-center"><small class="text-center text-black "><b>DESCARTAR</b></small></p>
                         </div>
                     </div>
@@ -221,7 +222,7 @@
                                         <div class="container-fluid">
                                             <div class="row justify-content-center aling-items-center">
 
-                                                <div class="col-md-3 text-black text-center pt-3">
+                                                <div class="col-md-4 text-black text-center pt-3">
                                                     <strong><i>
                                                             @foreach ($cvs as $cv)
                                                                 @if ($cv->id == $postulaciones->cv_id)
@@ -234,21 +235,21 @@
 
                                                 </div>
                                                 
-                                                <div class="col-md-3 text-black text-center pt-3">
+                                                <div class="col-md-2 text-black text-center pt-3">
 
                                                     <a
-                                                        href="{{ route('reclutador.reclutamientos.vercalificar', [$postulaciones->recruitment->id, $name_vacant->id]) }}"><i
-                                                            class="fas fa-eye text-black"></i></a>
+                                                        href="{{ route('reclutador.analista.entrevista', [$postulaciones->recruitment->id, $name_vacant->id]) }}"><i class="fas fa-user-check text-black"></i></a>
 
                                                 </div>
+                                      
                                               
                                                 <div class="col-md-2 text-black text-center pt-3">
                                                     <a
-                                                        href="{{ route('reclutador.reclutamientos.vercalificar', [$postulaciones->recruitment->id, $name_vacant->id]) }}"><i
+                                                        href="{{ route('reclutador.analista.verentrevista', [$postulaciones->id, $name_vacant->id]) }}"><i
                                                             class="fas fa-eye text-black"></i></a>
                                                 </div>
                                          
-                                                <div class="col-md-3 text-black text-center pt-3">
+                                                <div class="col-md-2 text-black text-center pt-3">
                                                     <button class="btn text-black"
                                                         data-target="#Modaldescartar{{ $postulaciones->recruitment->id }}"
                                                         data-toggle="modal"><i class="fas fa-times text-black"></i>
