@@ -238,7 +238,7 @@
                                                 <div class="col-md-2 text-black text-center pt-3">
 
                                                     <a
-                                                        href="{{ route('reclutador.analista.entrevista', [$postulaciones->recruitment->id, $name_vacant->id]) }}"><i class="fas fa-user-check text-black"></i></a>
+                                                        href="{{ route('reclutador.analista.entrevista', [$postulaciones->id, $name_vacant->id]) }}"><i class="fas fa-user-check text-black"></i></a>
 
                                                 </div>
                                       

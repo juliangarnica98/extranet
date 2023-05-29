@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Boss;
 use App\Models\Cv;
 use App\Models\Cvvacant;
+use App\Models\Interview;
 use App\Models\Recruitment;
+use App\Models\User;
 use App\Models\Vacant;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -17,83 +19,82 @@ class AnalystController extends Controller
     
     public function index($id)
     {
-        
         Paginator::useBootstrap();
         $postulaciones = Cvvacant::with('recruitment')->where('vacant_id',$id)->where('state_id',4)->paginate(10);
         $pos_validacion = Cvvacant::with('recruitment')->where('vacant_id',$id)->first();
-        // return $pos_validacion;
         $vacant = Vacant::where('id',$id)->first();
         $name_vacant = Vacant::where('id',$id)->first();
         $cvs = Cv::all();
         return view('reclutador.analistas.indexpostulados',compact('vacant','postulaciones','cvs','name_vacant'));
     }
-    public function entrevista($id,$vacante){
-        // return $vacante;
+    public function entrevista($id,$vacante)
+    {
+        // dd( $id);
+        $users_admin = User::role('Admin')->get();
+        $users_reclutador = User::role('Reclutador')->get();
+        $users_jefe = User::role('Jefe')->get();
+        $entrevistas = Interview::with('user')->get();
+        // return $entrevistas;
         $name_vacant = Vacant::where('id',$vacante)->first();
-        return view('reclutador.analistas.indexentrevista',compact('name_vacant'));
+        return view('reclutador.analistas.indexentrevista',compact('name_vacant','users_admin','users_reclutador','users_jefe','id','entrevistas'));
     }
-    public function verentrevista($id,$vacante){
-        // return $vacante;
+    public function verentrevista($id,$vacante)
+    {
         $name_vacant = Vacant::where('id',$vacante)->first();
         return view('reclutador.analistas.showentrevista',compact('name_vacant'));
     }
+    public function registrarentrevista($id,Request $request)
+    {  
+            if($request->usuario_gerente){
+            $postulacion = Cvvacant::where('id',$id)->first();
+            $interview = new Interview();
+            $interview->cv_id = $postulacion->cv_id;
+            $interview->vacant_id = $postulacion->vacant_id;
+            // $interview->user_id = $request->usuario_gerente;
+            $usuario = User::find($request->usuario_gerente);
+            $interview->cargo = 'gerente';
+            $usuario->interviews()->save($interview);
 
-    // public function show($id)
-    // {
-    //     Paginator::useBootstrap();
-    //     $postulaciones = Cvvacant::with('recruitment')->where('vacant_id',$id)->paginate(10);
-    //     $pos_validacion = Cvvacant::with('recruitment')->where('vacant_id',$id)->first();
-    //     $vacant = Vacant::where('id',$id)->first();
-    //     $cvs = Cv::all();
-    //     $reclutamiento= Recruitment::where('cvvacant_id',$pos_validacion->id)->get();
-    //     $bosses = Boss::orderBy('name', 'ASC')->get();
-    //     return view('reclutador.analistas.indexpostulado',compact('vacant','postulaciones','cvs','reclutamiento','bosses'));
-    // }
-
-    // public function entrevista(Request $request, $id)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'entrevista_analista' => 'required',
-    //     ]);
-    //     if($validator->fails()){
-    //         return back()->with('error','¡Hay errores en los campos!');
-    //     }
-    //     $reclutamiento = Recruitment::where('id',$id)->first();
-    //     $reclutamiento->entrevista_analista=$request->entrevista_analista;
-    //     $reclutamiento->save();
-    //     return back()->with('message','Se ha regsitrado la entrevista');
-     
-    // }
-    // public function calificacion(Request $request, $id)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'poligrafo' => 'required',
-    //         'visita_domiciliaria' => 'required',
-    //     ]);
-    //     if($validator->fails()){
-    //         return back()->with('error','¡Hay errores en los campos!');
-    //     }
-    //     $reclutamiento = Recruitment::where('id',$id)->first();
-    //     $reclutamiento->poligrafo=$request->poligrafo;
-    //     $reclutamiento->visita_domiciliaria=$request->visita_domiciliaria;
-    //     $reclutamiento->save();
-    //     return back()->with('message','Se ha regsitrado las calificaciones');
-    // }
-    // public function jefe(Request $request, $id)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'boss_id' => 'required',
-    //     ]);
-    //     if($validator->fails()){
-    //         return back()->with('error','¡Hay errores en los campos!');
-    //     }
-    //     $reclutamiento = Recruitment::where('id',$id)->first();
-    //     $reclutamiento->boss_id=$request->boss_id;
-    //     $reclutamiento->save();
-    //     return back()->with('message','Se ha asignado el jefe correctamente');
+            // $interview->save();
+            return back()->with('message','Se ha registrado correctamente');
+        }else if($request->usuario_jefe ){
+            $postulacion = Cvvacant::where('id',$id)->first();
+            $interview = new Interview();
+            $interview->cv_id = $postulacion->cv_id;
+            $interview->vacant_id = $postulacion->vacant_id;
+            // $interview->user_id = $request->usuario_jefe;
+            $usuario = User::find($request->usuario_jefe);
+            $interview->cargo = 'jefe';
+            $usuario->interviews()->save($interview);
+            return back()->with('message','Se ha registrado correctamente');
+        }else if($request->usuario_coordinador){
+            $postulacion = Cvvacant::where('id',$id)->first();
+            $interview = new Interview();
+            $interview->cv_id = $postulacion->cv_id;
+            $interview->vacant_id = $postulacion->vacant_id;
+            // $interview->user_id = $request->usuario_coordinador;
+            $usuario = User::find($request->usuario_coordinador);
+            $interview->cargo = 'coordinador';
+            $usuario->interviews()->save($interview);
+            return back()->with('message','Se ha registrado correctamente');
+        }else if($request->usuario_analista){
+            
+            $postulacion = Cvvacant::where('id',$id)->first();
+            
+            $interview = new Interview();
+            
+            $interview->cv_id = $postulacion->cv_id;
+            $interview->vacant_id = $postulacion->vacant_id;
+            // $interview->user_id = $request->usuario_analista;
+            $usuario = User::find($request->usuario_analista);
+            $interview->cargo = 'analista';
+            // dd($usuario);
+            $usuario->interviews()->save($interview);
+            return back()->with('message','Se ha registrado correctamente');
+        }else{
+            return back()->with('error','Debe escoger alguna de las opciones');
+        }
         
-    // }
-
-
+    }
     
 }

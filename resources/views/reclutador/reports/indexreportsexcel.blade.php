@@ -156,6 +156,16 @@
                             <div class="col-md-4 text-center">
                                 <div class="form-outline pt-1">
                                     <div class="">
+                                        <input type="checkbox" id="cedula" name="cedula">
+                                        <label for="nombre">CEDULA</label>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-black justify-content-center">
+                            <div class="col-md-4 text-center">
+                                <div class="form-outline pt-1">
+                                    <div class="">
                                         <input type="checkbox" id="ciudad" name="ciudad">
                                         <label for="nombre">CIUDAD</label>
                                       </div>

@@ -8,32 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Vacant extends Model
 {
     use HasFactory;
-    // protected $fillable = [
-    //     'title',
-    //     'author',
-    //     'archivate_date',
-    //     'city',
-    //     'description',
-    //     'state',
-    //     'salary',
-    //     'experience',
-    //     'num_vacants',
-    //     'education',
-    //     'language',
-    //     'availability_travel',
-    //     'type_contract',
-    //     'area',
-    //     'filtro',
-    //     'num_aplic',
-    //     'type_cv_id',
-       
-    // ];
     protected $guarded = [];
 
-    // public function cvs()
-    // {
-    //     return $this->hasMany('App\Cv');
-    // }
+
     public function typecv()
     {
         return $this->belongsTo('App\Models\Type_cv');

@@ -18,8 +18,9 @@ class CreateInterviewsTable extends Migration
             $table->timestamps();
             $table->string('vacant_id');
             $table->string('cv_id');
-            $table->string('boss_id');
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('cargo');
             $table->text('description')->nullable();
             $table->string('status')->nullable();
         });

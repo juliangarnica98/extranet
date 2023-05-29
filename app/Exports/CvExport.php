@@ -25,6 +25,7 @@ class CvExport implements FromCollection, WithHeadings
         $campos = [];
         $request = $this->request  ;  
         $name = $this->request->nombre ? array_push($campos, "name") : '';
+        $cedula = $this->request->cedula ? array_push($campos, "num_id") : '';
         $ciudad = $this->request->ciudad ? array_push($campos, "city_address") : '';
         $celular = $this->request->celular ? array_push($campos, "num_cell") : '';
         $correo = $this->request->correo ? array_push($campos, "email") : '';
@@ -37,6 +38,7 @@ class CvExport implements FromCollection, WithHeadings
     {
         $encabezados=[];
         $name = $this->request->nombre ? array_push($encabezados, "Nombre") : '';
+        $cedula = $this->request->cedula ? array_push($encabezados, "Cedula") : '';
         $ciudad = $this->request->ciudad ? array_push($encabezados, "Ciudad") : '';
         $celular = $this->request->celular ? array_push($encabezados, "Celular") : '';
         $correo = $this->request->correo ? array_push($encabezados, "Correo") : '';
