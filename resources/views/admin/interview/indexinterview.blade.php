@@ -100,35 +100,79 @@
         font-size: 1rem;
         line-height: 1;
     }
+    .vancants{
+        transition: margin-right 2s ease-in-out;
+    }
+    .vancants:hover{
+        transform: translate(10px);
+    }
 </style>
 
 @section('content')
 
-
-
+    @if (Session::has('error'))
+        <script>
+            Swal.fire(
+                'Error',
+                "{{ Session::get('error') }}",
+                'error'
+            )
+        </script>
+    @endif
+    @if (Session::has('message'))
+        <script>
+            Swal.fire(
+                '¡Bien hecho!',
+                "{{ Session::get('message') }}",
+                'success'
+            )
+        </script>
+    @endif
     <div class="page-content page-container" id="page-content">
 
         <h2 class="ml-5 pt-5 text-center text-black ">MIS ENTREVISTAS</h2>
-        <div class="container">
-            <div class="row">
-                
-                    <div class="col-md-3 text-center text-black">VACANTE</div>
-                    <div class="col-md-3 text-center text-black">CANDIDATO</div>
-                    <div class="col-md-3 text-center text-black">HOJA DE VIDA</div>
-                    <div class="col-md-3 text-center text-black">REGISTRAR</div>
-               
-            </div>
-            <div class="row pt-3">
-                <div class="col-md-12">
-                    @foreach ($mis_entrevistas as $entrevista)
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3 text-center text-black">1</div>
-                                    <div class="col-sm-3 text-center text-black">1</div>
-                                    <div class="col-sm-3 text-center text-black">1</div>
-                                    <div class="col-sm-3 text-center text-black"><a href="" class="btn"><i class="fas fa-user-edit text-black"></i></a></div>
-                                </div>
+        <div class="">
+           
+            <div class="row pt-5">
+                <div class="col-md-3 grid-margin stretch-card">
+                    <div class="card box" style="background-color: #ffffff;">
+                        <div class="card-body">
+                          
+                            <p class="card-description">
+                                FILTROS
+                            </p>
+                           <label class="text-black" for="fecha">Seleccione una fecha</label>
+                           <input id="fecha" type="date" class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 ">
+                    <div class="row">
+
+                        <div class="col-md-4 text-center text-black">VACANTE</div>
+                        <div class="col-md-4 text-center text-black">CIUDAD</div>
+                        <div class="col-md-4 text-center text-black">CANDIDATOS</div>
+
+        
+                    </div>
+                    @foreach ($mis_vacantes as $vacante)
+                        <div class="card pl-0 pr-0 ml-0 mr-0 border-0 vancants mt-2">
+                            <div class="col-md-12 stretch-card">
+                                <a href="{{route('admin.index.verentrevista',$vacante->id)}}" class="card-block stretched-link text-decoration-none">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center text-black"> <b>{{ $vacante->title }}</b> </div>
+                                            <div class="col-sm-4 text-center text-black">{{ $vacante->city }}</div>
+                                            <div class="col-sm-4 text-center text-black">
+                                                @foreach ($valores as $valor => $val)
+                                                    @if ($vacante->id == $valor)
+                                                        <i class="fas fa-user text-black"></i><b> {{$val}}</b>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     @endforeach
@@ -136,5 +180,4 @@
             </div>
         </div>
     </div>
-
 @endsection

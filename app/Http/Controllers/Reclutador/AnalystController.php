@@ -29,11 +29,11 @@ class AnalystController extends Controller
     }
     public function entrevista($id,$vacante)
     {
-        // dd( $id);
+        $postulacion = Cvvacant::where('id',$id)->first();
         $users_admin = User::role('Admin')->get();
         $users_reclutador = User::role('Reclutador')->get();
         $users_jefe = User::role('Jefe')->get();
-        $entrevistas = Interview::with('user')->get();
+        $entrevistas = Interview::with('user')->where('vacant_id',$vacante)->where('cv_id',$postulacion->cv_id)->get();
         // return $entrevistas;
         $name_vacant = Vacant::where('id',$vacante)->first();
         return view('reclutador.analistas.indexentrevista',compact('name_vacant','users_admin','users_reclutador','users_jefe','id','entrevistas'));
@@ -45,50 +45,55 @@ class AnalystController extends Controller
     }
     public function registrarentrevista($id,Request $request)
     {  
-            if($request->usuario_gerente){
-            $postulacion = Cvvacant::where('id',$id)->first();
+        
+        $postulacion = Cvvacant::where('id',$id)->first();
+      
+        if($request->usuario_gerente){
+            $busqueda_err = Interview::where('user_id',$request->usuario_gerente)->where('vacant_id',$postulacion->vacant_id)->where('cv_id',$postulacion->cv_id)->first();
+            if($busqueda_err){
+                return back()->with('error','Ya se ha asignado anteriormente');
+            }
             $interview = new Interview();
             $interview->cv_id = $postulacion->cv_id;
             $interview->vacant_id = $postulacion->vacant_id;
-            // $interview->user_id = $request->usuario_gerente;
             $usuario = User::find($request->usuario_gerente);
             $interview->cargo = 'gerente';
             $usuario->interviews()->save($interview);
-
-            // $interview->save();
             return back()->with('message','Se ha registrado correctamente');
         }else if($request->usuario_jefe ){
-            $postulacion = Cvvacant::where('id',$id)->first();
+            $busqueda_err = Interview::where('user_id',$request->usuario_jefe)->where('vacant_id',$postulacion->vacant_id)->where('cv_id',$postulacion->cv_id)->first();
+            if($busqueda_err){
+                return back()->with('error','Ya se ha asignado anteriormente');
+            }
             $interview = new Interview();
             $interview->cv_id = $postulacion->cv_id;
             $interview->vacant_id = $postulacion->vacant_id;
-            // $interview->user_id = $request->usuario_jefe;
             $usuario = User::find($request->usuario_jefe);
             $interview->cargo = 'jefe';
             $usuario->interviews()->save($interview);
             return back()->with('message','Se ha registrado correctamente');
         }else if($request->usuario_coordinador){
-            $postulacion = Cvvacant::where('id',$id)->first();
+            $busqueda_err = Interview::where('user_id',$request->usuario_coordinador)->where('vacant_id',$postulacion->vacant_id)->where('cv_id',$postulacion->cv_id)->first();
+            if($busqueda_err){
+                return back()->with('error','Ya se ha asignado anteriormente');
+            }
             $interview = new Interview();
             $interview->cv_id = $postulacion->cv_id;
             $interview->vacant_id = $postulacion->vacant_id;
-            // $interview->user_id = $request->usuario_coordinador;
             $usuario = User::find($request->usuario_coordinador);
             $interview->cargo = 'coordinador';
             $usuario->interviews()->save($interview);
             return back()->with('message','Se ha registrado correctamente');
         }else if($request->usuario_analista){
-            
-            $postulacion = Cvvacant::where('id',$id)->first();
-            
+            $busqueda_err = Interview::where('user_id',$request->usuario_analista)->where('vacant_id',$postulacion->vacant_id)->where('cv_id',$postulacion->cv_id)->first();
+            if($busqueda_err){
+                return back()->with('error','Ya se ha asignado anteriormente');
+            }
             $interview = new Interview();
-            
             $interview->cv_id = $postulacion->cv_id;
             $interview->vacant_id = $postulacion->vacant_id;
-            // $interview->user_id = $request->usuario_analista;
             $usuario = User::find($request->usuario_analista);
             $interview->cargo = 'analista';
-            // dd($usuario);
             $usuario->interviews()->save($interview);
             return back()->with('message','Se ha registrado correctamente');
         }else{

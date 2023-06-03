@@ -58,6 +58,10 @@ Route::group(['prefix' => 'administrador', 'middleware' => 'auth'], function() {
     Route::get('jefes', [App\Http\Controllers\Administrador\BossController::class, 'index'])->name('admin.index.jefes');
 
     Route::get('mis-entrevistas', [App\Http\Controllers\Administrador\InterviewController::class, 'index'])->name('admin.index.entrevistas');
+    Route::get('ver-entrevista/{id}', [App\Http\Controllers\Administrador\InterviewController::class, 'show'])->name('admin.index.verentrevista');
+    Route::get('registrar-entrevista-candidato/{id}', [App\Http\Controllers\Administrador\InterviewController::class, 'edit'])->name('admin.index.editentrevista');
+    Route::get('entrevista-candidato-ver/{id}', [App\Http\Controllers\Administrador\InterviewController::class, 'ver'])->name('admin.index.entrevistaver');
+    Route::post('registrar-entrevista/{id}', [App\Http\Controllers\Administrador\InterviewController::class, 'update'])->name('admin.index.updateentrevista');
 });
 
 Route::group(['prefix' => 'reclutador', 'middleware' => 'auth'], function() {

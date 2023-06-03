@@ -205,29 +205,41 @@
         border-radius: 15px;
         border: 3px solid #e6e7ed;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
+
     }
-    .pad-top-50{
+
+    .pad-top-50 {
         padding-top: 20%
     }
-    .not-active { 
-            pointer-events: none; 
-            cursor: default; 
-        } 
+
+    .not-active {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    /* .fondo{
+
+        background: linear-gradient(rgba(4, 165, 155, 0.8), rgba(4, 165, 155, 0.8)), url("../imgs/bg-masthead\ -\ copia.jpg") fixed center center;
+        background-size: cover;
+        
+    } */
+    .fondo {
+
+        background: linear-gradient(rgba(4, 165, 155, 0.8), rgba(4, 165, 155, 0.8)), url('{{ asset('imgs/bg-masthead - copia.jpg') }}') fixed center center;
+        background-size: cover;
+    }
 </style>
 
-<body id="page-top" style="background-color: #01b9b5">
-    {{-- <body id="page-top" style="background-color: #02e0dd"> --}}
-
-    <!-- Page Wrapper -->
-    <div id="wrapper" style="background-color: #f5cce0">
+<body id="page-top" class="fondo">
+    <div id="">
 
         <!-- Sidebar -->
 
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column" style="background-color: #01b9b5">
+        <div id="content-wrapper" class="d-flex flex-column h-100">
+
 
             <!-- Main Content -->
             <div id="content w-100 h-100">
@@ -249,13 +261,14 @@
                                     <img width="10%" class="justify-content-center aling-items-center "
                                         src="{{ asset('imgs/logo.png') }}" alt="">
                                 </li>
-                                <li class=" dropdown no-arrow nav-item " > 
+                                <li class=" dropdown no-arrow nav-item ">
                                     <a class="nav-link col-auto dropdown-toggle" href="#" id="userDropdown"
                                         role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
-                                        @if (auth()->check()) 
-                                        <b> <span class="d-none d-lg-inline"
-                                            style="color: #18a0a0">{{ mb_strtoupper(Auth::user()->name) }} </span></b>
+                                        @if (auth()->check())
+                                            <b> <span class="d-none d-lg-inline"
+                                                    style="color: #18a0a0">{{ mb_strtoupper(Auth::user()->name) }}
+                                                </span></b>
                                         @endif
                                     </a>
 
@@ -280,17 +293,15 @@
                             <ul class="navbar-nav d-flex justify-content-center w-75 "
                                 style="background-color: #e52b7f; border-radius: 25px">
                                 @can('admin.index')
-
                                     <li class="nav-item col-md-2">
                                         <a class="nav-link text-center text-white"
                                             href="{{ route('admin.usuarios') }}"><b><i class="fas fa-users"></i>
-                                                USUARIOS</b>  <span
-                                                class="sr-only">(current)</span></a>
+                                                USUARIOS</b> <span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item col-md-2">
-                                        <a class="nav-link text-center text-white" href="{{ route('admin.index.jefes') }}"><b><i class="fas fa-user-tie"></i>
-                                            JEFES</b>  <span
-                                                class="sr-only">(current)</span></a>
+                                        <a class="nav-link text-center text-white"
+                                            href="{{ route('admin.index.jefes') }}"><b><i class="fas fa-user-tie"></i>
+                                                JEFES</b> <span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item col-md-3">
                                         <a class="nav-link text-center text-white"
@@ -304,12 +315,15 @@
                                                 class="sr-only">(current)</span></a>
                                     </li> --}}
                                     <li class="nav-item col-md-2">
-                                        <a class="nav-link text-white text-center" href="{{ route('reclutador.index') }}"><b><i
-                                                    class="far fa-address-book"></i> VACANTES</b>
+                                        <a class="nav-link text-white text-center"
+                                            href="{{ route('reclutador.index') }}"><b><i class="far fa-address-book"></i>
+                                                VACANTES</b>
                                             <span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item col-md-2">
-                                        <a class="nav-link text-white text-center" href="{{route('admin.index.entrevistas')}}"><b><i class="fas fa-book-open"></i> ENTREVISTAS</b>
+                                        <a class="nav-link text-white text-center"
+                                            href="{{ route('admin.index.entrevistas') }}"><b><i
+                                                    class="fas fa-book-open"></i> ENTREVISTAS</b>
                                             <span class="sr-only">(current)</span></a>
                                     </li>
                                 @endcan
@@ -326,12 +340,15 @@
                                                 class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item col-md-3">
-                                        <a class="nav-link text-white text-center" href="{{ route('reclutador.index') }}"><b><i
-                                                    class="far fa-address-book"></i> VACANTES</b>
+                                        <a class="nav-link text-white text-center"
+                                            href="{{ route('reclutador.index') }}"><b><i class="far fa-address-book"></i>
+                                                VACANTES</b>
                                             <span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item col-md-3">
-                                        <a class="nav-link text-white text-center" href="{{route('reclutador.index.entrevistas')}}"><b><i class="fas fa-book-open"></i> ENTREVISTAS</b>
+                                        <a class="nav-link text-white text-center"
+                                            href="{{ route('reclutador.index.entrevistas') }}"><b><i
+                                                    class="fas fa-book-open"></i> ENTREVISTAS</b>
                                             <span class="sr-only">(current)</span></a>
                                     </li>
                                 @endcan
@@ -422,12 +439,9 @@
         <!-- End of Content Wrapper -->
 
     </div>
-
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
