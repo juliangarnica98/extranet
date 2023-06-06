@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Administrador;
+namespace App\Http\Controllers\Jefe;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
 use App\Models\Cv;
 use App\Models\Cvvacant;
 use App\Models\Interview;
+use App\Models\State;
 use App\Models\Vacant;
-use Illuminate\Http\Request;
 use Validator;
 
 class InterviewController extends Controller
@@ -18,7 +20,7 @@ class InterviewController extends Controller
         $mis_entrevistas =Interview::where('user_id',$id)->pluck('vacant_id')->toArray();
         $valores = array_count_values($mis_entrevistas);
         $mis_vacantes = Vacant::whereIn('id',$mis_entrevistas)->get();
-        return view('admin.interview.indexinterview',compact('mis_entrevistas','mis_vacantes','valores'));       
+        return view('jefe.interview.indexinterview',compact('mis_entrevistas','mis_vacantes','valores'));       
     }
     public function show($id)
     {
@@ -26,14 +28,14 @@ class InterviewController extends Controller
         $mis_entrevistas =Interview::where('user_id',$usuario)->where('vacant_id',$id)->get();
         $name_vacant=Vacant::where('id',$id)->first();
         $hojas_vida = Cv::all();
-        return view('admin.interview.showinterview',compact('mis_entrevistas','name_vacant','hojas_vida'));
+        return view('jefe.interview.showinterview',compact('mis_entrevistas','name_vacant','hojas_vida'));
     }
     public function edit($id)
     {
         $mi_entrevista =Interview::where('id',$id)->first();
         $name_vacant=Vacant::where('id',$mi_entrevista->vacant_id)->first();
         $hoja_vida = Cv::where('id',$mi_entrevista->cv_id)->first();
-        return view('admin.interview.editinterview',compact('mi_entrevista','name_vacant','hoja_vida'));
+        return view('jefe.interview.editinterview',compact('mi_entrevista','name_vacant','hoja_vida'));
     }
     public function ver($id)
     {
@@ -41,9 +43,10 @@ class InterviewController extends Controller
         // dd($mi_entrevista);
         $name_vacant=Vacant::where('id',$mi_entrevista->vacant_id)->first();
         $hoja_vida = Cv::where('id',$mi_entrevista->cv_id)->first();
-        return view('admin.interview.viewinterview',compact('mi_entrevista','name_vacant','hoja_vida'));
+        return view('jefe.interview.viewinterview',compact('mi_entrevista','name_vacant','hoja_vida'));
     }
     public function update(Request $request, $id){
+        // dd($request->all());
         $rules = [
             'status' => 'required',
             'description' => 'required',

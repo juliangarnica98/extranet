@@ -10,6 +10,7 @@ use App\Models\Interview;
 use App\Models\Recruitment;
 use App\Models\User;
 use App\Models\Vacant;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Validator;
@@ -45,10 +46,8 @@ class AnalystController extends Controller
     }
     public function registrarentrevista($id,Request $request)
     {  
-        
         $postulacion = Cvvacant::where('id',$id)->first();
-      
-        if($request->usuario_gerente){
+        if($request->usuario_gerente && $request->fecha){
             $busqueda_err = Interview::where('user_id',$request->usuario_gerente)->where('vacant_id',$postulacion->vacant_id)->where('cv_id',$postulacion->cv_id)->first();
             if($busqueda_err){
                 return back()->with('error','Ya se ha asignado anteriormente');
@@ -56,11 +55,12 @@ class AnalystController extends Controller
             $interview = new Interview();
             $interview->cv_id = $postulacion->cv_id;
             $interview->vacant_id = $postulacion->vacant_id;
+            $interview->fecha = Carbon::parse($request->fecha)->format('Y-m-d\ H:i');
             $usuario = User::find($request->usuario_gerente);
             $interview->cargo = 'gerente';
             $usuario->interviews()->save($interview);
             return back()->with('message','Se ha registrado correctamente');
-        }else if($request->usuario_jefe ){
+        }else if($request->usuario_jefe && $request->fecha){
             $busqueda_err = Interview::where('user_id',$request->usuario_jefe)->where('vacant_id',$postulacion->vacant_id)->where('cv_id',$postulacion->cv_id)->first();
             if($busqueda_err){
                 return back()->with('error','Ya se ha asignado anteriormente');
@@ -68,11 +68,12 @@ class AnalystController extends Controller
             $interview = new Interview();
             $interview->cv_id = $postulacion->cv_id;
             $interview->vacant_id = $postulacion->vacant_id;
+            $interview->fecha = Carbon::parse($request->fecha)->format('Y-m-d\ H:i');
             $usuario = User::find($request->usuario_jefe);
             $interview->cargo = 'jefe';
             $usuario->interviews()->save($interview);
             return back()->with('message','Se ha registrado correctamente');
-        }else if($request->usuario_coordinador){
+        }else if($request->usuario_coordinador && $request->fecha){
             $busqueda_err = Interview::where('user_id',$request->usuario_coordinador)->where('vacant_id',$postulacion->vacant_id)->where('cv_id',$postulacion->cv_id)->first();
             if($busqueda_err){
                 return back()->with('error','Ya se ha asignado anteriormente');
@@ -80,11 +81,12 @@ class AnalystController extends Controller
             $interview = new Interview();
             $interview->cv_id = $postulacion->cv_id;
             $interview->vacant_id = $postulacion->vacant_id;
+            $interview->fecha = Carbon::parse($request->fecha)->format('Y-m-d\ H:i');
             $usuario = User::find($request->usuario_coordinador);
             $interview->cargo = 'coordinador';
             $usuario->interviews()->save($interview);
             return back()->with('message','Se ha registrado correctamente');
-        }else if($request->usuario_analista){
+        }else if($request->usuario_analista && $request->fecha){
             $busqueda_err = Interview::where('user_id',$request->usuario_analista)->where('vacant_id',$postulacion->vacant_id)->where('cv_id',$postulacion->cv_id)->first();
             if($busqueda_err){
                 return back()->with('error','Ya se ha asignado anteriormente');
@@ -92,12 +94,13 @@ class AnalystController extends Controller
             $interview = new Interview();
             $interview->cv_id = $postulacion->cv_id;
             $interview->vacant_id = $postulacion->vacant_id;
+            $interview->fecha = Carbon::parse($request->fecha)->format('Y-m-d\ H:i');
             $usuario = User::find($request->usuario_analista);
             $interview->cargo = 'analista';
             $usuario->interviews()->save($interview);
             return back()->with('message','Se ha registrado correctamente');
         }else{
-            return back()->with('error','Debe escoger alguna de las opciones');
+            return back()->with('error','Debes llenar los campos');
         }
         
     }

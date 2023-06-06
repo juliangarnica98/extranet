@@ -177,7 +177,7 @@
                                                 <div class="col-sm-2 text-center text-black pt-2">
                                                     @if ($entrevista->status == null)
                                                         <a class=""
-                                                            href="{{ route('admin.index.editentrevista', $entrevista->id) }}">
+                                                            href="{{ route('reclutador.index.editentrevista', $entrevista->id) }}">
                                                             <h5><i class="fas fa-pencil-alt text-black"></i></h5>
                                                         </a>
                                                     @endif
@@ -185,7 +185,7 @@
                                                 <div class="col-sm-2 text-center text-black">
                                                     @if ($entrevista->status != null)
                                                         <a class=""
-                                                            href="{{ route('admin.index.entrevistaver', $entrevista->id) }}">
+                                                            href="{{ route('reclutador.index.entrevistaver', $entrevista->id) }}">
                                                             <h5><i class="fas fa-eye text-black"></i></h5>
                                                         </a>
                                                     @endif

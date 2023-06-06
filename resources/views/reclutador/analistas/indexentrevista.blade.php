@@ -133,7 +133,7 @@
 
 
             @if ($name_vacant->entrevista_analista == 'aplica')
-                <form method="POST" action="{{ route('reclutador.analista.registrarentrevista', $id) }}">
+                <form method="POST" action="{{ route('reclutador.analista.registrarentrevistas', $id) }}">
                     @csrf
                     <div class="card box mt-3">
                         <div class="card-header card-header-warning" style=" border-radius: 15px;">
@@ -157,6 +157,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-10 text-center pt-2">
+                                            <div class="form-outline ">
+                                              <input class="col-12" type="datetime-local" name="fecha" id="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 text-center pt-2">
                                             <button class="btn text-white btn-block"
                                                 style="background-color: #e52b7f">ASIGNAR</button>
                                         </div>
@@ -176,7 +181,7 @@
                 </form>
             @endif
             @if ($name_vacant->entrevista_coordinador == 'aplica')
-                <form method="POST" action="{{ route('reclutador.analista.registrarentrevista', $id) }}">
+                <form method="POST" action="{{ route('reclutador.analista.registrarentrevistas', $id) }}">
                     @csrf
                     <div class="card box mt-3">
                         <div class="card-header card-header-warning" style=" border-radius: 15px;">
@@ -186,8 +191,10 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="row text-black justify-content-center">
+                                        
                                         <div class="col-md-10 text-center">
                                             <div class="form-outline ">
+                                               
                                                 <select class="form-select form-control text-black"
                                                     name="usuario_coordinador" style="border-radius: 25px">
                                                     <option value="" class="text-black">SELECCIONE UN COORDINADOR
@@ -198,6 +205,11 @@
                                                     @endforeach
 
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 text-center pt-2">
+                                            <div class="form-outline ">
+                                              <input class="col-12" type="datetime-local" name="fecha" id="">
                                             </div>
                                         </div>
                                         <div class="col-md-10 text-center pt-2">
@@ -220,7 +232,7 @@
                 </form>
             @endif
             @if ($name_vacant->entrevista_jefe == 'aplica')
-                <form method="POST" action="{{ route('reclutador.analista.registrarentrevista', $id) }}">
+                <form method="POST" action="{{ route('reclutador.analista.registrarentrevistas', $id) }}">
                     @csrf
                     <div class="card box mt-3">
                         <div class="card-header card-header-warning" style=" border-radius: 15px;">
@@ -244,6 +256,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-10 text-center pt-2">
+                                            <div class="form-outline ">
+                                              <input class="col-12" type="datetime-local" name="fecha" id="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 text-center pt-2">
                                             <button class="btn text-white btn-block"
                                                 style="background-color: #e52b7f">ASIGNAR</button>
                                         </div>
@@ -263,7 +280,7 @@
                 </form>
             @endif
             @if ($name_vacant->entrevista_gerente == 'aplica')
-                <form method="POST" action="{{ route('reclutador.analista.registrarentrevista', $id) }}">
+                <form method="POST" action="{{ route('reclutador.analista.registrarentrevistas', $id) }}">
                     @csrf
                     <div class="card box mt-3">
                         <div class="card-header card-header-warning" style=" border-radius: 15px;">
@@ -284,6 +301,11 @@
                                                             {{ $jefe->name }}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 text-center pt-2">
+                                            <div class="form-outline ">
+                                              <input class="col-12" type="datetime-local" name="fecha" id="">
                                             </div>
                                         </div>
                                         <div class="col-md-10 text-center pt-2">

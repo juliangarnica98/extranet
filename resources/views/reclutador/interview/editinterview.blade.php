@@ -140,7 +140,7 @@
         <h2 class="ml-5 pt-0 text-center text-black "> <b>CANDIDATO</b> {{ $hoja_vida->name }}</h2>
         <div class="">
 
-            <form method="POST" action="{{ route('admin.index.updateentrevista',$mi_entrevista->id) }}">
+            <form method="POST" action="{{ route('reclutador.index.updateentrevista',$mi_entrevista->id) }}">
                 @csrf
                 <div class="card box mt-3">
                     <div class="card-header card-header-warning" style="border-radius: 15px;">

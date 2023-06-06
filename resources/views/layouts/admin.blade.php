@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Retiros LiliY&oi- @yield('title')</title>
+    <title>TALENTOS @yield('title')</title>
 
     <!-- Custom fonts for this template-->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -228,6 +228,9 @@
         background: linear-gradient(rgba(4, 165, 155, 0.8), rgba(4, 165, 155, 0.8)), url('{{ asset('imgs/bg-masthead - copia.jpg') }}') fixed center center;
         background-size: cover;
     }
+    i{
+        /* font-size: 1.2rem; */
+    }
 </style>
 
 <body id="page-top" class="fondo">
@@ -353,14 +356,17 @@
                                     </li>
                                 @endcan
                                 @can('jefe.index')
+                              
                                     <li class="nav-item col-md-6">
-                                        <a class="nav-link text-center col-auto"
-                                            href="{{ route('jefe.candidatos.index') }}">Reportes <span
-                                                class="sr-only">(current)</span></a>
+                                        <a class="nav-link text-white text-center"
+                                            href=""><b><i class="fas fa-chart-line"></i> INDICADORES</b>
+                                            <span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item col-md-6">
-                                        <a class="nav-link text-center col-auto" href="#">Reportes <span
-                                                class="sr-only">(current)</span></a>
+                                        <a class="nav-link text-white text-center"
+                                            href="{{ route('jefe.index.entrevistas') }}"><b><i
+                                                    class="fas fa-book-open"></i> ENTREVISTAS</b>
+                                            <span class="sr-only">(current)</span></a>
                                     </li>
                                 @endcan
 
@@ -477,20 +483,10 @@
     <script src="{{ asset('libs/stacktable.js/stacktable.js') }}"></script>
 
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script> -->
+
 
 
 </body>
-{{-- <script>
 
-    $(".nav .nav-link").on("click", function(){
-        console.log("hola");
-        $(".nav").find(".active").removeClass("active");
-        $(this).addClass("active");
-    });
-</script> --}}
 
 </html>

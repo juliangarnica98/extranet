@@ -107,13 +107,17 @@ Route::group(['prefix' => 'reclutador', 'middleware' => 'auth'], function() {
     Route::get('entrevistas/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'index'])->name('reclutador.analista.index');
     Route::get('asignacion-entrevistas/{id}/{vacante}', [App\Http\Controllers\Reclutador\AnalystController::class, 'entrevista'])->name('reclutador.analista.entrevista');
     Route::get('ver-entrevistas/{id}/{vacante}', [App\Http\Controllers\Reclutador\AnalystController::class, 'verentrevista'])->name('reclutador.analista.verentrevista');
-    Route::post('registrar-entrevista/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'registrarentrevista'])->name('reclutador.analista.registrarentrevista');
-      
+    Route::post('registrar-entrevista/{id}', [App\Http\Controllers\Reclutador\AnalystController::class, 'registrarentrevista'])->name('reclutador.analista.registrarentrevistas');
+      //rutas para generar excels
     Route::get('generar-excel/{id}', [App\Http\Controllers\Reclutador\ExcelController::class, 'store'])->name('descargar.excel');
     Route::post('generar-excel/', [App\Http\Controllers\Reclutador\ExcelController::class, 'export'])->name('generar.excel');
 
-    
+    //rutas de realizar entrevistas
     Route::get('mis-entrevistas', [App\Http\Controllers\Reclutador\InterviewController::class, 'index'])->name('reclutador.index.entrevistas');
+    Route::get('ver-entrevista/{id}', [App\Http\Controllers\Reclutador\InterviewController::class, 'show'])->name('reclutador.index.verentrevista');
+    Route::get('registrar-entrevista-candidato/{id}', [App\Http\Controllers\Reclutador\InterviewController::class, 'edit'])->name('reclutador.index.editentrevista');
+    Route::get('entrevista-candidato-ver/{id}', [App\Http\Controllers\Reclutador\InterviewController::class, 'ver'])->name('reclutador.index.entrevistaver');
+    Route::post('registrar-entrevistas/{id}', [App\Http\Controllers\Reclutador\InterviewController::class, 'update'])->name('reclutador.index.updateentrevista');
     
 
 
@@ -125,6 +129,13 @@ Route::group(['prefix' => 'jefe', 'middleware' => 'auth'], function() {
     Route::put('editarperfil', [App\Http\Controllers\Jefe\ProfileController::class, 'update'])->name('jefe.editarperfil');
     Route::get('index', [App\Http\Controllers\Jefe\CandidateController::class, 'index'])->name('jefe.candidatos.index');
     Route::get('vercandidato/{id}/{vacant}/{recruitment}', [App\Http\Controllers\Jefe\CandidateController::class, 'show'])->name('jefe.candidatos.show');
+
+    //rutas de realizar entrevistas
+    Route::get('mis-entrevistas', [App\Http\Controllers\Jefe\InterviewController::class, 'index'])->name('jefe.index.entrevistas');
+    Route::get('ver-entrevista/{id}', [App\Http\Controllers\Jefe\InterviewController::class, 'show'])->name('jefe.index.verentrevista');
+    Route::get('registrar-entrevista-candidato/{id}', [App\Http\Controllers\Jefe\InterviewController::class, 'edit'])->name('jefe.index.editentrevista');
+    Route::get('entrevista-candidato-ver/{id}', [App\Http\Controllers\Jefe\InterviewController::class, 'ver'])->name('jefe.index.entrevistaver');
+    Route::post('registrar-entrevista/{id}', [App\Http\Controllers\Jefe\InterviewController::class, 'update'])->name('jefe.index.updateentrevista');
 
     
 });

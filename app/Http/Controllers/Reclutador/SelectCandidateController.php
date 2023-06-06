@@ -54,10 +54,6 @@ class SelectCandidateController extends Controller
     }
     public function pruebas($id)
     {
-        // $now = new \DateTime();
-        // $reclutamiet = Recruitment::find($id);
-        // $reclutamiet->pruebas = 1;
-        // $reclutamiet->fecha = $now->format('d-m-Y H:i');
         
         $postulacion = Cvvacant::where('id',$id)->first();
         $postulacion->state_id=3;

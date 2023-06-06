@@ -175,7 +175,7 @@
                 @if (count($postulaciones) == 0)
                     <div class="card box mt-5">
                         <div class="card-body">
-                            <h5 class="text-center text-black">NO HAY CANDIDATOS ENVIADOS A PRUEBAS</h5>
+                            <h5 class="text-center text-black">NO HAY CANDIDATOS ENVIADOS A ENTREVISTA</h5>
                         </div>
                     </div>
             </div>

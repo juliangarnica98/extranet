@@ -70,8 +70,8 @@ class RecruitmentController extends Controller
         
        
         $validator = Validator::make($request->all(), [
-            'ethikos' => 'required|numeric|digits_between:2,3',
-            'ten_disc' => 'required|numeric|min:2|digits_between:2,3',
+            'ethikos' => 'required|numeric|min:1|digits_between:1,3',
+            'ten_disc' => 'required|numeric|min:1|digits_between:1,3',
             'potencial_comercial' => 'numeric|min:0|max:100|digits_between:1,3',
             'iq_factorial' => 'numeric|min:0|max:100|digits_between:1,3',
             'vp_test' => 'numeric|min:0|max:100|digits_between:1,3',

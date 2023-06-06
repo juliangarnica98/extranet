@@ -136,11 +136,11 @@
         </script>
     @endif
     <div class="page-content page-container" id="page-content">
-        <h2 class="ml-5 pt-5 text-center text-black "> <b>REALIZAR ENTREVISTA</b></h2>
+        <h2 class="ml-5 pt-5 text-center text-black "> <b>VER ENTREVISTA</b></h2>
         <h2 class="ml-5 pt-0 text-center text-black "> <b>CANDIDATO</b> {{ $hoja_vida->name }}</h2>
         <div class="">
 
-            <form method="POST" action="{{ route('admin.index.updateentrevista',$mi_entrevista->id) }}">
+            <form method="POST" action="{{ route('reclutador.index.updateentrevista',$mi_entrevista->id) }}">
                 @csrf
                 <div class="card box mt-3">
                     <div class="card-header card-header-warning" style="border-radius: 15px;">
@@ -156,7 +156,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
-                                    <textarea id="story" class="form-control" name="description" rows="12" style="border-radius: 25px;" autofocus>
+                                    <textarea id="story" class="form-control" name="description" rows="12" style="border-radius: 25px;" disabled> {{$mi_entrevista->description}}
                                     </textarea>
                                 </div>
                             </div>
@@ -169,20 +169,16 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
-                                    <select class="form-select form-control" name="status" style="border-radius: 25px">
-                                        <option value="">SELECCIONE ...</option>
-                                        <option value="no asistio">NO ASISTIO</option>
-                                        <option value="no aprobo">NO APROBO</option>
-                                        <option value="aprobo">APROBO</option>
+                                    <select class="form-select form-control" name="status" style="border-radius: 25px" disabled>
+                                        
+                                        <option  value="no asistio" {{ $mi_entrevista->status == 'no asistio' ? 'selected' : '' }}>NO ASISTIO</option>
+                                        <option value="no aprobo" {{ $mi_entrevista->status == 'no aprobo' ? 'selected' : '' }}>NO APROBO</option>
+                                        <option value="aprobo" {{ $mi_entrevista->status == 'aprobo' ? 'selected' : '' }}>APROBO</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row text-black pt-3">
-                            <div class="col-md-12 ">
-                                <button class="btn btn-success btn-block"><b>ENVIAR ENTREVISTA</b> </button>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </form>
