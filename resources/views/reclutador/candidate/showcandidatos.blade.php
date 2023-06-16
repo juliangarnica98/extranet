@@ -145,37 +145,13 @@
     <div class="page-content page-container" id="page-content">
         <div class="">
 
-            <div class="row pl-3 pr-3 pt-3 justify-content-center">
+            <div class="row  pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
                     <h4 class="text-center text-black"><b> POSTULADOS</b></h4>
                     <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
-
-                    <div class="row justify-content-center" style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
-                        <div class="col-md-2 sub-nav-link active"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="fas fa-users"></i>
-                                    POSTULADOS</b><span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link "> <a class="nav-link text-center text-black "
-                                href="{{ route('reclutador.seleccionados.buscar', ['id' => $name_vacant->id]) }}"><b><i class="fas fa-user-friends"></i>
-                                    SELECCIONADOS</b><span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.reclutamientos.buscar', ['id' => $name_vacant->id]) }}"><b><i class="fas fa-tasks"></i> PRUEBAS</b><span
-                                    class="sr-only"></span></a></div>
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.analista.index', ['id' => $name_vacant->id]) }}"><b><i class="fas fa-comment-alt"></i>
-                                    ENTREVISTAS</b>
-                                <span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link">
-                            
-                            <a class="nav-link text-center text-black"
-                                href="#"><b><i class="fas fa-check-double"></i> FINALISTAS</b>
-                                <span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.discarded.index', ['id' => $name_vacant->id]) }}"><b><i class="far fa-times-circle"></i>
-                                    DESCARTADOS</b>
-                                <span class="sr-only">(current)</span></a></div>
-
-                    </div>
+                    {{-- {{$active_postulados ? 1 : 2}}
+                    hola --}}
+                    @include('layouts.menu',['active_postulados'=>'postulados'])
                     @if (sizeof($cvvacant) == 0)
                         <div class="card box mt-5" style="background-color: #ffffff;height: auto">
                             <div class="card-body">
@@ -232,7 +208,7 @@
                                                                                 class=" d-flex justify-content-end aling-items-end">
                                                                                 {{-- <img src="{{ asset('imgs/profile-icon-9.png') }}"
                                                                                     class="w-50" alt=""> --}}
-                                                                                    <img style="width: 4rem;height: 4rem;border-radius: 50%" class="img-fluid" src="{{ asset("storage/avatars/".$cv->photo_cv)}}" />
+                                                                                    {{-- <img style="width: 4rem;height: 4rem;border-radius: 50%" class="img-fluid" src="{{ asset("storage/avatars/".$cv->photo_cv)}}" /> --}}
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">

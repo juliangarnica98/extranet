@@ -124,41 +124,11 @@
     <div class="page-content page-container" id="page-content">
         <div class="">
 
-            <div class="row pl-3 pr-3 pt-3 justify-content-center">
+            <div class="row  pt-3 justify-content-center">
                 <div class="col-md-12 grid-margin stretch-card">
                     <h4 class="text-center text-black"><b> SELECCIONADO</b></h4>
                     <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
-                    <div class="row justify-content-center"
-                        style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
-                        <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="fas fa-users"></i>
-                                    POSTULADOS</b><span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link active"> <a class="nav-link text-center text-black "
-                                href="{{ route('reclutador.seleccionados.buscar', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="fas fa-user-friends"></i>
-                                    SELECCIONADOS</b><span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.reclutamientos.buscar', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="fas fa-tasks"></i> PRUEBAS</b><span class="sr-only">(current)</span></a>
-                        </div>
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.analista.index', ['id' => $name_vacant->id]) }}"><b><i class="fas fa-comment-alt"></i>
-                                    ENTREVISTAS</b>
-                                <span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link">
-
-                            <a class="nav-link text-center text-black" href="#"><b><i class="fas fa-check-double"></i>
-                                    FINALISTAS</b>
-                                <span class="sr-only">(current)</span></a>
-                        </div>
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.discarded.index', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="far fa-times-circle"></i>
-                                    DESCARTADOS</b>
-                                <span class="sr-only">(current)</span></a></div>
-
-                    </div>
+                    @include('layouts.menu',['active_seleccionados'=>'seleccionados'])
                     <div class="card mt-3" style="background-color: #ffffff;">
                         <div class="card-body">
                             <div class="row  d-flex justify-content-center aling-items-center text-center">
@@ -206,123 +176,329 @@
                                 <div class="col-md-5">
                                     <div class="card box">
                                         <div class="card-body">
-                                            <h2 class="text-center text-dark">Información personal</h2>
+                                            <h2 class="text-center text-black">Información personal</h2>
 
                                             <div class="d-flex justify-content-center">
-                                                <img style="width: 20rem;height: 20rem; ;border-radius: 50%; " class="img-fluid" src="{{ asset("storage/avatars/".$cv->photo_cv)}}" />
+                                                {{-- <img src="{{ asset('imgs/profile-icon-9.png') }}" class="w-50"
+                                                    alt=""> --}}
+
+                                                {{-- <img style="width: 20rem;height: 20rem; ;border-radius: 50%; " class="img-fluid" src="{{ asset("storage/avatars/".$cv->photo_cv)}}" /> --}}
                                             </div>
                                             <hr>
-                                            <h2 class="text-dark mt-3"><strong>{{ $cv->name }}</strong> </h2>
+                                            <h2 class="text-black mt-3"><strong>{{ $cv->name }}</strong> </h2>
                                             <cite></cite>
                                             <div class="row">
-
-                                                <div class="col-md-6 text-dark">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Correo:</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->email }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Ciudad de residencia:</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->city_address }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Dirección:</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->address }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Edad:</span><br>
-
-
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->age }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Tipo de documento:</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->type_id }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Numero de documento:</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->num_id }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Número de celular:</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->num_cell }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Número de celular opcional:</span><br>
-
-
-
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->num_cell2 }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Perfil academico culminado:</span>
                                                 </div>
-                                                <div class="col-md-6 text-dark">
-                                                    <span class="text-center h6">{{ $cv->email }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->city_address }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->address }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->age }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->type_id }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->num_id }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->num_cell }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->num_cell2 }}</span><br>
+                                                <div class="col-md-6 text-black">
                                                     <span class="text-center h6">{{ $cv->academic_profile }}</span><br>
-
                                                 </div>
                                             </div>
                                             <div class="row mt-1">
-                                                <button class="btn btn-warning btn-block">
-                                                    <a class="btn btn-warning btn-block" href="{{ asset("storage/cvs/".$cv->file_cv)}}" download><i class="fas fa-file-download"></i > DESCARGAR CV</a>  
+                                                <a class="btn btn-warning btn-block"
+                                                    href="{{ asset('storage/cvs/' . $cv->file_cv) }}" download><i
+                                                        class="fas fa-file-download"></i> DESCARGAR CV</a>
                                             </div>
-
                                         </div>
-
                                     </div>
-
                                 </div>
                                 <div class="col-md-7">
-
                                     <div class="card box">
                                         <div class="card-body">
-                                            <h2 class="text-center text-dark ">Información laboral</h2>
+                                            <h2 class="text-center text-black ">Información laboral</h2>
                                             <hr>
-                                            <div class="row">
+                                            @if ($cv->jobs->experience == 'sin experiencia laboral')
+                                                <div class="col-md-12 text-black text-center">
+                                                    <span class="h6"><b>SIN EXPERIENCIA LABORAL</b></span><br>
+                                                </div>
+                                            @else
+                                                @if ($cv->jobs->last_job_name)
+                                                    <div class="row">
+                                                        <div class="col-md-12 text-black text-center">
+                                                            <span class="h6"><b>Ultima empresa</b></span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Nombre:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6"> {{ $cv->jobs->last_job_name }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Cargo:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->last_job_position }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Actualmente trabaja:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->currently }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Funciones:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->last_job_functions }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Fecha inicio:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6"> {{ $cv->jobs->last_job_date_init }}</span><br>
 
-                                                <div class="col-md-6 text-dark">
-                                                    <span class="h6">Nombre ultima empresa:</span><br>
-                                                    <span class="h6">Cargo:</span><br>
-                                                    <span class="h6">Funciones:</span><br>
-                                                    <span class="h6">Actualmente trabaja:</span><br>
-                                                    <span class="h6">Fecha inicio:</span><br>
-                                                    <span class="h6">Fecha fin:</span><br>
-                                                    <span class="h6">Nombre penultima empresa:</span><br>
-                                                    <span class="h6">Cargo:</span><br>
-                                                    <span class="h6">Funciones :</span><br>
-                                                    <span class="h6">Fecha inicio :</span> <br>
-                                                    <span class="h6">Fecha fin :</span>
-                                                </div>
-                                                <div class="col-md-6 text-dark">
-                                                    <span class="text-center h6">{{ $cv->name_last_company }}</span><br>
-                                                    <span
-                                                        class="text-center h6">{{ $cv->position_last_company }}</span><br>
-                                                    <span
-                                                        class="text-center h6">{{ $cv->funtion_last_company }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->work_last_company }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->date_init_company }}</span><br>
-                                                    <span
-                                                        class="text-center h6">{{ $cv->date_finally_company }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->name_last_company2 }}</span><br>
-                                                    <span
-                                                        class="text-center h6">{{ $cv->position_last_company2 }}</span><br>
-                                                    <span
-                                                        class="text-center h6">{{ $cv->funtion_last_company2 }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->date_init_company2 }}</span><br>
-                                                    <span
-                                                        class="text-center h6">{{ $cv->date_finally_company2 }}</span><br>
-                                                </div>
-                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row border-bottom">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Fecha fin:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->last_job_date_end }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($cv->jobs->penultimate_job_name)
+                                                    <div class="row">
+                                                        <div class="col-md-12 text-black text-center">
+                                                            <span class="h6"><b>Penultima empresa</b></span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6"> Nombre:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6"> {{ $cv->jobs->penultimate_job_name }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Cargo:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->penultimate_job_position }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Funciones:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6"> {{ $cv->jobs->penultimate_job_functions }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6"> Fecha inicio:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->penultimate_job_date_init }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row border-bottom">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Fecha fin:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->penultimate_job_date_end }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($cv->jobs->antepenultimate_job_name)
+                                                    <div class="row">
+                                                        <div class="col-md-12 text-black text-center">
+                                                            <span class="h6"><b>Antepenultima empresa</b></span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Nombre:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6"> {{ $cv->jobs->antepenultimate_job_name }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6"> Cargo:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->antepenultimate_job_position }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6">Funciones:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->antepenultimate_job_functions }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6"> Fecha inicio:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->antepenultimate_job_date_init }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="h6"> Fecha fin:</span><br>
+                                                        </div>
+                                                        <div class="col-md-6 text-black">
+                                                            <span class="text-center h6">{{ $cv->jobs->antepenultimate_job_date_end }}</span><br>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="card box mt-4">
                                         <div class="card-body">
-                                            <h2 class="text-center text-dark ">Información adicional</h2>
+                                            <h2 class="text-center text-black ">Información adicional</h2>
                                             <hr>
                                             <div class="row">
-                                                <div class="col-md-6 text-dark">
-                                                    <span class="h6">Tiene familiares trabajamdo con nosotros
+                                                <div class="col-md-6 text-black">
+                                                    <span class="h6">Tiene familiares trabajando con nosotros
                                                         :</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->family }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Por que le gustaria trabajar :</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->like_to_work }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Anteormente habia trabajado con
                                                         nosotros:</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->previously_work }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Por que deberiamos escogerlo :</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->should_choose }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Talla de camisa :</span><br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->shirt_size }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Talla pantalón :</span> <br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->pant_size }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
                                                     <span class="h6">Talla zapatos :</span> <br>
                                                 </div>
-                                                <div class="col-md-6 text-dark">
-                                                    <span class="text-center h6">{{ $cv->family }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->like_to_work }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->previously_work }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->should_choose }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->shirt_size }}</span><br>
-                                                    <span class="text-center h6">{{ $cv->pant_size }}</span><br>
+                                                <div class="col-md-6 text-black">
                                                     <span class="text-center h6">{{ $cv->shoes_size }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 text-black">
+                                                    <span class="h6">Número de hijos :</span> <br>
+                                                </div>
+                                                <div class="col-md-6 text-black">
+                                                    <span class="text-center h6">{{ $cv->children }}</span><br>
                                                 </div>
                                             </div>
                                         </div>

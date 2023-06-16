@@ -21,7 +21,6 @@
     <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('libs/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
-
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <style>
@@ -342,7 +341,10 @@
             <div class="container">
 
                 <form id="signUpForm" action="{{ route('cv.store') }}" method="POST" enctype="multipart/form-data">
-                   @csrf
+                    @csrf
+                    <input type="hidden" name="vacant_id" value="{{ $id }}">
+                    <input type="hidden" name="type" value="{{ $type }}">
+                    
                     <div class="step">
                         <div class="d-flex justify-content-center mb-4">
 
@@ -478,7 +480,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
-                                    <input type="number" placeholder="" name="age" class="col-12">
+                                    <input type="number" placeholder="" name="age" class="col-12"
+                                        id="age">
                                 </div>
                             </div>
                         </div>
@@ -491,7 +494,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
-                                    <input type="email" placeholder="" name="email" class="col-12">
+                                    <input type="email" placeholder="" name="email" class="col-12"
+                                        id="email">
                                 </div>
                             </div>
                         </div>
@@ -597,162 +601,85 @@
 
                     </div>
                     <div class="step">
-                        <h3 class="text-center mb-4">INFORMACIÓN LABORAL DE ULTIMA COMPAÑIA</h3>
-                        {{-- <p class="text-center mb-4"><strong>  </strong></p> --}}
-
-                        <div class="row text-black mt-1">
-                            <div class="col-md-4 ">
-                                <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">NOMBRE</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="text" placeholder="" name="name_last_company" class="col-12">
+                        <h3 class="text-center mb-4">INFORMACIÓN LABORAL</h3>
+                        <div class="row text-black mt-1 justify-content-center">
+                            <div class="col-md-12">
+                                <div class=" aling-items-center justify-content-center text-center">
+                                    <input type="checkbox" class="form-check-input aling-items-center justify-content-center text-center" id="experience" name="experience">
+                                    <label class="form-check-label" for="">NO TENGO EXPERIENCIA LABORAL</label>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row text-black mt-1">
-                            <div class="col-md-4 ">
-                                <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">CARGO</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="text" placeholder="" name="position_last_company"
-                                        class="col-12">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row text-black mt-1">
-                            <div class="col-md-4 ">
-                                <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">FUNCIONES</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <textarea name="funtion_last_company" id="" cols="30" rows="6" placeholder="" class="col-12"></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row text-black mt-1">
-                            <div class="col-md-4 ">
-                                <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">¿
-                                        TRABAJAS ACTUALMENTE AHI?
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <select class="form-select col-12 form_control" name="work_last_company">
-                                        <option value="No">NO</option>
-                                        <option value="Si">SI</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row text-black mt-1">
-                            <div class="col-md-4 ">
-                                <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">FECHA INICIO CONTRATO
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="date" placeholder="Fecha de inicio" name="date_init_company"
-                                        class="col-12 ">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row text-black mt-1">
-                            <div class="col-md-4 ">
-                                <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">FECHA FIN CONTRATO
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="date" placeholder="fecha de fin" name="date_finally_company"
-                                        class="col-12 ">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" name="vacant_id" value="{{ $id }}">
-                    <input type="hidden" name="type" value="{{ $type }}">
-                    <div class="step">
-                        <div id="otra_empresa">
-                            <h3 class="text-center mb-4">INFORMACIÓN LABORAL DE PENULTIMA COMPAÑIA</h3>
-
+                        <div id="job1">
+                            <h4 class="text-center mt-5">ÚLTIMO TRABAJO</h4>
                             <div class="row text-black mt-1">
                                 <div class="col-md-4 ">
                                     <div class="form-outline pt-1" style="text-align: right;">
-                                        <label class="form-label text-black " for="form8Example1">NOMBRE
+                                        <label class="form-label text-black " for="form8Example1">NOMBRE</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="text" placeholder="" name="last_job_name" class="col-12 form-init-text" id="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">CARGO</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="text" placeholder="" name="last_job_position" class="col-12 form-init-text" id="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FUNCIONES</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <textarea name="last_job_functions" id="" cols="30" rows="6" placeholder="" class="col-12 form-init-area" id=""></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">¿
+                                            TRABAJAS ACTUALMENTE AHI?
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-outline">
-                                        <input type="text" placeholder="" name="name_last_company2"
-                                            class="col-12">
+                                        <select class="form-select col-12 form_control form-init-select" id="" name="currently">
+                                            <option value="-">SELECCIONE UNA OPCIÓN</option>
+                                            <option value="No">NO</option>
+                                            <option value="Si">SI</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row text-black mt-1">
                                 <div class="col-md-4 ">
                                     <div class="form-outline pt-1" style="text-align: right;">
-                                        <label class="form-label text-black " for="form8Example1">CARGO
+                                        <label class="form-label text-black " for="form8Example1">FECHA INICIO CONTRATO
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-outline">
-                                        <input type="text" placeholder="" name="position_last_company2"
-                                            class="col-12">
+                                        <input type="date" placeholder="Fecha de inicio" name="last_job_date_init"
+                                            class="col-12 form-init-date" id="">
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row text-black mt-1">
-                                <div class="col-md-4 ">
-                                    <div class="form-outline pt-1" style="text-align: right;">
-                                        <label class="form-label text-black " for="form8Example1">FUNCIONES
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-outline">
-                                        <textarea name="funtion_last_company2" id="" cols="30" rows="6" placeholder="" class="col-12"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row text-black mt-1">
-                                <div class="col-md-4 ">
-                                    <div class="form-outline pt-1" style="text-align: right;">
-                                        <label class="form-label text-black " for="form8Example1">FECHA INICIO
-                                            CONTRATO
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-outline">
-                                        <input type="date" placeholder="Fecha de inicio" name="date_init_company2"
-                                            class="col-12" value="2000-01-01">
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="row text-black mt-1">
                                 <div class="col-md-4 ">
                                     <div class="form-outline pt-1" style="text-align: right;">
@@ -762,14 +689,168 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-outline">
-                                        <input type="date" placeholder="fecha de fin" name="date_finally_company2"
-                                            class="col-12" value="2000-01-01">
+                                        <input type="date" placeholder="fecha de fin" name="last_job_date_end"
+                                            class="col-12 form-init-date" >
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="row text-black mt-1 justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn" id="bjob1"><i class="fas fa-plus"></i> AGREGAR TRABAJO</button>
+                                  
+                                </div>
+                            </div>
                         </div>
 
+                        <div id="job2" class="mt-5" style="display: none">
+                            <h4 class="text-center ">PENÚLTIMO TRABAJO</h4>
+                            <div class="row text-black">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">NOMBRE</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="text" value="-" placeholder="" name="penultimate_job_name" class="col-12 form-init-text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">CARGO</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="text" value="-" placeholder="" name="penultimate_job_position" class="col-12 form-init-text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FUNCIONES</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <textarea value="-" name="penultimate_job_functions" id="" cols="30" rows="6" placeholder="" class="col-12 form-init-area">-</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FECHA INICIO CONTRATO
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="date" value="2000-01-01" placeholder="Fecha de inicio" name="penultimate_job_date_init"
+                                            class="col-12 form-init-date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FECHA FIN CONTRATO
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="date" value="2000-01-01" placeholder="fecha de fin" name="penultimate_job_date_end"
+                                            class="col-12 form-init-date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1 justify-content-center">
+                                <div class="col-md-6 text-end">
+                                    <button type="button" class="btn" id="bjob2"><i class="fas fa-plus"></i> AGREGAR TRABAJO</button>
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <button type="button" class="btn text-danger" id="bdjob2"><i class="fas fa-times text-danger"></i> ELIMINAR TRABAJO</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="job3" class="mt-5" style="display: none">
+                            <h4 class="text-center">ANTEPEÚLTIMO TRABAJO</h4>
+                            <div class="row text-black">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">NOMBRE</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="text" value="-" placeholder="" name="antepenultimate_job_name" class="col-12 form-init-text">
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">CARGO</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="text" value="-" placeholder="" name="antepenultimate_job_position" class="col-12 form-init-text">
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FUNCIONES</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <textarea name="antepenultimate_job_functions" id="" value="-" cols="30" rows="6" placeholder="" class="col-12 form-init-area">-</textarea>
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FECHA INICIO CONTRATO
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="date" value="2000-01-01" placeholder="Fecha de inicio" name="antepenultimate_job_date_init"
+                                            class="col-12 form-init-date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline pt-1" style="text-align: right;">
+                                        <label class="form-label text-black " for="form8Example1">FECHA FIN CONTRATO
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="date" value="2000-01-01" placeholder="fecha de fin" name="antepenultimate_job_date_end"
+                                            class="col-12 form-init-date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-black mt-1 justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn text-danger" id="bdjob3"><i class="fas fa-times text-danger"></i> ELIMINAR TRABAJO</button>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="step">
                         <h3 class="text-center mb-4"> CUENTANOS DE TI</h3>
@@ -860,6 +941,33 @@
                             </div>
                         </div>
 
+
+
+                        <div class="row text-black mt-1">
+                            <div class="col-md-4 ">
+                                <div class="form-outline pt-1" style="text-align: right;">
+                                    <label class="form-label text-black " for="form8Example1">TALLA PANTALON</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <select class="form-select col form_control" name="pant_size">
+                                        <option value="4">4</option>
+                                        <option value="4">6</option>
+                                        <option value="8">8</option>
+                                        <option value="10">10</option>
+                                        <option value="12">12</option>
+                                        <option value="14">14</option>
+                                        <option value="28">28</option>
+                                        <option value="30">30</option>
+                                        <option value="32">32</option>
+                                        <option value="34">34</option>
+                                        <option value="36">36</option>
+                                        <option value="38">38</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row text-black mt-1">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
@@ -868,8 +976,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
-                                    <select class="form-select col form_control " name="shoes_size">
 
+                                    <select class="form-select col form_control" name="shoes_size">
                                         <option value="34">34</option>
                                         <option value="35">35</option>
                                         <option value="36">36</option>
@@ -881,26 +989,29 @@
                                         <option value="42">42</option>
                                         <option value="43">43</option>
                                         <option value="44">44</option>
-
                                     </select>
                                 </div>
                             </div>
                         </div>
-
                         <div class="row text-black mt-1">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
-                                    <label class="form-label text-black " for="form8Example1">TALLA PANTALON</label>
+                                    <label class="form-label text-black " for="form8Example1">NÚMERO DE HIJOS</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-outline">
-                                    <input type="number" placeholder="Talla de pantalon" name="pant_size"
-                                        class="col-12">
+                                    <select class="form-select col form_control" name="children">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4 o más">4 O MÁS</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row text-black mt-1 ">
+                        {{-- <div class="row text-black mt-1 ">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
                                     <label class="form-label text-black " for="form8Example1">FOTO DEL
@@ -909,11 +1020,11 @@
                             </div>
                             <div class="col-md-6 ">
                                 <div class="form-outline">
-                                    {{-- <input type="file" name="photo_cv"> --}}
+                                    
                                     <input type="file"  class="file-input" id="archivo1" name="photo_cv" accept="image/*" data-button="Examinar" data-empty="Sin archivos" multiple>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row text-black mt-1 ">
                             <div class="col-md-4 ">
                                 <div class="form-outline pt-1" style="text-align: right;">
@@ -923,7 +1034,9 @@
                             <div class="col-md-6 ">
                                 <div class="form-outline">
                                     {{-- <input type="file" name="file_cv"> --}}
-                                    <input type="file"  class="file-input" id="archivo2" name="file_cv" accept=".pdf,.doc,.docx" data-button="Examinar" data-empty="Sin archivos" multiple>
+                                    <input type="file" class="file-input" id="archivo2" name="file_cv"
+                                        accept=".pdf,.doc,.docx" data-button="Examinar" data-empty="Sin archivos"
+                                        multiple>
                                 </div>
                             </div>
                         </div>
@@ -983,6 +1096,24 @@
     <script>
         const create = str => document.createElement(str);
         const files = document.querySelectorAll('.file-input');
+        var edad = document.querySelector("#age");
+        var email = document.querySelector("#email");
+
+        var bjob1 = document.querySelector("#bjob1");
+        var bjob2 = document.querySelector("#bjob2");
+        var bdjob2 = document.querySelector("#bdjob2");
+        var bdjob3 = document.querySelector("#bdjob3");
+       
+        var job1 = document.querySelector("#job1");
+        var job2 = document.querySelector("#job2");
+        var job3 = document.querySelector("#job3");
+
+        var experience = document.querySelector("#experience");
+        
+        var form_select = document.getElementsByClassName("form-init-select");
+        var form_area = document.getElementsByClassName("form-init-area");
+        var form_text = document.getElementsByClassName("form-init-text");
+        var form_date = document.getElementsByClassName("form-init-date");
         Array.from(files).forEach(
             f => {
                 const label = create('label');
@@ -1081,6 +1212,119 @@
                 checkBox.value = "";
             }
         }
+
+        edad.addEventListener("change", (event) => {
+            if (edad.value < 18) {
+                edad.value = "";
+                Swal.fire(
+                    'Error',
+                    "No se pueden registrar menores de edad",
+                    'error'
+                );
+
+            }
+        });
+        email.addEventListener("change", (event) => {
+            var texto = email.value;
+            var regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
+            if (!regex.test(texto)) {
+                email.value = "";
+                Swal.fire(
+                    'Error',
+                    "Correo incorrecto",
+                    'error'
+                );
+            }
+        });
+        experience.addEventListener("change", (e) => {
+            e.preventDefault();
+            if (experience.checked == true) {
+                job1.style.display='none';
+                job2.style.display='none';
+                job3.style.display='none';
+                for (let i = 0; i < form_date.length; i++) {
+                    form_date[i].value="2000-01-01";
+                }
+                for (let i = 0; i < form_select.length; i++) {
+                    form_select[i].value="-";
+                }
+                for (let i = 0; i < form_area.length; i++) {
+                    form_area[i].value="-";
+                }
+                for (let i = 0; i < form_text.length; i++) {
+                    form_text[i].value="-";
+                }
+            } else {
+                job1.style.display='block';
+                job2.style.display='none';
+                job3.style.display='none';
+                for (let i = 0; i < 2; i++) {
+                    form_date[i].value="";
+                }
+                for (let i = 0; i < 1; i++) {
+                    form_select[i].value="-";
+                }
+                for (let i = 0; i < 1; i++) {
+                    form_area[i].value="";
+                }
+                for (let i = 0; i < 2; i++) {
+                    form_text[i].value="";
+                }
+            }
+        });
+        bjob1.addEventListener("click", (event) => {
+                job2.style.display='block';
+                job3.style.display='none';
+                for (let i = 2; i < 4; i++) {
+                    form_date[i].value="";
+                }
+                for (let i = 1; i < 2; i++) {
+                    form_area[i].value="";
+                }
+                for (let i = 2; i < 4; i++) {
+                    form_text[i].value="";
+                }
+        });
+        bjob2.addEventListener("click", (event) => {
+                job2.style.display='block';
+                job3.style.display='block';
+                for (let i = 4; i < 6; i++) {
+                    form_date[i].value="";
+                }
+                for (let i = 2; i < 3; i++) {
+                    form_area[i].value="";
+                }
+                for (let i = 4; i < 6; i++) {
+                    form_text[i].value="";
+                }
+        });
+        bdjob2.addEventListener("click", (event) => {
+                job2.style.display='none';
+                job3.style.display='none';
+                for (let i = 2; i < form_date.length; i++) {
+                    form_date[i].value="2000-01-01";
+                }
+                for (let i = 1; i < form_area.length; i++) {
+                    form_area[i].value="-";
+                }
+                for (let i = 2; i < form_text.length; i++) {
+                    form_text[i].value="-";
+                }
+        });
+        bdjob3.addEventListener("click", (event) => {
+                job2.style.display='block';
+                job3.style.display='none';
+                for (let i = 4; i < form_date.length; i++) {
+                    form_date[i].value="";
+                }
+                for (let i = 2; i < form_area.length; i++) {
+                    form_area[i].value="";
+                }
+                for (let i = 4; i < form_text.length; i++) {
+                    form_text[i].value="";
+                }
+        });
     </script>
     <script src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('libs/sbadmin/js/sb-admin-2.min.js') }}"></script>

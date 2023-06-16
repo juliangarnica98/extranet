@@ -8,46 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Cv extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'type_id',
-        'num_id',
-        'num_cell',
-        'num_cell2',
-        'age',
-        'email',
-        'address',
-        'city_address',
-        'academic_profile',
-        'name_last_company',
-        'position_last_company',
-        'funtion_last_company',
-        'work_last_company',
-        'date_init_company',
-        'date_finally_company',
-        'name_last_company2',
-        'position_last_company2',
-        'funtion_last_company2',
-        'date_init_company2',
-        'date_finally_company2',
-        'previously_work',
-        'family',
-        'like_to_work',
-        'should_choose',
-        'shirt_size',
-        'pant_size',
-        'shoes_size',
-        'revision',
-        'state_id',
-        'type',
-        'area',
-        'pruebas'
+    protected $guarded = [
     ];
-
-   
- 
-
     public function vacants(){
         return $this->belongsToMany(Vacant::class, 'cvvacants')->withPivot('revision','pruebas','state_id'); 
+    }
+    public function jobs(){
+        return $this->hasOne(Job::class);
     }
 }

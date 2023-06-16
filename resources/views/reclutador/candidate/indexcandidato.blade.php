@@ -143,152 +143,162 @@
     <div class="page-content page-container" id="page-content">
         <h2 class="text-center  pt-5 text-black" style="color: #000000">VACANTES</h2>
 
-        
+
         @if (count($vacants) == 0)
-        <div class="card box" style="background-color: #ffffff;height: auto">
-            <div class="card-body">
+            <div class="card box" style="background-color: #ffffff;height: auto">
+                <div class="card-body">
 
-                <p class="card-description text-center">
-                    <b>NO SE HAN CANDIDATOS</b>
-                </p>
-            </div>
-        </div>
-        @else    
-        <div class="">
-            <div class="row  pt-2 justify-content-center">
-                <div class="col-md-3 grid-margin stretch-card">
-                    <div class="card box" style="background-color: #ffffff;height: auto">
-                        <div class="card-body">
-
-                            <p class="card-description">
-                                Filtros
-                            </p>
-                        </div>
-                    </div>
+                    <p class="card-description text-center">
+                        <b>NO SE HAN CANDIDATOS</b>
+                    </p>
                 </div>
-                <div class="col-md-9 grid-margin stretch-card">
+            </div>
+        @else
+            <div class="">
+                <div class="row  pt-2 justify-content-center">
+                    <div class="col-md-3 grid-margin stretch-card">
+                        <div class="card box" style="background-color: #ffffff;height: auto">
+                            <div class="card-body">
 
-
-                    <div class="row ml-1 mr-1">
-                        <div class="col-md-3">
-                            <p class="text-center"> <small class="text-center text-black "><b>DESCRIPCIÓN</b></small></p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <small class=" text-black "><b>FECHA</b></small>
-                        </div>
-                        <div class="col-md-6 text-center" >
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <p class="text-center"> <small class="text-center text-black "><b>EDITAR</b></small></p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p class="text-center"> <small class="text-center text-black "><b>DUPLICAR</b></small></p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p class="text-center"><small class="text-center text-black "><b>CANDIDATOS</b></small></p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p class="text-center"> <small class="text-center text-black "><b>ARCHIVAR</b></small></p>
-                                </div>
+                                <p class="card-description">
+                                    Filtros
+                                </p>
                             </div>
                         </div>
-                        
                     </div>
+                    <div class="col-md-9 grid-margin stretch-card">
+
+
+                        <div class="row ml-1 mr-1">
+                            <div class="col-md-3">
+                                <p class="text-center"> <small class="text-center text-black "><b>DESCRIPCIÓN</b></small>
+                                </p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <small class=" text-black "><b>FECHA</b></small>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <p class="text-center"> <small class="text-center text-black "><b>EDITAR</b></small>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p class="text-center"> <small
+                                                class="text-center text-black "><b>DUPLICAR</b></small></p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p class="text-center"><small
+                                                class="text-center text-black "><b>CANDIDATOS</b></small></p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p class="text-center"> <small
+                                                class="text-center text-black "><b>ARCHIVAR</b></small></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
 
 
-                    @foreach ($vacants as $vacant)
-                        <div class="mt-1">
-                            <div class="card pl-0 pr-0 ml-0 mr-0 border-0" style="background-color: #fff">
-                                {{-- border-right-0 border-left-0 --}}
+                        @foreach ($vacants as $vacant)
+                            <div class="mt-1">
+                                <div class="card pl-0 pr-0 ml-0 mr-0 border-0" style="background-color: #fff">
+                                    {{-- border-right-0 border-left-0 --}}
 
-                                <div class="card-body pt-1 pb-1 ml-0 mr-0">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <h5 class="text-black text-center">
-                                                <strong>{{ $vacant->title }}</strong><br>
-                                                <small class="card-subtitle mb-1 text-black">{{ $vacant->city }} <br>
-                                                    ${{ number_format($vacant->salary, 1, ',', '.') }} COP <br>
-                                                    @if ($vacant->state == 1)
-                                                        <b class="text-info">ACTIVA</b>
-                                                    @else
-                                                        <b class="text-danger">ARCHIVADA</b>
-                                                    @endif
-                                                </small><br>
-                                            </h5>
-                                        </div>
-                                        <div class="col-md-3  text-center">
-                                            <h6 class="text-black">
-                                                <div class="text-black text-center pt-4">
-                                                    {{ date_format($vacant->created_at, 'Y/m/d') }}
-                                                </div>
-                                            </h6>
-                                        </div>
-                                        <div class="col-md-6 text-center" >
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <h5 class="text-black">
-                                                        <div class="text-black text-center pt-4 link-a">
-                                                            <a href="{{ route('reclutador.vacant.edit', ['id' => $vacant->id]) }}"
-                                                                {{-- <a href="#"editar-vacante --}}
-                                                                class="card-block stretched-link text-decoration-none text-black">
-                                                                <i class="fas fa-pen"></i>
-                                                            </a>
-                                                        </div>
-                                                    </h5>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <h5 class="text-black">
-                                                        <div class="text-black text-center pt-4 link-a">
-                                                            <a href="{{ route('reclutador.vacant.duplicar', ['id' => $vacant->id]) }}"
-                                                                class="card-block stretched-link text-decoration-none text-black">
-                                                                <i class="fas fa-clone"></i>
-                                                            </a>
-                                                        </div>
-                                                    </h5>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <h5 class="text-black">
-                                                        <div class="text-black text-center pt-4 link-a">
-                                                            <a href="{{ route('reclutador.aspirantes', ['id' => $vacant->id]) }}"
-                                                                class="card-block stretched-link text-decoration-none text-black">
-                                                                {{ $vacant->num_aplic }} <i class="fas fa-user-friends"></i>
-                                                            </a>
-                                                        </div>
-                                                    </h5>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <h5 class="text-black">
-                                                        <div class="text-black text-center pt-4 link-a">
-                                                            @if ( $vacant->state==1)
-                                                            <a onclick="archivar_vacante({{ $vacant->id }})" 
-                                                                class="card-block stretched-link text-decoration-none text-black" >
-                                                                <i class="fas fa-archive"></i>
-                                                            </a>
-                                                            @else
-                                                                <i class="fas fa-archive text-danger"></i>       
-                                                            @endif
-                                                        </div>
-                                                    </h5>
-                                                </div>
-                                                
+                                    <div class="card-body pt-1 pb-1 ml-0 mr-0">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <h5 class="text-black text-center">
+                                                    <strong>{{ $vacant->title }}</strong><br>
+                                                    <small class="card-subtitle mb-1 text-black">{{ $vacant->city }} <br>
+                                                        @if ($vacant->salary == 'salario confidencial')
+                                                            Salario confidencial <br>
+                                                        @else
+                                                            {{$vacant->salary}} <br>
+                                                        @endif
+                                                        @if ($vacant->state == 1)
+                                                            <b class="text-info">ACTIVA</b>
+                                                        @else
+                                                            <b class="text-danger">ARCHIVADA</b>
+                                                        @endif
+                                                    </small><br>
+                                                </h5>
                                             </div>
+                                            <div class="col-md-3  text-center">
+                                                <h6 class="text-black">
+                                                    <div class="text-black text-center pt-4">
+                                                        {{ date_format($vacant->created_at, 'Y/m/d') }}
+                                                    </div>
+                                                </h6>
+                                            </div>
+                                            <div class="col-md-6 text-center">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <h5 class="text-black">
+                                                            <div class="text-black text-center pt-4 link-a">
+                                                                <a href="{{ route('reclutador.vacant.edit', ['id' => $vacant->id]) }}"
+                                                                    {{-- <a href="#"editar-vacante --}}
+                                                                    class="card-block stretched-link text-decoration-none text-black">
+                                                                    <i class="fas fa-pen"></i>
+                                                                </a>
+                                                            </div>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h5 class="text-black">
+                                                            <div class="text-black text-center pt-4 link-a">
+                                                                <a href="{{ route('reclutador.vacant.duplicar', ['id' => $vacant->id]) }}"
+                                                                    class="card-block stretched-link text-decoration-none text-black">
+                                                                    <i class="fas fa-clone"></i>
+                                                                </a>
+                                                            </div>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h5 class="text-black">
+                                                            <div class="text-black text-center pt-4 link-a">
+                                                                <a href="{{ route('reclutador.aspirantes', ['id' => $vacant->id]) }}"
+                                                                    class="card-block stretched-link text-decoration-none text-black">
+                                                                    {{ $vacant->num_aplic }} <i
+                                                                        class="fas fa-user-friends"></i>
+                                                                </a>
+                                                            </div>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h5 class="text-black">
+                                                            <div class="text-black text-center pt-4 link-a">
+                                                                @if ($vacant->state == 1)
+                                                                    <a onclick="archivar_vacante({{ $vacant->id }})"
+                                                                        class="card-block stretched-link text-decoration-none text-black">
+                                                                        <i class="fas fa-archive"></i>
+                                                                    </a>
+                                                                @else
+                                                                    <i class="fas fa-archive text-danger"></i>
+                                                                @endif
+                                                            </div>
+                                                        </h5>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
                                         </div>
-                            
+
+
                                     </div>
 
-
                                 </div>
-
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
 
+
+                    </div>
 
                 </div>
-
             </div>
-        </div>
         @endif
     </div>
     <script>
@@ -296,30 +306,30 @@
         function archivar_vacante(id) {
             Swal.fire({
                 title: '¿Estas seguro de archivar la vacante?',
-                
+
                 showCancelButton: true,
                 confirmButtonText: 'Seguro',
                 cancelButtonText: 'Cancelar',
-             
+
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     fetch('/reclutador/archivar-vacante/' + id, {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json;charset=UTF-8",
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                })
-                .then((response) => {
-                    window.location.reload()
-                })
-                .then(json => console.log(json));
+                            method: "POST",
+                            headers: {
+                                "Content-type": "application/json;charset=UTF-8",
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        })
+                        .then((response) => {
+                            window.location.reload()
+                        })
+                        .then(json => console.log(json));
                 } else if (result.isDenied) {
-                    
+
                 }
             })
-            
+
 
         }
     </script>

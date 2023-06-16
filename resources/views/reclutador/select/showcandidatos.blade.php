@@ -143,44 +143,13 @@
     <div class="page-content page-container" id="page-content">
         <div class="">
 
-            <div class="row pl-3 pr-3 pt-3 justify-content-center">
+            <div class="row  pt-3 justify-content-center">
 
 
                 <div class="col-md-12 grid-margin stretch-card">
                     <h4 class="text-center text-black"><b> SELECCIONADOS</b></h4>
                     <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
-                    <div class="row justify-content-center"
-                        style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="fas fa-users"></i>
-                                    POSTULADOS</b><span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link active"> <a class="nav-link text-center text-black "
-                                href="{{ route('reclutador.seleccionados.buscar', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="fas fa-user-friends"></i>
-                                    SELECCIONADOS</b><span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.reclutamientos.buscar', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="fas fa-tasks"></i> PRUEBAS</b><span class="sr-only">(current)</span></a>
-                        </div>
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.analista.index', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="fas fa-comment-alt"></i>
-                                    ENTREVISTAS</b>
-                                <span class="sr-only">(current)</span></a></div>
-                        <div class="col-md-2 sub-nav-link">
-
-                            <a class="nav-link text-center text-black" href="#"><b><i class="fas fa-check-double"></i>
-                                    FINALISTAS</b>
-                                <span class="sr-only">(current)</span></a>
-                        </div>
-                        <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                                href="{{ route('reclutador.discarded.index', ['id' => $name_vacant->id]) }}"><b><i
-                                        class="far fa-times-circle"></i>
-                                    DESCARTADOS</b>
-                                <span class="sr-only">(current)</span></a></div>
-
-                    </div>
+                    @include('layouts.menu')
                     @if (count($postulaciones) == 0)
                         <div class="col-md-12 grid-margin stretch-card pt-5">
                             <div class="card box">
@@ -244,9 +213,9 @@
                                                                 <div class="col-md-3 text-black pt-1 text-center">
                                                                     <strong><i>
                                                                             {{ $cv->name }}</i></strong>
-                                                                    <img style="width: 4rem;height: 4rem;border-radius: 50%"
+                                                                    {{-- <img style="width: 4rem;height: 4rem;border-radius: 50%"
                                                                         class="img-fluid"
-                                                                        src="{{ asset('storage/avatars/' . $cv->photo_cv) }}" />
+                                                                        src="{{ asset('storage/avatars/' . $cv->photo_cv) }}" /> --}}
 
                                                                 </div>
                                                                 <div class="col-md-3 text-black pt-1 text-center">
@@ -264,7 +233,7 @@
                                                                     </a>
                                                                     @include('reclutador.select.modals.descartarcandidato')
                                                                 </div>
-                                                                <div class="col-md-2 text-black pt-1 text-center link-a">
+                                                                <div class="col-md-2 text-black pt-2 text-center link-a">
                                                                     <input type="checkbox" id="cbox2" value="{{ $cv->id }}" name="seleccionados[]">
                                                                 </div>
                                                             </div>

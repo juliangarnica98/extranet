@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'type_job',
-        'description',
-        'location',
-        'time',
-        'state'
-        
-    ];
+
+    protected $guarded=[];
+    public function cv()
+    {
+        return $this->belongsTo('App\Models\Cv');
+    }
 }

@@ -29,7 +29,8 @@ class DiscardedController extends Controller
         $name_vacant=Vacant::where('id',$id)->first();
         // return $discardeds;
         // return $descartados;
-        return view('reclutador.discarded.indexdiscarded',compact('discardeds','vacantes','cvs','name_vacant','descartados'));
+        $active_descartados =1;
+        return view('reclutador.discarded.indexdiscarded',compact('discardeds','vacantes','cvs','name_vacant','descartados','active_descartados'));
     }
 
     /**

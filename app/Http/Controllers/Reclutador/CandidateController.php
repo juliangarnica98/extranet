@@ -38,10 +38,10 @@ class CandidateController extends Controller
         $postulacion->revision=1;
         $postulacion->save();
         Paginator::useBootstrap();
-        $cv = Cv::where('id',$id)->first();
+        $cv = Cv::with('jobs')->where('id',$id)->first();
         $name_vacant=Vacant::where('id',$vacant)->first();
-        // return $pivot;
-        return view('reclutador.candidate.showcandidate',compact('cv','postulacion','name_vacant'));
+        $active_postulados =1;
+        return view('reclutador.candidate.showcandidate',compact('cv','postulacion','name_vacant','active_postulados'));
     }
     public function buscar($id)
     {    
@@ -50,8 +50,9 @@ class CandidateController extends Controller
         $vacants=Vacant::with('cvs')->where('id',$id)->paginate();
         $name_vacant=Vacant::where('id',$id)->first();
         $cvvacant = Cvvacant::where('vacant_id',$id)->where('state_id',1)->get();
+        $active_postulados =1;
         // return $vacants;
-        return view('reclutador.candidate.showcandidatos',compact('vacants','states','name_vacant','cvvacant'));
+        return view('reclutador.candidate.showcandidatos',compact('vacants','states','name_vacant','cvvacant','active_postulados'));
     }
     public function descartar($id,$vacant,Request $request){
         $postulacion = Cvvacant::where('cv_id',$id)->where('vacant_id',$vacant)->first();
@@ -73,7 +74,8 @@ class CandidateController extends Controller
         $postulacion = Cvvacant::where('cv_id',$id)->where('vacant_id',$vacant)->first();
         $state = State::find(2);
         $state->cvvacant()->save($postulacion);  
-        return back()->with('message','Se ha seleccionado el candidato');
+        return \Redirect::route('reclutador.seleccionados.buscar', $vacant)->with('message', 'Se ha seleccionado el candidato');
+  
     }
 
     

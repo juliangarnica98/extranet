@@ -49,7 +49,8 @@ class RecruitmentController extends Controller
         $vacant = Vacant::where('id',$id)->first();
         $name_vacant = Vacant::where('id',$id)->first();
         $cvs = Cv::all();
-        return view('reclutador.reclutamiento.indexreclutamiento',compact('vacant','postulaciones','cvs','name_vacant'));
+        $active_pruebas =1;
+        return view('reclutador.reclutamiento.indexreclutamiento',compact('vacant','postulaciones','cvs','name_vacant','active_pruebas'));
     }
 
     public function send($id)
@@ -84,17 +85,13 @@ class RecruitmentController extends Controller
       
         $reclutamiet->ethikos = $request->ethikos;
         $reclutamiet->ten_disc = $request->ten_disc;
-        $reclutamiet->potencial_comercial = $request->potencial_comercial;
-        $reclutamiet->iq_factorial = $request->iq_factorial;
-        $reclutamiet->vp_test = $request->vp_test;
+        $reclutamiet->potencial_comercial = $request->potencial_comercial?$request->potencial_comercial:'';
+        $reclutamiet->iq_factorial = $request->iq_factorial?$request->iq_factorial:'';
+        $reclutamiet->vp_test = $request->vp_test?$request->vp_test:'';
         $reclutamiet->ventas =$request->ventas ?$request->ventas:'';
-        $reclutamiet->riesgos =$request->riesgos?$request->riesgos:'';
         $reclutamiet->tecnica =$request->tecnica?$request->tecnica:'';
-        $reclutamiet->visita =$request->visita?$request->visita:'';
-        $reclutamiet->poligrafo =$request->poligrafo?$request->poligrafo:'';
-
         $reclutamiet->save();
-        return back()->with('message','Calificación');
+        return back()->with('message','Se ha registrado la calificación');
     }
 
 

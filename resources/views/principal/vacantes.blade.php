@@ -133,39 +133,6 @@
                                     style="font-weight: bold; font-size: 1.3rem">INICIAR SESION</a></strong>
                         </li>
                         <div class="divider bg-light mt-5" style=" border-top: 1px solid #fff;"></div>
-                        {{-- <li class="nav-item pt-5">
-                            <h5 class="text-center text-light" style="font-weight: bold;">NUESTRAS REDES SOCIALES</h5>
-                            <div class="social-links mt-3 text-center">
-                                <div class="row pt-5">
-                                    <div class="col">
-                                        <a href="#" class="facebook" style="font-size: 2rem;color: #cc0571;"><i
-                                                class="bx bxl-facebook"></i></a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#" class="instagram" style="font-size: 2rem;color: #62a59d;"><i
-                                                class="bx bxl-instagram"></i></a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#" class="linkedin" style="font-size: 2rem;color: #cc0571;"><i
-                                                class="bx bxl-linkedin"></i></a>
-                                    </div>
-                                </div>
-                                <div class="row mt-1">
-                                    <div class="col">
-                                        <a href="#" class="facebook" style="font-size: 2rem;color: #62a59d;"><i
-                                                class="bx bxl-facebook"></i></a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#" class="instagram" style="font-size: 2rem;color: #cc0571;"><i
-                                                class="bx bxl-instagram"></i></a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#" class="linkedin" style="font-size: 2rem;color: #62a59d;"><i
-                                                class="bx bxl-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li> --}}
                     </ul>
                 </div>
             </nav>
@@ -239,28 +206,6 @@
                                                 </h2>
                                                 <form action="{{ route('filtrar.vacantes') }}" method="get">
                                                     @csrf
-                                                    {{-- <span for="" class="text-center">Area</span>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="area"
-                                                            id="flexRadioDisabled" value="cedi">
-                                                        <label class="form-check-label" for="flexRadioDisabled">
-                                                            Cedi
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="area"
-                                                            id="flexRadioCheckedDisabled" value="administrativo">
-                                                        <label class="form-check-label" for="flexRadioCheckedDisabled">
-                                                            Administrativos
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="area"
-                                                            id="flexRadioCheckedDisabled" value="comercial">
-                                                        <label class="form-check-label" for="flexRadioCheckedDisabled">
-                                                            Comercial
-                                                        </label>
-                                                    </div> --}}
                                                     <span for="" class="text-center">Salario</span>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="salario"
@@ -321,7 +266,7 @@
                                                                     </h5>
                                                                     <h6 class="card-subtitle mb-1 text-dark">
                                                                         {{ $vacant->city }} -
-                                                                        ${{ number_format($vacant->salary, 1, ',', '.') }} COP
+                                                                        {{$vacant->salary }} COP
                                                                     </h6>
                                                                     <p class="card-text text-dark">Educación requerida:
                                                                         {{ $vacant->education }} </p>
@@ -348,40 +293,14 @@
         
         
         
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <p class="text-center">
-                                                                {{ $vacant_found->city }} <br>
-                                                                <small id="ago"
-                                                                    class="card-subtitle mb-2 text-dark text-center pl-2 pr-2">
-                                                                    {{ date('d-m-Y', strtotime($vacant_found->created_at)) }}</small>
-                                                                <br>
-        
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="d-flex justify-content-center">
-                                                                
-                                                                <button class="btn btn-block" data-toggle="modal"
-                                                                    style="border-radius: 20px; background-color: #e85199;color:#fff"
-                                                                    data-target="#cedula_verificacion">
-                                                                    Aplicar
-                                                                </button>
-        
-                                                                @include('principal.modals.verificarcedula')
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-        
-        
+                        
         
                                                     <hr>
                                                     <div class="row pb-3 mt-3">
                                                         <div class="col-4">
                                                             <p class="card-text border text-center"
                                                                 style="border-radius: 20px;">
-                                                                ${{ number_format($vacant_found->salary, 1, ',', '.') }} COP
+                                                                {{ $vacant_found->salary }} COP
                                                             </p>
                                                         </div>
                                                         <div class="col-4">

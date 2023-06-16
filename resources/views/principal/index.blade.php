@@ -462,10 +462,10 @@
                             <strong> <a class="nav-link hover-underline-animation text-light" href="#home"
                                     style="font-weight: bold; font-size: 1.3rem">NOSOTROS</a></strong>
                         </li>
-                        <li class="nav-item pt-3">
+                        {{-- <li class="nav-item pt-3">
                             <strong> <a class="nav-link hover-underline-animation text-light" href="#marcas"
                                     style="font-weight: bold; font-size: 1.3rem">MARCAS</a></strong>
-                        </li>
+                        </li> --}}
                         <li class="nav-item pt-3">
                             <strong><a class="nav-link hover-underline-animation text-light" href="#ofertas"
                                     style="font-weight: bold; font-size: 1.3rem">OFERTAS</a></strong>
@@ -590,10 +590,10 @@
                     <div class="row">
                         <div class="pt-0">
                             <img src="{{asset('images/oferta.png')}}" alt="" class="img-fluid">
-                            
+
                         </div>
                         <div class="container" data-aos="fade-up">
-                            
+
                             <div class="row pt-5">
                                 <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in"
                                     data-aos-delay="100">
@@ -645,7 +645,7 @@
                                     vacantes</a> --}}
                         </div>
                         {{-- <div class="col-lg-3 cta-btn-container text-center">
-                            
+
                         </div> --}}
                     </div>
                 </div>
@@ -655,7 +655,7 @@
 
                     </div>
                     <div class="container" data-aos="fade-up">
-                        
+
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-6 mt-5 mt-lg-0 d-flex align-items-stretch pt-5">
                                 <form action="forms/contact.php" method="post" role="form"
@@ -692,7 +692,7 @@
 
         </div>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script>

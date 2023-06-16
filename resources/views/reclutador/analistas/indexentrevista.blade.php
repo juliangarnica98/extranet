@@ -99,7 +99,7 @@
         <h4 class="text-center text-black pt-5"><b>ASIGNACION DE ENTREVISTAS</b></h4>
         <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
 
-        <div class="row justify-content-center" style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
+        {{-- <div class="row justify-content-center" style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
             <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
                     href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i class="fas fa-users"></i>
                         POSTULADOS</b><span class="sr-only">(current)</span></a></div>
@@ -128,7 +128,8 @@
                         DESCARTADOS</b>
                     <span class="sr-only">(current)</span></a></div>
 
-        </div>
+        </div> --}}
+        @include('layouts.menu')
         <div class="">
 
 

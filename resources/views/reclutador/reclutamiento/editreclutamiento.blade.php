@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.admin')
 <style>
     body {
@@ -102,36 +99,7 @@
         <h2 class="text-center  pt-5 text-black" style="color: #000000">CALIFICAR CANDIDATO</h2>
         <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
 
-        <div class="row justify-content-center" style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
-            <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
-                    href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
-                            class="fas fa-users"></i>
-                        POSTULADOS</b><span class="sr-only">(current)</span></a></div>
-            <div class="col-md-2 sub-nav-link "> <a class="nav-link text-center text-black "
-                    href="{{ route('reclutador.seleccionados.buscar', ['id' => $name_vacant->id]) }}"><b><i
-                            class="fas fa-user-friends"></i>
-                        SELECCIONADOS</b><span class="sr-only">(current)</span></a></div>
-            <div class="col-md-2 sub-nav-link active"><a class="nav-link text-center text-black"
-                    href="{{ route('reclutador.reclutamientos.buscar', ['id' => $name_vacant->id]) }}"><b><i
-                            class="fas fa-tasks"></i> PRUEBAS</b><span class="sr-only">(current)</span></a>
-            </div>
-            <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                    href="{{ route('reclutador.analista.index', ['id' => $name_vacant->id]) }}"><b><i class="fas fa-comment-alt"></i>
-                        ENTREVISTAS</b>
-                    <span class="sr-only">(current)</span></a></div>
-            <div class="col-md-2 sub-nav-link">
-
-                <a class="nav-link text-center text-black" href="#"><b><i class="fas fa-check-double"></i>
-                        FINALISTAS</b>
-                    <span class="sr-only">(current)</span></a>
-            </div>
-            <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                    href="{{ route('reclutador.discarded.index', ['id' => $name_vacant->id]) }}"><b><i
-                            class="far fa-times-circle"></i>
-                        DESCARTADOS</b>
-                    <span class="sr-only">(current)</span></a></div>
-
-        </div>
+        @include('layouts.menu')
         <div class="">
 
             <form method="POST" action="{{ route('reclutador.update', $id) }}">
@@ -151,7 +119,7 @@
                             <div class="col-md-6">
                                 <div class="form-outline">
                                     <input type="number" class="form-control" aria-describedby="emailHelp" placeholder=""
-                                        value="0" name="ethikos"  style="border-radius: 25px">
+                                        value="0" name="ethikos" style="border-radius: 25px">
                                 </div>
                             </div>
                         </div>
@@ -163,83 +131,83 @@
                             </div>
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
-                                    <input type="number" class="form-control" placeholder="" name="ten_disc"
-                                        value="0"  style="border-radius: 25px">
+                                    <input type="number" class="form-control" placeholder="" name="ten_disc" value="0"
+                                        style="border-radius: 25px">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @if ($vacante->comercial == 'aplica')
+                    <div class="card box mt-3">
+                        <div class="card-header card-header-warning" style="border-radius: 15px;">
+                            <h5 class="card-title text-center"><b>PRUEBAS COMERCIAL</b></h5>
+                        </div>
+                        <div class="card-body text-black">
+                            <div class="row text-black">
+                                <div class="col-md-4 ">
+                                    <div class="form-outline text-right pt-1">
+                                        <label class="form-label text-black " for="form8Example1">POTENCIAL
+                                            COMERCIAL</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            name="potencial_comercial" value="0" style="border-radius: 25px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-outline text-right pt-1">
+                                        <label class="form-label text-black" for="form8Example1">IQ FACTORIAL</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pt-1">
+                                    <div class="form-outline">
+                                        <input type="number" class="form-control" placeholder="" name="iq_factorial"
+                                            value="0" style="border-radius: 25px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-outline text-right">
+                                        <label class="form-label text-black" for="form8Example3">V&P TEST</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pt-1">
+                                    <div class="form-outline">
+                                        <input type="number" class="form-control" placeholder="" name="vp_test"
+                                            value="0" style="border-radius: 25px">
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="card box mt-3">
-                    <div class="card-header card-header-warning" style="border-radius: 15px;">
-                        <h5 class="card-title text-center"><b>PRUEBAS COMERCIAL</b></h5>
+                        </div>
                     </div>
-                    <div class="card-body text-black">
-                        <div class="row text-black">
-                            <div class="col-md-4 ">
-                                <div class="form-outline text-right pt-1">
-                                    <label class="form-label text-black " for="form8Example1">POTENCIAL COMERCIAL</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="number" class="form-control" placeholder="" name="potencial_comercial"
-                                        value="0"  style="border-radius: 25px">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-outline text-right pt-1">
-                                    <label class="form-label text-black" for="form8Example1">IQ FACTORIAL</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6 pt-1">
-                                <div class="form-outline">
-                                    <input type="number" class="form-control" placeholder="" name="iq_factorial"
-                                        value="0"  style="border-radius: 25px">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-outline text-right">
-                                    <label class="form-label text-black" for="form8Example3">V&P TEST</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6 pt-1">
-                                <div class="form-outline">
-                                    <input type="number" class="form-control" placeholder="" name="vp_test"
-                                        value="0"  style="border-radius: 25px">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+                @endif
                 <div class="card box mt-3">
                     <div class="card-header card-header-warning" style="border-radius: 15px;">
                         <h5 class="card-title text-center"><b>PRUEBAS DE LA VACANTE</b></h5>
                     </div>
                     <div class="card-body text-black">
-                        @if ($vacante->ventas == 'aplica')       
+                        @if ($vacante->ventas == 'aplica')
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">CLINICA DE VENTAS</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <select class="form-select form-control" name="ventas"
-                                            style="border-radius: 25px">
-                                            <option value="no aprobo">NO APROBO</option>
-                                            <option value="aprobo">APROBO</option>
-                                        </select>
-                                
+                                    <select class="form-select form-control" name="ventas" style="border-radius: 25px">
+                                        <option value="no aprobo">NO APROBO</option>
+                                        <option value="aprobo">APROBO</option>
+                                    </select>
+
                                 </div>
                             </div>
-                        @endif    
-                        @if ($vacante->riesgos == 'aplica')       
+                        @endif
+                        {{-- @if ($vacante->riesgos == 'aplica')       
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">CENTRAL DE RIESGOS</label>
@@ -253,23 +221,22 @@
                                 
                                 </div>
                             </div>
-                        @endif    
-                        @if ($vacante->tecnica=='aplica')    
+                        @endif     --}}
+                        @if ($vacante->tecnica == 'aplica')
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">PRUEBA TECNICA</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <select class="form-select form-control" name="tecnica"
-                                            style="border-radius: 25px">
-                                            <option value="no aprobo">NO APROBO</option>
-                                            <option value="aprobo">APROBO</option>
-                                        </select>
-                                
+                                    <select class="form-select form-control" name="tecnica" style="border-radius: 25px">
+                                        <option value="no aprobo">NO APROBO</option>
+                                        <option value="aprobo">APROBO</option>
+                                    </select>
+
                                 </div>
                             </div>
                         @endif
-                        @if ($vacante->visita=='aplica')    
+                        {{-- @if ($vacante->visita == 'aplica')    
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">VISITA DOMICILIARIA</label>
@@ -284,7 +251,7 @@
                                 </div>
                             </div>
                         @endif
-                        @if ($vacante->poligrafo=='aplica') 
+                        @if ($vacante->poligrafo == 'aplica') 
                             <div class="row text-black pt-1">
                                 <div class="col-md-4 text-right">
                                     <label class="form-label text-black" for="form8Example3">POLIGRAFO</label>
@@ -298,7 +265,7 @@
                                 
                                 </div>
                             </div>
-                        @endif
+                        @endif --}}
                     </div>
                     <div>
                         <button class="box btn-formulario text-white text-center btn btn-block mt-3 mb-3"

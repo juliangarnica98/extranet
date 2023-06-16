@@ -102,36 +102,7 @@
         <h2 class="text-center  pt-5 text-black" style="color: #000000">CALIFICAR CANDIDATO</h2>
         <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
 
-        <div class="row justify-content-center" style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
-            <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
-                    href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
-                            class="fas fa-users"></i>
-                        POSTULADOS</b><span class="sr-only">(current)</span></a></div>
-            <div class="col-md-2 sub-nav-link active"> <a class="nav-link text-center text-black "
-                    href="{{ route('reclutador.seleccionados.buscar', ['id' => $name_vacant->id]) }}"><b><i
-                            class="fas fa-user-friends"></i>
-                        SELECCIONADOS</b><span class="sr-only">(current)</span></a></div>
-            <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
-                    href="{{ route('reclutador.reclutamientos.buscar', ['id' => $name_vacant->id]) }}"><b><i
-                            class="fas fa-tasks"></i> PRUEBAS</b><span class="sr-only">(current)</span></a>
-            </div>
-            <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
-                    href="{{ route('reclutador.analista.index', ['id' => $name_vacant->id]) }}"><b><i class="fas fa-comment-alt"></i>
-                        ENTREVISTAS</b>
-                    <span class="sr-only">(current)</span></a></div>
-            <div class="col-md-2 sub-nav-link">
-
-                <a class="nav-link text-center text-black" href="#"><b><i class="fas fa-check-double"></i>
-                        FINALISTAS</b>
-                    <span class="sr-only">(current)</span></a>
-            </div>
-            <div class="col-md-2 sub-nav-link"><a class="nav-link text-center text-black"
-                    href="{{ route('reclutador.discarded.index', ['id' => $name_vacant->id]) }}"><b><i
-                            class="far fa-times-circle"></i>
-                        DESCARTADOS</b>
-                    <span class="sr-only">(current)</span></a></div>
-
-        </div>
+        @include('layouts.menu',['active_seleccionados'=>'seleccionados'])
         <div class="">
 
             <form method="post" action="{{route('generar.excel')}}">

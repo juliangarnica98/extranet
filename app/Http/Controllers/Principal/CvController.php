@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Cv;
 use App\Models\Cvvacant;
+use App\Models\Job;
 use App\Models\State;
 use App\Models\Vacant;
 use Illuminate\Support\Facades\Validator;
@@ -19,14 +20,25 @@ class CvController extends Controller
     }
     public function store(Request $request)
     {
+        // dd($request->all());
+        $rules = [
+            'age' => 'numeric|max:255|min:18',
+            'email' => 'required|email|unique:cvs',
+        ];
+        $messages = [
+            'age.required' => 'La edad es requerida.',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+ 
+            return back()->with('error',$validator->errors()->first());
+        }
 
         $cv = new  Cv();
-        $ext_photo = $request->file('photo_cv')->getClientOriginalExtension();
         $ext_cv = $request->file('file_cv')->getClientOriginalExtension();
-        $path_photo = $request->file('photo_cv')->storeAs('public/avatars/',$request->num_id.'.'.$ext_photo);
         $path_cv = $request->file('file_cv')->storeAs('public/cvs/',$request->num_id.'.'.$ext_cv);        
-        
-        $cv->photo_cv = basename($path_photo);
+    
         $cv->file_cv = basename($path_cv);
 
         $cv->name = $request->name;
@@ -39,25 +51,41 @@ class CvController extends Controller
         $cv->address = $request->address;
         $cv->city_address = $request->city_address;
         $cv->academic_profile = $request->academic_profile;
-        $cv->name_last_company = $request->name_last_company;
-        $cv->position_last_company = $request->position_last_company;
-        $cv->funtion_last_company = $request->funtion_last_company;
-        $cv->work_last_company = $request->work_last_company;
-        $cv->date_init_company = $request->date_init_company;
-        $cv->date_finally_company = $request->date_finally_company;
-        $cv->name_last_company2 = $request->name_last_company2;
-        $cv->position_last_company2 = $request->position_last_company2;
-        $cv->funtion_last_company2 = $request->funtion_last_company2;
-        $cv->date_init_company2 = $request->date_init_company2;
-        $cv->date_finally_company2 = $request->date_finally_company2;
         $cv->previously_work = $request->previously_work;
         $cv->family = $request->family;
         $cv->like_to_work = $request->like_to_work;
         $cv->should_choose = $request->should_choose;
+        $cv->children = $request->children;
         $cv->shirt_size = $request->shirt_size;
         $cv->shoes_size = $request->shoes_size;
         $cv->pant_size = $request->pant_size;
         $cv->save();
+
+        $job = new Job();
+        $job->experience = $request->experience== 'on'?'sin experiencia laboral':'con experiencia laboral';
+
+        $job->currently = $request->currently== '-'?'No':'Si';
+        $job->last_job_name = $request->last_job_name == '-'?'':$request->last_job_name;
+        $job->last_job_position = $request->last_job_position == '-'?'':$request->last_job_position;
+        $job->last_job_functions = $request->last_job_functions == '-'?'':$request->last_job_functions;
+        $job->last_job_date_init = $request->last_job_date_init == '2000-01-01'?'':$request->last_job_date_init;
+        $job->last_job_date_end = $request->last_job_date_end == '2000-01-01'?'':$request->last_job_date_end;
+
+        $job->penultimate_job_name = $request->penultimate_job_name == '-'?'':$request->penultimate_job_name;
+        $job->penultimate_job_position = $request->penultimate_job_position == '-'?'':$request->penultimate_job_position;
+        $job->penultimate_job_functions = $request->penultimate_job_functions == '-'?'':$request->penultimate_job_functions;
+        $job->penultimate_job_date_init = $request->penultimate_job_date_init == '2000-01-01'?'':$request->penultimate_job_date_init;
+        $job->penultimate_job_date_end = $request->penultimate_job_date_end == '2000-01-01'?'':$request->penultimate_job_date_end;
+
+        $job->antepenultimate_job_name = $request->antepenultimate_job_name == '-'?'':$request->antepenultimate_job_name;
+        $job->antepenultimate_job_position = $request->antepenultimate_job_position == '-'?'':$request->antepenultimate_job_position;
+        $job->antepenultimate_job_functions = $request->antepenultimate_job_functions == '-'?'':$request->antepenultimate_job_functions;
+        $job->antepenultimate_job_date_init = $request->antepenultimate_job_date_init == '2000-01-01'?'':$request->antepenultimate_job_date_init;
+        $job->antepenultimate_job_date_end = $request->antepenultimate_job_date_end == '2000-01-01'?'':$request->antepenultimate_job_date_end;
+        
+        $job->cv()->associate($cv);
+        $job->save();
+
 
         $vacante = Vacant::where('id',$request->vacant_id)->first();
         $vacante->num_aplic += 1;

@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.admin')
 <style>
     body {
@@ -105,6 +102,7 @@
             <form method="POST" action="{{ route('reclutador.edit.vacant', $vacant->id) }}">
                 @method('PUT')
                 @csrf
+
                 <div class="card box mt-3">
                     <div class="card-header card-header-warning" style="border-radius: 15px;">
                         <h5 class="card-title text-center"><b> DATOS DE LA VACANTE</b></h5>
@@ -185,7 +183,8 @@
                                         </option>
                                         <option value="Soledad" {{ $vacant->city == 'Soledad' ? 'selected' : '' }}>Soledad
                                         </option>
-                                        <option value="Bucaramanga" {{ $vacant->city == 'Bucaramanga' ? 'selected' : '' }}>
+                                        <option value="Bucaramanga"
+                                            {{ $vacant->city == 'Bucaramanga' ? 'selected' : '' }}>
                                             Bucaramanga</option>
                                         <option value="Bello" {{ $vacant->city == 'Bello' ? 'selected' : '' }}>Bello
                                         </option>
@@ -193,7 +192,8 @@
                                             {{ $vacant->city == 'Villavicencio' ? 'selected' : '' }}>Villavicencio</option>
                                         <option value="Ibagué" {{ $vacant->city == 'Ibagué' ? 'selected' : '' }}>Ibagué
                                         </option>
-                                        <option value="Santa Marta" {{ $vacant->city == 'Santa Marta' ? 'selected' : '' }}>
+                                        <option value="Santa Marta"
+                                            {{ $vacant->city == 'Santa Marta' ? 'selected' : '' }}>
                                             Santa Marta</option>
                                         <option value="Valledupar" {{ $vacant->city == 'Valledupar' ? 'selected' : '' }}>
                                             Valledupar</option>
@@ -279,9 +279,21 @@
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
                                     <input type="number" id="salary" class="form-control" name="salary"
-                                        style="border-radius: 25px" value="{{ $vacant->salary }}" />
+                                    {{$vacant->salary =='salario confidencial' ? 'disabled' : '' }}   style="border-radius: 25px" value="{{ $vacant->salary }}" />
                                 </div>
                             </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-8">
+                                <div class="form-check text-right">
+                                    <input type="checkbox" class="form-check-input" id="salary_c" {{$vacant->salary =='salario confidencial' ? 'checked' : '' }} name="salary_c">
+                                    <label class="form-check-label" for="exampleCheck1">SALARIO CONFIDENCIAL</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 pt-1">
+
+                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -326,26 +338,6 @@
                         <h5 class="card-title text-center"><b>REQUERIMIENTOS DE LA OFERTA</b></h5>
                     </div>
                     <div class="card-body text-black">
-                        <div class="row text-black">
-                            <div class="col-md-4 text-right">
-                                <label class="form-label text-black" for="form8Example3">EXPERIENCIA REQUERIDA</label>
-                            </div>
-                            <div class="col-md-6">
-                                <select class="form-select form-control" name="experience" style="border-radius: 25px">
-                                    <option value="sin experiencia"
-                                        {{ $vacant->experience == 'sin experiencia' ? 'selected' : '' }}>
-                                        SIN EXPERIENCIA</option>
-                                    <option value="1 año" {{ $vacant->experience == '1 año' ? 'selected' : '' }}>
-                                        1 AÑO</option>
-                                    <option value="2 años" {{ $vacant->experience == '2 años' ? 'selected' : '' }}>
-                                        2 AÑOS</option>
-                                    <option value="mas de 2 años"
-                                        {{ $vacant->experience == 'mas de 2 años' ? 'selected' : '' }}>
-                                        MAS DE 2 AÑOS</option>
-                                </select>
-
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-outline text-right  ">
@@ -415,13 +407,13 @@
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
 
-        
+
                                     <select class="form-select form-control" name="residence_change"
                                         style="border-radius: 25px">
-                                        <option value="no"
-                                            {{ $vacant->residence_change == 'no' ? 'selected' : '' }}>NO</option>
-                                        <option value="si"
-                                            {{ $vacant->residence_change == 'si' ? 'selected' : '' }}>SI</option>
+                                        <option value="no" {{ $vacant->residence_change == 'no' ? 'selected' : '' }}>
+                                            NO</option>
+                                        <option value="si" {{ $vacant->residence_change == 'si' ? 'selected' : '' }}>
+                                            SI</option>
                                     </select>
                                 </div>
                             </div>
@@ -433,75 +425,91 @@
                 </div>
                 <div class="card box mt-3">
                     <div class="card-header card-header-warning" style=" border-radius: 15px;">
-                        <h5 class="card-title text-center"><b>PRUEBAS DE LA VACANTE</b></h5>
+                        <h5 class="card-title text-center"><b>PRUEBAS DE SELECCIÓN</b></h5>
                     </div>
                     <div class="card-body text-black">
+                        <div class="row text-black">
+                            <div class="col-md-4 text-right pt-1">
+                                <label class="form-label text-black " for="form8Example4">PRUEBA TÉCNICA</label>
+                            </div>
+                            <div class="col-md-6 pt-1">
+
+
+                                <select class="form-select form-control" name="tecnica" style="border-radius: 25px">
+                                    <option value="no aplica" {{ $vacant->tecnica == 'no aplica' ? 'selected' : '' }}>NO
+                                        APLICA</option>
+                                    <option value="aplica" {{ $vacant->tecnica == 'aplica' ? 'selected' : '' }}>APLICA
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="row text-black">
                             <div class="col-md-4 text-right">
                                 <label class="form-label text-black" for="form8Example3">CLINICA DE VENTAS</label>
                             </div>
                             <div class="col-md-6">
-                                
 
-                                <select class="form-select form-control" name="ventas"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica"
-                                            {{ $vacant->ventas == 'no aplica' ? 'selected' : '' }}>NO APLICA</option>
-                                        <option value="aplica"
-                                            {{ $vacant->ventas == 'aplica' ? 'selected' : '' }}>APLICA</option>
-                                    </select>
+
+                                <select class="form-select form-control" name="ventas" style="border-radius: 25px">
+                                    <option value="no aplica" {{ $vacant->ventas == 'no aplica' ? 'selected' : '' }}>NO
+                                        APLICA</option>
+                                    <option value="aplica" {{ $vacant->ventas == 'aplica' ? 'selected' : '' }}>APLICA
+                                    </option>
+                                </select>
 
                             </div>
                         </div>
+                        <div class="row text-black">
+                            <div class="col-md-4 text-right">
+                                <label class="form-label text-black" for="form8Example3">PRUEBA COMERCIAL</label>
+                            </div>
+                            <div class="col-md-6">
+
+
+                                <select class="form-select form-control" name="comercial" style="border-radius: 25px">
+                                    <option value="no aplica" {{ $vacant->ventas == 'no comercial' ? 'selected' : '' }}>NO
+                                        APLICA</option>
+                                    <option value="aplica" {{ $vacant->ventas == 'comercial' ? 'selected' : '' }}>APLICA
+                                    </option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card box mt-3">
+                    <div class="card-header card-header-warning" style=" border-radius: 15px;">
+                        <h5 class="card-title text-center"><b>PRUEBAS DE SEGURIDAD</b></h5>
+                    </div>
+                    <div class="card-body text-black">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-outline text-right  ">
-                                    <label class="form-label text-black" for="form8Example4">CENTRAR DE RIESGOS</label>
+                                    <label class="form-label text-black" for="form8Example4">CENTRALES DE RIESGO</label>
 
                                 </div>
                             </div>
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
-                                   
-
-                                    <select class="form-select form-control" name="riesgos"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica"
-                                            {{ $vacant->riesgos == 'no aplica' ? 'selected' : '' }}>NO APLICA</option>
-                                        <option value="aplica"
-                                            {{ $vacant->riesgos == 'aplica' ? 'selected' : '' }}>APLICA</option>
+                                    <select class="form-select form-control" name="riesgos" style="border-radius: 25px">
+                                        <option value="no aplica" {{ $vacant->riesgos == 'no aplica' ? 'selected' : '' }}>
+                                            NO APLICA</option>
+                                        <option value="aplica" {{ $vacant->riesgos == 'aplica' ? 'selected' : '' }}>APLICA
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="row text-black">
                             <div class="col-md-4 text-right pt-1">
-                                <label class="form-label text-black " for="form8Example4">PRUEBA TECNICA</label>
+                                <label class="form-label text-black " for="form8Example4">POLIGRAFÍA</label>
                             </div>
                             <div class="col-md-6 pt-1">
-                      
-
-                                <select class="form-select form-control" name="tecnica"
-                                style="border-radius: 25px">
-                                <option value="no aplica"
-                                    {{ $vacant->tecnica == 'no aplica' ? 'selected' : '' }}>NO APLICA</option>
-                                <option value="aplica"
-                                    {{ $vacant->tecnica == 'aplica' ? 'selected' : '' }}>APLICA</option>
-                            </select>
-                            </div>
-                        </div>
-                        <div class="row text-black">
-                            <div class="col-md-4 text-right pt-1">
-                                <label class="form-label text-black " for="form8Example4">POLIGRAFO</label>
-                            </div>
-                            <div class="col-md-6 pt-1">
-                            
-                                <select class="form-select form-control" name="poligrafo"
-                                    style="border-radius: 25px">
-                                    <option value="no aplica"
-                                        {{ $vacant->poligrafo == 'no aplica' ? 'selected' : '' }}>NO APLICA</option>
-                                    <option value="aplica"
-                                        {{ $vacant->poligrafo == 'aplica' ? 'selected' : '' }}>APLICA</option>
+                                <select class="form-select form-control" name="poligrafo" style="border-radius: 25px">
+                                    <option value="no aplica" {{ $vacant->poligrafo == 'no aplica' ? 'selected' : '' }}>NO
+                                        APLICA</option>
+                                    <option value="aplica" {{ $vacant->poligrafo == 'aplica' ? 'selected' : '' }}>APLICA
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -510,28 +518,20 @@
                                 <label class="form-label text-black " for="form8Example4">VISITA DOMICILIARIA</label>
                             </div>
                             <div class="col-md-6 pt-1">
-       
-
-                                <select class="form-select form-control" name="visita"
-                                style="border-radius: 25px">
-                                <option value="no aplica"
-                                    {{ $vacant->visita == 'no aplica' ? 'selected' : '' }}>NO APLICA</option>
-                                <option value="aplica"
-                                    {{ $vacant->visita == 'aplica' ? 'selected' : '' }}>APLICA</option>
-                            </select>
+                                <select class="form-select form-control" name="visita" style="border-radius: 25px">
+                                    <option value="no aplica" {{ $vacant->visita == 'no aplica' ? 'selected' : '' }}>NO
+                                        APLICA</option>
+                                    <option value="aplica" {{ $vacant->visita == 'aplica' ? 'selected' : '' }}>APLICA
+                                    </option>
+                                </select>
                             </div>
                         </div>
-
-
-
-
                     </div>
                 </div>
-
-                <div class="card box mt-3" >
+                <div class="card box mt-3">
                     <div class="card-header card-header-warning" style=" border-radius: 15px;">
-                        <h5 class="card-title text-center" ><b>ENTREVISTAS DE LA VACANTE</b></h5>
-                   </div>
+                        <h5 class="card-title text-center"><b>ENTREVISTAS DE LA VACANTE</b></h5>
+                    </div>
                     <div class="card-body text-black">
                         <div class="row text-black">
                             <div class="col-md-4 text-right">
@@ -539,20 +539,22 @@
                             </div>
                             <div class="col-md-6">
                                 <select class="form-select form-control" name="entrevista_analista"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica"
-                                    {{ $vacant->entrevista_analista == 'no aplica' ? 'selected' : '' }}>NO APLICA</option>
-                                <option value="aplica"
-                                    {{ $vacant->entrevista_analista == 'aplica' ? 'selected' : '' }}>APLICA</option>
-                                    </select>
-                               
+                                    style="border-radius: 25px">
+                                    <option value="no aplica"
+                                        {{ $vacant->entrevista_analista == 'no aplica' ? 'selected' : '' }}>NO APLICA
+                                    </option>
+                                    <option value="aplica"
+                                        {{ $vacant->entrevista_analista == 'aplica' ? 'selected' : '' }}>APLICA</option>
+                                </select>
+
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-outline text-right  ">
-                                        <label class="form-label text-black" for="form8Example4">COORDINADOR DE SELECCIÓN</label>
-                                    
+                                    <label class="form-label text-black" for="form8Example4">COORDINADOR DE
+                                        SELECCIÓN</label>
+
                                 </div>
                             </div>
                             <div class="col-md-6 pt-1">
@@ -560,10 +562,12 @@
                                     <select class="form-select form-control" name="entrevista_coordinador"
                                         style="border-radius: 25px">
                                         <option value="no aplica"
-                                        {{ $vacant->entrevista_coordinador == 'no aplica' ? 'selected' : '' }}>NO APLICA</option>
-                                    <option value="aplica"
-                                        {{ $vacant->entrevista_coordinador == 'aplica' ? 'selected' : '' }}>APLICA</option>
-                                        </select>
+                                            {{ $vacant->entrevista_coordinador == 'no aplica' ? 'selected' : '' }}>NO
+                                            APLICA</option>
+                                        <option value="aplica"
+                                            {{ $vacant->entrevista_coordinador == 'aplica' ? 'selected' : '' }}>APLICA
+                                        </option>
+                                    </select>
                                     </select>
                                 </div>
                             </div>
@@ -574,12 +578,12 @@
                             </div>
                             <div class="col-md-6 pt-1">
                                 <select class="form-select form-control" name="entrevista_jefe"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica"
+                                    style="border-radius: 25px">
+                                    <option value="no aplica"
                                         {{ $vacant->entrevista_jefe == 'no aplica' ? 'selected' : '' }}>NO APLICA</option>
-                                    <option value="aplica"
-                                        {{ $vacant->entrevista_jefe == 'aplica' ? 'selected' : '' }}>APLICA</option>
-                                    </select>
+                                    <option value="aplica" {{ $vacant->entrevista_jefe == 'aplica' ? 'selected' : '' }}>
+                                        APLICA</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row text-black">
@@ -588,18 +592,19 @@
                             </div>
                             <div class="col-md-6 pt-1">
                                 <select class="form-select form-control" name="entrevista_gerente"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica"
-                                        {{ $vacant->entrevista_gerente == 'no aplica' ? 'selected' : '' }}>NO APLICA</option>
+                                    style="border-radius: 25px">
+                                    <option value="no aplica"
+                                        {{ $vacant->entrevista_gerente == 'no aplica' ? 'selected' : '' }}>NO APLICA
+                                    </option>
                                     <option value="aplica"
                                         {{ $vacant->entrevista_gerente == 'aplica' ? 'selected' : '' }}>APLICA</option>
-                                    </select>
-                                    </select>
+                                </select>
+                                </select>
                             </div>
                         </div>
-                                                     
+
                     </div>
-                </div>  
+                </div>
                 <div class="card box mt-3">
                     <div class="card-header card-header-warning" style="border-radius: 15px;">
                         <h5 class="card-title text-center"><b>PREGUNTAS FILTRO</b></h5>
@@ -629,4 +634,29 @@
             </form>
         </div>
     </div>
+    <script>
+        var salary_c = document.querySelector("#salary_c");
+        var salary = document.querySelector("#salary");
+
+        salary_c.addEventListener("change", (event) => {
+            if (salary_c.checked) {
+                salary.disabled = true;
+                salary.value = "";
+            } else {
+                salary.disabled = false;
+            }
+        });
+        salary.addEventListener("focus", (event) => {
+            numero = salary.value;
+            salary.value = numero.replace(/[^0-9]+/g, "");
+        });
+        salary.addEventListener("change", (event) => {
+            numero = new Intl.NumberFormat('es-CO', {
+                style: 'currency',
+                currency: 'COP',
+                minimumFractionDigits: 0
+            });
+            salary.value = numero.format(salary.value);
+        });
+    </script>
 @endsection

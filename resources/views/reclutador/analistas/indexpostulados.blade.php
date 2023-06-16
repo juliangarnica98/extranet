@@ -141,7 +141,7 @@
                 <h4 class="text-center text-black"><b> ENVIADOS A PRUEBAS</b></h4>
                 <h4 class="text-center text-black">VACANTE <b> {{ $name_vacant->title }}</b></h4>
 
-                <div class="row justify-content-center" style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
+                {{-- <div class="row justify-content-center" style="border-radius: 25px;background-color: #fff;font-size: 0.9rem">
                     <div class="col-md-2 sub-nav-link "><a class="nav-link text-center text-black"
                             href="{{ route('reclutador.aspirantes', ['id' => $name_vacant->id]) }}"><b><i
                                     class="fas fa-users"></i>
@@ -170,7 +170,8 @@
                                 DESCARTADOS</b>
                             <span class="sr-only">(current)</span></a></div>
 
-                </div>
+                </div> --}}
+                @include('layouts.menu')
 
                 @if (count($postulaciones) == 0)
                     <div class="card box mt-5">
@@ -227,7 +228,7 @@
                                                             @foreach ($cvs as $cv)
                                                                 @if ($cv->id == $postulaciones->cv_id)
                                                                     {{ $cv->name }}
-                                                                    <img style="width: 4rem;height: 4rem;border-radius: 50%" class="img-fluid p-l3" src="{{ asset("storage/avatars/".$cv->photo_cv)}}" />
+                                                                    {{-- <img style="width: 4rem;height: 4rem;border-radius: 50%" class="img-fluid p-l3" src="{{ asset("storage/avatars/".$cv->photo_cv)}}" /> --}}
                                                                 @endif
                                                             @endforeach
                                                         </i></strong>

@@ -20,7 +20,8 @@ class ExcelController extends Controller
         $vacante=Vacant::where('id',$id)->first();
         $select_cvs = $request->seleccionados;
         $cvs=Cv::whereIn('id',$select_cvs)->get();
-        return view('reclutador.reports.indexreportsexcel',compact('select_cvs','name_vacant','vacante','cvs'));
+        $active_seleccionados=1;
+        return view('reclutador.reports.indexreportsexcel',compact('select_cvs','name_vacant','vacante','cvs','active_seleccionados'));
     }
 
     public function export(Request $request)

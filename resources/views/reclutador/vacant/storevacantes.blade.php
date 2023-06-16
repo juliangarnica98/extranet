@@ -64,11 +64,13 @@
         margin-bottom: .5rem;
         line-height: 1.5rem;
     }
-    .btn-formulario{
+
+    .btn-formulario {
         background-color: #fcb2d7;
         color: #000000;
     }
-    .btn-formulario:hover{
+
+    .btn-formulario:hover {
         background-color: #d2d2dc;
     }
 </style>
@@ -99,10 +101,10 @@
 
             <form method="POST" action="{{ route('reclutador.crearvacante') }}">
                 @csrf
-                <div class="card box mt-3" >
+                <div class="card box mt-3">
                     <div class="card-header card-header-warning" style="border-radius: 15px;">
-                        <h5 class="card-title text-center" ><b> DATOS DE LA VACANTE</b></h5>
-                   </div>
+                        <h5 class="card-title text-center"><b> DATOS DE LA VACANTE</b></h5>
+                    </div>
                     <div class="card-body text-black">
                         <div class="row text-black">
                             <div class="col-md-4 ">
@@ -111,9 +113,8 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-outline"> 
-                                    <select class="form-select form-control" name="area"
-                                        style="border-radius: 25px">
+                                <div class="form-outline">
+                                    <select class="form-select form-control" name="area" style="border-radius: 25px">
                                         <option value="cedi">CEDI</option>
                                         <option value="administrativo">ADMINISTRATIVO</option>
                                         <option value="comercial">COMERCIAL</option>
@@ -143,7 +144,7 @@
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
                                     <textarea id="" class="form-control" name="description" cols="30" rows="10"
-                                                    style="border-radius: 25px"></textarea>
+                                        style="border-radius: 25px"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -155,8 +156,7 @@
                             </div>
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
-                                    <select class="form-select form-control" name="city"
-                                        style="border-radius: 25px">
+                                    <select class="form-select form-control" name="city" style="border-radius: 25px">
                                         <option selected value=""></option>
                                         <option value="Bogotá" style="border-radius: 25px">Bogotá</option>
                                         <option value="Medellín">Medellín</option>
@@ -219,11 +219,25 @@
                             </div>
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
-                                    <input type="number" id="salary" class="form-control" name="salary"
+                                    <input type="text" id="salary" class="form-control" name="salary"
                                         style="border-radius: 25px" />
                                 </div>
                             </div>
+
                         </div>
+                        <div class="row ">
+                            <div class="col-md-8">
+                                <div class="form-check text-right">
+                                    <input type="checkbox" class="form-check-input" id="salary_c" name="salary_c">
+                                    <label class="form-check-label" for="exampleCheck1">SALARIO CONFIDENCIAL</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 pt-1">
+
+                            </div>
+
+                        </div>
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-outline text-right">
@@ -232,8 +246,8 @@
                             </div>
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline text-right">
-                                    <input type="number" id="" class="form-control"
-                                        name="num_vacants" style="border-radius: 25px" id="vacantes" />
+                                    <input type="number" id="" class="form-control" name="num_vacants"
+                                        style="border-radius: 25px" id="vacantes" />
                                 </div>
                             </div>
                         </div>
@@ -247,40 +261,25 @@
                                 <div class="form-outline">
                                     <select class="form-select form-control" name="type_contract"
                                         style="border-radius: 25px">
-                                        <option value="fijo">FIJO</option>
                                         <option value="indefinido">INDEFINIDO</option>
                                         <option value="obra o labor">OBRA O LABOR</option>
                                     </select>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
-                <div class="card box mt-3" >
+                <div class="card box mt-3">
                     <div class="card-header card-header-warning" style=" border-radius: 15px;">
-                        <h5 class="card-title text-center" ><b>REQUERIMIENTOS DE LA OFERTA</b></h5>
-                   </div>
+                        <h5 class="card-title text-center"><b>REQUERIMIENTOS DE LA OFERTA</b></h5>
+                    </div>
                     <div class="card-body text-black">
-                        <div class="row text-black">
-                            <div class="col-md-4 text-right">
-                                <label class="form-label text-black" for="form8Example3">EXPERIENCIA REQUERIDA</label>
-                            </div>
-                            <div class="col-md-6">
-                                <select class="form-select form-control" name="experience"
-                                        style="border-radius: 25px">
-                                        <option value="sin experiencia">SIN EXPERIENCIA</option>
-                                        <option value="1 año">1 AÑO</option>
-                                        <option value="2 años">2 AÑOS</option>
-                                        <option value="mas de 2 años">MAS DE 2 AÑOS</option>
-                                    </select>
-                               
-                            </div>
-                        </div>
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-outline text-right  ">
-                                        <label class="form-label text-black" for="form8Example4">EDUCACIÓN MINIMA</label>
-                                    
+                                    <label class="form-label text-black" for="form8Example4">FORMACIÓN ACADEMICA</label>
+
                                 </div>
                             </div>
                             <div class="col-md-6 pt-1">
@@ -303,12 +302,11 @@
                                 <label class="form-label text-black " for="form8Example4">IDIOMA</label>
                             </div>
                             <div class="col-md-6 pt-1">
-                                <select class="form-select form-control" name="language"
-                                                    style="border-radius: 25px">
-                                                    <option value="Ninguno">NINGUNO</option>
-                                                    <option value="Ingles">INGLES</option>
-                                                    <option value="Otro">OTRO</option>
-                                                </select>
+                                <select class="form-select form-control" name="language" style="border-radius: 25px">
+                                    <option value="Ninguno">NINGUNO</option>
+                                    <option value="Ingles">INGLES</option>
+                                    <option value="Otro">OTRO</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row text-black">
@@ -322,12 +320,13 @@
                                         <option value="no">NO</option>
                                         <option value="si">SI</option>
                                     </select>
-                                </div>     
+                                </div>
                             </div>
                         </div>
-                        <div class="row text-black"> 
+                        <div class="row text-black">
                             <div class="col-md-4 text-right pt-1">
-                                <label class="form-label text-black text-right" for="form8Example4">CAMBIO DE RESIDENCIA</label>
+                                <label class="form-label text-black text-right" for="form8Example4">CAMBIO DE
+                                    RESIDENCIA</label>
                             </div>
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
@@ -336,43 +335,74 @@
                                         <option value="no">NO</option>
                                         <option value="si">SI</option>
                                     </select>
-                                </div>     
+                                </div>
                             </div>
                         </div>
-                            
-                        
-                                      
+
+
+
                     </div>
                 </div>
-                <div class="card box mt-3" >
+                <div class="card box mt-3">
                     <div class="card-header card-header-warning" style=" border-radius: 15px;">
-                        <h5 class="card-title text-center" ><b>PRUEBAS DE LA VACANTE</b></h5>
-                   </div>
+                        <h5 class="card-title text-center"><b>PRUEBAS DE SELECCIÓN</b></h5>
+                    </div>
                     <div class="card-body text-black">
+                       
                         <div class="row text-black">
-                            <div class="col-md-4 text-right">
-                                <label class="form-label text-black" for="form8Example3">CLINICA DE VENTAS</label>
+                            <div class="col-md-4 text-right pt-1">
+                                <label class="form-label text-black " for="form8Example4">PRUEBA TÉCNICA</label>
                             </div>
-                            <div class="col-md-6">
-                                <select class="form-select form-control" name="ventas"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica">NO APLICA</option>
-                                        <option value="aplica">APLICA</option>
-                                    </select>
-                               
+                            <div class="col-md-6 pt-1">
+                                <select class="form-select form-control" name="tecnica" style="border-radius: 25px">
+                                    <option value="no aplica">NO APLICA</option>
+                                    <option value="aplica">APLICA</option>
+                                </select>
                             </div>
                         </div>
+                        <div class="row text-black">
+                            <div class="col-md-4 text-right pt-1">
+                                <label class="form-label text-black " for="form8Example4">CLINICA DE VENTAS</label>
+                            </div>
+                            <div class="col-md-6 pt-1">
+                                <select class="form-select form-control" name="ventas" style="border-radius: 25px">
+                                    <option value="no aplica">NO APLICA</option>
+                                    <option value="aplica">APLICA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row text-black">
+                            <div class="col-md-4 text-right pt-1">
+                                <label class="form-label text-black " for="form8Example4">PRUEBA COMERCIAL</label>
+                            </div>
+                            <div class="col-md-6 pt-1">
+                                <select class="form-select form-control" name="comercial" style="border-radius: 25px">
+                                    <option value="no aplica">NO APLICA</option>
+                                    <option value="aplica">APLICA</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+                <div class="card box mt-3">
+                    <div class="card-header card-header-warning" style=" border-radius: 15px;">
+                        <h5 class="card-title text-center"><b>PRUEBAS DE SEGURIDAD</b></h5>
+                    </div>
+                    <div class="card-body text-black">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-outline text-right  ">
-                                        <label class="form-label text-black" for="form8Example4">CENTRAR DE RIESGOS</label>
-                                    
+                                    <label class="form-label text-black" for="form8Example4">CENTRALES DE RIESGO</label>
+
                                 </div>
                             </div>
                             <div class="col-md-6 pt-1">
                                 <div class="form-outline">
-                                    <select class="form-select form-control" name="riesgos"
-                                        style="border-radius: 25px">
+                                    <select class="form-select form-control" name="riesgos" style="border-radius: 25px">
                                         <option value="no aplica">NO APLICA</option>
                                         <option value="aplica">APLICA</option>
                                     </select>
@@ -381,26 +411,13 @@
                         </div>
                         <div class="row text-black">
                             <div class="col-md-4 text-right pt-1">
-                                <label class="form-label text-black " for="form8Example4">PRUEBA TECNICA</label>
+                                <label class="form-label text-black " for="form8Example4">POLIGRAFÍA</label>
                             </div>
                             <div class="col-md-6 pt-1">
-                                <select class="form-select form-control" name="tecnica"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica">NO APLICA</option>
-                                        <option value="aplica">APLICA</option>
-                                    </select>
-                            </div>
-                        </div>
-                        <div class="row text-black">
-                            <div class="col-md-4 text-right pt-1">
-                                <label class="form-label text-black " for="form8Example4">POLIGRAFO</label>
-                            </div>
-                            <div class="col-md-6 pt-1">
-                                <select class="form-select form-control" name="poligrafo"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica">NO APLICA</option>
-                                        <option value="aplica">APLICA</option>
-                                    </select>
+                                <select class="form-select form-control" name="poligrafo" style="border-radius: 25px">
+                                    <option value="no aplica">NO APLICA</option>
+                                    <option value="aplica">APLICA</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row text-black">
@@ -408,23 +425,18 @@
                                 <label class="form-label text-black " for="form8Example4">VISITA DOMICILIARIA</label>
                             </div>
                             <div class="col-md-6 pt-1">
-                                <select class="form-select form-control" name="visita"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica">NO APLICA</option>
-                                        <option value="aplica">APLICA</option>
-                                    </select>
+                                <select class="form-select form-control" name="visita" style="border-radius: 25px">
+                                    <option value="no aplica">NO APLICA</option>
+                                    <option value="aplica">APLICA</option>
+                                </select>
                             </div>
                         </div>
-                       
-                            
-                        
-                                      
                     </div>
                 </div>
-                <div class="card box mt-3" >
+                <div class="card box mt-3">
                     <div class="card-header card-header-warning" style=" border-radius: 15px;">
-                        <h5 class="card-title text-center" ><b>ENTREVISTAS DE LA VACANTE</b></h5>
-                   </div>
+                        <h5 class="card-title text-center"><b>ENTREVISTAS DE LA VACANTE</b></h5>
+                    </div>
                     <div class="card-body text-black">
                         <div class="row text-black">
                             <div class="col-md-4 text-right">
@@ -432,18 +444,19 @@
                             </div>
                             <div class="col-md-6">
                                 <select class="form-select form-control" name="entrevista_analista"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica">NO APLICA</option>
-                                        <option value="aplica">APLICA</option>
-                                    </select>
-                               
+                                    style="border-radius: 25px">
+                                    <option value="no aplica">NO APLICA</option>
+                                    <option value="aplica">APLICA</option>
+                                </select>
+
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-outline text-right  ">
-                                        <label class="form-label text-black" for="form8Example4">COORDINADOR DE SELECCIÓN</label>
-                                    
+                                    <label class="form-label text-black" for="form8Example4">COORDINADOR DE
+                                        SELECCIÓN</label>
+
                                 </div>
                             </div>
                             <div class="col-md-6 pt-1">
@@ -462,10 +475,10 @@
                             </div>
                             <div class="col-md-6 pt-1">
                                 <select class="form-select form-control" name="entrevista_jefe"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica">NO APLICA</option>
-                                        <option value="aplica">APLICA</option>
-                                    </select>
+                                    style="border-radius: 25px">
+                                    <option value="no aplica">NO APLICA</option>
+                                    <option value="aplica">APLICA</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row text-black">
@@ -474,40 +487,59 @@
                             </div>
                             <div class="col-md-6 pt-1">
                                 <select class="form-select form-control" name="entrevista_gerente"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica">NO APLICA</option>
-                                        <option value="aplica">APLICA</option>
-                                    </select>
+                                    style="border-radius: 25px">
+                                    <option value="no aplica">NO APLICA</option>
+                                    <option value="aplica">APLICA</option>
+                                </select>
                             </div>
                         </div>
-                                                     
+
                     </div>
-                </div>  
-                <div class="card box mt-3" >
+                </div>
+                <div class="card box mt-3">
                     <div class="card-header card-header-warning" style="border-radius: 15px;">
-                        <h5 class="card-title text-center" ><b>PREGUNTAS FILTRO</b></h5>
-                   </div>
+                        <h5 class="card-title text-center"><b>PREGUNTAS FILTRO</b></h5>
+                    </div>
                     <div class="card-body text-black">
                         <div class="row text-black justify-content-center">
                             <div class="col-md-4 text-right">
-                                <button class="btn btn btn-block text-black"><i class="fas fa-plus"></i> NUEVA PREGUNTA</button>
-                            </div>
-                            {{-- <div class="col-md-6">
-                                <select class="form-select form-control" name="ventas"
-                                        style="border-radius: 25px">
-                                        <option value="no aplica">NO APLICA</option>
-                                        <option value="aplica">APLICA</option>
-                                    </select>
-                               
-                            </div> --}}
+                                <button class="btn btn btn-block text-black"><i class="fas fa-plus"></i> NUEVA
+                                    PREGUNTA</button>
                         </div>
-                        
+
                     </div>
                     <div>
-                        <button class="box btn-formulario text-white text-center btn btn-block mt-3 mb-3" style="background-color: #e52b7f"><b>CREAR</b> </button>
+                        <button class="box btn-formulario text-white text-center btn btn-block mt-3 mb-3"
+                            style="background-color: #e52b7f"><b>CREAR</b> </button>
                     </div>
-                </div>            
+                </div>
             </form>
         </div>
     </div>
+    <script>
+        var salary_c = document.querySelector("#salary_c");
+        var salary = document.querySelector("#salary");
+
+        salary_c.addEventListener("change", (event) => {
+            if (salary_c.checked) {
+                salary.disabled  = true;
+                salary.value = "";
+            } else {
+                salary.disabled  = false;
+            }
+        });
+        salary.addEventListener("focus", (event) => {
+            numero = salary.value;
+            salary.value = numero.replace(/[^0-9]+/g, "");
+        });
+        salary.addEventListener("change", (event) => {
+            numero = new Intl.NumberFormat('es-CO',{
+                style: 'currency',
+                currency: 'COP',
+                minimumFractionDigits: 0
+            });
+            salary.value=numero.format(salary.value);
+        });
+
+    </script>
 @endsection
